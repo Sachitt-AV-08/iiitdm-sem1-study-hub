@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#2563eb" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>Sem 1 End-Sem 9+ CGPA Study Hub</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Arial' font-weight='700' font-size='26' fill='white'%3E9%2B%3C/text%3E%3C/svg%3E" />
+  
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("iiitdm_sem1_theme");
+        var preferDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (saved === "dark" || (!saved && preferDark)) document.documentElement.classList.add("dark");
+      } catch (_) {}
+    })();
+  </script>
+
+  <style>
+
+    :root {
+      color-scheme: light;
+      --background: #f8fafc;
+      --card: #ffffff;
+      --content: #f1f5f9;
+      --foreground: #0f172a;
+      --muted-foreground: #475569;
+      --primary: #2563eb;
+      --primary-foreground: #ffffff;
+      --border: #cbd5e1;
+      --card-border: #e2e8f0;
+      --success: #15803d;
+      --warning: #b45309;
+      --error: #dc2626;
+      --chart-1: #2563eb;
+      --chart-2: #0f766e;
+      --chart-3: #6d28d9;
+      --chart-4: #c2410c;
+      --shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+    }
+    html.dark {
+      color-scheme: dark;
+      --background: #0b1120;
+      --card: #111827;
+      --content: #1e293b;
+      --foreground: #f1f5f9;
+      --muted-foreground: #94a3b8;
+      --primary: #2563eb;
+      --primary-foreground: #ffffff;
+      --link: #60a5fa;
+      --border: #334155;
+      --card-border: #1e293b;
+      --success: #4ade80;
+      --warning: #fbbf24;
+      --error: #f87171;
+      --chart-1: #60a5fa;
+      --chart-2: #2dd4bf;
+      --chart-3: #a78bfa;
+      --chart-4: #fb923c;
+      --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--background);
+      color: var(--foreground);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+      overflow-x: hidden;
+      overflow-x: clip;
+    }
+    a { color: var(--link, var(--primary)); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    button { font-family: inherit; color: inherit; cursor: pointer; background: none; border: none; }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+    .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 14px; display: flex; flex-direction: column; gap: 16px; }
+    .container > * { min-width: 0; max-width: 100%; }
+    @media (min-width: 768px) { .container { padding: 24px; gap: 20px; } }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); min-width: 0; max-width: 100%; }
+    .muted { color: var(--muted-foreground); }
+    .primary-text { color: var(--link, var(--primary)); }
+    .success-text { color: var(--success); }
+    .warning-text { color: var(--warning); }
+    .error-text { color: var(--error); }
+    .tabular { font-variant-numeric: tabular-nums; }
+    .hidden { display: none !important; }
+    .w-full { width: 100%; }
+    .max-w-md { max-width: 448px; }
+    .mx-auto { margin-left: auto; margin-right: auto; display: block; }
+    .frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 3px; font-size: 0.9em; line-height: 1.1; }
+    .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 3px 1px; }
+    .frac > span:last-child { padding: 1px 3px 0; }
+    .math { font-family: Georgia, Cambria, "Times New Roman", serif; }
+    pre.codebox {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-x: auto;
+      margin: 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      background: var(--content);
+      border: 1px solid var(--card-border);
+      border-radius: 5px;
+      padding: 1px 5px;
+      font-size: 0.9em;
+    }
+    kbd {
+      padding: 2px 6px;
+      font-size: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      background: var(--content);
+    }
+
+
+    .header-box { padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+    @media (min-width: 960px) {
+      .header-box { flex-direction: row; align-items: center; justify-content: space-between; padding: 20px; }
+    }
+    .badge-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .pill-primary {
+      display: inline-block; padding: 3px 10px; font-size: 0.75rem; font-weight: 700;
+      border-radius: 999px; background: var(--primary); color: var(--primary-foreground);
+    }
+    h1 { margin: 4px 0; font-size: clamp(1.2rem, 2.5vw, 1.55rem); line-height: 1.25; font-weight: 800; letter-spacing: -0.015em; }
+    .subtitle { margin: 0; font-size: 0.86rem; color: var(--muted-foreground); line-height: 1.45; }
+    .header-right { display: flex; flex-wrap: wrap; align-items: stretch; gap: 10px; }
+    .gauge-box {
+      flex: 1 1 230px; min-width: 220px;
+      background: var(--content); border: 1px solid var(--card-border);
+      border-radius: 10px; padding: 10px 14px;
+    }
+    .gauge-top { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; margin-bottom: 5px; gap: 8px; }
+    .progress-track { width: 100%; height: 9px; border-radius: 999px; background: var(--border); overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--primary); transition: width 0.28s ease; }
+    .btn-ghost {
+      padding: 8px 12px; font-size: 0.78rem; font-weight: 600;
+      border: 1px solid var(--border); border-radius: 10px;
+      background: var(--card); color: var(--muted-foreground);
+      min-height: 40px; transition: border-color 0.15s, background 0.15s;
+    }
+    .btn-ghost:hover { background: var(--content); border-color: var(--primary); color: var(--foreground); }
+
+    .subject-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    @media (min-width: 900px) { .subject-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    .sub-tab {
+      text-align: left; padding: 12px; border-radius: 13px;
+      background: var(--card); border: 1px solid var(--border);
+      transition: transform 0.12s, border-color 0.15s, opacity 0.15s;
+      opacity: 0.88;
+    }
+    .sub-tab:hover { opacity: 1; border-color: var(--primary); }
+    .sub-tab.active { opacity: 1; border-color: var(--primary); box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 25%, transparent); }
+    .sub-tab-top { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+    .code-chip { font-size: 0.72rem; font-weight: 800; padding: 2px 7px; border-radius: 6px; background: var(--content); color: var(--link, var(--primary)); }
+    .sub-name { font-weight: 700; font-size: 0.92rem; margin-top: 6px; }
+    .sub-short { font-size: 0.74rem; color: var(--muted-foreground); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+    .mini-track { margin-top: 8px; height: 6px; width: 100%; border-radius: 999px; background: var(--border); overflow: hidden; }
+    .mini-fill { height: 100%; transition: width 0.25s ease; }
+
+    .mode-bar {
+      padding: 10px 12px; display: flex; flex-direction: column; gap: 10px;
+    }
+    @media (min-width: 820px) { .mode-bar { flex-direction: row; align-items: center; justify-content: space-between; } }
+    .mode-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+    .mode-btn {
+      padding: 8px 13px; border-radius: 9px; font-size: 0.84rem; font-weight: 700;
+      background: var(--content); color: var(--foreground); min-height: 40px;
+    }
+    .mode-btn.active { background: var(--primary); color: var(--primary-foreground); }
+    .mode-stats { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.78rem; color: var(--muted-foreground); padding: 0 4px; }
+
+    .slide-card { overflow: hidden; border-radius: 16px; touch-action: pan-y; }
+    .slide-head {
+      padding: 16px 18px; background: var(--content); border-bottom: 1px solid var(--card-border);
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    @media (min-width: 640px) { .slide-head { flex-direction: row; align-items: center; justify-content: space-between; } }
+    .slide-title { margin: 4px 0 0; font-size: clamp(1.05rem, 2vw, 1.25rem); font-weight: 800; }
+    .slide-body { padding: 18px; display: flex; flex-direction: column; gap: 16px; }
+    @media (min-width: 768px) { .slide-body { padding: 24px; } }
+    .svg-wrap { background: var(--content); border: 1px solid var(--card-border); border-radius: 12px; padding: 12px; overflow-x: auto; }
+    .bullet-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; font-size: 0.92rem; line-height: 1.55; }
+    .bullet-item { display: flex; align-items: flex-start; gap: 10px; }
+    .bullet-dot { margin-top: 7px; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .two-col { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 768px) { .two-col { grid-template-columns: 1fr 1fr; } }
+    .callout { background: var(--content); border: 1px solid var(--card-border); border-radius: 12px; padding: 13px 14px; font-size: 0.88rem; line-height: 1.45; }
+    .callout.trap { border-color: color-mix(in srgb, var(--error) 45%, var(--border)); }
+    .callout.hint { border-color: color-mix(in srgb, var(--warning) 45%, var(--border)); font-size: 0.82rem; }
+    .callout.sol { border-color: color-mix(in srgb, var(--success) 45%, var(--border)); font-size: 0.82rem; }
+    .callout-label { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+    .slide-foot {
+      padding: 12px 16px; background: var(--content); border-top: 1px solid var(--card-border);
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    .nav-btn {
+      padding: 8px 14px; font-size: 0.84rem; font-weight: 700; border-radius: 9px; min-height: 40px;
+    }
+    .nav-btn.prev { background: var(--card); border: 1px solid var(--border); }
+    .nav-btn.next { background: var(--primary); color: var(--primary-foreground); }
+    .jump-row { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+    .jump-btn {
+      width: 34px; height: 34px; border-radius: 8px; font-size: 0.78rem; font-weight: 800;
+      border: 1px solid var(--border); background: var(--card);
+    }
+    .jump-btn.current { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+    .jump-btn.done { border-color: var(--success); color: var(--success); background: color-mix(in srgb, var(--success) 14%, var(--card)); }
+
+    .checklist-card { padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+    .checklist-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; border-bottom: 1px solid var(--card-border); padding-bottom: 12px; }
+    .topic-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--background);
+      cursor: pointer; min-height: 46px; transition: border-color 0.15s, background 0.15s;
+    }
+    .topic-row:hover { border-color: var(--primary); }
+    .topic-row.checked { background: var(--content); border-color: color-mix(in srgb, var(--success) 55%, var(--border)); }
+    .topic-left { display: flex; align-items: center; gap: 11px; font-size: 0.88rem; line-height: 1.38; }
+    .topic-left input { width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; }
+    .topic-row.checked .topic-text { text-decoration: line-through; color: var(--muted-foreground); }
+    .tag-chip { font-size: 0.7rem; font-weight: 800; padding: 3px 8px; border-radius: 6px; flex-shrink: 0; background: var(--content); color: var(--muted-foreground); }
+    .tag-chip.must { background: color-mix(in srgb, var(--warning) 18%, var(--content)); color: var(--warning); }
+
+    .practice-top { padding: 13px 15px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+    .q-card { padding: 15px; display: flex; flex-direction: column; gap: 11px; }
+    .q-card.solved { border-color: var(--success); }
+    .q-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; }
+    .btn-toggle {
+      padding: 8px 13px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; min-height: 36px;
+    }
+    .btn-hint { border: 1px solid var(--border); background: var(--content); }
+    .btn-sol { background: var(--primary); color: var(--primary-foreground); }
+    .btn-master {
+      padding: 8px 14px; border-radius: 9px; font-size: 0.78rem; font-weight: 700;
+      border: 1px solid var(--border); background: var(--card); min-height: 38px;
+    }
+    .btn-master.active { background: var(--success); color: #ffffff; border-color: var(--success); }
+    .f-btn { padding: 7px 11px; border-radius: 8px; font-size: 0.76rem; font-weight: 700; border: 1px solid var(--border); background: var(--content); min-height: 34px; }
+    .f-btn.active { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+
+    .dl-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 720px) { .dl-grid { grid-template-columns: 1fr 1fr; } }
+    .dl-card { padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; }
+    .dl-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .dl-link {
+      display: inline-flex; align-items: center; gap: 6px; padding: 9px 13px; border-radius: 9px;
+      font-size: 0.8rem; font-weight: 700; text-decoration: none; min-height: 38px;
+    }
+    .dl-link:hover { text-decoration: none; opacity: 0.9; }
+    .dl-link.primary { background: var(--primary); color: var(--primary-foreground); }
+    .dl-link.secondary { background: var(--content); color: var(--foreground); border: 1px solid var(--border); }
+    .swipe-hint { font-size: 0.74rem; color: var(--muted-foreground); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+    .step-badge {
+      width: 24px; height: 24px; border-radius: 50%; background: var(--primary); color: var(--primary-foreground);
+      font-size: 0.75rem; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="card header-box">
+      <div>
+        <div class="badge-row">
+          <span class="pill-primary">9+ CGPA Sprint Hub</span>
+          <span class="muted" style="font-size:0.78rem;font-weight:600;">IIITDM Kancheepuram &bull; Sem 1 End-Sem (&lt; 4 Days)</span>
+        </div>
+        <h1>Interactive PPT Deck, Topic Tracker &amp; Practice Arena</h1>
+        <p class="subtitle">Swipe slides on mobile or use <kbd>&larr;</kbd> / <kbd>&rarr;</kbd> keys, check off topics independently per device, and download PPTX &amp; study guides anywhere.</p>
+      </div>
+
+      <div class="header-right">
+        <div class="gauge-box">
+          <div class="gauge-top">
+            <span class="muted" style="font-weight:700;">Overall 9+ CGPA Readiness</span>
+            <span id="global-pct" class="primary-text tabular" style="font-weight:800;">0%</span>
+          </div>
+          <div class="progress-track">
+            <div id="global-bar" class="progress-fill" style="width:0%"></div>
+          </div>
+          <div id="global-grade-hint" class="muted" style="font-size:0.74rem;margin-top:6px;font-weight:600;">Check topics &amp; mark practice Qs solved</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:stretch;">
+          <button id="theme-btn" type="button" class="btn-ghost" title="Toggle Light / Dark theme">Theme</button>
+          <button id="reset-btn" type="button" class="btn-ghost">Reset</button>
+        </div>
+      </div>
+    </header>
+
+    <nav id="subject-tabs" class="subject-grid" aria-label="Subjects"></nav>
+
+    <div class="card mode-bar">
+      <div class="mode-pills">
+        <button data-mode="slides" class="mode-btn">Slide Deck</button>
+        <button data-mode="checklist" class="mode-btn">Topic Check</button>
+        <button data-mode="practice" class="mode-btn">Practice (40 Qs)</button>
+        <button data-mode="cgpa" class="mode-btn">9+ Gameplan</button>
+        <button data-mode="downloads" class="mode-btn">PPTX &amp; Guides</button>
+      </div>
+      <div class="mode-stats">
+        <span>Topics: <strong id="stat-topics" class="tabular" style="color:var(--foreground);">0/0</strong></span>
+        <span>Drills Solved: <strong id="stat-drills" class="success-text tabular">0/0</strong></span>
+      </div>
+    </div>
+
+    <main id="workspace"></main>
+  </div>
+
+<script>
+const frac = (a, b) => `<span class="frac"><span>${a}</span><span>${b}</span></span>`;
+
+const DATA = {
+  MA1000: {
+    code: "MA1000",
+    name: "Calculus",
+    short: "Proofs, Series, MVTs, RI & 2D",
+    accent: "var(--chart-1)",
+    strategy: {
+      gradeRule: "In MA1000, ~60% of marks go to exact proofs & theorem logic (epsilon-N, epsilon-delta, MCT, Rolle/LMVT, FTC, Darboux U-L) and counterexamples. Full marks require stating hypotheses BEFORE applying any theorem!",
+      targets: [
+        { item: "Always check & write theorem hypotheses (continuous on [a,b], differentiable on (a,b)) before applying Rolle/LMVT/FTC", weight: "+4-6 marks" },
+        { item: "Master 3 proof templates verbatim: epsilon-delta quadratic, equal-partition Riemann U(P,f)-L(P,f) < eps, and recursive MCT", weight: "+12 marks" },
+        { item: "Never miss 'DNE' critical points (x=0 cusps/corners like |x| or 3x^(2/3)) or power series endpoint checks", weight: "+5 marks" },
+        { item: "Know 2D non-open/non-closed set examples & parabolic paths (y = kx^2) for Two-Path Test", weight: "+6 marks" }
+      ],
+      schedule: [
+        "Pass 1 (60m): Memorize Slides 1-4 (epsilon-N, MCT, Root Test prime-split, Power Series endpoints).",
+        "Pass 2 (60m): Practice Slides 5-7 (epsilon-delta quadratic, Quotient Rule, Rolle/LMVT inequalities).",
+        "Pass 3 (60m): Riemann x^2 integrability, 1/(n+k) sum, FTC Leibniz, 2D (x,y) epsilon-delta & gradient."
+      ]
+    },
+    topics: [
+      { id: "ma_t1", name: "epsilon-N convergence proofs & 7 Special Limits (n^(1/n), x^n/n!)", tag: "MUST KNOW" },
+      { id: "ma_t2", name: "Monotone Convergence Theorem (recursive sequences like (a_n + 10/a_n)/2)", tag: "HIGH YIELD" },
+      { id: "ma_t3", name: "Subsequences, Limit Points & Cauchy's 1st/2nd Theorems on Limits", tag: "HIGH YIELD" },
+      { id: "ma_t4", name: "Infinite Series Tests (n-th term, Integral, LCT, Ratio, Root limsup)", tag: "MUST KNOW" },
+      { id: "ma_t5", name: "Leibniz Alternating Series + Remainder Error Bound |R_n| <= b_(n+1)", tag: "HIGH YIELD" },
+      { id: "ma_t6", name: "Power Series Radius, Interval Endpoints & Maclaurin/Taylor Series", tag: "MUST KNOW" },
+      { id: "ma_t7", name: "1D Limits epsilon-delta proofs & Discontinuity types + IVT root proofs", tag: "MUST KNOW" },
+      { id: "ma_t8", name: "Differentiability vs Continuity (x sin(1/x), x^2 sin(1/x)), Quotient Rule", tag: "HIGH YIELD" },
+      { id: "ma_t9", name: "Rolle's Theorem, Lagrange MVT, Cauchy MVT & Critical Points (f'=0 or DNE)", tag: "MUST KNOW" },
+      { id: "ma_t10", name: "Riemann Integration: U-L < eps proof, Dirichlet counterexample & FTC 1/2", tag: "MUST KNOW" },
+      { id: "ma_t11", name: "Multivariable R^2 Open/Closed sets, Two-Path Test, 2D Diff vs Partials & grad(f)", tag: "MUST KNOW" }
+    ],
+    slides: [
+      {
+        title: "1. Sequences: epsilon-N & Recursive MCT",
+        topicId: "ma_t2",
+        tag: "Module 1A • Proofs",
+        bullets: [
+          "<b>epsilon-N recipe:</b> Simplify <span class='math'>|a<sub>n</sub> &minus; L| &lt; bound(n)</span>, set <span class='math'>bound(n) &lt; &epsilon;</span>, solve <span class='math'>n &gt; g(&epsilon;)</span>, pick <span class='math'>N = &lceil;g(&epsilon;)&rceil; + 1</span>.",
+          "<b>7 Gold Limits:</b> <span class='math'>ln(n)/n &rarr; 0</span>, <span class='math'>n<sup>1/n</sup> &rarr; 1</span>, <span class='math'>x<sup>1/n</sup> &rarr; 1</span>, <span class='math'>(1+x/n)<sup>n</sup> &rarr; e<sup>x</sup></span>, <span class='math'>x<sup>n</sup>/n! &rarr; 0</span>, <span class='math'>(n!)<sup>1/n&sup2;</sup> &rarr; 1</span>.",
+          "<b>Recursive MCT (Endsem 2023 Q1):</b> Show (1) Bounded below/above (induction or AM-GM), (2) Monotonic (<span class='math'>a<sub>n+1</sub> &minus; a<sub>n</sub></span> sign), (3) Take limit <span class='math'>L = f(L)</span>."
+        ],
+        formula: "a<sub>n+1</sub> = &frac12;(a<sub>n</sub> + 10/a<sub>n</sub>) &ge; &radic;10 &nbsp;&rArr;&nbsp; decreasing for n &ge; 2 &nbsp;&rArr;&nbsp; L = &radic;10",
+        trap: "When taking limits in L = f(L), ALWAYS prove convergence (bounded + monotonic) FIRST! Divergent sequences can satisfy L = f(L) falsely."
+      },
+      {
+        title: "2. Series Tests & Alternating Error Bound",
+        topicId: "ma_t4",
+        tag: "Module 1B • Series",
+        bullets: [
+          "<b>Always check first:</b> If <span class='math'>lim a<sub>n</sub> &ne; 0</span> (like <span class='math'>&sum; cos(1/n)</span>), it DIVERGES immediately!",
+          "<b>Harmonic & sin(1/n):</b> <span class='math'>lim sin(1/n)/(1/n) = 1</span> &rArr; diverges by Limit Comparison with <span class='math'>&sum; 1/n</span>.",
+          "<b>Prime-Split Trap (CAL-Midsem Q6):</b> Use <b>Root Test (limsup |a<sub>n</sub>|<sup>1/n</sup>)</b>, NOT Ratio Test, when terms jump between two formulas!",
+          "<b>Leibniz Remainder:</b> If <span class='math'>b<sub>n</sub></span> decreases to 0, truncation error satisfies <span class='math'>|S &minus; S<sub>n</sub>| &le; b<sub>n+1</sub></span>."
+        ],
+        formula: "&sum; 1/(ln n)<sup>p</sup> ALWAYS diverges (any p) &nbsp;|&nbsp; &sum; (-1)<sup>n-1</sup>/n<sup>p</sup>: Cond. conv. 0 &lt; p &le; 1, Abs. conv. p &gt; 1",
+        trap: "lim a_n = 0 NEVER proves convergence! And in Alternating Series Test, verify BOTH b_n -> 0 AND b_(n+1) <= b_n eventually."
+      },
+      {
+        title: "3. Power Series, Endpoints & Maclaurin",
+        topicId: "ma_t6",
+        tag: "Module 1C • Power Series",
+        bullets: [
+          "<b>Radius R:</b> Ratio/Root test gives open interval <span class='math'>(a &minus; R, a + R)</span> ONLY. Always plug <span class='math'>x = a &plusmn; R</span> back in!",
+          "<b>Term-by-Term Calc:</b> Differentiating or integrating keeps the exact same radius R, though endpoint behavior can flip.",
+          "<b>Trick Sums (Endsem 2023 Q5):</b> Use <span class='math'>&sum; n x<sup>n</sup> = x/(1&minus;x)&sup2;</span> and <span class='math'>&sum; n&sup2; x<sup>n</sup> = x(1+x)/(1&minus;x)&sup3;</span> for <span class='math'>|x| &lt; 1</span>."
+        ],
+        formula: "1/(1&minus;x) = &sum;x<sup>n</sup> &nbsp;|&nbsp; ln(1+x) = &sum;(-1)<sup>n-1</sup>x<sup>n</sup>/n (-1,1] &nbsp;|&nbsp; tan<sup>-1</sup>x = &sum;(-1)<sup>n</sup>x<sup>2n+1</sup>/(2n+1) [-1,1]",
+        trap: "Smoothness does NOT guarantee Taylor = f(x)! For f(x) = e^(-1/x^2) (f(0)=0), all derivatives at 0 vanish so Maclaurin sum is 0 != f(x)."
+      },
+      {
+        title: "4. 1D epsilon-delta, IVT & Differentiability Traps",
+        topicId: "ma_t8",
+        tag: "Modules 2 & 3 • 1D Analysis",
+        bullets: [
+          "<b>Quadratic epsilon-delta recipe (x &rarr; c):</b> Factor <span class='math'>|x &minus; c||g(x)|</span>. Pre-restrict <span class='math'>&delta; &le; 1</span> to bound <span class='math'>|g(x)| &le; M</span>, then pick <span class='math'>&delta; = min(1, &epsilon;/M)</span>.",
+          "<b>Dirichlet Pointwise Continuity:</b> <span class='math'>f(x)=x (x&isin;&#8474;), 0 (x&notin;&#8474;)</span> is continuous <b>ONLY at x = 0</b>!",
+          "<b>Oscillating Classics:</b> <span class='math'>x sin(1/x)</span> is continuous at 0, NOT diff. at 0. <span class='math'>x&sup2; sin(1/x)</span> IS diff. at 0 (<span class='math'>g'(0)=0</span>), though <span class='math'>g'</span> is discontinuous at 0!"
+        ],
+        formula: "Critical Point of f: interior c where f'(c) = 0 &nbsp;OR&nbsp; f'(c) DNE &nbsp;(e.g. x = 0 for 3x<sup>2/3</sup> or |x|!)",
+        trap: "Students lose marks in Endsem_21 Q6 by setting f'(x)=0, finding no solution for 2x^(-1/3)=0, and missing the true minimum at x=0!"
+      },
+      {
+        title: "5. Rolle, LMVT, Cauchy MVT & Riemann Sums",
+        topicId: "ma_t10",
+        tag: "Modules 3 & 4 • MVTs & Integrals",
+        svg: `<svg viewBox="0 0 360 110" class="w-full max-w-md mx-auto"><rect x="20" y="15" width="320" height="80" fill="none" stroke="currentColor" stroke-opacity="0.25"/><rect x="50" y="55" width="55" height="35" fill="var(--chart-1)" fill-opacity="0.25" stroke="var(--chart-1)"/><rect x="105" y="42" width="55" height="48" fill="var(--chart-1)" fill-opacity="0.25" stroke="var(--chart-1)"/><rect x="160" y="30" width="55" height="60" fill="var(--chart-1)" fill-opacity="0.25" stroke="var(--chart-1)"/><rect x="215" y="18" width="55" height="72" fill="var(--chart-1)" fill-opacity="0.25" stroke="var(--chart-1)"/><path d="M 50 75 Q 160 55 270 18" fill="none" stroke="var(--primary)" stroke-width="2.5"/><text x="180" y="106" font-size="11" text-anchor="middle" fill="currentColor">Monotone telescoping: U(P,f) - L(P,f) = (b-a)/n * |f(b) - f(a)| &lt; eps</text></svg>`,
+        bullets: [
+          "<b>Riemann Integrability:</b> Continuous &amp; monotonic functions are always integrable; Dirichlet (<span class='math'>1 on &#8474;, 0 on &#8477;&#8726;&#8474;</span>) has <span class='math'>U=b-a &ne; L=0</span> &rArr; NOT integrable.",
+          "<b>FTC Leibniz Derivative:</b> <span class='math'>d/dx &int;<sub>g(x)</sub><sup>h(x)</sup> f(t)dt = f(h(x))h'(x) &minus; f(g(x))g'(x)</span>."
+        ],
+        formula: "lim<sub>n&rarr;&infin;</sub> &frac1n; &sum;<sub>k=1</sub><sup>n</sup> f(k/n) = &int;<sub>0</sub><sup>1</sup> f(x) dx",
+        trap: "In Cauchy MVT proofs, prove it via Rolle's Theorem on h(x) = [f(b)-f(a)]g(x) - [g(b)-g(a)]f(x)."
+      },
+      {
+        title: "6. Multivariable Sets, Two-Path & Gradients",
+        topicId: "ma_t11",
+        tag: "Module 5 • R^2 & R^3",
+        bullets: [
+          "<b>Open vs Closed Trap (Endsem_21 Q9b):</b> Curve <span class='math'>{x&sup2;+y&sup2;=1, y&gt;0}</span> in <span class='math'>&#8477;&sup2;</span> is <b>NEITHER open</b> (no 2D disk fits on a 1D curve) <b>NOR closed</b> (boundary <span class='math'>(&plusmn;1,0)</span> missing!).",
+          "<b>Two-Path Test:</b> Equal limits along <span class='math'>y = mx</span> prove NOTHING! Test <span class='math'>y = kx&sup2;</span> (like <span class='math'>x&sup2;y/(x<sup>4</sup>+y&sup2;)</span>).",
+          "<b>Piecewise Partials:</b> Always compute <span class='math'>f<sub>x</sub>(0,0), f<sub>y</sub>(0,0)</span> by limits. Existing partials do NOT imply continuity!"
+        ],
+        formula: "D<sub>u</sub>f(P) = &nabla;f(P) &middot; (v / ||v||) &nbsp;|&nbsp; Max rate of increase = ||&nabla;f(P)||",
+        trap: "Always normalize the direction vector v to unit length u = v/||v|| before taking the dot product with grad f!"
+      }
+    ],
+    practice: [
+      { id: "ma_q1", level: "Midsem 2022", q: "Find lim (n -> inf) [ sqrt(n^2 + n) - n ] and lim (n -> inf) sin(n! * alpha * pi) for rational alpha = p/q.", hint: "Rationalize the conjugate for part (a); for (b), once n >= q, what happens to n! * (p/q)?", sol: "(a) Multiply by conjugate: n / (sqrt(n^2+n) + n) = 1 / (sqrt(1 + 1/n) + 1) -> 1/2.\n(b) Write alpha = p/q (q in N). For all n >= q, q divides n!, so n! * alpha is an integer m, giving sin(m * pi) = 0 for all n >= q. Limit = 0!" },
+      { id: "ma_q2", level: "Endsem 2023", q: "Evaluate the exact sum of sum_{n=0}^{inf} n^2 / 2^n.", hint: "Start from sum x^n = 1/(1-x) and apply (x * d/dx) twice before setting x = 1/2.", sol: "For |x| < 1:\n1) sum x^n = 1/(1-x)\n2) Differentiate & multiply by x: sum n x^n = x / (1-x)^2\n3) Differentiate & multiply by x again: sum n^2 x^n = x(1 + x) / (1 - x)^3\nPlug x = 1/2: (1/2 * 3/2) / (1/2)^3 = (3/4) / (1/8) = 6." },
+      { id: "ma_q3", level: "Midsem 2022", q: "Discuss absolute/conditional convergence of: (a) sum_{n=2}^inf 1/(ln n)^p and (b) sum_{n=27}^inf (-1)^(n+1) / ln(ln n).", hint: "Compare (ln n)^p with n for large n! Remember ln(n)^p < n eventually for ALL p.", sol: "(a) If p <= 0, terms don't -> 0 (diverges). If p > 0, (ln n)^p / n -> 0, so eventually (ln n)^p < n => 1/(ln n)^p > 1/n. By comparison with harmonic series, it DIVERGES for ALL real p!\n(b) b_n = 1/ln(ln n) is positive, strictly decreasing, and -> 0 => converges by Leibniz Test. Since ln(ln n) < n, sum |a_n| > sum 1/n diverges => Conditionally Convergent." },
+      { id: "ma_q4", level: "Midsem 2022", q: "Find the power series representation of f(x) = x^123 / (x^2 - 2x + 1) about x = 0 and its interval of convergence.", hint: "Factor the denominator: (x^2 - 2x + 1) = (1 - x)^2, then differentiate 1/(1 - x)!", sol: "Note (1 - x)^(-2) = d/dx [1/(1-x)] = sum_{n=1}^inf n x^(n-1) = sum_{n=0}^inf (n+1) x^n for |x| < 1.\nMultiply by x^123: f(x) = sum_{n=0}^inf (n+1) x^(n+123).\nAt x = +/-1, terms n+1 do not -> 0 => Interval of convergence is (-1, 1)." },
+      { id: "ma_q5", level: "Endsem 2023", q: "Define critical point and find all critical points and absolute extrema of f(x) = |x| on [-pi, 0) and f(x) = sin x on [0, pi].", hint: "Check x=0 (left derivative vs right derivative!) AND where cos(x)=0 on (0, pi).", sol: "At x = 0: LHD = lim (-h - 0)/h = -1, while RHD = cos(0) = +1 => f'(0) DNE => x = 0 is a critical point!\nOn (0, pi): f'(x) = cos x = 0 => x = pi/2.\nOn (-pi, 0): f'(x) = -1 != 0.\nEvaluate values: f(-pi) = pi, f(0) = 0, f(pi/2) = 1, f(pi) = 0.\nAbs Min = 0 (at x = 0, pi); Abs Max = pi (at x = -pi)." },
+      { id: "ma_q6", level: "Endsem 2023", q: "Prove in THREE distinct ways that the harmonic series sum_{n=1}^inf 1/n diverges.", hint: "1) Integral test, 2) Oresme grouping powers of 2, 3) Cauchy criterion |S_{2n} - S_n| >= 1/2.", sol: "Method 1 (Integral Test): f(x)=1/x is positive, continuous, decreasing; int_1^inf (1/x) dx = [ln x]_1^inf = inf => diverges.\nMethod 2 (Grouping): 1 + 1/2 + (1/3 + 1/4) + (1/5+...+1/8) + ... > 1 + 1/2 + 2(1/4) + 4(1/8) + ... = 1 + 1/2 + 1/2 + ... -> inf.\nMethod 3 (Cauchy Criterion): S_{2n} - S_n = 1/(n+1) + ... + 1/(2n) >= n * (1/(2n)) = 1/2, violating Cauchy condition." },
+      { id: "ma_q7", level: "Endsem 2023", q: "Using epsilon-delta definition, prove lim_{(x,y)->(0,0)} (4 x y^2) / (x^2 + y^2) = 0.", hint: "Notice y^2 / (x^2 + y^2) <= 1 and |x| <= sqrt(x^2 + y^2)!", sol: "Given eps > 0, note for (x,y) != (0,0):\n|4 x y^2 / (x^2+y^2) - 0| = 4 |x| * [y^2 / (x^2 + y^2)] <= 4 |x| * 1 <= 4 sqrt(x^2 + y^2).\nChoose delta = eps / 4 > 0. Whenever 0 < sqrt(x^2 + y^2) < delta, we get |f(x,y) - 0| < 4(eps/4) = eps." },
+      { id: "ma_q8", level: "Endsem 2023", q: "For f(x,y) = 1 if xy=0 and 0 if xy!=0: prove (a) f_x(0,0) and f_y(0,0) exist, and (b) f is NOT continuous at (0,0).", hint: "Along axes y=0 or x=0, f is identically 1! Along y=x (x!=0), f is 0!", sol: "(a) f_x(0,0) = lim_{h->0} (f(h,0) - f(0,0))/h = lim (1 - 1)/h = 0. Similarly f_y(0,0) = lim_{k->0} (1 - 1)/k = 0. Both exist!\n(b) Along y = x (x != 0), xy = x^2 != 0 => f(x,x) = 0 -> 0 != f(0,0) = 1 => discontinuous at (0,0)!" },
+      { id: "ma_q9", level: "Midsem 2022", q: "Prove using epsilon-N that the sequence { 1 / ln(n+1) } converges (to 0).", hint: "1/ln(n+1) < eps <=> ln(n+1) > 1/eps <=> n > e^(1/eps) - 1.", sol: "Let eps > 0. We need |1/ln(n+1) - 0| < eps <=> ln(n+1) > 1/eps <=> n + 1 > e^(1/eps) <=> n > e^(1/eps) - 1.\nPick N = ceil(e^(1/eps)) + 1. For n >= N, ln(n+1) > 1/eps => |1/ln(n+1)| < eps." },
+      { id: "ma_q10", level: "Assignment 2", q: "Prove x^5 + 10x + 3 = 0 has EXACTLY one real root.", hint: "Use IVT on [-1, 0] for existence, and f'(x) > 0 + Rolle's Theorem for uniqueness.", sol: "Let f(x) = x^5 + 10x + 3 (continuous & differentiable everywhere).\nf(-1) = -1 - 10 + 3 = -8 < 0, f(0) = 3 > 0. By IVT, >= 1 root in (-1, 0).\nSuppose 2 roots a < b exist; by Rolle's Theorem, f'(c) = 0 for some c in (a,b). But f'(x) = 5x^4 + 10 >= 10 > 0 for all x! Contradiction => exactly 1 root." }
+    ]
+  },
+
+  EC1000: {
+    code: "EC1000",
+    name: "Electrical Circuits",
+    short: "DC/AC, Theorems, Transients, Trafos, Motors & Diodes",
+    accent: "var(--chart-2)",
+    strategy: {
+      gradeRule: "EC1000 rewards systematic setup: clearly mark reference node, supernode/supermesh constraints, and ALWAYS keep dependent sources active during R_Th/Superposition!",
+      targets: [
+        { item: "Never deactivate dependent sources in Thevenin or Superposition — use 1V/1A test source for R_Th", weight: "+8 marks" },
+        { item: "Master the 4-step 1st-Order RL/RC transient formula: x(t) = x(inf) + [x(0+) - x(inf)]e^(-t/tau)", weight: "+8 marks" },
+        { item: "Distinguish Peak vs RMS in AC power (1/2 factor!) and Z_L = Z_Th* vs purely real R_L = |Z_Th|", weight: "+8 marks" },
+        { item: "Transformers (P_i = x^2 P_cu at max eta), 3-phase IM (n_s = 120f/P, f_r = s*f_e), and Bridge PIV = V_m", weight: "+10 marks" }
+      ],
+      schedule: [
+        "Pass 1 (60m): Solve Nodal/Supernode, Supermesh, Source Trans & Dependent Thevenin circuits.",
+        "Pass 2 (60m): Practice 1st-order RL/RC switching transients & Mixed-frequency AC+DC superposition.",
+        "Pass 3 (60m): AC Power/PF capacitor sizing + numerical drills on Transformers, Motors & Rectifiers."
+      ]
+    },
+    topics: [
+      { id: "ec_t1", name: "Passive Sign Convention, Energy/Ah, Bulb Series vs Parallel & Y-Delta", tag: "HIGH YIELD" },
+      { id: "ec_t2", name: "Nodal Analysis, Floating Voltage Source (Supernode) & Inspection Matrix", tag: "MUST KNOW" },
+      { id: "ec_t3", name: "Mesh Analysis, Shared Current Source (Supermesh) & Dependent Sources", tag: "MUST KNOW" },
+      { id: "ec_t4", name: "Source Transformation, Superposition (Never on Power!) & Mixed-Freq AC+DC", tag: "MUST KNOW" },
+      { id: "ec_t5", name: "Thevenin & Norton (with Dependent Sources -> V_test/I_test) & DC Max Power", tag: "MUST KNOW" },
+      { id: "ec_t6", name: "Capacitors/Inductors DC steady state, dv/dt, di/dt & Energy 1/2 CV^2, 1/2 LI^2", tag: "HIGH YIELD" },
+      { id: "ec_t7", name: "First-Order RC/RL Transients: x(inf) + [x(0+) - x(inf)]e^(-t/tau)", tag: "MUST KNOW" },
+      { id: "ec_t8", name: "Sinusoids, Phasors (sin->cos-90), Z_L=jwL, Z_C=-j/(wC) & AC Nodal/Mesh", tag: "MUST KNOW" },
+      { id: "ec_t9", name: "AC Power S=P+jQ, Half/Full-wave RMS, PF Correction Cap C & AC Max Avg Power", tag: "MUST KNOW" },
+      { id: "ec_t10", name: "1-Phase Transformer: E=4.44fN Phi_m, K=N2/N1, Regulation & Max Efficiency", tag: "HIGH YIELD" },
+      { id: "ec_t11", name: "DC Motors (E_b, tau) & 3-Phase Induction Motor (n_s=120f/P, slip s, f_r=sf_e)", tag: "HIGH YIELD" },
+      { id: "ec_t12", name: "Diodes (Si 0.7V, Zener regulator, HWR vs Bridge FWR V_dc & PIV)", tag: "HIGH YIELD" }
+    ],
+    slides: [
+      {
+        title: "1. Bulb Trap, Dividers & Y-Delta Bridges",
+        topicId: "ec_t1",
+        tag: "Modules 1-2 • DC Foundations",
+        bullets: [
+          "<b>Bulb Rating Trap (ELE103T):</b> <span class='math'>R = V&sup2;/P</span> &rArr; <b>lower-wattage bulb has HIGHER R!</b> In <i>series</i>, 30W shines brighter (<span class='math'>I&sup2;R</span>); in <i>parallel</i>, 50W shines brighter.",
+          "<b>CDR Trap:</b> Current in branch 1 of 2 parallel resistors uses the <i>opposite</i> resistor: <span class='math'>i<sub>1</sub> = R<sub>2</sub>/(R<sub>1</sub>+R<sub>2</sub>) &middot; I</span>.",
+          "<b>Delta-to-Y:</b> Product of adjacent <span class='math'>R</span> divided by sum of all three <span class='math'>&Delta;</span> resistors (<span class='math'>R<sub>&Delta;</sub> = 3R<sub>Y</sub></span> if equal)."
+        ],
+        formula: "E(Wh) = V &times; Ah &nbsp;|&nbsp; Delta&rarr;Y: R<sub>1</sub> = R<sub>b</sub>R<sub>c</sub>/(R<sub>a</sub>+R<sub>b</sub>+R<sub>c</sub>)",
+        trap: "Always verify energy conservation after solving a circuit: sum of powers (P = +VI passive sign) MUST equal zero!"
+      },
+      {
+        title: "2. Supernode, Supermesh & Thevenin with Dep. Sources",
+        topicId: "ec_t5",
+        tag: "Modules 3-4 • Theorems",
+        bullets: [
+          "<b>Supernode:</b> Enclose floating voltage source between non-ref nodes <span class='math'>a, b</span>: write KCL for combined boundary + constraint <span class='math'>v<sub>a</sub> &minus; v<sub>b</sub> = V<sub>s</sub></span>.",
+          "<b>Supermesh:</b> Enclose shared current source between two meshes: KVL around merged perimeter + constraint on the two mesh currents.",
+          "<b>Dependent Thevenin R<sub>Th</sub>:</b> Turn off ONLY independent sources. Apply <span class='math'>1V</span> (or <span class='math'>1A</span>) test source: <span class='math'>R<sub>Th</sub> = V<sub>test</sub>/I<sub>test</sub></span>, or use <span class='math'>V<sub>oc</sub> / I<sub>sc</sub></span>."
+        ],
+        formula: "Superposition applies ONLY to linear V & I &mdash; NEVER P = P<sub>1</sub> + P<sub>2</sub>! DC Max Power: R<sub>L</sub> = R<sub>Th</sub>, P<sub>max</sub> = V<sub>Th</sub>&sup2;/(4R<sub>Th</sub>)",
+        trap: "When doing Source Transformation, NEVER swallow or eliminate the branch carrying the controlling current i_x or voltage v_x of a dependent source!"
+      },
+      {
+        title: "3. C, L & 1st-Order Transients (Universal Recipe)",
+        topicId: "ec_t7",
+        tag: "Modules 5-6 • Transients",
+        bullets: [
+          "<b>Before switch (t &lt; 0):</b> Replace <span class='math'>C &rarr; Open</span>, <span class='math'>L &rarr; Short</span> to find <span class='math'>v<sub>C</sub>(0<sup>&minus;</sup>)</span> or <span class='math'>i<sub>L</sub>(0<sup>&minus;</sup>)</span>.",
+          "<b>Continuity at t = 0<sup>+</sup>:</b> <span class='math'>v<sub>C</sub>(0<sup>+</sup>) = v<sub>C</sub>(0<sup>&minus;</sup>)</span>, <span class='math'>i<sub>L</sub>(0<sup>+</sup>) = i<sub>L</sub>(0<sup>&minus;</sup>)</span> (but <span class='math'>i<sub>C</sub>, v<sub>L</sub></span> CAN jump!).",
+          "<b>Final state (t &rarr; &infin;):</b> In post-switch circuit, set <span class='math'>C &rarr; Open, L &rarr; Short</span> to get <span class='math'>x(&infin;)</span>, and find <span class='math'>R<sub>Th</sub></span> seen by C or L for <span class='math'>&tau;</span>."
+        ],
+        formula: "x(t) = x(&infin;) + [x(0<sup>+</sup>) &minus; x(&infin;)] e<sup>&minus;t/&tau;</sup>, &nbsp;&nbsp; &tau;<sub>RC</sub> = R<sub>Th</sub>C, &nbsp; &tau;<sub>RL</sub> = L/R<sub>Th</sub>",
+        trap: "Be careful with arrows on switches: an outward arrow at t=0 means it was CLOSED for t<0 and OPENS at t=0!"
+      },
+      {
+        title: "4. AC Steady State, RMS, Power Triangle & Max Power",
+        topicId: "ec_t9",
+        tag: "Modules 8-10 • AC Power",
+        svg: `<svg viewBox="0 0 360 115" class="w-full max-w-md mx-auto"><polygon points="60,92 260,92 260,24" fill="var(--chart-2)" fill-opacity="0.16" stroke="var(--primary)" stroke-width="2"/><text x="160" y="106" font-size="11" text-anchor="middle" fill="currentColor">Real Power P = S cos(theta) [W]</text><text x="305" y="60" font-size="11" text-anchor="middle" fill="currentColor">+Q = S sin(theta)</text><text x="305" y="73" font-size="10" text-anchor="middle" fill="var(--muted-foreground)">[VAR, inductive]</text><text x="145" y="49" font-size="11" text-anchor="middle" transform="rotate(-19 145 49)" fill="var(--primary)">Apparent |S| = V_rms I_rms [VA]</text><text x="105" y="85" font-size="10" fill="currentColor">theta = theta_v - theta_i</text></svg>`,
+        bullets: [
+          "<b>Phasor Conversion:</b> <span class='math'>V<sub>m</sub> sin(&omega;t+&phi;) = V<sub>m</sub> cos(&omega;t+&phi;&minus;90&deg;) &harr; V<sub>m</sub>&ang;(&phi;&minus;90&deg;)</span>.",
+          "<b>RMS Values:</b> Full sine <span class='math'>V<sub>m</sub>/&radic;2</span>; <b>Half-Wave Rectified <span class='math'>V<sub>m</sub>/2</span></b>; Full-Wave Rectified <span class='math'>V<sub>m</sub>/&radic;2</span>.",
+          "<b>PF Correction Capacitor:</b> <span class='math'>C = P(tan&theta;<sub>1</sub> &minus; tan&theta;<sub>2</sub>) / (&omega;V<sub>rms</sub>&sup2;)</span>."
+        ],
+        formula: "Z<sub>L</sub> = Z<sub>Th</sub><sup>*</sup> &rArr; P<sub>max</sub> = |V<sub>Th</sub>|&sup2;/(8R<sub>Th</sub>) [peak] &nbsp;|&nbsp; Pure R<sub>L</sub> &rArr; R<sub>L</sub> = |Z<sub>Th</sub>|",
+        trap: "In Mixed-Frequency (DC + AC) circuits, NEVER combine DC & AC phasors! Solve DC (L=short, C=open) and AC separately, then add v(t)."
+      },
+      {
+        title: "5. Transformers & Electrical Machines",
+        topicId: "ec_t11",
+        tag: "Modules 11-12 • Machines",
+        bullets: [
+          "<b>Transformer:</b> Static device (constant frequency f!). Core loss <span class='math'>P<sub>i</sub></span> is constant; Copper loss scales as <span class='math'>x&sup2;P<sub>cu,fl</sub></span>. Max <span class='math'>&eta;</span> at <span class='math'>P<sub>i</sub> = x&sup2;P<sub>cu,fl</sub></span>.",
+          "<b>DC Motor:</b> Back EMF <span class='math'>E<sub>b</sub> = V<sub>t</sub> &minus; I<sub>a</sub>R<sub>a</sub> = k&omega;</span>, Torque <span class='math'>&tau; = kI<sub>a</sub></span>.",
+          "<b>3-Phase Induction Motor:</b> Synchronous speed <span class='math'>n<sub>s</sub> = 120f<sub>e</sub>/P</span>, slip <span class='math'>s = (n<sub>s</sub>&minus;n<sub>m</sub>)/n<sub>s</sub></span>, rotor freq <span class='math'>f<sub>r</sub> = sf<sub>e</sub></span>."
+        ],
+        formula: "E = 4.44 f N &Phi;<sub>m</sub> &nbsp;|&nbsp; &tau;<sub>shaft</sub> = P<sub>out</sub> / (2&pi;n<sub>m</sub>/60) &nbsp;|&nbsp; 1 hp = 746 W",
+        trap: "Notice rotor frequency f_r = s * f_e uses fractional slip (e.g. 0.04, not 4%), and 1 hp = 746 W!"
+      },
+      {
+        title: "6. Semiconductor Diodes & Rectifiers",
+        topicId: "ec_t12",
+        tag: "Module 13 • Electronics",
+        bullets: [
+          "<b>Cut-in Voltages:</b> Si = <b>0.7 V</b>, Ge = <b>0.3 V</b>, GaAs = <b>1.2 V</b>, Schottky = <b>0.25 V</b>.",
+          "<b>Zener Diode:</b> Operates in reverse breakdown for voltage regulation; check <span class='math'>P<sub>Z</sub> = V<sub>Z</sub> I<sub>Z</sub> &le; P<sub>Z,max</sub></span>.",
+          "<b>Rectifier Comparison:</b> Half-Wave (<span class='math'>V<sub>dc</sub>=V<sub>m</sub>/&pi;, PIV=V<sub>m</sub></span>) vs Bridge 4-diode (<span class='math'>V<sub>dc</sub>=2V<sub>m</sub>/&pi;, PIV=V<sub>m</sub></span>) vs Center-Tap 2-diode (<span class='math'>PIV=2V<sub>m</sub></span>)."
+        ],
+        formula: "Bridge Real Si Peak Output: V<sub>o,pk</sub> = V<sub>m</sub> &minus; 2(0.7V) &nbsp;|&nbsp; Ripple freq = 2f<sub>in</sub>",
+        trap: "Center-tap FWR needs PIV >= 2*V_m (peak per half-winding), while Bridge FWR only needs PIV >= V_m (but loses 2*0.7 V = 1.4 V)."
+      }
+    ],
+    practice: [
+      { id: "ec_q1", level: "Ch-3 Mesh Q1", q: "A 56 V source feeds 2 kOhm into a bridge diamond: top arms 6 kOhm, 6 kOhm; center cross resistor 2 kOhm; bottom arms 4 kOhm, 4 kOhm. Find source current Io.", hint: "Use symmetry OR Delta-to-Y on top (6k, 6k, 2k) triangle!", sol: "By symmetry (top left=right=6k, bottom left=right=4k), the bridge is BALANCED! Voltage across the middle 2 kOhm is ZERO (zero current in it)!\nLeft branch = 6k + 4k = 10k; Right branch = 6k + 4k = 10k.\n10k || 10k = 5k. Total R_eq = 2k + 5k = 7 kOhm.\nIo = 56V / 7kOhm = 8 mA!" },
+      { id: "ec_q2", level: "Quiz 1 '23 Q4", q: "Find nodal voltages v_T, v_M and current i_o leaving the left node v_A = 60 V through a 4 Ohm resistor to v_T, given: v_T to ref is 8 Ohm, v_A to v_M is 10 Ohm, v_T to v_M is 2 Ohm, and dependent current source 3*i_o enters v_M from ref.", hint: "Express i_o = (60 - v_T)/4 first, then write KCL at v_T and v_M in terms of v_T and v_M!", sol: "v_A = 60 V and i_o = (60 - v_T) / 4.\nKCL at v_T: (v_T - 60)/4 + (v_T - v_M)/2 + v_T/8 = 0  =>  7 v_T - 4 v_M = 120.\nKCL at v_M: (v_M - 60)/10 + (v_M - v_T)/2 = 3 i_o = 3(60 - v_T)/4  =>  5 v_T + 12 v_M = 1020.\nSolving: v_T = 53.0769 V, v_M = 62.8846 V  =>  i_o = (60 - 53.0769)/4 = 1.7308 A." },
+      { id: "ec_q3", level: "Ch-4 Max Power Q2", q: "A 40 V vertical source sits inside a diamond: top-left 80 Ohm, bottom-left 10 Ohm, top-right 20 Ohm, bottom-right 90 Ohm, with load R across top-right/bottom-right outer nodes. Find R for max power & P_max.", hint: "Short the 40 V source: top two resistors become parallel (80 || 20), bottom two become parallel (10 || 90)!", sol: "Short 40V source -> top node and bottom node at right side see:\nR_Th = (80 || 20) + (10 || 90) = 16 + 9 = 25 Ohm.\nWith 40V active (R removed), V_top = 40 * 20/(80+20) = 8 V, V_bot = 40 * 90/(10+90) = 36 V.\n|V_Th| = 36 - 8 = 28 V.\nMax power at R = 25 Ohm: P_max = 28^2 / (4 * 25) = 784 / 100 = 7.84 W." },
+      { id: "ec_q4", level: "ELE103T Q1", q: "The voltage across a 5 H inductor is v(t) = 30 t^2 V for t >= 0 with i(0) = 0. Find i(t), power p(t), and energy W at t = 2 s.", hint: "Use i(t) = (1/L) int_0^t v(tau) dtau + i(0), p = v*i, W = 1/2 L i^2.", sol: "i(t) = (1/5) int_0^t 30 tau^2 dtau = 6 * [tau^3 / 3]_0^t = 2 t^3 A.\nAt t = 2s: i(2) = 2(8) = 16 A.\nv(2) = 30(4) = 120 V => p(2) = 120 * 16 = 1920 W.\nW(2) = 0.5 * 5 * 16^2 = 640 J." },
+      { id: "ec_q5", level: "Ch-6 Ind Q3", q: "Current through a 5 mH inductor rises linearly from 0 to 10 A (0..2 ms), stays constant at 10 A (2..4 ms), and falls linearly from 10 to 0 A (4..6 ms). Find v(t) at t = 1 ms, 3 ms, and 5 ms.", hint: "Use v(t) = L * (di/dt), computing the piecewise constant slope di/dt on each time interval.", sol: "0 < t < 2 ms: di/dt = (10 - 0) / (2e-3) = +5000 A/s -> v(1 ms) = (5e-3)(5000) = +25 V.\n2 < t < 4 ms: di/dt = 0 -> v(3 ms) = 0 V.\n4 < t < 6 ms: di/dt = (0 - 10) / (2e-3) = -5000 A/s -> v(5 ms) = (5e-3)(-5000) = -25 V." },
+      { id: "ec_q6", level: "Ch-7 1st Order RC", q: "Switch has been closed for a long time (12V -> 2 Ohm -> [switch closed] -> 4 Ohm || 3F). It OPENS at t=0. Find v_o(t) across 3F for t > 0.", hint: "For t<0 find voltage divider between 2 Ohm and 4 Ohm; for t>0 source is disconnected so 3F discharges through 4 Ohm only!", sol: "t < 0 (switch closed, cap open): v_o(0-) = 12 * 4/(2+4) = 8 V.\nt > 0 (switch opens): left branch open, C discharges into 4 Ohm: R_Th = 4 Ohm, tau = RC = 4 * 3 = 12 s, v(inf) = 0.\nThus v_o(t) = 8 e^(-t/12) V (t >= 0)." },
+      { id: "ec_q7", level: "Lec 10 AC Power", q: "A 230 V_rms, 50 Hz source feeds a 4 kW load at 0.8 pf lagging. Find the parallel capacitance C needed to improve the power factor to 0.95 lagging.", hint: "Find theta1 = arccos(0.8), theta2 = arccos(0.95), Qc = P*(tan theta1 - tan theta2), and C = Qc / (2*pi*f * V_rms^2).", sol: "tan(theta1) = 0.75; tan(theta2) = tan(arccos 0.95) = 0.3287.\nQc = 4000 * (0.75 - 0.3287) = 1685.26 VAR.\nomega = 2*pi*50 = 314.16 rad/s.\nC = 1685.26 / (314.16 * 230^2) = 101.41 uF." },
+      { id: "ec_q8", level: "Lec 11 Trafo", q: "A 50 Hz 1-phase transformer has N1 = 500 turns, N2 = 100 turns, core area 0.01 m^2, and peak flux density B_m = 1.2 T. Calculate E1 and E2.", hint: "Phi_m = B_m * A_c, then use E = 4.44 * f * N * Phi_m.", sol: "Phi_m = 1.2 * 0.01 = 0.012 Wb.\nE1 = 4.44 * 50 * 500 * 0.012 = 1332 V.\nE2 = E1 * (N2/N1) = 1332 * (100/500) = 266.4 V." },
+      { id: "ec_q9", level: "Lec 12 Machines", q: "(a) A 4-pole, 50 Hz 3-phase induction motor runs at 1440 rpm. Find synchronous speed, slip, and rotor frequency. (b) A 220V DC motor draws 20A with R_a = 0.5 Ohm. Find back EMF E_b.", hint: "n_s = 120f/P, s = (n_s - n_m)/n_s, f_r = s*f_e. For DC motor: V_t = E_b + I_a R_a.", sol: "(a) n_s = 120*50/4 = 1500 rpm. s = (1500 - 1440)/1500 = 0.04 (4%). f_r = 0.04 * 50 = 2 Hz.\n(b) E_b = 220 - 20*(0.5) = 210 V (developed mechanical power = E_b * I_a = 4200 W)." },
+      { id: "ec_q10", level: "Lec 13 Diodes", q: "A Bridge Full-Wave Rectifier uses Silicon diodes (0.7 V each) fed by a 24 V_rms transformer. Find peak output voltage, DC average voltage, and minimum PIV rating.", hint: "V_m = 24*sqrt(2); two Si diodes conduct in each half-cycle!", sol: "V_m = 24 * sqrt(2) = 33.94 V.\nV_{o,pk} = 33.94 - 2(0.7) = 32.54 V.\nV_dc = 2 * 32.54 / pi = 20.72 V.\nBridge FWR requires PIV >= V_m = 33.94 V (unlike center-tap which needs 2*V_m)." }
+    ]
+  },
+
+  PH1000: {
+    code: "PH1000",
+    name: "Electromagnetics",
+    short: "Vectors, Electro/Magnetostatics, Maxwell & Waves",
+    accent: "var(--chart-3)",
+    strategy: {
+      gradeRule: "PH1000 Endsem (50 marks) tests Griffiths & BhagGuru fundamentals: coordinate transforms before adding vectors, Gauss/Ampere symmetry, Bound charge/current formulas with signs, Lenz polarity, Displacement current, and Poynting vector.",
+      targets: [
+        { item: "Remember EM_Assignment 1 & 3 are Engineering Mechanics — focus strictly on Assignment-1 & Assignment-2", weight: "No wasted time" },
+        { item: "Convert spherical/cylindrical vectors at different points to Cartesian BEFORE adding (Midsem 2022 Q2!)", weight: "+4 marks" },
+        { item: "Sign perfection: rho_b = -div(P), sigma_b = +P.n, J_b = curl(M), K_b = M x n, H = B/mu0 - M", weight: "+8-10 marks" },
+        { item: "Know all 4 Maxwell Equations (vacuum + matter) + Boundary Conditions + EM Wave B = (k_hat x E)/v", weight: "+12 marks" }
+      ],
+      schedule: [
+        "Pass 1 (50m): Curvilinear dl/dS/dtau + Grad/Div/Curl + Stokes & Divergence Theorems.",
+        "Pass 2 (70m): Electrostatics (Gauss cavities, Dipole, Bound charges, Dielectric D, Boundary Conditions).",
+        "Pass 3 (60m): Magnetostatics (Biot-Savart, Ampere, A, Bound currents) + Faraday, Displacement J_D & Poynting."
+      ]
+    },
+    topics: [
+      { id: "ph_t1", name: "Coordinate Transforms (Cartesian/Cylindrical/Spherical) + Vector Addition Trap", tag: "MUST KNOW" },
+      { id: "ph_t2", name: "Grad, Div, Curl + Divergence & Stokes' Theorems Verification", tag: "MUST KNOW" },
+      { id: "ph_t3", name: "Coulomb, Continuous Charge (Ring/Disk) & Gauss's Law + Conductor Cavities", tag: "MUST KNOW" },
+      { id: "ph_t4", name: "Potential V, Poisson/Laplace Equations (Coax/Parallel Plate) & Field Energy", tag: "HIGH YIELD" },
+      { id: "ph_t5", name: "Electric Dipole (p = qd, V, E) & Polarized Matter (rho_b = -div P, sigma_b = P.n)", tag: "MUST KNOW" },
+      { id: "ph_t6", name: "Displacement D = eps_0 E + P & Electrostatic Boundary Conditions", tag: "MUST KNOW" },
+      { id: "ph_t7", name: "Lorentz Force (No Work!), Crossed E x B & Continuity Eq div J = -d rho / dt", tag: "HIGH YIELD" },
+      { id: "ph_t8", name: "Biot-Savart (Wire, Loop, Force btw Wires) & Ampere's Law + Vector Potential A", tag: "MUST KNOW" },
+      { id: "ph_t9", name: "Magnetization M, Auxiliary H, Bound Currents (J_b, K_b) & Magnetic BCs", tag: "MUST KNOW" },
+      { id: "ph_t10", name: "Faraday's Law, Motional EMF (BLu, 1/2 BwL^2) & Lenz Right-Hand Polarity", tag: "MUST KNOW" },
+      { id: "ph_t11", name: "Displacement Current J_d = dD/dt, Solenoid L = mu0 N^2 pi r^2 / l & Full Maxwell Eqs", tag: "MUST KNOW" },
+      { id: "ph_t12", name: "Poynting Theorem (S = E x H) & Plane EM Waves (c, n=sqrt(eps_r), E/H=377 Ohm)", tag: "MUST KNOW" }
+    ],
+    slides: [
+      {
+        title: "1. Coordinates, Theorems & The Vector Addition Trap",
+        topicId: "ph_t1",
+        tag: "Modules 1-2 • Vector Math",
+        bullets: [
+          "<b>Volume Elements:</b> Cartesian <span class='math'>dx dy dz</span> | Cylindrical <span class='math'>&rho; d&rho; d&phi; dz</span> | Spherical <span class='math'>r&sup2; sin&theta; dr d&theta; d&phi;</span>.",
+          "<b>Spherical &rarr; Cylindrical:</b> <span class='math'>&rho; = r sin&theta;, z = r cos&theta;</span>; <span class='math'>A<sub>&rho;</sub> = A<sub>r</sub>sin&theta; + A<sub>&theta;</sub>cos&theta;</span>.",
+          "<b>Theorems:</b> <span class='math'>&int;<sub>V</sub> (&nabla;&middot;v)d&tau; = &oint;<sub>S</sub> v&middot;da</span> (Divergence) &nbsp;|&nbsp; <span class='math'>&int;<sub>S</sub> (&nabla;&times;v)&middot;da = &oint;<sub>P</sub> v&middot;dl</span> (Stokes)."
+        ],
+        formula: "A at P(r<sub>1</sub>,&theta;<sub>1</sub>,&phi;<sub>1</sub>) + B at Q(r<sub>2</sub>,&theta;<sub>2</sub>,&phi;<sub>2</sub>) &nbsp;&rArr;&nbsp; Convert BOTH to (x,y,z) FIRST!",
+        trap: "Midsem 2022 Q2 traps students into adding A_r + B_r directly at two DIFFERENT points P and Q. Unit vectors r_hat(P) != r_hat(Q)!"
+      },
+      {
+        title: "2. Gauss, Conductors, Dielectrics & Bound Charges",
+        topicId: "ph_t5",
+        tag: "Modules 3-4 • Electrostatics",
+        svg: `<svg viewBox="0 0 360 115" class="w-full max-w-md mx-auto"><circle cx="95" cy="58" r="46" fill="var(--chart-3)" fill-opacity="0.16" stroke="var(--primary)" stroke-width="2"/><circle cx="95" cy="58" r="32" fill="var(--card)" stroke="currentColor" stroke-dasharray="4 3"/><path d="M 86 64 C 82 54, 90 42, 102 48 C 110 52, 108 66, 98 68 Z" fill="var(--background)" stroke="currentColor"/><circle cx="96" cy="58" r="3" fill="var(--primary)"/><text x="96" y="53" font-size="10" text-anchor="middle" fill="var(--primary)">+q</text><text x="122" y="42" font-size="9" fill="currentColor">E=0 inside</text><text x="245" y="34" font-size="11" font-weight="600" fill="currentColor">Cavity Conductor Rules:</text><text x="245" y="52" font-size="10.5" fill="var(--muted-foreground)">1. Cavity wall gets -q induced</text><text x="245" y="68" font-size="10.5" fill="var(--muted-foreground)">2. Neutral conductor =&gt; +q on outer</text><text x="245" y="84" font-size="10.5" fill="var(--muted-foreground)">3. Outside E = q/(4 pi eps0 r^2) r_hat</text></svg>`,
+        bullets: [
+          "<b>Electric Displacement <span class='math'>D</span>:</b> <span class='math'>D = &epsilon;<sub>0</sub>E + P = &epsilon;<sub>0</sub>&epsilon;<sub>r</sub>E</span>; <span class='math'>&nabla;&middot;D = &rho;<sub>f</sub></span> (ignores bound charge!).",
+          "<b>Bound Charges:</b> <span class='math'>&rho;<sub>b</sub> = &minus;&nabla;&middot;P</span>, <span class='math'>&sigma;<sub>b</sub> = +P&middot;n&#770;</span>. Total bound charge of an isolated dielectric MUST equal 0.",
+          "<b>Electrostatic BCs:</b> <span class='math'>E<sub>1&parallel;</sub> = E<sub>2&parallel;</sub></span> (continuous), <span class='math'>D<sub>1&perp;</sub> &minus; D<sub>2&perp;</sub> = &sigma;<sub>f</sub></span>."
+        ],
+        formula: "Parallel-plate C = &epsilon;A/d &nbsp;|&nbsp; Coax C/L = 2&pi;&epsilon;/ln(b/a) &nbsp;|&nbsp; Spherical C = 4&pi;&epsilon;ab/(b&minus;a)",
+        trap: "Mind the signs: rho_b has a MINUS sign (-div P), while sigma_b has a PLUS sign (+P dot n_hat)!"
+      },
+      {
+        title: "3. Magnetostatics, Vector Potential A & H",
+        topicId: "ph_t8",
+        tag: "Modules 5-6 • Magnetostatics",
+        bullets: [
+          "<b>Lorentz Work = 0:</b> <span class='math'>dW<sub>mag</sub> = q(v&times;B)&middot;v dt = 0</span>. In circular field: <span class='math'>R = mv/(qB)</span>. Crossed fields: <span class='math'>v = E/B</span>.",
+          "<b>Biot-Savart &amp; Ampere:</b> Infinite wire <span class='math'>B = &mu;<sub>0</sub>I/(2&pi;s)</span>; Solenoid <span class='math'>B = &mu;<sub>0</sub>nI</span>.",
+          "<b>Vector Potential <span class='math'>A</span>:</b> <span class='math'>B = &nabla;&times;A</span>, <span class='math'>&nabla;&middot;A = 0 &rArr; &nabla;&sup2;A = &minus;&mu;<sub>0</sub>J</span>, Flux <span class='math'>&Phi; = &oint; A&middot;dl</span>."
+        ],
+        formula: "J<sub>b</sub> = &nabla;&times;M, &nbsp; K<sub>b</sub> = M&times;n&#770; &nbsp;|&nbsp; H = B/&mu;<sub>0</sub> &minus; M &nbsp;|&nbsp; &nabla;&times;H = J<sub>f</sub>, &nbsp; B = &mu;H",
+        trap: "In H-law (curl H = J_f), ONLY free currents act as source; in Magnetic BCs, B_perp is continuous while H_parallel jumps by K_f x n_hat!"
+      },
+      {
+        title: "4. Faraday, Lenz Polarity & Displacement Current",
+        topicId: "ph_t10",
+        tag: "Module 7 • Induction",
+        bullets: [
+          "<b>Motional EMF:</b> <span class='math'>e = &int; (u&times;B)&middot;dl</span> (sliding bar <span class='math'>BLu</span>; pivoted rod length L at <span class='math'>&omega;</span>: <span class='math'>&frac12;B&omega;L&sup2;</span>).",
+          "<b>Lenz Polarity (lect_36):</b> Let <span class='math'>B<sub>in</sub></span> oppose <span class='math'>d&Phi;/dt</span>. Thumb along <span class='math'>B<sub>in</sub></span> shows induced current direction (which leaves the + terminal!).",
+          "<b>Maxwell Fix:</b> Capacitor gap has <span class='math'>J<sub>c</sub>=0</span>, yet <span class='math'>J<sub>d</sub> = &epsilon;&part;E/&part;t</span> maintains <span class='math'>&oint; B&middot;dl = &mu;<sub>0</sub>(I<sub>enc</sub> + I<sub>d</sub>)</span>!"
+        ],
+        formula: "&nabla;&times;E = &minus;&part;B/&part;t &nbsp;|&nbsp; &nabla;&times;H = J<sub>f</sub> + &part;D/&part;t &nbsp;|&nbsp; Solenoid L = &mu;<sub>0</sub>N&sup2;&pi;r&sup2;/l",
+        trap: "When B is static, curl E = 0 (conservative). When B varies in time, E is non-conservative (closed line integral != 0)!"
+      },
+      {
+        title: "5. Poynting Theorem & Plane EM Waves",
+        topicId: "ph_t12",
+        tag: "Module 8 • Maxwell & Waves",
+        svg: `<svg viewBox="0 0 360 110" class="w-full max-w-md mx-auto"><line x1="30" y1="55" x2="320" y2="55" stroke="currentColor" stroke-width="1.5"/><polygon points="320,55 312,51 312,59" fill="currentColor"/><text x="330" y="59" font-size="11" fill="currentColor">k (v)</text><line x1="70" y1="55" x2="70" y2="16" stroke="var(--primary)" stroke-width="2"/><polygon points="70,16 66,24 74,24" fill="var(--primary)"/><text x="80" y="24" font-size="11" font-weight="600" fill="var(--primary)">E = E0 cos(kz - wt) x_hat</text><line x1="70" y1="55" x2="45" y2="90" stroke="var(--success)" stroke-width="2"/><text x="108" y="96" font-size="11" font-weight="600" fill="var(--success)">B = (E0/v)(k_hat x n_hat), &nbsp; E x H = S</text></svg>`,
+        bullets: [
+          "<b>Poynting Vector:</b> <span class='math'>S = E&times;H</span> [W/m&sup2;] gives instantaneous power flow per unit area.",
+          "<b>Speed &amp; Index:</b> <span class='math'>v = 1/&radic;(&mu;&epsilon;) = c/n</span> where <span class='math'>n = &radic;(&mu;&epsilon;/&mu;<sub>0</sub>&epsilon;<sub>0</sub>) &approx; &radic;&epsilon;<sub>r</sub></span>.",
+          "<b>Impedance &amp; Average Intensity:</b> <span class='math'>E/H = &radic;(&mu;<sub>0</sub>/&epsilon;<sub>0</sub>) &approx; 377 &Omega;</span>; <span class='math'>&langle;S&rangle; = &frac12;&epsilon;<sub>0</sub>cE<sub>0</sub>&sup2;</span>."
+        ],
+        formula: "B<sub>0</sub> = E<sub>0</sub>/c &nbsp;|&nbsp; u = &frac12;(&epsilon;<sub>0</sub>E&sup2; + B&sup2;/&mu;<sub>0</sub>) &nbsp;|&nbsp; &psi;(z,t) = f(z &minus; vt) moves in +z",
+        trap: "Notice E_0/H_0 = 377 Ohm while E_0/B_0 = c = 3e8 m/s! Also don't drop the 1/2 when averaging cos^2(kz - wt)."
+      }
+    ],
+    practice: [
+      { id: "ph_q1", level: "Midsem 2022 Q3 & Q6", q: "Find the arc length of particle trajectory r(t) = (t, t, t^(3/2)) between t = 0 and t = 1.", hint: "Velocity v(t) = dr/dt, speed ||v|| = sqrt(1 + 1 + (9/4)t), then integrate dt.", sol: "dr/dt = (1, 1, (3/2) t^(1/2)).\n||dr/dt|| = sqrt(1 + 1 + (9/4)t) = sqrt(2 + 2.25t).\nArc length = int_0^1 (2 + 9t/4)^(1/2) dt = (4/9) * (2/3) * [(2 + 9/4)^(3/2) - 2^(3/2)] = (8/27)[(17/4)^(3/2) - 2*sqrt(2)] approx 1.758 units." },
+      { id: "ph_q2", level: "Assignment-1 Q3 / lec18", q: "A solid sphere of radius a has uniform charge density rho_v, surrounded concentrically by an isolated neutral conducting shell (b < r < c). Find E in all 4 regions and induced rho_sb, rho_sc.", hint: "Use Gauss's law Q_enc = (4/3)pi r^3 rho_v (r<a) and total (4/3)pi a^3 rho_v outside a. Remember E=0 inside conductor b<=r<=c!", sol: "1) r < a: E = (rho_v * r)/(3*eps_0) r_hat.\n2) a <= r < b: E = (rho_v * a^3)/(3*eps_0 * r^2) r_hat.\n3) b <= r <= c (conductor): E = 0 => Q_enc = 0 => inner surface charge = -Q => rho_sb = -(a^3 / 3b^2)*rho_v.\n4) Neutral shell => outer surface acquires +Q => rho_sc = +(a^3 / 3c^2)*rho_v, so for r >= c: E = (rho_v * a^3)/(3*eps_0 * r^2) r_hat." },
+      { id: "ph_q3", level: "lect_22 Prob 3", q: "The space between two concentric spherical shells (radii a, b) is filled half-and-half (two hemispheres) with dielectrics eps1 and eps2. Find total capacitance C.", hint: "Tangential E_r is continuous across the splitting plane, so D_1 = eps1 E and D_2 = eps2 E act in PARALLEL!", sol: "Using Gauss's law on sphere r: integral D.ds = (D_{r1} + D_{r2}) * (2*pi*r^2) = Q => (eps1 + eps2) E_r * 2*pi*r^2 = Q => E_r = Q / [2*pi*r^2*(eps1+eps2)].\nV_ab = int_a^b E_r dr = Q(b-a) / [2*pi*ab*(eps1+eps2)].\nC = Q/V_ab = 2*pi*(eps1+eps2)*ab/(b-a) = C1 + C2 (parallel)." },
+      { id: "ph_q4", level: "lect_21 Prob 1", q: "Plane z=0 separates free space (z<0) from dielectric eps_r=40 (z>0). Next to interface in free space, E2 = 13 a_x + 40 a_y + 50 a_z V/m. Find E1 in the dielectric.", hint: "Interface normal is a_z, so x & y components are tangential (continuous!), and D_z is continuous (rho_s=0)!", sol: "Tangential E continuous => E_x1 = 13, E_y1 = 40.\nNormal D continuous => eps1*E_z1 = eps2*E_z2 => (40*eps0)*E_z1 = eps0*(50) => E_z1 = 50/40 = 1.25.\nThus E1 = 13 a_x + 40 a_y + 1.25 a_z V/m." },
+      { id: "ph_q5", level: "lect_22 / Assignment-2 Q4", q: "In an infinite solenoid with n turns/unit length, radius R, and current I, find magnetic vector potential A for s < R and s > R.", hint: "Apply Stokes' theorem: oint A.dl = int B.da = Phi_enc!", sol: "Field B = mu0*n*I z_hat inside (s<R) and 0 outside. By symmetry A = A(s) phi_hat:\nFor s < R: A(2*pi*s) = mu0*n*I*(pi*s^2) => A = (mu0*n*I*s / 2) phi_hat.\nFor s > R: Phi_enc saturates at pi*R^2 => A(2*pi*s) = mu0*n*I*(pi*R^2) => A = (mu0*n*I*R^2 / (2s)) phi_hat." },
+      { id: "ph_q6", level: "lect_26 Prob 1", q: "Find the magnetic field B at the center of a square loop carrying steady current I, if R is the perpendicular distance from the center to each side.", hint: "A square has 4 identical straight wire segments with theta1 = -45 deg and theta2 = +45 deg!", sol: "For one straight segment: B_side = (mu0*I/(4*pi*R)) * (sin(45) - sin(-45)) = (mu0*I/(4*pi*R)) * sqrt(2).\nAll 4 sides add in the same direction (out of page): B_tot = 4 * B_side = (sqrt(2) * mu0 * I) / (pi * R)." },
+      { id: "ph_q7", level: "lect_31 Prob 3", q: "A 0.25 m coil with 400 turns carries 15 A around a chromium bar (chi_m = 3.13e-4). Compute H, flux density B, and magnetization M.", hint: "H = (N*I)/l, B = mu0*(1+chi_m)*H, M = chi_m*H.", sol: "H = (400 * 15) / 0.25 = 24,000 A/m.\nmu_r = 1 + 3.13e-4 = 1.000313.\nB = 1.000313 * (4*pi*10^-7) * 24000 = 0.03017 T (301.7e-4 T).\nM = chi_m * H = (3.13e-4) * 24000 = 7.512 A/m." },
+      { id: "ph_q8", level: "lect_32 & 33 Prob 1/2", q: "A copper strip of length 2L pivoted at its midpoint rotates at angular velocity omega in uniform magnetic field B = B z_hat. Find EMF between midpoint & one end, and between the two outer ends.", hint: "Velocity at radius rho is u = rho*omega phi_hat, so motional E = u x B points radially outward from pivot!", sol: "From pivot (rho=0) to one end (rho=L): e = int_0^L (rho*omega*B) d_rho = (1/2) B * omega * L^2 (outer end is at higher potential).\nSince BOTH halves induce identical outward radial polarity relative to the center pivot, the potential difference between the two outer ends is ZERO!" },
+      { id: "ph_q9", level: "lect_35 Prob 3", q: "Two solenoids have turns in ratio 1:1, lengths in ratio 2:1, and radii in ratio 3:2. Find the ratio of their self-inductances L1 : L2.", hint: "L = (mu0 * N^2 * pi * r^2) / l.", sol: "L proportional to N^2 * r^2 / l.\nL1/L2 = (1/1)^2 * (3/2)^2 / (2/1) = (9/4) / 2 = 9 / 8 => 9 : 8." },
+      { id: "ph_q10", level: "lect_37 Vacuum Wave", q: "In vacuum, E = E0 sin(w t - k y) z_hat. Find B(y, t) vector (magnitude & direction).", hint: "Wave moves in +y (since argument is wt - ky!), and k_hat x E_hat gives B_hat!", sol: "Propagation direction k_hat = +y_hat, E direction = +z_hat.\nk_hat x z_hat = y_hat x z_hat = +x_hat, with amplitude B0 = E0 / c.\nCheck via Faraday's Law: curl E = (dE_z/dy) x_hat = -k E0 cos(w t - k y) x_hat = -dB/dt.\nIntegrating over t yields B(y, t) = (k/w) E0 sin(w t - k y) x_hat = (E0/c) sin(w t - k y) x_hat." }
+    ]
+  },
+
+  CS1000: {
+    code: "CS1000",
+    name: "C Programming",
+    short: "Traces, Precedence, Pointers, Strings, Structs & Files",
+    accent: "var(--chart-4)",
+    strategy: {
+      gradeRule: "In CS1000, Section A/B (30 marks!) test sharp attention to detail on switch/if semicolons, operator precedence, pointer ++ precedence, static recursion, and missing '\\0'. Section C (30 marks) rewards clean modular functions, manual string loops (no <string.h>), and NULL-guarded code.",
+      targets: [
+        { item: "Always trace switch/if for 4 traps: ';' after if(), '=' instead of '==', missing break, duplicate/non-const case", weight: "+10 marks" },
+        { item: "Distinguish *p++ (moves pointer!) vs (*p)++ (changes value!) and LIFO printf BEFORE vs AFTER recursion", weight: "+8 marks" },
+        { item: "Master Section C templates: manual string partitioning without <string.h>, pointer-array Find(), and struct binary calc", weight: "+20 marks" },
+        { item: "Memorize File I/O modes (r, w truncates!, a, w+) and fseek/ftell/rewind arguments", weight: "+6 marks" }
+      ],
+      schedule: [
+        "Pass 1 (50m): Drill all 10+ tricky output/compile-error traces (precedence, sizeof, switch, pointers).",
+        "Pass 2 (60m): Hand-write on paper the 5 Section C programs (string partition, Find pointer array, Armstrong, factors, BinCalc struct).",
+        "Pass 3 (40m): Revise Number System radix/2's comp shifts + File Handling modes & functions."
+      ]
+    },
+    topics: [
+      { id: "cs_t1", name: "Number Systems (Base X->Y), Oct/Hex & 8/16-bit 2's Complement Overflow/Shifts", tag: "HIGH YIELD" },
+      { id: "cs_t2", name: "4 Phases of Compilation (Preprocess, Compile, Link, Execute) & C Identifiers", tag: "HIGH YIELD" },
+      { id: "cs_t3", name: "Precedence, Short-Circuit (&& ||), sizeof() non-eval & printf/scanf returns", tag: "MUST KNOW" },
+      { id: "cs_t4", name: "if/else ';' and '=' Traps, while(c--) vs do-while & switch Constant/Unique Case Rules", tag: "MUST KNOW" },
+      { id: "cs_t5", name: "Functions (Value vs Reference), LIFO Recursion Stack & Print Before/After Call", tag: "MUST KNOW" },
+      { id: "cs_t6", name: "Storage Classes (auto, extern, static persistence, register) & Block Shadowing", tag: "HIGH YIELD" },
+      { id: "cs_t7", name: "Pointers & Arrays (*(arr+i), *z++ vs (*z)++, q-p valid vs r/2 illegal)", tag: "MUST KNOW" },
+      { id: "cs_t8", name: "Strings: Missing '\\0' in 2D arrays, strcmp ASCII & Manual Loops (No string.h)", tag: "MUST KNOW" },
+      { id: "cs_t9", name: "Structures (., ->, memberwise copy) & Unions (largest member size)", tag: "HIGH YIELD" },
+      { id: "cs_t10", name: "File Handling (fopen r/w/a/r+/w+/a+, fprintf/fscanf/fgetc/fseek/ftell/rewind) & Macros", tag: "HIGH YIELD" }
+    ],
+    slides: [
+      {
+        title: "1. Number Systems, 2's Comp & Compilation Phases",
+        topicId: "cs_t2",
+        tag: "Unit 1 • Basics & Bits",
+        bullets: [
+          "<b>2's Complement Range:</b> n-bit signed holds <span class='math'>&minus;2<sup>n&minus;1</sup></span> to <span class='math'>2<sup>n&minus;1</sup>&minus;1</span> (8-bit: <span class='math'>&minus;128..127</span>). <span class='math'>~0 = &minus;1</span>; <span class='math'>char c=125; c+=3; &rarr; &minus;128</span>!",
+          "<b>Shift Arithmetic:</b> <span class='math'>8 &times; P = P &lt;&lt; 3</span>. For 16-bit <span class='math'>(F87B)<sub>16</sub></span> = <span class='math'>&minus;1925</span>, shifting left 3 gives <span class='math'>(C3D8)<sub>16</sub> = &minus;15400</span>.",
+          "<b>4 Phases:</b> 1) Edit/Preprocess (<span class='math'>#define/#include</span>), 2) Compile (syntax/types &rarr; <span class='math'>.obj</span>), 3) Link (libraries &amp; <span class='math'>main()</span> &rarr; <span class='math'>.exe</span>), 4) Execute."
+        ],
+        formula: "Radix Puzzle rule: Every digit d must satisfy d &lt; base! E.g. (123)<sub>5</sub> = 38 = X&middot;Y + 8 &rArr; (3,10), (2,15), (1,30)",
+        trap: "C is case-sensitive: naming main() as Main() compiles fine cleanly at Compile stage, then FAILS at Linker stage!"
+      },
+      {
+        title: "2. Top 6 Operator & Control-Flow Exam Traps",
+        topicId: "cs_t4",
+        tag: "Units 2-3 • Operators & Loops",
+        bullets: [
+          "<b>Short-Circuit:</b> <span class='math'>1 || --b</span> skips <span class='math'>--b</span>; <span class='math'>0 && ++k</span> skips <span class='math'>++k</span>.",
+          "<b>sizeof() Non-Evaluation:</b> <code>sizeof(i++)</code> NEVER increments <code>i</code>; <code>sizeof('a') = 4</code> (C treats char literal as <code>int</code>), <code>sizeof(2.5) = 8</code>.",
+          "<b>Switch Rules:</b> <code>case</code> labels MUST be unique integer constants (<code>case 3:</code> + <code>case 7-4:</code> &rarr; <b>Duplicate Case Error!</b>)."
+        ],
+        formula: "Dangling ';' trap: if(a==5); { ... } else ... &nbsp;&rArr;&nbsp; Compile Error: 'else' without previous 'if'!",
+        trap: "while(c--) starting at c=6 prints '5 4 3 2 1 0' — post-decrement checks 6..1 (true) and prints the already-decremented value!"
+      },
+      {
+        title: "3. Recursion, Storage Classes & Pointer Arithmetic",
+        topicId: "cs_t7",
+        tag: "Units 4-5 • Functions & Memory",
+        svg: `<svg viewBox="0 0 360 112" class="w-full max-w-md mx-auto"><rect x="20" y="18" width="95" height="44" rx="6" fill="var(--chart-4)" fill-opacity="0.18" stroke="var(--primary)" stroke-width="1.5"/><text x="67" y="37" font-size="11" font-weight="600" text-anchor="middle" fill="currentColor">x = 20 -&gt; 21</text><text x="67" y="54" font-size="10" text-anchor="middle" fill="var(--muted-foreground)">addr: 5000</text><rect x="132" y="18" width="95" height="44" rx="6" fill="var(--content)" stroke="var(--border)" stroke-width="1.5"/><text x="179" y="37" font-size="11" font-weight="600" text-anchor="middle" fill="currentColor">y = 21</text><text x="179" y="54" font-size="10" text-anchor="middle" fill="var(--muted-foreground)">addr: 5004</text><rect x="244" y="18" width="95" height="44" rx="6" fill="var(--content)" stroke="var(--border)" stroke-width="1.5"/><text x="291" y="37" font-size="11" font-weight="600" text-anchor="middle" fill="currentColor">z (&amp;x -&gt; &amp;y)</text><text x="291" y="54" font-size="10" text-anchor="middle" fill="var(--muted-foreground)">addr: 5008</text><path d="M 291 65 Q 235 92 179 65" fill="none" stroke="var(--primary)" stroke-width="2" stroke-dasharray="3 2"/><text x="180" y="102" font-size="11" text-anchor="middle" fill="var(--primary)">*z++ means *(z++) &mdash; advances z by 4 bytes (5000 &rarr; 5004), NOT x!</text></svg>`,
+        bullets: [
+          "<b>static local:</b> Initialized ONCE (default 0), invisible outside its function, but keeps its value across calls!",
+          "<b>Recursion Order:</b> Code BEFORE recursive call runs top-down; code AFTER recursive call unwinds bottom-up (LIFO).",
+          "<b>Valid Pointer Math:</b> <code>ptr + n</code>, <code>ptr++</code>, <code>q - p</code> OK. <code>p + q</code> or <code>r / 2</code> = <b>Compile Error!</b>"
+        ],
+        formula: "(*p)++ changes value &nbsp;|&nbsp; *p++ moves pointer p &nbsp;|&nbsp; Passing arr sends &amp;arr[0] (mutates original!)",
+        trap: "Look at Endsem 2023 Sec B Q3: pass-by-value 'sum' inside recursive func() does NOT change 'sum' in main()!"
+      },
+      {
+        title: "4. Strings, Structs, Unions & File Modes",
+        topicId: "cs_t10",
+        tag: "Units 6-7 • Data & Files",
+        bullets: [
+          "<b>String Trap (Quiz 2 B-Q3):</b> <code>char arr[4][3] = {\"hi\",\"how\",\"are\",\"u\"};</code> lacks space for <code>'\\0'</code> in \"how\" and \"are\", so <code>printf(\"%s\", arr[2])</code> prints <b><code>areu</code></b>!",
+          "<b>Struct vs Union:</b> Struct sums member sizes (+padding); Union size = <b>largest member</b> only. Always use <code>-&gt;</code> with struct pointers.",
+          "<b>Files:</b> <code>fopen(\"f\",\"w\")</code> wipes existing data! Use <code>int ch = fgetc(fp)</code>, check <code>EOF</code>, and <code>fseek(fp, offset, SEEK_SET/CUR/END)</code>."
+        ],
+        formula: "fopen modes: 'r' (must exist) | 'w' (create/truncate) | 'a' (append) | 'r+' / 'w+' / 'a+'",
+        trap: "Never initialize members inside struct { int x = 0; }; (no memory exists yet!) and never forget the semicolon after }."
+      }
+    ],
+    practice: [
+      { id: "cs_q1", level: "Practice-3 S12", q: "Trace output:\nfor(i=0; i<20; i++) {\n  switch(i) {\n    case 0: i+=5;\n    case 1: i+=2;\n    case 5: i+=5;\n    default: i+=4; break;\n  }\n  printf(\"%d \", i);\n}", hint: "Notice NO break in case 0, case 1, or case 5! Don't forget i++ at end of each for iteration!", sol: "Start i=0 -> matches case 0 (+5 -> 5), falls through case 1 (+2 -> 7), case 5 (+5 -> 12), default (+4 -> 16), break! Prints 16.\nFor loop i++ makes i=17 (< 20) -> matches default (+4 -> 21), break! Prints 21.\nFor loop i++ makes i=22 (>= 20) -> exits.\nOutput: 16 21" },
+      { id: "cs_q2", level: "C_questions S23", q: "Trace exact output:\nint i=-1, j=-1, k=0, l=2, m;\nm = i++ && j++ && k++ || l++;\nprintf(\"%d %d %d %d %d\", i, j, k, l, m);", hint: "Both && and || are sequence points evaluated left to right!", sol: "i++ -> -1 (true, i becomes 0).\nj++ -> -1 (true, j becomes 0).\nk++ -> 0 (FALSE, k becomes 1).\nLeft side of || is (1 && 1 && 0) = 0 (FALSE), so l++ MUST run!\nl++ -> 2 (true, l becomes 3). So m = 1.\nOutput: 0 0 1 3 1" },
+      { id: "cs_q3", level: "Assignment-1 img2", q: "What is printed?\nint x = 10, y = 11;\nif ( ~(x ^ y) ) printf(\"equal\");\nelse printf(\"not equal\");", hint: "Don't confuse bitwise NOT (~) with logical NOT (!)!", sol: "x ^ y = 10 ^ 11 = 1 (binary 0001).\nBitwise ~1 in 2's complement = -2.\nSince -2 != 0, the if condition is TRUE!\nOutput: equal (classic bitwise vs logical trap!)" },
+      { id: "cs_q4", level: "Midsem B-Q2 & Q3", q: "Given m=4, n=2, p=2:\nw = m * n / 4 - 6 / 2 + 2 / 3 * 6 / p;\nx = m < n / p - 4 / 2 + 2 * 3 - 6 > !p;\ny = m * p % 2 + 4 - m * 2 / 2;\nz = m++ + --p + ++n;", hint: "Watch integer division 2/3 == 0 and left-to-right associativity of < and >!", sol: "w = 8/4 - 3 + (0*6)/2 = 2 - 3 + 0 = -1.\nx = 4 < (1 - 2 + 6 - 6) > 0 => (4 < -1) is 0; (0 > 0) is 0.\ny = 8%2 + 4 - 8/2 = 0 + 4 - 4 = 0.\nz = 4 + 1 + 3 = 8 (afterwards m=5, p=1, n=3).\nOutput: w=-1 x=0 y=0 z=8" },
+      { id: "cs_q5", level: "Endsem B-Q5", q: "Given int i=4, j=2, *ptr, *qtr; ptr=&i; qtr=&j; predict second printf:\nprintf(\"%u,%u,%u\\t\", *ptr, *&j, **&ptr);\nprintf(\"%u,%u,%u\\n\", *&qtr, i, *qtr);", hint: "*& cancels out! So **&ptr == *ptr == i, and *&qtr == qtr (&j)!", sol: "First line: *ptr = 4, *&j = j = 2, **&ptr = 4 => 4,2,4\nSecond line: *&qtr = qtr = address of j (&j), i = 4, *qtr = 2 => <address of j>,4,2." },
+      { id: "cs_q6", level: "Practice-3 S21", q: "Trace output:\nint i = 3;\nwhile (i--) {\n  int i = 100;\n  i--;\n  printf(\"%d \", i);\n}", hint: "Inner int i shadows outer i ONLY inside the { } block!", sol: "Outer i starts at 3: while(i--) runs 3 times (3->2, 2->1, 1->0).\nInside each iteration, a fresh local int i = 100 is created, decremented to 99, printed, and destroyed.\nOutput: 99 99 99" },
+      { id: "cs_q7", level: "Midsem A-Q7 & Quiz-1", q: "(a) Convert (435)_10 to binary. (b) Solve (73)_X = (54)_Y for possible bases X, Y.", hint: "For (b): 7X + 3 = 5Y + 4 => 7X - 5Y = 1 with X >= 8 and Y >= 6!", sol: "(a) 435 = 256+128+32+16+2+1 => 110110011_2.\n(b) 7X = 5Y + 1 with X >= 8 (digit 7 in base X) and Y >= 6. Try X=8: 56=55+1 => Y=11! More generally X = 8 + 5k, Y = 11 + 7k (k >= 0), e.g., (8,11), (13,18), (18,25)..." },
+      { id: "cs_q8", level: "Lab / Coding Q1", q: "Write a C snippet to find the smallest year > y (1000 <= y <= 9000) whose 4 digits are all distinct (e.g. 1987 -> 2013).", hint: "Loop y++ forever, extract a=y/1000, b=(y/100)%10, c=(y/10)%10, d=y%10, break when all 6 pairwise != checks pass!", sol: "while (1) {\n  y++;\n  int a = y/1000, b = (y/100)%10, c = (y/10)%10, d = y%10;\n  if (a!=b && a!=c && a!=d && b!=c && b!=d && c!=d) {\n    printf(\"%d\\n\", y); break;\n  }\n}" },
+      { id: "cs_q9", level: "Lab / Coding Q2", q: "Write a C loop that extracts and prints the LAST character of every word in a sentence string s (e.g. 'The cat chased the rat' -> 'tcctr').", hint: "Character s[i] is the end of a word if s[i] != ' ' and (s[i+1] == ' ' || s[i+1] == '\\0' || s[i+1] == '\\n')!", sol: "fgets(s, 200, stdin);\nfor (int i = 0; s[i] != '\\0'; i++) {\n  if (s[i] != ' ' && s[i] != '\\n' && (s[i+1] == ' ' || s[i+1] == '\\n' || s[i+1] == '\\0'))\n    putchar(s[i]);\n}" },
+      { id: "cs_q10", level: "Lab / Recursion Q3", q: "Write a recursive C function sumK(n, k) that computes sum(sum(...sum(n)...)) applied k times, where sum(n) = 1+2+...+n (e.g. k=2, n=3 -> 21).", hint: "Base case: if (k == 0) return n; Recursive step: return sumK(n * (n + 1) / 2, k - 1);", sol: "int sumK(int n, int k) {\n  if (k == 0) return n;\n  return sumK(n * (n + 1) / 2, k - 1);\n}\n// Trace k=2, n=3: sumK(6, 1) -> sumK(21, 0) -> 21!" }
+    ]
+  }
+};
+
+const DECK_FILES = [
+  { code: "MA1000", name: "Calculus", slides: 14, pptx: "decks/MA1000_Calculus_Exam_Deck.pptx", guideHtml: "guides/MA1000.html", guideMd: "guides/Study_Guide_Calculus_MA1000.md", desc: "Sequences, Series, Power Series, MVTs, Riemann Integrals & R^2 Calculus" },
+  { code: "EC1000", name: "Electrical Circuits", slides: 14, pptx: "decks/EC1000_Electrical_Circuits_Exam_Deck.pptx", guideHtml: "guides/EC1000.html", guideMd: "guides/Study_Guide_Electrical_Circuits_EC1000.md", desc: "Nodal/Mesh, Dependent Thevenin, RL/RC Transients, AC Power, Trafos, Motors & Diodes" },
+  { code: "PH1000", name: "Electromagnetics", slides: 13, pptx: "decks/PH1000_Electromagnetics_Exam_Deck.pptx", guideHtml: "guides/PH1000.html", guideMd: "guides/Study_Guide_Electromagnetics_PH1000.md", desc: "Vector Calculus, Gauss/Dielectrics, Magnetostatics, Faraday, Inductance & Plane Waves" },
+  { code: "CS1000", name: "C Programming", slides: 11, pptx: "decks/CS1000_C_Programming_Exam_Deck.pptx", guideHtml: "guides/CS1000.html", guideMd: "guides/Study_Guide_C_Programming_CS1000.md", desc: "Number Systems, Precedence, Control Flow Traps, Pointers, Recursion, Strings & Files" }
+];
+
+const STORAGE_KEY = "iiitdm_sem1_9plus_v1";
+let state = {
+  subject: "MA1000",
+  mode: "slides",
+  slideIdx: { MA1000: 0, EC1000: 0, PH1000: 0, CS1000: 0 },
+  checkedTopics: {},
+  solvedQ: {},
+  filterQ: "all"
+};
+
+try {
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+  if (saved) state = { ...state, ...saved, slideIdx: { ...state.slideIdx, ...(saved.slideIdx || {}) } };
+} catch (_) {}
+
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (_) {}
+}
+
+function syncThemeLabel() {
+  const dark = document.documentElement.classList.contains("dark");
+  const btn = document.getElementById("theme-btn");
+  if (btn) btn.textContent = dark ? "Light Mode" : "Dark Mode";
+}
+
+document.getElementById("theme-btn").onclick = () => {
+  const dark = document.documentElement.classList.toggle("dark");
+  try { localStorage.setItem("iiitdm_sem1_theme", dark ? "dark" : "light"); } catch (_) {}
+  syncThemeLabel();
+};
+syncThemeLabel();
+
+function getCounts() {
+  let totalT = 0, doneT = 0, totalQ = 0, doneQ = 0;
+  Object.keys(DATA).forEach(k => {
+    totalT += DATA[k].topics.length;
+    doneT += DATA[k].topics.filter(t => state.checkedTopics[t.id]).length;
+    totalQ += DATA[k].practice.length;
+    doneQ += DATA[k].practice.filter(q => state.solvedQ[q.id]).length;
+  });
+  return { totalT, doneT, totalQ, doneQ };
+}
+
+function updateGlobalHeader() {
+  const { totalT, doneT, totalQ, doneQ } = getCounts();
+  const score = Math.round(((doneT * 1.5 + doneQ) / (totalT * 1.5 + totalQ)) * 100);
+  document.getElementById("global-pct").textContent = `${score}%`;
+  document.getElementById("global-bar").style.width = `${score}%`;
+  const hintEl = document.getElementById("global-grade-hint");
+  if (score >= 85) hintEl.textContent = "9+ CGPA Territory (S / A Grade Ready!)";
+  else if (score >= 55) hintEl.textContent = "Solid B+ / A Base - Keep Drilling Weak Traps";
+  else hintEl.textContent = `${doneT}/${totalT} topics • ${doneQ}/${totalQ} problems solved`;
+
+  const sub = DATA[state.subject];
+  const st = sub.topics.filter(t => state.checkedTopics[t.id]).length;
+  const sq = sub.practice.filter(q => state.solvedQ[q.id]).length;
+  document.getElementById("stat-topics").textContent = `${st}/${sub.topics.length}`;
+  document.getElementById("stat-drills").textContent = `${sq}/${sub.practice.length}`;
+}
+
+function renderTabs() {
+  const nav = document.getElementById("subject-tabs");
+  nav.innerHTML = Object.keys(DATA).map(key => {
+    const s = DATA[key];
+    const active = state.subject === key;
+    const tDone = s.topics.filter(t => state.checkedTopics[t.id]).length;
+    const pct = Math.round((tDone / s.topics.length) * 100);
+    return `
+      <button data-sub="${key}" class="sub-tab ${active ? "active" : ""}">
+        <div class="sub-tab-top">
+          <span class="code-chip">${s.code}</span>
+          <span class="muted tabular" style="font-size:0.72rem;font-weight:700;">${tDone}/${s.topics.length} (${pct}%)</span>
+        </div>
+        <div class="sub-name">${s.name}</div>
+        <div class="sub-short">${s.short}</div>
+        <div class="mini-track">
+          <div class="mini-fill" style="width:${pct}%; background:${s.accent}"></div>
+        </div>
+      </button>
+    `;
+  }).join("");
+
+  document.querySelectorAll(".sub-tab").forEach(btn => {
+    btn.onclick = () => { state.subject = btn.dataset.sub; saveState(); renderAll(); };
+  });
+
+  document.querySelectorAll(".mode-btn").forEach(btn => {
+    const active = state.mode === btn.dataset.mode;
+    btn.className = `mode-btn ${active ? "active" : ""}`;
+    btn.onclick = () => { state.mode = btn.dataset.mode; saveState(); renderAll(); };
+  });
+}
+
+function renderSlides(sub) {
+  const idx = state.slideIdx[sub.code] || 0;
+  const slide = sub.slides[idx];
+  const topicDone = !!state.checkedTopics[slide.topicId];
+  const linkedTopic = sub.topics.find(t => t.id === slide.topicId);
+  const deck = DECK_FILES.find(d => d.code === sub.code);
+
+  return `
+    <div id="slide-card" class="card slide-card">
+      <div class="slide-head">
+        <div>
+          <div class="primary-text" style="font-size:0.74rem;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;">
+            ${sub.code} &bull; ${slide.tag} &bull; Slide ${idx + 1} of ${sub.slides.length}
+          </div>
+          <h2 class="slide-title">${slide.title}</h2>
+        </div>
+        <button id="toggle-slide-topic" type="button" class="btn-master ${topicDone ? "active" : ""}">
+          ${topicDone ? "Topic Mastered ✓" : "Mark Topic Mastered"}
+        </button>
+      </div>
+
+      <div class="slide-body">
+        ${slide.svg ? `<div class="svg-wrap">${slide.svg}</div>` : ""}
+
+        <ul class="bullet-list">
+          ${slide.bullets.map(b => `
+            <li class="bullet-item">
+              <span class="bullet-dot" style="background:${sub.accent}"></span>
+              <span>${b}</span>
+            </li>`).join("")}
+        </ul>
+
+        <div class="two-col">
+          <div class="callout">
+            <div class="callout-label primary-text">Key Formula / Rule</div>
+            <div class="math" style="font-weight:600;">${slide.formula}</div>
+          </div>
+          <div class="callout trap">
+            <div class="callout-label error-text">Zero-Mark Exam Trap</div>
+            <div>${slide.trap}</div>
+          </div>
+        </div>
+
+        <div class="swipe-hint">
+          <span>${linkedTopic ? `Checklist: <strong style="color:var(--foreground);">${linkedTopic.name}</strong>` : ""}</span>
+          <span>Swipe left/right to change slides &bull; <a href="${deck.pptx}" download>Download ${sub.code} .pptx</a></span>
+        </div>
+      </div>
+
+      <div class="slide-foot">
+        <button id="prev-slide" type="button" ${idx === 0 ? "disabled" : ""} class="nav-btn prev">&larr; Prev</button>
+        <div class="jump-row">
+          ${sub.slides.map((s, i) => `
+            <button data-jump="${i}" type="button" title="${s.title}" class="jump-btn ${i === idx ? "current" : state.checkedTopics[s.topicId] ? "done" : ""}">${i + 1}</button>
+          `).join("")}
+        </div>
+        <button id="next-slide" type="button" ${idx === sub.slides.length - 1 ? "disabled" : ""} class="nav-btn next">Next &rarr;</button>
+      </div>
+    </div>
+  `;
+}
+
+function renderChecklist(sub) {
+  const doneCount = sub.topics.filter(t => state.checkedTopics[t.id]).length;
+  const pct = Math.round((doneCount / sub.topics.length) * 100);
+  return `
+    <div class="card checklist-card">
+      <div class="checklist-head">
+        <div>
+          <h2 style="margin:0;font-size:1.1rem;font-weight:800;">${sub.code}: ${sub.name} &mdash; Syllabus Checklist</h2>
+          <p class="muted" style="margin:4px 0 0;font-size:0.78rem;">Tick each unit after you can derive its formulas &amp; solve 2 problems cold. Saved on this device.</p>
+        </div>
+        <div class="primary-text tabular" style="font-size:0.95rem;font-weight:800;">${doneCount} / ${sub.topics.length} (${pct}%)</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        ${sub.topics.map(t => {
+          const checked = !!state.checkedTopics[t.id];
+          return `
+            <label class="topic-row ${checked ? "checked" : ""}">
+              <div class="topic-left">
+                <input type="checkbox" data-tid="${t.id}" class="topic-chk" ${checked ? "checked" : ""} />
+                <span class="topic-text" style="${checked ? "" : "font-weight:600;"}">${t.name}</span>
+              </div>
+              <span class="tag-chip ${t.tag === "MUST KNOW" ? "must" : ""}">${t.tag}</span>
+            </label>
+          `;
+        }).join("")}
+      </div>
+    </div>
+  `;
+}
+
+function renderPractice(sub) {
+  const list = sub.practice.filter(q => {
+    if (state.filterQ === "pending") return !state.solvedQ[q.id];
+    if (state.filterQ === "solved") return !!state.solvedQ[q.id];
+    return true;
+  });
+
+  return `
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="card practice-top">
+        <div style="font-size:0.9rem;font-weight:800;">${sub.code} Practice Arena (${sub.practice.length} Past-Paper &amp; Tutorial Drills)</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          ${[["all","All"],["pending","To Solve"],["solved","Mastered ✓"]].map(([val, lbl]) => `
+            <button data-f="${val}" type="button" class="f-btn ${state.filterQ === val ? "active" : ""}">${lbl}</button>
+          `).join("")}
+        </div>
+      </div>
+
+      ${list.length === 0 ? `<div class="card" style="padding:28px;text-align:center;font-size:0.86rem;color:var(--muted-foreground);">Nothing in this filter. Switch filter above to view all problems.</div>` : ""}
+
+      ${list.map(q => {
+        const solved = !!state.solvedQ[q.id];
+        return `
+          <div class="card q-card ${solved ? "solved" : ""}">
+            <div class="q-head">
+              <span class="code-chip">${q.level}</span>
+              <label style="display:flex;align-items:center;gap:7px;font-size:0.78rem;font-weight:700;cursor:pointer;">
+                <input type="checkbox" data-qid="${q.id}" class="q-chk" style="width:17px;height:17px;accent-color:var(--success);" ${solved ? "checked" : ""} />
+                <span>${solved ? "Solved Independently ✓" : "Mark Solved"}</span>
+              </label>
+            </div>
+            <pre class="codebox" style="font-family:inherit;font-size:0.88rem;line-height:1.5;">${q.q}</pre>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <button type="button" data-tog="hint-${q.id}" class="tog-btn btn-toggle btn-hint">Show Hint</button>
+              <button type="button" data-tog="sol-${q.id}" class="tog-btn btn-toggle btn-sol">Show Full Solution</button>
+            </div>
+            <div id="hint-${q.id}" class="hidden callout hint">
+              <strong class="warning-text">Hint:</strong> ${q.hint}
+            </div>
+            <div id="sol-${q.id}" class="hidden callout sol">
+              <div class="success-text" style="font-weight:800;margin-bottom:4px;">Step-by-Step Solution:</div>
+              <pre class="codebox" style="font-size:0.8rem;line-height:1.45;">${q.sol}</pre>
+            </div>
+          </div>
+        `;
+      }).join("")}
+    </div>
+  `;
+}
+
+function renderCgpa(sub) {
+  return `
+    <div class="two-col">
+      <div class="card" style="padding:18px;display:flex;flex-direction:column;gap:12px;">
+        <div class="primary-text" style="font-size:0.74rem;font-weight:800;text-transform:uppercase;">IIITDM 9+ CGPA Scoring Edge &bull; ${sub.code}</div>
+        <h2 style="margin:0;font-size:1.1rem;font-weight:800;">How Top Scorers Capture S / A Grades</h2>
+        <p class="muted" style="margin:0;font-size:0.86rem;line-height:1.5;">${sub.strategy.gradeRule}</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${sub.strategy.targets.map(t => `
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:9px;background:var(--content);border:1px solid var(--card-border);font-size:0.8rem;">
+              <span>${t.item}</span>
+              <span class="success-text" style="font-weight:800;flex-shrink:0;">${t.weight}</span>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+
+      <div class="card" style="padding:18px;display:flex;flex-direction:column;gap:12px;">
+        <div class="warning-text" style="font-size:0.74rem;font-weight:800;text-transform:uppercase;">Fast 3-Hour Subject Sprint Plan</div>
+        <h2 style="margin:0;font-size:1.1rem;font-weight:800;">${sub.name} High-ROI Order</h2>
+        <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;font-size:0.85rem;">
+          ${sub.strategy.schedule.map((s, i) => `
+            <li style="display:flex;align-items:flex-start;gap:10px;padding:11px;border-radius:10px;background:var(--content);border:1px solid var(--card-border);">
+              <span class="step-badge">${i + 1}</span>
+              <span>${s}</span>
+            </li>
+          `).join("")}
+        </ol>
+        <div class="callout" style="font-size:0.78rem;color:var(--muted-foreground);">
+          <strong style="color:var(--foreground);">Rule of Thumb for 9+ CGPA:</strong> Never leave a blank question &mdash; write the governing formula, theorem hypotheses/KCL/Maxwell law, and boundary conditions for partial credit even if algebra stalls.
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderDownloads() {
+  return `
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="card" style="padding:16px 18px;">
+        <h2 style="margin:0;font-size:1.05rem;font-weight:800;">Offline PowerPoint Decks (.pptx) &amp; Complete Study Guides</h2>
+        <p class="muted" style="margin:4px 0 0;font-size:0.82rem;">Open full interactive guides directly in your phone browser or download the PowerPoint slides to study offline.</p>
+      </div>
+      <div class="dl-grid">
+        ${DECK_FILES.map(d => `
+          <div class="card dl-card">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+                <span class="code-chip">${d.code}</span>
+                <span class="muted" style="font-size:0.74rem;font-weight:700;">${d.slides} PPTX Slides</span>
+              </div>
+              <h3 style="margin:8px 0 4px;font-size:1rem;font-weight:800;">${d.name}</h3>
+              <p class="muted" style="margin:0;font-size:0.8rem;line-height:1.4;">${d.desc}</p>
+            </div>
+            <div class="dl-actions">
+              <a class="dl-link primary" href="${d.pptx}" download>Download .pptx</a>
+              <a class="dl-link secondary" href="${d.guideHtml}">Read Full Guide</a>
+              <a class="dl-link secondary" href="${d.guideMd}" download>Raw .md</a>
+            </div>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+function wireTouchSwipe(sub) {
+  const card = document.getElementById("slide-card");
+  if (!card) return;
+  let startX = 0, startY = 0;
+  card.addEventListener("touchstart", e => {
+    if (e.touches.length !== 1) return;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  }, { passive: true });
+  card.addEventListener("touchend", e => {
+    if (!e.changedTouches.length) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    const dy = e.changedTouches[0].clientY - startY;
+    if (Math.abs(dx) < 48 || Math.abs(dy) > Math.abs(dx) * 0.85) return;
+    const idx = state.slideIdx[sub.code] || 0;
+    if (dx < 0 && idx < sub.slides.length - 1) {
+      state.slideIdx[sub.code] = idx + 1; saveState(); renderAll();
+    } else if (dx > 0 && idx > 0) {
+      state.slideIdx[sub.code] = idx - 1; saveState(); renderAll();
+    }
+  }, { passive: true });
+}
+
+function wireWorkspaceEvents(sub) {
+  const idx = state.slideIdx[sub.code] || 0;
+  const prevBtn = document.getElementById("prev-slide");
+  const nextBtn = document.getElementById("next-slide");
+  if (prevBtn) prevBtn.onclick = () => { if (idx > 0) { state.slideIdx[sub.code] = idx - 1; saveState(); renderAll(); } };
+  if (nextBtn) nextBtn.onclick = () => { if (idx < sub.slides.length - 1) { state.slideIdx[sub.code] = idx + 1; saveState(); renderAll(); } };
+  document.querySelectorAll(".jump-btn").forEach(b => {
+    b.onclick = () => { state.slideIdx[sub.code] = Number(b.dataset.jump); saveState(); renderAll(); };
+  });
+  const togSlide = document.getElementById("toggle-slide-topic");
+  if (togSlide) togSlide.onclick = () => {
+    const tid = sub.slides[idx].topicId;
+    state.checkedTopics[tid] = !state.checkedTopics[tid];
+    saveState(); renderAll();
+  };
+  document.querySelectorAll(".topic-chk").forEach(chk => {
+    chk.onchange = () => { state.checkedTopics[chk.dataset.tid] = chk.checked; saveState(); renderAll(); };
+  });
+  document.querySelectorAll(".f-btn").forEach(b => {
+    b.onclick = () => { state.filterQ = b.dataset.f; saveState(); renderAll(); };
+  });
+  document.querySelectorAll(".q-chk").forEach(chk => {
+    chk.onchange = () => { state.solvedQ[chk.dataset.qid] = chk.checked; saveState(); renderAll(); };
+  });
+  document.querySelectorAll(".tog-btn").forEach(b => {
+    b.onclick = () => {
+      const box = document.getElementById(b.dataset.tog);
+      if (box) box.classList.toggle("hidden");
+    };
+  });
+  wireTouchSwipe(sub);
+}
+
+function renderAll() {
+  renderTabs();
+  const sub = DATA[state.subject];
+  const ws = document.getElementById("workspace");
+  if (state.mode === "slides") ws.innerHTML = renderSlides(sub);
+  else if (state.mode === "checklist") ws.innerHTML = renderChecklist(sub);
+  else if (state.mode === "practice") ws.innerHTML = renderPractice(sub);
+  else if (state.mode === "cgpa") ws.innerHTML = renderCgpa(sub);
+  else ws.innerHTML = renderDownloads();
+  wireWorkspaceEvents(sub);
+  updateGlobalHeader();
+}
+
+document.addEventListener("keydown", e => {
+  if (state.mode !== "slides") return;
+  const sub = DATA[state.subject];
+  const idx = state.slideIdx[sub.code] || 0;
+  if (e.key === "ArrowRight" && idx < sub.slides.length - 1) {
+    state.slideIdx[sub.code] = idx + 1; saveState(); renderAll();
+  } else if (e.key === "ArrowLeft" && idx > 0) {
+    state.slideIdx[sub.code] = idx - 1; saveState(); renderAll();
+  }
+});
+
+document.getElementById("reset-btn").onclick = () => {
+  if (!confirm("Reset checked topics & solved questions on this device?")) return;
+  state.checkedTopics = {};
+  state.solvedQ = {};
+  saveState();
+  renderAll();
+};
+
+renderAll();
+</script>
+</body>
+</html>

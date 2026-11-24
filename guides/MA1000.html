@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MA1000 Study Guide &bull; IIITDM Sem 1</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("iiitdm_sem1_theme");
+        var preferDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (saved === "dark" || (!saved && preferDark)) document.documentElement.classList.add("dark");
+      } catch (_) {}
+    })();
+  </script>
+
+  <style>
+
+    :root {
+      color-scheme: light;
+      --background: #f8fafc;
+      --card: #ffffff;
+      --content: #f1f5f9;
+      --foreground: #0f172a;
+      --muted-foreground: #475569;
+      --primary: #2563eb;
+      --primary-foreground: #ffffff;
+      --border: #cbd5e1;
+      --card-border: #e2e8f0;
+      --success: #15803d;
+      --warning: #b45309;
+      --error: #dc2626;
+      --chart-1: #2563eb;
+      --chart-2: #0f766e;
+      --chart-3: #6d28d9;
+      --chart-4: #c2410c;
+      --shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+    }
+    html.dark {
+      color-scheme: dark;
+      --background: #0b1120;
+      --card: #111827;
+      --content: #1e293b;
+      --foreground: #f1f5f9;
+      --muted-foreground: #94a3b8;
+      --primary: #2563eb;
+      --primary-foreground: #ffffff;
+      --link: #60a5fa;
+      --border: #334155;
+      --card-border: #1e293b;
+      --success: #4ade80;
+      --warning: #fbbf24;
+      --error: #f87171;
+      --chart-1: #60a5fa;
+      --chart-2: #2dd4bf;
+      --chart-3: #a78bfa;
+      --chart-4: #fb923c;
+      --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--background);
+      color: var(--foreground);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+      overflow-x: hidden;
+      overflow-x: clip;
+    }
+    a { color: var(--link, var(--primary)); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    button { font-family: inherit; color: inherit; cursor: pointer; background: none; border: none; }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+    .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 14px; display: flex; flex-direction: column; gap: 16px; }
+    .container > * { min-width: 0; max-width: 100%; }
+    @media (min-width: 768px) { .container { padding: 24px; gap: 20px; } }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); min-width: 0; max-width: 100%; }
+    .muted { color: var(--muted-foreground); }
+    .primary-text { color: var(--link, var(--primary)); }
+    .success-text { color: var(--success); }
+    .warning-text { color: var(--warning); }
+    .error-text { color: var(--error); }
+    .tabular { font-variant-numeric: tabular-nums; }
+    .hidden { display: none !important; }
+    .w-full { width: 100%; }
+    .max-w-md { max-width: 448px; }
+    .mx-auto { margin-left: auto; margin-right: auto; display: block; }
+    .frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 3px; font-size: 0.9em; line-height: 1.1; }
+    .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 3px 1px; }
+    .frac > span:last-child { padding: 1px 3px 0; }
+    .math { font-family: Georgia, Cambria, "Times New Roman", serif; }
+    pre.codebox {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-x: auto;
+      margin: 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      background: var(--content);
+      border: 1px solid var(--card-border);
+      border-radius: 5px;
+      padding: 1px 5px;
+      font-size: 0.9em;
+    }
+    kbd {
+      padding: 2px 6px;
+      font-size: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      background: var(--content);
+    }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+    }
+    .topbar-inner { max-width: 960px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+    .article-wrap { width: 100%; max-width: 960px; margin: 12px auto 40px; padding: 18px 16px; min-width: 0; overflow-wrap: anywhere; overflow-x: clip; }
+    @media (min-width: 768px) { .article-wrap { padding: 28px 34px; } }
+    article h1 { font-size: 1.4rem; border-bottom: 1px solid var(--card-border); padding-bottom: 8px; margin-top: 0; }
+    article h2 { font-size: 1.18rem; margin-top: 26px; color: var(--link, var(--primary)); border-bottom: 1px solid var(--card-border); padding-bottom: 4px; }
+    article h3 { font-size: 1.02rem; margin-top: 18px; }
+    article p, article li { font-size: 0.92rem; line-height: 1.6; max-width: 100%; overflow-wrap: anywhere; }
+    article ul, article ol { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+    article hr { border: none; border-top: 1px solid var(--card-border); margin: 22px 0; }
+    .table-wrap { width: 100%; max-width: 100%; overflow-x: auto; margin: 12px 0; border: 1px solid var(--border); border-radius: 10px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.84rem; min-width: 540px; }
+    th, td { text-align: left; padding: 9px 11px; border-bottom: 1px solid var(--card-border); vertical-align: top; }
+    th { background: var(--content); font-weight: 800; }
+    pre.codeblock { max-width: 100%; background: var(--content); border: 1px solid var(--border); border-radius: 10px; padding: 12px; font-size: 0.82rem; margin: 10px 0; overflow-x: auto; }
+    pre.codeblock code { border: none; background: transparent; padding: 0; }
+    .math-block, .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: 6px 2px; text-align: center; }
+    .table-wrap { position: relative; }
+    article .katex { position: relative; }
+    article .katex-mathml { left: 0; }
+    @media (max-width: 640px) {
+      article .katex { font-size: 1.04em; }
+      article p .katex, article li .katex { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: bottom; }
+    }
+    .alert { border-left: 4px solid var(--primary); background: var(--content); border-radius: 8px; padding: 12px 14px; margin: 12px 0; font-size: 0.88rem; }
+    .alert.warning { border-color: var(--warning); }
+    .alert.important { border-color: var(--chart-3); }
+    .alert.caution { border-color: var(--error); }
+    .alert.tip { border-color: var(--success); }
+    .chk-line { display: flex; align-items: flex-start; gap: 8px; cursor: pointer; }
+    .chk-line input { margin-top: 4px; width: 16px; height: 16px; accent-color: var(--primary); }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" style="font-weight:800;font-size:0.86rem;">&larr; Study Hub</a>
+        <span style="font-weight:800;font-size:0.9rem;">MA1000: Calculus</span>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href="../decks/MA1000_Calculus_Exam_Deck.pptx" download style="padding:7px 11px;border-radius:8px;background:var(--primary);color:var(--primary-foreground);font-size:0.78rem;font-weight:700;text-decoration:none;">Download .pptx (14 slides)</a>
+        <button id="theme-btn" type="button" style="padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:var(--card);font-size:0.76rem;font-weight:600;">Theme</button>
+      </div>
+    </div>
+  </div>
+  <main class="container">
+    <article class="card article-wrap">
+      <h1>End-Semester Exam Study Guide — Calculus (<code>MA1000</code>)</h1>
+<p><strong>Course:</strong> Calculus (<code>MA1000</code>) — IIITDM Kancheepuram  <br><strong>Time Horizon:</strong> Designed for rapid, high-yield mastery in <strong>&lt; 4 days</strong>  <br><strong>Synthesized from:</strong> Lecture notes (<code>01 Sequences, Series and Power Series</code> through <code>05 Partial Derivatives</code>, <code>Sequences.pdf</code>), <code>Assignment 1 &amp; 2</code>, <code>Problem Sets 1–7</code>, <code>Tutorial on Module 1 &amp; 3</code>, <code>Rolle and Cauchy Theorem Problems</code>, <code>Fundamental Theorem of Calculus.pdf</code>, <code>Quotient rule proof.pdf</code>, and Previous Year Papers (<code>Midsem_21</code>, <code>CAL-Midsem_21batch</code>, <code>Endsem_21</code>, <code>Midsem Dec 2022</code>, <code>Endsem Feb 2023</code>, <code>MAT104T</code> Quiz/Midsem).</p>
+<hr />
+<h2>1. Exam Blueprint &amp; High-Yield Weightage</h2>
+<p>Based on the IIITDM Kancheepuram end-semester (<code>Endsem_21</code> — 40 marks, <code>Endsem Feb 2023</code> — 12 questions) and mid-semester papers, <code>MA1000</code> exams consistently test <strong>exact theorem statements, rigorous proofs, counterexamples, and clean step-by-step computations</strong>:</p>
+<div class="table-wrap"><table><thead><tr><th>Module</th><th>Topic Area</th><th>Typical Exam Questions</th><th>Priority</th></tr></thead><tbody><tr><td><strong>1A</strong></td><td><strong>Sequences &amp; Convergence</strong></td><td>$\epsilon$-$N$ proofs, Monotone Convergence Theorem (recursive sequences), Squeeze/Special limits, Subsequences &amp; oscillation, Cauchy&#x27;s 1st &amp; 2nd theorems</td><td>High</td></tr><tr><td><strong>1B</strong></td><td><strong>Infinite Series</strong></td><td>$n$-th term divergence ($\sin(1/n)$ vs $\cos(1/n)$), Integral/Comparison/Ratio/Root tests (prime-indexed series), Leibniz alternating error bounds ($</td><td>R_n</td><td>\le b_{n+1}$), Conditional vs Absolute</td><td>High</td></tr><tr><td><strong>1C</strong></td><td><strong>Power &amp; Taylor Series</strong></td><td>Convergence Theorem proof, Radius &amp; Interval of Convergence (with endpoints!), Term-by-term differentiation/integration ($\tan^{-1}x$, $\ln(1+x)$), Maclaurin ($\sqrt{1+x}$, $\sin^2 x$, $1/(1+x^2)$)</td><td>High</td></tr><tr><td><strong>2</strong></td><td><strong>1D Limits &amp; Continuity</strong></td><td>$\epsilon$-$\delta$ proofs (linear &amp; quadratic), Removable/Jump/Infinite/Oscillating discontinuities, Dirichlet-type pointwise continuity, IVT root existence</td><td>Very High</td></tr><tr><td><strong>3</strong></td><td><strong>Differentiation &amp; MVTs</strong></td><td>Differentiability $\Rightarrow$ Continuity (and counterexamples $x\sin(1/x)$, $x^2\sin(1/x)$), Quotient Rule proof, Rolle&#x27;s / Lagrange MVT / Cauchy MVT proofs &amp; inequalities, Critical points ($f&#x27;=0$ or <strong>DNE</strong>)</td><td>Very High</td></tr><tr><td><strong>4</strong></td><td><strong>Riemann Integration &amp; FTC</strong></td><td>$L(P,f) \le L(P^*,f) \le U(P^*,f) \le U(P,f)$, Explicit equal-partition $U(P,f)-L(P,f) &lt; \epsilon$ proof, Limit of Riemann sums, FTC Part 1 &amp; 2 proofs, Leibniz rule</td><td>Very High</td></tr><tr><td><strong>5</strong></td><td><strong>Multivariable Calculus</strong></td><td>Open/Closed/Bounded sets in $\mathbb{R}^2$, Two-Path Test &amp; 2D $\epsilon$-$\delta$ limits, Partial derivatives at $(0,0)$, Differentiability vs Continuity, Chain Rule, Directional Derivative &amp; Gradient ($\nabla f$)</td><td>Very High</td></tr></tbody></table></div>
+<hr />
+<h2>2. Module 1: Sequences, Infinite Series &amp; Power Series</h2>
+<h3>2.1 Sequences: Core Definitions &amp; Theorems</h3>
+<ol><li><strong>$\epsilon$-$N$ Definition of Convergence:</strong> A sequence $\{a_n\}$ converges to $L$ ($\lim_{n\to\infty} a_n = L$) if for every $\epsilon &gt; 0$, there exists $N \in \mathbb{N}$ such that for all $n \ge N$, $|a_n - L| &lt; \epsilon$.<br>- <em>Proof Template:</em> Start with $|a_n - L| &lt; \text{simple upper bound in } n$. Set that bound $&lt; \epsilon$, solve for $n &gt; g(\epsilon)$, and explicitly write <em>&quot;Choose $N = \lceil g(\epsilon) \rceil + 1$.&quot;</em></li><li><strong>Limit Laws &amp; Squeeze Theorem:</strong> If $a_n \to A$ and $b_n \to B$, then $a_n \pm b_n \to A \pm B$, $a_n b_n \to AB$, and $a_n/b_n \to A/B$ ($B \ne 0$). If $a_n \le c_n \le b_n$ for $n \ge N_0$ and $\lim a_n = \lim b_n = L$, then $\lim c_n = L$.</li><li><strong>7 Must-Know Special Limits:</strong><br>- $\lim_{n\to\infty} \frac{\ln n}{n} = 0$<br>- $\lim_{n\to\infty} n^{1/n} = 1$<br>- $\lim_{n\to\infty} x^{1/n} = 1 \quad (x &gt; 0)$<br>- $\lim_{n\to\infty} x^n = 0 \quad (|x| &lt; 1)$<br>- $\lim_{n\to\infty} \left(1 + \frac{x}{n}\right)^n = e^x \quad (\text{any } x \in \mathbb{R})$<br>- $\lim_{n\to\infty} \frac{x^n}{n!} = 0 \quad (\text{any } x \in \mathbb{R})$<br>- $\lim_{n\to\infty} (n!)^{1/n^2} = 1 \quad \text{(Proof via } 1 \le (n!)^{1/n^2} \le (n^n)^{1/n^2} = n^{1/n} \to 1 \text{)}$</li><li><strong>Monotone Convergence Theorem (MCT):</strong> Every bounded monotonic sequence converges (increasing + bounded above $\Rightarrow$ converges to $\sup\{a_n\}$; decreasing + bounded below $\Rightarrow$ converges to $\inf\{a_n\}$).</li><li><strong>Subsequences &amp; Oscillation (<code>Sequences.pdf</code>):</strong><br>- $\{a_n\}$ converges to $L$ $\iff$ <strong>every</strong> subsequence converges to $L$.<br>- <em>How to prove divergence:</em> Find <strong>two subsequences converging to different limits</strong> (e.g., $a_{2k}$ and $a_{2k+1}$), OR show $\{a_n\}$ is unbounded.<br>- <strong>Bolzano-Weierstrass Theorem:</strong> Every bounded sequence has a convergent subsequence.<br>- A sequence converges iff it is bounded and has a <strong>unique limit point</strong>.</li><li><strong>Cauchy&#x27;s 1st &amp; 2nd Theorems on Limits (<code>Sequences.pdf</code>):</strong><br>- <em>1st Theorem (Cesàro Mean):</em> If $a_n \to L$, then $\frac{a_1 + a_2 + \dots + a_n}{n} \to L$. <em>(Converse is false: $a_n = (-1)^n$ oscillates, yet Cesàro mean $\to 0$).</em><br>- <em>2nd Theorem:</em> If $a_n &gt; 0$ and $\lim \frac{a_{n+1}}{a_n} = L$, then $\lim (a_n)^{1/n} = L$. <em>(Note: $(a_n)^{1/n}$ can converge even when $a_{n+1}/a_n$ fails to have a limit!)</em></li></ol>
+<h3>2.2 Infinite Series: Complete Test Decision Table</h3>
+<p>First check: <strong>Does $\lim_{n\to\infty} a_n = 0$?</strong> If NOT (or DNE), $\sum a_n$ <strong>diverges immediately</strong> by the <strong>$n$-th Term Test</strong>. <em>(Trap: $\lim a_n = 0$ does NOT prove convergence — e.g., $\sum 1/n$ diverges!)</em></p>
+<div class="table-wrap"><table><thead><tr><th>Test</th><th>Applies To</th><th>Condition for Convergence</th><th>Condition for Divergence</th><th>Exam Notes / Traps</th></tr></thead><tbody><tr><td><strong>Geometric</strong></td><td>$\sum_{n=0}^\infty a r^n$</td><td>$</td><td>r</td><td>&lt; 1$; Sum $= \frac{a}{1-r}$</td><td>$</td><td>r</td><td>\ge 1$ ($a \ne 0$)</td><td>Always check the starting index ($n=0$ vs $n=1$)!</td></tr><tr><td><strong>Telescoping</strong></td><td>$\sum (b_n - b_{n+1})$</td><td>$\lim_{N\to\infty} S_N$ exists finitely</td><td>$\lim_{N\to\infty} S_N$ DNE / $\infty$</td><td>Write $S_N$ explicitly; never cancel terms without keeping tail terms!</td></tr><tr><td><strong>$p$-Series</strong></td><td>$\sum_{n=1}^\infty \frac{1}{n^p}$</td><td>$p &gt; 1$</td><td>$p \le 1$</td><td>$p=1$ is Harmonic series (diverges).</td></tr><tr><td><strong>Integral Test</strong></td><td>$a_n = f(n) \ge 0$, $f$ continuous, positive, <strong>decreasing</strong></td><td>$\int_N^\infty f(x)\,dx &lt; \infty$</td><td>$\int_N^\infty f(x)\,dx = \infty$</td><td>Verify decreasing ($f&#x27;(x) \le 0$). Ideal for $\sum \frac{1}{n(\ln n)^p}$.</td></tr><tr><td><strong>Direct Comparison</strong></td><td>$0 \le a_n \le b_n$</td><td>$\sum b_n$ conv $\Rightarrow$ $\sum a_n$ conv</td><td>$\sum a_n$ div $\Rightarrow$ $\sum b_n$ div</td><td>Direction of inequality matters!</td></tr><tr><td><strong>Limit Comparison (LCT)</strong></td><td>$a_n &gt; 0, b_n &gt; 0$</td><td>$\lim \frac{a_n}{b_n} = c \in (0,\infty)$ $\Rightarrow$ both behave alike; if $c=0$ &amp; $\sum b_n$ conv $\Rightarrow \sum a_n$ conv</td><td>If $c=\infty$ &amp; $\sum b_n$ div $\Rightarrow \sum a_n$ div</td><td>Use $\sin(x) \sim x$, $\tan^{-1}(1/n) \sim 1/n$, rational highest powers.</td></tr><tr><td><strong>Ratio Test</strong></td><td>Factorials $n!$, $a^n$</td><td>$L = \lim \left</td><td>\frac{a_{n+1}}{a_n}\right</td><td>&lt; 1$ (Abs. Conv.)</td><td>$L &gt; 1$ or $L = \infty$</td><td><strong>$L = 1$ is inconclusive</strong> (always inconclusive for algebraic/rational $p$-series).</td></tr><tr><td><strong>Root Test</strong></td><td>Powers $(\dots)^n$, piecewise odd/even/prime formulas</td><td>$L = \lim_{n\to\infty}</td><td>a_n</td><td>^{1/n} &lt; 1$ (or $\limsup</td><td>a_n</td><td>^{1/n} &lt; 1$)</td><td>$L &gt; 1$ or $L = \infty$</td><td>Stronger than Ratio Test; solves non-uniform terms like prime vs non-prime!</td></tr><tr><td><strong>Alternating Series (Leibniz)</strong></td><td>$\sum (-1)^{n-1} b_n$ ($b_n &gt; 0$)</td><td>(1) $b_{n+1} \le b_n$ eventually, AND (2) $\lim b_n = 0$</td><td>If $\lim b_n \ne 0$ ($n$-th term test)</td><td><strong>Error bound:</strong> $</td><td>S - S_n</td><td>=</td><td>R_n</td><td>\le b_{n+1}$ (if monotonic from start).</td></tr></tbody></table></div>
+<h3>2.3 Absolute vs. Conditional Convergence</h3>
+<ul><li><strong>Absolutely Convergent:</strong> $\sum |a_n|$ converges ($\Rightarrow \sum a_n$ also converges). Safe under arbitrary rearrangement!</li><li><strong>Conditionally Convergent:</strong> $\sum a_n$ converges, but $\sum |a_n|$ diverges (classic example: $\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n^p}$ for $0 &lt; p \le 1$).</li></ul>
+<h3>2.4 Power Series, Radius of Convergence &amp; Taylor/Maclaurin Series</h3>
+<ol><li><strong>Convergence Theorem for $\sum_{n=0}^\infty c_n (x - a)^n$:</strong> Exactly three possibilities:</li><li>Converges for <strong>all</strong> $x \in \mathbb{R}$ ($R = \infty$).</li><li>Converges <strong>only</strong> at $x = a$ ($R = 0$).</li><li>There exists $R &gt; 0$ such that the series converges <strong>absolutely</strong> for $|x - a| &lt; R$ and <strong>diverges</strong> for $|x - a| &gt; R$.<br>- <strong>CRITICAL:</strong> The endpoints $x = a - R$ and $x = a + R$ MUST always be tested <strong>individually</strong> (Ratio/Root gives $L=1$ at endpoints).</li><li><strong>Term-by-Term Differentiation &amp; Integration:</strong> Inside $(a-R, a+R)$, a power series can be differentiated and integrated term by term <strong>with the same radius $R$</strong> <em>(though endpoint convergence may change — differentiating can lose an endpoint; integrating can gain one!)</em>.</li><li><strong>Standard Maclaurin Expansions (Memorize with Interval!):</strong><br>- $\frac{1}{1 - x} = \sum_{n=0}^\infty x^n \quad (|x| &lt; 1)$<br>- $\frac{1}{(1-x)^2} = \sum_{n=1}^\infty n x^{n-1} = \sum_{n=0}^\infty (n+1)x^n \quad (|x| &lt; 1)$<br>- $e^x = \sum_{n=0}^\infty \frac{x^n}{n!} \quad (x \in \mathbb{R})$<br>- $\sin x = \sum_{n=0}^\infty \frac{(-1)^n x^{2n+1}}{(2n+1)!} \quad (x \in \mathbb{R})$<br>- $\cos x = \sum_{n=0}^\infty \frac{(-1)^n x^{2n}}{(2n)!} \quad (x \in \mathbb{R})$<br>- $\ln(1 + x) = \sum_{n=1}^\infty \frac{(-1)^{n-1} x^n}{n} \quad (-1 &lt; x \le 1)$<br>- $\tan^{-1} x = \sum_{n=0}^\infty \frac{(-1)^n x^{2n+1}}{2n+1} \quad (-1 \le x \le 1)$<br>- <strong>Binomial:</strong> $(1+x)^m = 1 + mx + \frac{m(m-1)}{2!}x^2 + \frac{m(m-1)(m-2)}{3!}x^3 + \dots \quad (|x| &lt; 1)$</li><li><strong>Taylor&#x27;s Uniqueness Warning:</strong> $f(x) = e^{-1/x^2}$ ($x \ne 0$), $f(0)=0$ is $C^\infty$ at $0$ with $f^{(n)}(0) = 0$ for ALL $n \ge 0$. Its Maclaurin series is identically $0$, which equals $f(x)$ <strong>only at $x=0$</strong>!</li></ol>
+<hr />
+<h2>3. Module 2: Limits &amp; Continuity (Single Variable)</h2>
+<h3>3.1 Formal $\epsilon$-$\delta$ Definition &amp; Proof Recipe</h3>
+<p>$\lim_{x\to c} f(x) = L$ means: $\forall \epsilon &gt; 0,\ \exists \delta &gt; 0$ such that whenever $0 &lt; |x - c| &lt; \delta$, we have $|f(x) - L| &lt; \epsilon$.</p>
+<p><strong>Two-Step $\epsilon$-$\delta$ Exam Recipe (For Quadratic/Nonlinear $f(x)$ like $x^2 \to 4$ as $x \to 2$):</strong></p>
+<ol><li>Factor $|f(x) - L| = |x - c|\cdot |g(x)|$. For $x^2 - 4$: $|x-2|\cdot |x+2|$.</li><li><strong>Pre-restrict $\delta \le 1$</strong> so $|x - 2| &lt; 1 \Rightarrow 1 &lt; x &lt; 3 \Rightarrow |x + 2| &lt; 5$.</li><li>Then $|x^2 - 4| &lt; 5|x - 2| &lt; \epsilon$ whenever $|x - 2| &lt; \epsilon/5$.</li><li>Write: <em>&quot;Take $\delta = \min\left(1, \frac{\epsilon}{5}\right)$.&quot;</em> Then verify: $0 &lt; |x-2| &lt; \delta \Rightarrow |x+2|&lt;5$ and $|x-2|&lt;\epsilon/5 \Rightarrow |x^2-4| &lt; 5(\epsilon/5) = \epsilon$.</li></ol>
+<h3>3.2 Continuity &amp; Types of Discontinuities</h3>
+<p>$f$ is continuous at $c$ iff: (1) $f(c)$ exists, (2) $\lim_{x\to c} f(x)$ exists, and (3) $\lim_{x\to c} f(x) = f(c)$.</p>
+<ol><li><strong>Removable Discontinuity:</strong> $\lim_{x\to c} f(x)$ exists, but $f(c)$ is undefined or $\ne L$. <em>(Fixable by Continuous Extension).</em></li><li><strong>Jump Discontinuity:</strong> One-sided limits exist finitely, but $\lim_{x\to c^-} f(x) \ne \lim_{x\to c^+} f(x)$.</li><li><strong>Infinite Discontinuity:</strong> At least one one-sided limit is $\pm \infty$.</li><li><strong>Oscillating Discontinuity:</strong> $\sin(1/x)$ as $x \to 0$ (oscillates infinitely without approaching any value).</li></ol>
+<h3>3.3 Pointwise Continuity Trap (Dirichlet Variant) &amp; IVT</h3>
+<ul><li><strong>Classic IIITDM Question (<code>Assignment 2</code>, <code>Midsem Dec 2022</code>):</strong> $f(x) = x$ if $x \in \mathbb{Q}$, and $f(x) = 0$ if $x \notin \mathbb{Q}$.</li><li>At $c \ne 0$: sequences $q_n \in \mathbb{Q} \to c$ give $f(q_n) = q_n \to c$, while $r_n \notin \mathbb{Q} \to c$ give $f(r_n) = 0 \to 0 \ne c$ $\Rightarrow$ <strong>Discontinuous everywhere except $0$</strong>.</li><li>At $c = 0$: $|f(x) - 0| \le |x| \to 0$ as $x \to 0$ $\Rightarrow$ <strong>Continuous ONLY at $x = 0$</strong>!</li><li><strong>Intermediate Value Theorem (IVT):</strong> If $f$ is continuous on closed $[a,b]$ and $y_0$ lies between $f(a)$ and $f(b)$, there exists $c \in [a,b]$ such that $f(c) = y_0$.</li><li><em>Root Proof Template:</em> Check $f$ continuous on $[a,b]$, evaluate $f(a)$ and $f(b)$ of opposite signs, invoke IVT $\Rightarrow$ at least one root in $(a,b)$. (Pair with $f&#x27;(x) &gt; 0$ or Rolle&#x27;s theorem for <em>uniqueness</em>!)</li></ul>
+<hr />
+<h2>4. Module 3: Differentiation &amp; Mean Value Theorems</h2>
+<h3>4.1 Differentiability &amp; Counterexamples</h3>
+<ul><li><strong>Definition:</strong> $f&#x27;(c) = \lim_{h\to 0} \frac{f(c+h) - f(c)}{h}$ exists <strong>finitely</strong> ($RHD = LHD$).</li><li><strong>Theorem:</strong> $f$ differentiable at $c \implies f$ continuous at $c$.</li><li><em>Proof:</em> $f(c+h) - f(c) = \frac{f(c+h)-f(c)}{h} \cdot h \to f&#x27;(c) \cdot 0 = 0$.</li><li><strong>Important Exam Counterexamples:</strong></li><li><strong>Continuous everywhere, not differentiable at $0$:</strong> $f(x) = |x|$ ($RHD = 1 \ne LHD = -1$), or $f(x) = x^{1/3}$ (vertical tangent, limit $= \infty$), or $f(x) = x \sin(1/x)$ ($f(0)=0$: continuous at $0$ by Squeeze, but difference quotient $= \sin(1/h)$ oscillates!).</li><li><strong>Differentiable at $0$ (including $f&#x27;(0)=0$), derivative NOT continuous at $0$:</strong> $f(x) = x^2 \sin(1/x)$ ($f(0)=0$). Here $\frac{f(h)-0}{h} = h \sin(1/h) \to 0 \Rightarrow f&#x27;(0)=0$, while for $x \ne 0$, $f&#x27;(x) = 2x\sin(1/x) - \cos(1/x)$ has no limit as $x \to 0$!</li><li><strong>Darboux&#x27;s Theorem:</strong> Derivatives obey the Intermediate Value Property (even if $f&#x27;$ is not continuous, $f&#x27;$ cannot have a jump discontinuity).</li></ul>
+<h3>4.2 Critical Points &amp; Mean Value Theorems</h3>
+<ul><li><strong>Critical Point Trap (<code>Endsem_21</code> Q6):</strong> An interior point $c$ of domain $D$ is a <strong>critical point</strong> of $f$ if <strong>$f&#x27;(c) = 0$ OR $f&#x27;(c)$ does not exist</strong>! Never forget points where $f&#x27;$ is undefined (cusps/corners/vertical tangents)!</li><li><strong>Extreme Value Theorem (EVT):</strong> Continuous $f$ on closed bounded $[a,b]$ attains both absolute maximum and absolute minimum on $[a,b]$ (check critical points in $(a,b)$ AND endpoints $a, b$).</li><li><strong>Fermat&#x27;s / First Derivative Theorem:</strong> If $f$ has a local extremum at interior $c$ and $f&#x27;(c)$ exists, then $f&#x27;(c) = 0$.</li><li><strong>Rolle&#x27;s Theorem:</strong> If (1) $f$ continuous on $[a,b]$, (2) $f$ differentiable on $(a,b)$, and (3) $f(a) = f(b)$, then $\exists c \in (a,b)$ with $f&#x27;(c) = 0$.</li><li><strong>Lagrange Mean Value Theorem (LMVT):</strong> If $f$ continuous on $[a,b]$ and differentiable on $(a,b)$, then $\exists c \in (a,b)$ such that<br>$$f&#x27;(c) = \frac{f(b) - f(a)}{b - a}$$<br><em>Corollary:</em> If $f&#x27;(x) = 0$ on $(a,b)$, $f$ is constant on $(a,b)$. If $f&#x27;(x) = g&#x27;(x)$ on $(a,b)$, $f(x) = g(x) + C$.</li><li><strong>Cauchy Mean Value Theorem (CMVT):</strong> If $f, g$ continuous on $[a,b]$, differentiable on $(a,b)$, and $g&#x27;(x) \ne 0$ on $(a,b)$, then $\exists c \in (a,b)$ such that<br>$$\frac{f&#x27;(c)}{g&#x27;(c)} = \frac{f(b) - f(a)}{g(b) - g(a)}$$<br><em>(Proof trick: Apply Rolle&#x27;s Theorem to $h(x) = [f(b)-f(a)]g(x) - [g(b)-g(a)]f(x)$!)</em></li></ul>
+<hr />
+<h2>5. Module 4: Riemann Integration &amp; FTC</h2>
+<h3>5.1 Partitions, Darboux Sums &amp; Integrability Criterion</h3>
+<ul><li>For bounded $f: [a,b] \to \mathbb{R}$ and partition $P = \{a = x_0 &lt; x_1 &lt; \dots &lt; x_n = b\}$:<br>$$m_i = \inf_{x\in[x_{i-1},x_i]} f(x), \quad M_i = \sup_{x\in[x_{i-1},x_i]} f(x), \quad \Delta x_i = x_i - x_{i-1}$$<br>$$L(P,f) = \sum_{i=1}^n m_i \Delta x_i, \qquad U(P,f) = \sum_{i=1}^n M_i \Delta x_i$$</li><li><strong>Refinement Property:</strong> If $P^* \supset P$ is a refinement, then:<br>$$L(P,f) \le L(P^*,f) \le U(P^*,f) \le U(P,f)$$</li><li>For any two partitions $P_1, P_2$, taking common refinement $P^* = P_1 \cup P_2$ proves $L(P_1,f) \le U(P_2,f)$. Thus:<br>$$\underline{\int_a^b} f(x)\,dx = \sup_P L(P,f) \le \inf_P U(P,f) = \overline{\int_a^b} f(x)\,dx$$</li><li><strong>Riemann / Darboux Criterion:</strong> $f \in \mathcal{R}[a,b]$ $\iff$ for every $\epsilon &gt; 0$, there exists a partition $P$ such that<br>$$U(P,f) - L(P,f) = \sum_{i=1}^n (M_i - m_i)\Delta x_i &lt; \epsilon$$</li><li><strong>Key Theorems &amp; Counterexamples:</strong></li><li>Every <strong>continuous</strong> function on $[a,b]$ is integrable (via uniform continuity on $[a,b]$).</li><li>Every <strong>monotonic</strong> function on $[a,b]$ is integrable (telescoping $\sum (M_i - m_i)\Delta x_i \le \frac{b-a}{n}|f(b)-f(a)|$).</li><li>Every bounded function on $[a,b]$ continuous except at <strong>finitely many points</strong> is integrable.</li><li><strong>Dirichlet Function ($1$ on $\mathbb{Q}$, $0$ on $\mathbb{R}\setminus\mathbb{Q}$):</strong> On $[a,b]$, every subinterval contains both rationals and irrationals, so $M_i = 1, m_i = 0 \implies U(P,f) = b-a \ne L(P,f) = 0 \implies$ <strong>Not Riemann integrable</strong>!</li><li><strong>Limit of Riemann Sums Formula:</strong><br>$$\lim_{n\to\infty} \frac{b-a}{n} \sum_{k=1}^n f\!\left(a + k\frac{b-a}{n}\right) = \int_a^b f(x)\,dx \quad \text{and specially on } [0,1]:\quad \lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n f\!\left(\frac{k}{n}\right) = \int_0^1 f(x)\,dx$$</li></ul>
+<h3>5.2 Fundamental Theorem of Calculus (FTC)</h3>
+<ul><li><strong>FTC Part 1 (Differentiation of Integral):</strong> If $f$ is continuous on $[a,b]$ and $F(x) = \int_a^x f(t)\,dt$, then $F$ is continuous on $[a,b]$, differentiable on $(a,b)$, and $F&#x27;(x) = f(x)$.</li><li><strong>General Leibniz Chain Form:</strong><br>$$\frac{d}{dx} \int_{g(x)}^{h(x)} f(t)\,dt = f(h(x))\,h&#x27;(x) - f(g(x))\,g&#x27;(x)$$</li><li><strong>FTC Part 2 (Evaluation):</strong> If $f$ is continuous on $[a,b]$ and $F$ is any antiderivative of $f$ ($F&#x27;(x)=f(x)$), then $\int_a^b f(x)\,dx = F(b) - F(a)$.</li></ul>
+<hr />
+<h2>6. Module 5: Multivariable Functions, Limits &amp; Partial Derivatives</h2>
+<h3>6.1 Topology of $\mathbb{R}^2$ (Open, Closed &amp; Bounded Sets)</h3>
+<ul><li><strong>$\delta$-Disk:</strong> $N_\delta(x_0, y_0) = \{(x,y) \in \mathbb{R}^2 : (x-x_0)^2 + (y-y_0)^2 &lt; \delta^2\}$.</li><li><strong>Interior Point:</strong> $\exists$ an open disk centered at $P$ lying <strong>entirely inside</strong> $S$.</li><li><strong>Boundary Point:</strong> <strong>Every</strong> open disk centered at $P$ contains at least one point inside $S$ AND at least one point outside $S$ ($S^c$). <em>(Note: a boundary point need NOT belong to $S$!)</em></li><li><strong>Open Set:</strong> Every point in $S$ is an interior point (contains none of its boundary points).</li><li><strong>Closed Set:</strong> $S$ contains <strong>all</strong> of its boundary points (equivalently, its complement $\mathbb{R}^2 \setminus S$ is open).</li><li><strong>Bounded vs Unbounded:</strong> Bounded if $S$ lies inside some disk of finite radius centered at $(0,0)$.</li><li><strong>CRITICAL EXAM TRAP (<code>Endsem_21</code> Q9(b)):</strong> Is $S = \{(x,y) \in \mathbb{R}^2 : x^2 + y^2 = 1,\ y &gt; 0\}$ open, closed, or neither?</li><li><strong>NOT open:</strong> Every point $(x_0,y_0)$ on the semicircle has points $(x,y)$ arbitrarily close to it with $x^2+y^2 \ne 1$, so NO 2D open disk around it lies inside $S$.</li><li><strong>NOT closed:</strong> The boundary points $(1,0)$ and $(-1,0)$ satisfy every open disk intersecting both $S$ and $S^c$, yet $(1,0), (-1,0) \notin S$ because $y=0 \not&gt; 0$!</li><li><strong>Conclusion:</strong> $S$ is <strong>neither open nor closed</strong> (though it is bounded)!</li></ul>
+<h3>6.2 Limits &amp; Continuity in $\mathbb{R}^2$</h3>
+<ul><li><strong>To prove limit DNE (Two-Path Test):</strong> Approach $(x_0,y_0)$ along lines $y = mx$, parabolas $y = kx^2$, or curves $x = ky^2$. Different limits along two paths $\implies$ limit DNE!</li><li><strong>To prove limit EXISTS ($\epsilon$-$\delta$ / Squeeze in $\mathbb{R}^2$):</strong> Use polar/inequalities:<br>$$|x| \le \sqrt{x^2+y^2}, \qquad |y| \le \sqrt{x^2+y^2}, \qquad |xy| \le \frac{1}{2}(x^2+y^2)$$</li></ul>
+<h3>6.3 Partial Derivatives, Differentiability, Chain Rule &amp; Gradients</h3>
+<ul><li><strong>Partial Derivatives at $(a,b)$ (ALWAYS use limits for piecewise functions at $(0,0)$!):</strong><br>$$f_x(a,b) = \lim_{h\to 0} \frac{f(a+h,b) - f(a,b)}{h}, \qquad f_y(a,b) = \lim_{k\to 0} \frac{f(a,b+k) - f(a,b)}{k}$$</li><li><strong>Clairaut&#x27;s (Mixed Derivative) Theorem:</strong> If $f, f_x, f_y, f_{xy}, f_{yx}$ are defined on an open disk containing $(a,b)$ and are continuous at $(a,b)$, then $f_{xy}(a,b) = f_{yx}(a,b)$.</li><li><strong>2D Differentiability vs Continuity vs Partial Derivatives:</strong></li><li>$f$ <strong>differentiable</strong> at $(a,b)$ $\implies$ $f$ is continuous at $(a,b)$ AND $f_x(a,b), f_y(a,b)$ exist.</li><li><strong>Sufficient condition:</strong> If $f_x$ and $f_y$ exist near $(a,b)$ and are <strong>continuous</strong> at $(a,b)$, then $f$ is differentiable at $(a,b)$.</li><li><strong>Warning:</strong> Existence of $f_x(0,0)$ and $f_y(0,0)$ alone does NOT imply even continuity! <em>(Example: $f(x,y) = 1$ if $xy=0$, $0$ otherwise — $f_x(0,0)=f_y(0,0)=0$, NOT continuous at $(0,0)$!)</em></li><li><strong>Directional Derivative &amp; Gradient:</strong><br>$$\nabla f = f_x \hat{\mathbf{i}} + f_y \hat{\mathbf{j}} + f_z \hat{\mathbf{k}}, \qquad D_{\hat{\mathbf{u}}} f(P) = \nabla f(P) \cdot \hat{\mathbf{u}} \quad (\text{MUST normalize } \hat{\mathbf{u}} = \mathbf{v}/\|\mathbf{v}\|!)$$</li><li><strong>Max rate of increase:</strong> $\|\nabla f(P)\|$ in direction of $\nabla f(P)$.</li><li><strong>Tangent plane to $z = f(x,y)$ at $(x_0,y_0,z_0)$:</strong> $z - z_0 = f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)$.</li></ul>
+<hr />
+<h2>7. Previous-Year Papers &amp; Assignment Problems (Fully Solved)</h2>
+<h3>Part A: Previous-Year Endsem &amp; Midsem Solutions</h3>
+<p><strong>Q1 (<code>Midsem_21</code>, <code>CAL-Midsem_21batch</code>):</strong> Define a convergent sequence using $\epsilon$-$N$, and prove directly from the definition that $\lim_{n\to\infty} \frac{2n+1}{n+3} = 2$.  <br><strong>Solution:</strong><br>Let $\epsilon &gt; 0$. Consider:</p>
+<div class="math-block">$$\left|\frac{2n+1}{n+3} - 2\right| = \left|\frac{2n+1 - 2n - 6}{n+3}\right| = \frac{5}{n+3}$$</div>
+<p>We need $\frac{5}{n+3} &lt; \epsilon \iff n + 3 &gt; \frac{5}{\epsilon} \iff n &gt; \frac{5}{\epsilon} - 3$. Choose $N = \max\left(1, \left\lceil \frac{5}{\epsilon} \right\rceil\right)$. Then for all $n \ge N$, $n+3 &gt; n \ge \frac{5}{\epsilon} \implies \left|\frac{2n+1}{n+3} - 2\right| &lt; \epsilon$. Thus $\lim_{n\to\infty} \frac{2n+1}{n+3} = 2$.</p>
+<hr />
+<p><strong>Q2 (<code>CAL-Midsem_21batch</code> Q2 &amp; <code>Endsem_21</code> style):</strong> Prove that $a_1 = 2,\ a_{n+1} = \frac{1}{2}\left(a_n + \frac{10}{a_n}\right)$ converges and find its limit. <em>(Similarly <code>Assignment 1</code>: $a_{n+1}=\sqrt{6+a_n}$.)</em>  <br><strong>Solution:</strong></p>
+<ol><li>Clearly $a_n &gt; 0$ for all $n$ (by induction).</li><li><strong>Bounded below:</strong> By AM–GM, for $n \ge 1$,<br>$$a_{n+1} = \frac{1}{2}\left(a_n + \frac{10}{a_n}\right) \ge \sqrt{a_n \cdot \frac{10}{a_n}} = \sqrt{10} \implies a_n \ge \sqrt{10} \text{ for all } n \ge 2.$$<br><em>(Wait: check $a_1 = 2 &lt; \sqrt{10}$, then $a_2 = \frac{1}{2}(2 + 5) = 3.5 &gt; \sqrt{10} \approx 3.162$!)</em></li><li><strong>Monotonicity (for $n \ge 2$):</strong> Since $a_n \ge \sqrt{10} \implies a_n^2 \ge 10$:<br>$$a_{n+1} - a_n = \frac{1}{2}\left(a_n + \frac{10}{a_n}\right) - a_n = \frac{10 - a_n^2}{2a_n} \le 0 \quad (n \ge 2).$$<br>Thus $\{a_n\}_{n\ge 2}$ is decreasing and bounded below by $\sqrt{10}$.</li><li><strong>Limit:</strong> By MCT, $a_n \to L &gt; 0$. Taking limits in the recurrence: $L = \frac{1}{2}(L + 10/L) \implies L^2 = 10 \implies L = \sqrt{10}$.</li></ol>
+<hr />
+<p><strong>Q3 (<code>CAL-Midsem_21batch</code> Q5):</strong> Test convergence of $\sum_{n=1}^\infty \sin\!\left(\frac{1}{n}\right)$ and $\sum_{n=1}^\infty \cos\!\left(\frac{1}{n}\right)$.  <br><strong>Solution:</strong></p>
+<ul><li><strong>For $\sum \cos(1/n)$:</strong> $\lim_{n\to\infty} \cos(1/n) = \cos(0) = 1 \ne 0$. By the <strong>$n$-th Term Test</strong>, it <strong>diverges</strong>.</li><li><strong>For $\sum \sin(1/n)$:</strong> All terms positive for $n \ge 1$. Compare with $b_n = \frac{1}{n}$ using Limit Comparison Test:<br>$$\lim_{n\to\infty} \frac{\sin(1/n)}{1/n} = \lim_{t\to 0^+} \frac{\sin t}{t} = 1 \in (0,\infty).$$<br>Since $\sum \frac{1}{n}$ diverges (harmonic series), $\sum \sin(1/n)$ <strong>diverges</strong>.</li></ul>
+<hr />
+<p><strong>Q4 (<code>CAL-Midsem_21batch</code> Q6):</strong> Test convergence of $\sum_{n=1}^\infty a_n$ where $a_n = \frac{n}{2^n}$ if $n$ is prime, and $a_n = \frac{1}{3^n}$ if $n$ is not prime.  <br><strong>Solution:</strong><br>Here Ratio Test fails/oscillates wildly, so apply the <strong>Root Test ($\limsup$)</strong>:</p>
+<ul><li>For prime $n$: $a_n^{1/n} = \frac{n^{1/n}}{2} \to \frac{1}{2}$ (as $n^{1/n} \to 1$).</li><li>For non-prime $n$: $a_n^{1/n} = \frac{1}{3}$.</li><li>Thus $\limsup_{n\to\infty} (a_n)^{1/n} = \max\left(\frac{1}{2}, \frac{1}{3}\right) = \frac{1}{2} &lt; 1$.</li></ul>
+<p>By the Root Test, $\sum a_n$ <strong>converges</strong>.</p>
+<hr />
+<p><strong>Q5 (<code>Endsem_21</code> Q1, 4 marks):</strong> Evaluate $\sum_{n=1}^\infty \frac{2n+1}{n^2(n+1)^2}$ OR test convergence of $\sum_{n=1}^\infty \frac{x^n}{n^{10}}$ (<code>CAL-Midsem_21batch</code> Q9).  <br><strong>Solution:</strong></p>
+<ol><li><strong>Telescoping Sum:</strong> Notice $\frac{2n+1}{n^2(n+1)^2} = \frac{(n+1)^2 - n^2}{n^2(n+1)^2} = \frac{1}{n^2} - \frac{1}{(n+1)^2}$.<br>Partial sum $S_N = 1 - \frac{1}{(N+1)^2} \implies \sum_{n=1}^\infty \frac{2n+1}{n^2(n+1)^2} = \lim_{N\to\infty} S_N = \mathbf{1}$.</li><li><strong>Power Series $\sum \frac{x^n}{n^{10}}$:</strong> By Ratio Test:<br>$$L = \lim_{n\to\infty} \left|\frac{x^{n+1}/(n+1)^{10}}{x^n/n^{10}}\right| = |x| \lim_{n\to\infty} \left(\frac{n}{n+1}\right)^{10} = |x|.$$<br>Converges for $|x| &lt; 1$ ($R = 1$). Test endpoints:<br>- At $x = 1$: $\sum \frac{1}{n^{10}}$ converges ($p$-series, $p = 10 &gt; 1$).<br>- At $x = -1$: $\sum \frac{(-1)^n}{n^{10}}$ converges absolutely ($\sum 1/n^{10}$ converges).<br><strong>Interval of Convergence:</strong> $[-1, 1]$.</li></ol>
+<hr />
+<p><strong>Q6 (<code>Problem Set 3</code> &amp; <code>Endsem Feb 2023</code> style — Alternating Error Bound):</strong> Estimate $\sum_{n=1}^\infty \frac{(-1)^{n+1} n}{10^n}$ to 4 decimal places (error $&lt; 0.5 \times 10^{-4}$), and determine how many terms of $\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n^3}$ are needed for error $&lt; 10^{-4}$.  <br><strong>Solution:</strong></p>
+<ul><li><strong>First series:</strong> $b_n = \frac{n}{10^n}$ is decreasing for $n \ge 1$ ($b_1=0.1, b_2=0.02, b_3=0.003, b_4=0.0004, b_5=0.00005, b_6=0.000006 &lt; 5\times 10^{-5}$).<br>Since $|R_5| \le b_6 = 6 \times 10^{-6} &lt; 5 \times 10^{-5}$, summing the first <strong>5 terms</strong> suffices:<br>$$S_5 = 0.1 - 0.02 + 0.003 - 0.0004 + 0.00005 = 0.08265 \approx 0.0827.$$</li><li><strong>Second series:</strong> Need $|R_n| \le b_{n+1} = \frac{1}{(n+1)^3} &lt; 10^{-4} \iff (n+1)^3 &gt; 10^4 \approx (21.54)^3$.<br>So $n + 1 \ge 22 \implies \mathbf{n = 21}$ terms suffice.</li></ul>
+<hr />
+<p><strong>Q7 (<code>Endsem_21</code> Q4 &amp; <code>CAL-Midsem_21batch</code> Q10 — Taylor/Maclaurin Series):</strong>  <br>(a) Find the Maclaurin series of $f(x) = \sqrt{1+x}$ up to $x^3$ (or general term) and state its radius of convergence.  <br>(b) Find the power series representation of $\frac{x}{(1-x)^2}$ and $\ln(1+x)$ for $|x| &lt; 1$.  <br><strong>Solution:</strong></p>
+<ul><li><strong>(a):</strong> $f(0) = 1$, $f&#x27;(x) = \frac{1}{2}(1+x)^{-1/2} \Rightarrow f&#x27;(0) = \frac{1}{2}$, $f&#x27;&#x27;(0) = -\frac{1}{4}$, $f&#x27;&#x27;&#x27;(0) = \frac{3}{8}$:<br>$$\sqrt{1+x} = 1 + \frac{1}{2}x - \frac{1}{8}x^2 + \frac{1}{16}x^3 - \dots = 1 + \sum_{n=1}^\infty \frac{\frac{1}{2}(\frac{1}{2}-1)\cdots(\frac{1}{2}-n+1)}{n!} x^n, \quad R = 1.$$</li><li><strong>(b):</strong> Differentiate $\frac{1}{1-x} = \sum_{n=0}^\infty x^n \ (|x|&lt;1)$ to get $\frac{1}{(1-x)^2} = \sum_{n=1}^\infty n x^{n-1}$. Multiply by $x$:<br>$$\frac{x}{(1-x)^2} = \sum_{n=1}^\infty n x^n \quad (|x| &lt; 1).$$<br>Integrating $\frac{1}{1+t} = \sum_{n=0}^\infty (-1)^n t^n$ from $0$ to $x$:<br>$$\ln(1+x) = \sum_{n=0}^\infty \frac{(-1)^n x^{n+1}}{n+1} = x - \frac{x^2}{2} + \frac{x^3}{3} - \dots \quad (-1 &lt; x \le 1).$$</li></ul>
+<hr />
+<p><strong>Q8 (<code>Endsem_21</code> Q2 &amp; <code>Problem Set 4</code> — $\epsilon$-$\delta$ Limit Proof):</strong> Prove rigorously that $\lim_{x\to 3} (x^2 + x - 2) = 10$ (or $\lim_{x\to 2} x^2 = 4$).  <br><strong>Solution:</strong><br>Let $\epsilon &gt; 0$. We bound $|(x^2 + x - 2) - 10| = |x^2 + x - 12| = |x - 3||x + 4|$.  <br>Assume $\delta \le 1$. Then $|x - 3| &lt; 1 \implies 2 &lt; x &lt; 4 \implies 6 &lt; x + 4 &lt; 8 \implies |x + 4| &lt; 8$.  <br>Thus $|(x^2+x-2) - 10| &lt; 8|x - 3|$.  <br>Choose $\delta = \min\!\left(1, \frac{\epsilon}{8}\right) &gt; 0$. Then whenever $0 &lt; |x - 3| &lt; \delta$, both $|x+4|&lt;8$ and $|x-3| &lt; \epsilon/8$ hold, so:</p>
+<div class="math-block">$$|(x^2 + x - 2) - 10| = |x - 3||x + 4| &lt; \frac{\epsilon}{8} \cdot 8 = \epsilon.$$</div>
+<hr />
+<p><strong>Q9 (<code>Assignment 2</code>, <code>Rolle and Cauchy Theorem Problems</code> — Differentiability &amp; Continuity):</strong>  <br>Check continuity and differentiability at $x = 0$ for:  <br>(a) $f(x) = x\sin(1/x)$ ($x\ne 0$), $0$ ($x=0$)  <br>(b) $g(x) = x^2\sin(1/x)$ ($x\ne 0$), $0$ ($x=0$)  <br><strong>Solution:</strong></p>
+<ul><li><strong>(a):</strong> Since $-|x| \le x\sin(1/x) \le |x|$ and $\lim_{x\to 0} \pm|x| = 0$, by Squeeze Theorem $\lim_{x\to 0} f(x) = 0 = f(0) \implies$ <strong>Continuous at $0$</strong>.  <br>However, $f&#x27;(0) = \lim_{h\to 0} \frac{h\sin(1/h) - 0}{h} = \lim_{h\to 0} \sin(1/h)$ DNE (oscillates in $[-1,1]$) $\implies$ <strong>Not differentiable at $0$</strong>.</li><li><strong>(b):</strong> Continuous at $0$ similarly. For differentiability:<br>$$g&#x27;(0) = \lim_{h\to 0} \frac{h^2\sin(1/h) - 0}{h} = \lim_{h\to 0} h\sin(1/h) = 0 \quad (\text{since } |h\sin(1/h)| \le |h| \to 0).$$<br>Thus $g$ IS <strong>differentiable at $0$</strong> with $g&#x27;(0) = 0$! <em>(Note: for $x \ne 0$, $g&#x27;(x) = 2x\sin(1/x)-\cos(1/x)$, which is discontinuous at $0$!)</em></li></ul>
+<hr />
+<p><strong>Q10 (<code>Assignment 2</code>, <code>Midsem Dec 2022</code>, <code>Endsem Feb 2023</code> — Mean Value Theorem Inequalities):</strong>  <br>Prove: (a) $|\sin b - \sin a| \le |b - a|$ for all $a, b \in \mathbb{R}$;  <br>(b) $\frac{x}{1+x} &lt; \ln(1+x) &lt; x$ for all $x &gt; 0$.  <br><strong>Solution:</strong></p>
+<ul><li><strong>(a):</strong> If $a = b$, trivial ($0 \le 0$). If $a \ne b$, $f(x) = \sin x$ is continuous on $[a,b]$ and differentiable on $(a,b)$ with $f&#x27;(x) = \cos x$. By LMVT, $\exists c$ between $a$ and $b$ such that<br>$$\frac{\sin b - \sin a}{b - a} = \cos c \implies |\sin b - \sin a| = |\cos c|\cdot |b - a| \le 1\cdot |b - a| = |b - a|.$$</li><li><strong>(b):</strong> Let $f(t) = \ln(1+t)$ on $[0, x]$ for $x &gt; 0$. Continuous on $[0,x]$, differentiable on $(0,x)$ with $f&#x27;(t) = \frac{1}{1+t}$. By LMVT, $\exists c \in (0, x)$ such that<br>$$\frac{\ln(1+x) - \ln(1)}{x - 0} = \frac{1}{1+c}.$$<br>Since $0 &lt; c &lt; x$, we have $\frac{1}{1+x} &lt; \frac{1}{1+c} &lt; 1$. Multiplying by $x &gt; 0$:<br>$$\frac{x}{1+x} &lt; \ln(1+x) &lt; x.$$</li></ul>
+<hr />
+<p><strong>Q11 (<code>Endsem_21</code> Q6 — Critical Points &amp; Extrema Trap):</strong>  <br>Find the critical points and absolute extrema of $g(x) = 3x^{2/3}$ on $[-2, 8]$ (and note why $x=0$ is crucial!).  <br><strong>Solution:</strong></p>
+<ul><li>$g&#x27;(x) = 2x^{-1/3} = \frac{2}{x^{1/3}}$.</li><li>$g&#x27;(x)$ is never $0$, BUT <strong>$g&#x27;(0)$ does NOT exist</strong> (vertical cusp)! Since $x = 0 \in (-2, 8)$ is in the domain of $g$, <strong>$x = 0$ IS a critical point</strong>.</li><li>Evaluate at critical point &amp; endpoints:</li><li>$g(0) = 0$</li><li>$g(-2) = 3(4)^{1/3} \approx 4.76$</li><li>$g(8) = 3(8)^{2/3} = 3(4) = 12$</li><li><strong>Absolute Minimum:</strong> $0$ at $x = 0$; <strong>Absolute Maximum:</strong> $12$ at $x = 8$. <em>(Common mistake in <code>Scan Mar 1, 2021.pdf</code>: claiming no critical points because $g&#x27;(x) \ne 0$ and missing the true minimum at $x=0$!)</em></li></ul>
+<hr />
+<p><strong>Q12 (<code>Tutorial on Module 3_RI</code>, <code>Endsem_21</code> Q7, <code>Endsem Feb 2023</code> — Riemann Integrability &amp; Sums):</strong>  <br>(a) Using upper and lower Darboux sums, prove $f(x) = x^2$ is Riemann integrable on $[0, a]$ ($a&gt;0$) and evaluate $\int_0^a x^2\,dx$.  <br>(b) Evaluate $\lim_{n\to\infty} \left(\frac{1}{n+1} + \frac{1}{n+2} + \dots + \frac{1}{2n}\right)$.  <br><strong>Solution:</strong></p>
+<ul><li><strong>(a):</strong> Partition $[0,a]$ into $n$ equal subintervals of width $\Delta x = \frac{a}{n}$, with $x_k = \frac{ka}{n}$. Since $f(x)=x^2$ is increasing on $[0,a]$:<br>$$m_k = x_{k-1}^2 = \frac{(k-1)^2 a^2}{n^2}, \qquad M_k = x_k^2 = \frac{k^2 a^2}{n^2}.$$<br>$$U(P_n, f) - L(P_n, f) = \sum_{k=1}^n (M_k - m_k)\Delta x = \Delta x (M_n - m_1) = \frac{a}{n}(a^2 - 0) = \frac{a^3}{n}.$$<br><em>(Notice the telescoping shortcut $\sum_{k=1}^n (f(x_k)-f(x_{k-1})) = f(x_n)-f(x_0)$ whenever $f$ is monotone!)</em><br>For any $\epsilon &gt; 0$, choose $n &gt; \frac{a^3}{\epsilon} \implies U(P_n,f) - L(P_n,f) &lt; \epsilon \implies f$ is Riemann integrable! Moreover:<br>$$U(P_n, f) = \sum_{k=1}^n \frac{k^2 a^2}{n^2} \cdot \frac{a}{n} = \frac{a^3}{n^3} \cdot \frac{n(n+1)(2n+1)}{6} \xrightarrow{n\to\infty} \frac{a^3}{3}.$$</li><li><strong>(b):</strong> Rewrite as a Riemann sum on $[0,1]$:<br>$$\sum_{k=1}^n \frac{1}{n+k} = \frac{1}{n} \sum_{k=1}^n \frac{1}{1 + k/n} \xrightarrow{n\to\infty} \int_0^1 \frac{1}{1+x}\,dx = \Big[\ln(1+x)\Big]_0^1 = \mathbf{\ln 2}.$$</li></ul>
+<hr />
+<p><strong>Q13 (<code>Tutorial on Module 3_RI</code> &amp; <code>Midsem</code> — FTC Differentiation):</strong>  <br>Find $\frac{dy}{dx}$ for: (a) $y = \int_{\sin x}^{x^2} e^{t^2}\,dt$; (b) Find $f(4)$ if $\int_0^{x^2} f(t)\,dt = x\cos(\pi x)$.  <br><strong>Solution:</strong></p>
+<ul><li><strong>(a):</strong> By FTC Part 1 + Chain Rule (Leibniz):<br>$$\frac{dy}{dx} = e^{(x^2)^2} \cdot (2x) - e^{\sin^2 x} \cdot \cos x = 2x e^{x^4} - \cos x\,e^{\sin^2 x}.$$</li><li><strong>(b):</strong> Differentiate both sides with respect to $x$:<br>$$f(x^2)\cdot (2x) = \cos(\pi x) - \pi x \sin(\pi x).$$<br>Set $x = 2$ (so $x^2 = 4$):<br>$$4 f(4) = \cos(2\pi) - 2\pi \sin(2\pi) = 1 - 0 = 1 \implies f(4) = \mathbf{\frac{1}{4}}.$$</li></ul>
+<hr />
+<p><strong>Q14 (<code>Endsem_21</code> Q9, <code>Practice Problems.jpg</code>, <code>Endsem Feb 2023</code> — 2D Limits, Continuity, Differentiability &amp; Gradient):</strong>  <br>(a) Check if $\lim_{(x,y)\to(0,0)} \frac{x^2 y}{x^4 + y^2}$ exists.  <br>(b) Prove $f(x,y) = \frac{xy}{\sqrt{x^2+y^2}}$ ($(x,y)\ne(0,0)$), $f(0,0)=0$ is continuous at $(0,0)$, find $f_x(0,0), f_y(0,0)$, and check differentiability at $(0,0)$.  <br>(c) Find the directional derivative of $g(x,y,z) = x e^y + y z^2$ at $(1,0,2)$ in the direction of $\mathbf{v} = \langle 2, -1, 2 \rangle$, and its maximum rate of increase.  <br><strong>Solution:</strong></p>
+<ul><li><strong>(a):</strong> Along $y = mx$: $\frac{m x^3}{x^4 + m^2 x^2} = \frac{mx}{x^2 + m^2} \to 0$. Along <strong>$y = x^2$</strong>: $\frac{x^2 \cdot x^2}{x^4 + x^4} = \frac{1}{2} \ne 0$. By Two-Path Test, limit <strong>DNE</strong>.</li><li><strong>(b):</strong></li><li><em>Continuity:</em> Using $|x| \le \sqrt{x^2+y^2}$ and $|y| \le \sqrt{x^2+y^2}$, $|f(x,y)-0| = \frac{|x||y|}{\sqrt{x^2+y^2}} \le |y| \le \sqrt{x^2+y^2}$. Given $\epsilon &gt; 0$, take $\delta = \epsilon$: $0 &lt; \sqrt{x^2+y^2} &lt; \delta \implies |f(x,y)-0| &lt; \epsilon$. <strong>Continuous at $(0,0)$!</strong></li><li><em>Partials:</em> $f_x(0,0) = \lim_{h\to 0}\frac{f(h,0)-0}{h} = 0$, $f_y(0,0) = \lim_{k\to 0}\frac{f(0,k)-0}{k} = 0$.</li><li><em>Differentiability:</em> Need $\lim_{(h,k)\to(0,0)} \frac{f(h,k) - f(0,0) - h f_x(0,0) - k f_y(0,0)}{\sqrt{h^2+k^2}} = \lim_{(h,k)\to(0,0)} \frac{hk}{h^2+k^2} = 0$.  <br>Along $h = k$: $\frac{h^2}{2h^2} = \frac{1}{2} \ne 0$! Thus $f$ is <strong>continuous AND has partial derivatives, yet is NOT differentiable at $(0,0)$!</strong></li><li><strong>(c):</strong> $\nabla g = \langle e^y,\ x e^y + z^2,\ 2yz \rangle$. At $(1,0,2)$: $\nabla g(1,0,2) = \langle 1,\ 1 + 4,\ 0 \rangle = \langle 1, 5, 0 \rangle$.  <br>Unit vector: $\hat{\mathbf{u}} = \frac{\langle 2,-1,2\rangle}{\sqrt{4+1+4}} = \left\langle \frac{2}{3}, -\frac{1}{3}, \frac{2}{3}\right\rangle$.<br>Directional derivative: $D_{\hat{\mathbf{u}}}g = \nabla g \cdot \hat{\mathbf{u}} = 1(\frac{2}{3}) + 5(-\frac{1}{3}) + 0 = \mathbf{-1}$.<br>Maximum rate of increase $= \|\nabla g(1,0,2)\| = \sqrt{1^2 + 5^2} = \mathbf{\sqrt{26}}$.</li></ul>
+<hr />
+<h2>8. Practice Question Bank (With Hints/Answers)</h2>
+<ol><li><strong>Sequence Limit &amp; Proof (<code>Sequences.pdf</code>):</strong> Find $\lim_{n\to\infty} \frac{1}{n}\left(1 + 2^{1/2} + 3^{1/3} + \dots + n^{1/n}\right)$. <em>(Ans: $1$ by Cauchy&#x27;s 1st Theorem since $n^{1/n} \to 1$).</em></li><li><strong>Series Battery (<code>Assignment 1</code>):</strong> Test convergence: (a) $\sum_{n=2}^\infty \frac{1}{n (\ln n)^2}$; (b) $\sum_{n=1}^\infty \frac{n!}{n^n}$; (c) $\sum_{n=1}^\infty \frac{\cos(n\pi)}{\sqrt{n}}$; (d) $\sum_{n=1}^\infty \frac{(-1)^n n}{n^2+1}$. <em>(Ans: (a) Conv. by Integral Test; (b) Conv. by Ratio Test, $L=1/e &lt; 1$; (c) Cond. Conv. by Leibniz + harmonic $p=1/2$; (d) Cond. Conv. by Leibniz + LCT with $1/n$).</em></li><li><strong>Power Series (<code>Problem Set 2</code>):</strong> Find radius and interval of convergence of $\sum_{n=1}^\infty \frac{(3x - 2)^n}{n 5^n}$. <em>(Ans: $R = 5/3$, center $2/3$, interval $[-1, 7/3)$).</em></li><li><strong>MVT Exact Zeroes (<code>Assignment 2</code>):</strong> Prove $x^5 + 10x + 3 = 0$ has <strong>exactly one</strong> real root. <em>(Hint: IVT on $[-1, 0]$ for existence + $f&#x27;(x) = 5x^4 + 10 &gt; 0$ via Rolle for uniqueness).</em></li><li><strong>Cauchy MVT (<code>Rolle &amp; Cauchy</code>):</strong> Prove $\frac{\sin\alpha - \sin\beta}{\cos\beta - \cos\alpha} = \cot\theta$ for some $\theta \in (\alpha,\beta) \subset (0,\pi/2)$.</li><li><strong>Riemann Non-Integrability (<code>Problem Set 6</code>):</strong> Define $f(x) = 1$ if $x \in \mathbb{Q}$, $-1$ if $x \notin \mathbb{Q}$ on $[0,1]$. Compute lower and upper Riemann integrals and conclude integrability. <em>(Ans: $\underline{\int} = -1$, $\overline{\int} = 1$, NOT integrable).</em></li><li><strong>2D Limit &amp; Partials (<code>Endsem Feb 2023</code> style):</strong> Check continuity of $f(x,y) = \frac{x^3}{x^2+y^2}$ ($f(0,0)=0$) at $(0,0)$ and compute $f_x(0,0), f_y(0,0)$. <em>(Ans: Continuous since $|x^3/(x^2+y^2)| \le |x| \to 0$; $f_x(0,0)=1, f_y(0,0)=0$, NOT differentiable at $(0,0)$).</em></li></ol>
+<hr />
+<h2>9. Common Exam Mistakes Checklist (Observed from Past Answer Scripts)</h2>
+<ul><li><label class="chk-line"><input type="checkbox" /> <span><strong>Missing <code>DNE</code> Critical Points:</strong> Never forget to include points where $f&#x27;(c)$ fails to exist when finding critical points / extrema (e.g., $x=0$ for $x^{2/3}$).</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Open vs Closed Sets in $\mathbb{R}^2$:</strong> A curve in $\mathbb{R}^2$ (like an arc or circle) is NEVER open in $\mathbb{R}^2$; if endpoints are excluded (like $y&gt;0$), it is NOT closed either!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Two-Path Test Misuse:</strong> Getting $0$ along $y=mx$ for ALL $m$ does <strong>not</strong> prove a 2D limit exists! Always check parabolic/curved paths ($y=kx^2$, $x=ky^2$), and use $\epsilon$-$\delta$ / Squeeze to prove existence.</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Confusing $f_{xy}(0,0)$ vs Limit Continuity:</strong> For piecewise 2D functions, compute $f_x(0,0)$ and $f_y(0,0)$ strictly from the <strong>limit definition</strong>, not by differentiating the $x\ne 0$ formula and plugging $(0,0)$.</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>$n$-th Term Test Fallacy:</strong> $\lim a_n = 0$ is necessary, <strong>never sufficient</strong> for convergence ($\sum 1/n$!).</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Power Series Endpoints:</strong> Ratio/Root gives the interior $(a-R, a+R)$ ONLY — always check both endpoints separately!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Riemann Upper/Lower Integrals:</strong> Never assume $L(P,f)=0$ means $\int f = 0$ without checking $U(P,f)$ too!</span></label></li></ul>
+<hr />
+<h2>10. Quick Last-Hour Formula Sheet</h2>
+<ul><li>$\lim_{n\to\infty} n^{1/n} = 1$, $\lim (1+x/n)^n = e^x$, $\lim x^n/n! = 0$</li><li>Geometric sum: $\sum_{n=k}^\infty a r^n = \frac{a r^k}{1-r}$ ($|r|&lt;1$)</li><li>Alternating error bound: $|S - S_n| \le b_{n+1}$</li><li>LMVT: $f(b)-f(a) = f&#x27;(c)(b-a)$; Cauchy MVT: $\frac{f(b)-f(a)}{g(b)-g(a)} = \frac{f&#x27;(c)}{g&#x27;(c)}$</li><li>$\frac{d}{dx}\int_{g(x)}^{h(x)} f(t)\,dt = f(h(x))h&#x27;(x) - f(g(x))g&#x27;(x)$</li><li>Riemann sum: $\int_a^b f(x)\,dx = \lim_{n\to\infty} \frac{b-a}{n}\sum_{k=1}^n f\!\left(a + \frac{k(b-a)}{n}\right)$</li><li>Gradient &amp; Directional Derivative: $D_{\hat{\mathbf{u}}}f = \nabla f \cdot \frac{\mathbf{v}}{\|\mathbf{v}\|}$</li></ul>
+    </article>
+  </main>
+  <script>
+    const tbtn = document.getElementById("theme-btn");
+    function syncTheme() { tbtn.textContent = document.documentElement.classList.contains("dark") ? "Light" : "Dark"; }
+    tbtn.onclick = () => {
+      const d = document.documentElement.classList.toggle("dark");
+      try { localStorage.setItem("iiitdm_sem1_theme", d ? "dark" : "light"); } catch (_) {}
+      syncTheme();
+    };
+    syncTheme();
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ],
+          throwOnError: false
+        });
+      }
+    });
+  </script>
+</body>
+</html>

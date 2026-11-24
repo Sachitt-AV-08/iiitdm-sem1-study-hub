@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EC1000 Study Guide &bull; IIITDM Sem 1</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("iiitdm_sem1_theme");
+        var preferDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (saved === "dark" || (!saved && preferDark)) document.documentElement.classList.add("dark");
+      } catch (_) {}
+    })();
+  </script>
+
+  <style>
+
+    :root {
+      color-scheme: light;
+      --background: #f8fafc;
+      --card: #ffffff;
+      --content: #f1f5f9;
+      --foreground: #0f172a;
+      --muted-foreground: #475569;
+      --primary: #2563eb;
+      --primary-foreground: #ffffff;
+      --border: #cbd5e1;
+      --card-border: #e2e8f0;
+      --success: #15803d;
+      --warning: #b45309;
+      --error: #dc2626;
+      --chart-1: #2563eb;
+      --chart-2: #0f766e;
+      --chart-3: #6d28d9;
+      --chart-4: #c2410c;
+      --shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+    }
+    html.dark {
+      color-scheme: dark;
+      --background: #0b1120;
+      --card: #111827;
+      --content: #1e293b;
+      --foreground: #f1f5f9;
+      --muted-foreground: #94a3b8;
+      --primary: #2563eb;
+      --primary-foreground: #ffffff;
+      --link: #60a5fa;
+      --border: #334155;
+      --card-border: #1e293b;
+      --success: #4ade80;
+      --warning: #fbbf24;
+      --error: #f87171;
+      --chart-1: #60a5fa;
+      --chart-2: #2dd4bf;
+      --chart-3: #a78bfa;
+      --chart-4: #fb923c;
+      --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--background);
+      color: var(--foreground);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+      overflow-x: hidden;
+      overflow-x: clip;
+    }
+    a { color: var(--link, var(--primary)); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    button { font-family: inherit; color: inherit; cursor: pointer; background: none; border: none; }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+    .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 14px; display: flex; flex-direction: column; gap: 16px; }
+    .container > * { min-width: 0; max-width: 100%; }
+    @media (min-width: 768px) { .container { padding: 24px; gap: 20px; } }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); min-width: 0; max-width: 100%; }
+    .muted { color: var(--muted-foreground); }
+    .primary-text { color: var(--link, var(--primary)); }
+    .success-text { color: var(--success); }
+    .warning-text { color: var(--warning); }
+    .error-text { color: var(--error); }
+    .tabular { font-variant-numeric: tabular-nums; }
+    .hidden { display: none !important; }
+    .w-full { width: 100%; }
+    .max-w-md { max-width: 448px; }
+    .mx-auto { margin-left: auto; margin-right: auto; display: block; }
+    .frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 3px; font-size: 0.9em; line-height: 1.1; }
+    .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 3px 1px; }
+    .frac > span:last-child { padding: 1px 3px 0; }
+    .math { font-family: Georgia, Cambria, "Times New Roman", serif; }
+    pre.codebox {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-x: auto;
+      margin: 0;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      background: var(--content);
+      border: 1px solid var(--card-border);
+      border-radius: 5px;
+      padding: 1px 5px;
+      font-size: 0.9em;
+    }
+    kbd {
+      padding: 2px 6px;
+      font-size: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      background: var(--content);
+    }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: color-mix(in srgb, var(--card) 92%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+    }
+    .topbar-inner { max-width: 960px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+    .article-wrap { width: 100%; max-width: 960px; margin: 12px auto 40px; padding: 18px 16px; min-width: 0; overflow-wrap: anywhere; overflow-x: clip; }
+    @media (min-width: 768px) { .article-wrap { padding: 28px 34px; } }
+    article h1 { font-size: 1.4rem; border-bottom: 1px solid var(--card-border); padding-bottom: 8px; margin-top: 0; }
+    article h2 { font-size: 1.18rem; margin-top: 26px; color: var(--link, var(--primary)); border-bottom: 1px solid var(--card-border); padding-bottom: 4px; }
+    article h3 { font-size: 1.02rem; margin-top: 18px; }
+    article p, article li { font-size: 0.92rem; line-height: 1.6; max-width: 100%; overflow-wrap: anywhere; }
+    article ul, article ol { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+    article hr { border: none; border-top: 1px solid var(--card-border); margin: 22px 0; }
+    .table-wrap { width: 100%; max-width: 100%; overflow-x: auto; margin: 12px 0; border: 1px solid var(--border); border-radius: 10px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.84rem; min-width: 540px; }
+    th, td { text-align: left; padding: 9px 11px; border-bottom: 1px solid var(--card-border); vertical-align: top; }
+    th { background: var(--content); font-weight: 800; }
+    pre.codeblock { max-width: 100%; background: var(--content); border: 1px solid var(--border); border-radius: 10px; padding: 12px; font-size: 0.82rem; margin: 10px 0; overflow-x: auto; }
+    pre.codeblock code { border: none; background: transparent; padding: 0; }
+    .math-block, .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: 6px 2px; text-align: center; }
+    .table-wrap { position: relative; }
+    article .katex { position: relative; }
+    article .katex-mathml { left: 0; }
+    @media (max-width: 640px) {
+      article .katex { font-size: 1.04em; }
+      article p .katex, article li .katex { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: bottom; }
+    }
+    .alert { border-left: 4px solid var(--primary); background: var(--content); border-radius: 8px; padding: 12px 14px; margin: 12px 0; font-size: 0.88rem; }
+    .alert.warning { border-color: var(--warning); }
+    .alert.important { border-color: var(--chart-3); }
+    .alert.caution { border-color: var(--error); }
+    .alert.tip { border-color: var(--success); }
+    .chk-line { display: flex; align-items: flex-start; gap: 8px; cursor: pointer; }
+    .chk-line input { margin-top: 4px; width: 16px; height: 16px; accent-color: var(--primary); }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" style="font-weight:800;font-size:0.86rem;">&larr; Study Hub</a>
+        <span style="font-weight:800;font-size:0.9rem;">EC1000: Electrical Circuits</span>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href="../decks/EC1000_Electrical_Circuits_Exam_Deck.pptx" download style="padding:7px 11px;border-radius:8px;background:var(--primary);color:var(--primary-foreground);font-size:0.78rem;font-weight:700;text-decoration:none;">Download .pptx (14 slides)</a>
+        <button id="theme-btn" type="button" style="padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:var(--card);font-size:0.76rem;font-weight:600;">Theme</button>
+      </div>
+    </div>
+  </div>
+  <main class="container">
+    <article class="card article-wrap">
+      <h1>End-Semester Exam Study Guide — Electrical Circuits (<code>EC1000</code>)</h1>
+<p><strong>Course:</strong> Electrical Circuits for Engineers (<code>EC1000</code>) — IIITDM Kancheepuram (Dr. B. Chitti Babu)  <br><strong>Time Horizon:</strong> Built for focused <strong>&lt; 4-day</strong> exam readiness  <br><strong>Synthesized from:</strong> <code>Lecture 1</code> through <code>Lecture 13</code>, <code>Quiz 1 – September 2023</code>, <code>ECE-Midsem_21batch</code>, <code>ELE103T</code> Quiz 1 papers, <code>Assignment 2-2</code>, <code>Assignment_3</code>, and Chapter 1–7 Practice Problems &amp; Solutions.</p>
+<div class="alert note"><strong>NOTE</strong><div><strong>Syllabus Scope Check:</strong> <code>Lecture-1</code> listed Op-Amps and Basic Logic Gates in the initial overview, while the provided lecture deck set ends at <code>Lecture-13 (Semiconductor Diode)</code> and <code>Assignments 2 &amp; 3</code> cover through AC Steady-State &amp; AC Power. This guide thoroughly covers all <strong>13 lectures (DC Circuits through Transformers, Machines, and Semiconductor Diodes)</strong>—double-check your class announcements if Op-Amps/Logic Gates were taught verbally in the final week.</div></div>
+<hr />
+<h2>1. Formula Cheat Sheet (All Modules at a Glance)</h2>
+<div class="table-wrap"><table><thead><tr><th>Module</th><th>Key Laws &amp; Formulas</th><th>Critical Units / Traps</th></tr></thead><tbody><tr><td><strong>Basics</strong></td><td>$i = \frac{dq}{dt}$, $v = \frac{dw}{dq}$, $p = vi$, $R = \frac{\rho l}{A}$, $P = I^2 R = \frac{V^2}{R}$</td><td><strong>Passive Sign Convention:</strong> Current into <code>+</code> $\Rightarrow P = +VI$ (absorbed). $\sum P = 0$. $1\text{ kWh} = 3.6\text{ MJ}$.</td></tr><tr><td><strong>Topology &amp; Dividers</strong></td><td>$b = l + n - 1$; VDR: $v_k = \frac{R_k}{R_1+R_2}v$; CDR: $i_1 = \frac{R_2}{R_1+R_2}i$</td><td>VDR applies to <strong>series</strong>, CDR to <strong>2 parallel resistors</strong> (uses <em>opposite</em> resistor!).</td></tr><tr><td><strong>$\text{Y}\leftrightarrow\Delta$</strong></td><td>$R_1 = \frac{R_b R_c}{R_a+R_b+R_c}$ ($\Delta \to \text{Y}$); $R_a = \frac{R_1R_2+R_2R_3+R_3R_1}{R_1}$ ($\text{Y}\to\Delta$)</td><td>For equal resistors: $R_{\Delta} = 3 R_{\text{Y}}$.</td></tr><tr><td><strong>DC Max Power</strong></td><td>$R_L = R_{Th}$, $P_{\max} = \frac{V_{Th}^2}{4 R_{Th}}$</td><td>Efficiency at max power transfer is only $50\%$.</td></tr><tr><td><strong>$C$ and $L$</strong></td><td>$i = C\frac{dv}{dt}$, $W_C = \frac{1}{2}Cv^2$; $v = L\frac{di}{dt}$, $W_L = \frac{1}{2}Li^2$</td><td><strong>DC Steady State:</strong> $C \to \text{Open Circuit}$, $L \to \text{Short Circuit}$. $C_{\text{ser}}$ adds like $R_{\text{par}}$; $L$ adds like $R$.</td></tr><tr><td><strong>1st-Order ($t \ge 0$)</strong></td><td>$x(t) = x(\infty) + [x(0^+) - x(\infty)]e^{-t/\tau}$</td><td>$\tau_{RC} = R_{Th}C$, $\tau_{RL} = \frac{L}{R_{Th}}$. Continuity: $v_C(0^+)=v_C(0^-)$, $i_L(0^+)=i_L(0^-)$.</td></tr><tr><td><strong>AC Phasors</strong></td><td>$Z_R = R,\ Z_L = j\omega L,\ Z_C = \frac{1}{j\omega C} = \frac{-j}{\omega C}$</td><td>Convert $\sin(\omega t + \phi) = \cos(\omega t + \phi - 90^\circ)$. <strong>Never</strong> add phasors of different $\omega$!</td></tr><tr><td><strong>AC Power &amp; Max Power</strong></td><td>$P = \frac{1}{2}V_m I_m\cos(\theta_v-\theta_i) = V_{\text{rms}}I_{\text{rms}}\cos\theta$, $\mathbf{S} = \frac{1}{2}\mathbf{V}\mathbf{I}^* = \mathbf{V}_{\text{rms}}\mathbf{I}_{\text{rms}}^* = P + jQ$</td><td><strong>Unconstrained:</strong> $Z_L = Z_{Th}^* \Rightarrow P_{\max} = \frac{</td><td>V_{Th}</td><td>^2}{8 R_{Th}}$ (peak) $= \frac{</td><td>V_{Th,\text{rms}}</td><td>^2}{4 R_{Th}}$. **Purely resistive $R_L$:** $R_L =</td><td>Z_{Th}</td><td>$.</td></tr><tr><td><strong>RMS Values</strong></td><td>Full Sine: $\frac{V_m}{\sqrt{2}}$; <strong>Half-Wave Rectified:</strong> $\frac{V_m}{2}$; Full-Wave Rectified: $\frac{V_m}{\sqrt{2}}$</td><td>PF $= \cos(\theta_v-\theta_i)$ (lagging if inductive $Q&gt;0$; leading if capacitive $Q&lt;0$).</td></tr><tr><td><strong>Transformers</strong></td><td>$E = 4.44 f N \Phi_m$, $K = \frac{N_2}{N_1} = \frac{V_2}{V_1} = \frac{I_1}{I_2}$, $Z&#x27;_L = \left(\frac{N_1}{N_2}\right)^2 Z_L$</td><td>Max efficiency when <strong>Core loss ($P_i$) = Copper loss ($x^2 P_{cu,fl}$)</strong>. Frequency stays constant!</td></tr><tr><td><strong>Motors</strong></td><td>DC: $E_b = k\omega$, $V_t = E_b + I_a R_a$, $\tau = k I_a$; 3-ph IM: $n_s = \frac{120 f_e}{P}$, $s = \frac{n_s - n_m}{n_s}$, $f_r = s f_e$</td><td>Torque $\tau = \frac{P_{\text{out}}}{\omega_m} = \frac{P_{\text{out}}}{2\pi n_m / 60}$. <strong>$1\text{ hp} = 746\text{ W}$</strong>.</td></tr><tr><td><strong>Diodes &amp; Rectifiers</strong></td><td>Cut-in: Si $0.7\text{ V}$, Ge $0.3\text{ V}$, GaAs $1.2\text{ V}$, Schottky $0.25\text{ V}$; HWR $V_{dc}=\frac{V_m}{\pi}$, Bridge FWR $V_{dc}=\frac{2V_m}{\pi}$</td><td>Bridge PIV $= V_m$ (Center-tap FWR PIV $= 2V_m$).</td></tr></tbody></table></div>
+<hr />
+<h2>2. Core Concepts &amp; Step-by-Step Analysis Methods</h2>
+<h3>2.1 Basic Concepts, Battery Ratings, Bulbs &amp; Y-$\Delta$</h3>
+<ul><li><strong>Passive Sign Convention:</strong> If current enters the <code>+</code> terminal, power absorbed is $P = +VI$. If current leaves the <code>+</code> terminal, $P = VI$ is delivered (absorbed power $= -VI$). By Tellegen&#x27;s Theorem / energy conservation, $\sum P_{\text{absorbed}} = 0$.</li><li><strong>Bulb Rating Exam Trap (<code>ELE103T</code> Quiz 1):</strong> Given bulbs rated $P_1, P_2, P_3$ at voltage $V_{\text{rated}}$:<br>$$R = \frac{V_{\text{rated}}^2}{P_{\text{rated}}}$$</li><li><strong>Smaller wattage rating = HIGHER resistance!</strong></li><li>In <strong>parallel</strong> at $V_{\text{rated}}$, each gets $V_{\text{rated}}$, so the highest-wattage bulb dissipates the most power.</li><li>In <strong>series</strong>, same current $I$ flows through all: $P = I^2 R$, so the <strong>lowest-wattage bulb (highest $R$) dissipates the MOST power!</strong></li><li><strong>$\Delta$-Y Conversion Trick:</strong> Notice a bridge network cannot be simplified by series/parallel alone — always convert one $\Delta$ (top or bottom triangle) to a Y so series/parallel immediately unlocks!</li></ul>
+<h3>2.2 Nodal, Supernode, Mesh &amp; Supermesh Recipes</h3>
+<ol><li><strong>Nodal Analysis:</strong><br>- Pick reference node (ground $0\text{ V}$).<br>- <strong>Voltage source to Reference:</strong> Directly fixes node voltage ($v_k = V_s$).<br>- <strong>Floating Voltage Source (between nodes $a, b$):</strong> Form a <strong>Supernode</strong> enclosing both nodes &amp; the source! Write:</li><li>KCL for the entire supernode (sum of currents leaving $= 0$), AND</li><li>Constraint equation ($v_a - v_b = V_s$).<br>- <strong>Dependent Sources:</strong> Keep the controlling variable ($i_o$ or $v_o$) expressed in terms of node voltages!</li><li><strong>Mesh Analysis (Planar Circuits Only):</strong><br>- Current source on an outer perimeter mesh $\implies$ mesh current equals that source immediately.<br>- <strong>Current source shared between two meshes:</strong> Form a <strong>Supermesh</strong> by removing the current source branch (and any series resistor with it!). Write:</li><li>KVL around the big combined loop, AND</li><li>Constraint relating the two mesh currents to the current source.<br>- <strong>Inspection Matrix Method (<code>[G][V] = [I]</code> or <code>[R][I] = [V]</code>):</strong> Valid <strong>only when all sources are independent</strong> (current sources for nodal, voltage sources for mesh). Diagonal $G_{ii} = \sum (\text{conductances at node } i)$, off-diagonal $G_{ij} = -\sum (\text{conductances shared between } i, j)$.</li></ol>
+<h3>2.3 Network Theorems: Superposition, Thevenin/Norton &amp; Max Power</h3>
+<ol><li><strong>Superposition:</strong><br>- Keep <strong>one independent source active at a time</strong>.<br>- Turn off others: <strong>Voltage source $\to$ Short Circuit ($0\text{ V}$)</strong>; <strong>Current source $\to$ Open Circuit ($0\text{ A}$)</strong>.<br>- <strong>NEVER turn off dependent sources!</strong><br>- <strong>NEVER apply superposition to Power</strong> ($P \ne P_1 + P_2$ unless orthogonal/different frequencies!).<br>- <em>Mixed-Frequency AC/DC Circuits (<code>Assignment_3</code> Q4):</em> Because $Z_L = j\omega L$ and $Z_C = 1/(j\omega C)$ depend on $\omega$, you <strong>MUST</strong> use Superposition separately for each frequency (e.g., $\omega = 0$ DC where $L=\text{short}, C=\text{open}$, vs $\omega = 4\text{ rad/s}$), solve in phasors, convert back to time domain, and add $v(t) = v_{\text{DC}}(t) + v_{\text{AC}}(t)$!</li><li><strong>Thevenin ($V_{Th}, R_{Th}$) &amp; Norton ($I_N, R_N$):</strong><br>- Step 1: Disconnect load between terminals $a\text{-}b$.<br>- Step 2 ($V_{Th} = V_{oc}$): Find open-circuit voltage $V_{ab}$.<br>- Step 3 ($R_{Th} = R_N$):<br>- <em>Case A (No dependent sources):</em> Turn off all independent sources and compute $R_{ab}$.<br>- <em>Case B (With dependent sources):</em> Turn off independent sources ONLY, apply a <strong>test source</strong> $v_{\text{test}} = 1\text{ V}$ (find $R_{Th} = 1/i_{\text{test}}$) OR $i_{\text{test}} = 1\text{ A}$ (find $R_{Th} = v_{\text{test}}/1$), OR compute $I_N = I_{sc}$ directly and use $R_{Th} = \frac{V_{oc}}{I_{sc}}$.</li></ol>
+<h3>2.4 Capacitors, Inductors &amp; First-Order Transients</h3>
+<p><strong>4-Step Transient Algorithm for ANY First-Order $RL$/$RC$ Circuit (<code>Lecture 6a/6b</code>):</strong></p>
+<ol><li><strong>$t &lt; 0$ (Steady State before switch):</strong> Replace $C \to$ Open, $L \to$ Short. Find $v_C(0^-)$ or $i_L(0^-)$.</li><li><strong>At $t = 0^+$:</strong> Apply continuity: $v_C(0^+) = v_C(0^-)$ or $i_L(0^+) = i_L(0^-)$. <em>(Warning: $i_C$ and $v_L$ CAN jump instantaneously! If asked for another variable $y(0^+)$, analyze the $t=0^+$ circuit replacing $C$ by a voltage source $v_C(0^-)$ or $L$ by a current source $i_L(0^-)$!)</em></li><li><strong>$t \to \infty$ (Final Steady State):</strong> In the post-switch circuit, replace $C \to$ Open, $L \to$ Short to find $x(\infty)$.</li><li><strong>Time Constant $\tau$:</strong> In the post-switch circuit, find $R_{Th}$ seen by $C$ or $L$:<br>$$\tau_{RC} = R_{Th} C, \qquad \tau_{RL} = \frac{L}{R_{Th}}, \qquad x(t) = x(\infty) + \big[x(0^+) - x(\infty)\big]e^{-t/\tau}\quad (t \ge 0)$$</li></ol>
+<h3>2.5 AC Power, Complex Power &amp; Power Factor Correction</h3>
+<ul><li>Complex Power $\mathbf{S} = P + jQ = \mathbf{V}_{\text{rms}}\mathbf{I}_{\text{rms}}^* = \frac{1}{2}\mathbf{V}_m\mathbf{I}_m^* = |\mathbf{S}|\angle(\theta_v - \theta_i)$:</li><li>$P = \text{Re}(\mathbf{S}) = S\cos\theta$ (<strong>Watts, W</strong>) — real power absorbed.</li><li>$Q = \text{Im}(\mathbf{S}) = S\sin\theta$ (<strong>VAR</strong>) — $+Q$ inductive/lagging, $-Q$ capacitive/leading.</li><li>$\text{pf} = \cos(\theta_v - \theta_i) = \frac{P}{S}$.</li><li><strong>Power Factor Correction:</strong> Parallel capacitor supplies $-Q_C$ to cancel inductive $+Q$ while keeping real power $P$ unchanged:<br>$$Q_C = P(\tan\theta_{\text{old}} - \tan\theta_{\text{new}}), \qquad C = \frac{Q_C}{\omega V_{\text{rms}}^2} = \frac{P(\tan\theta_{\text{old}} - \tan\theta_{\text{new}})}{\omega V_{\text{rms}}^2}$$</li></ul>
+<h3>2.6 Transformers, Machines &amp; Diodes</h3>
+<ul><li><strong>Single-Phase Transformer (<code>Lecture 11</code>):</strong></li><li>Static mutual-induction device (transferring AC power with <strong>same frequency</strong>).</li><li>Core-type (windings surround two limbs) vs Shell-type (windings on central limb, reduced leakage).</li><li>EMF Equation: $E = 4.44 f N \Phi_m = 4.44 f N B_m A_c$.</li><li>Voltage Regulation: $\%VR = \frac{|V_{2,\text{NL}}| - |V_{2,\text{FL}}|}{|V_{2,\text{FL}}|} \times 100\%$ (or $|E_2 - V_2|/|V_2|$).</li><li>Efficiency at fraction $x$ of full load: $\eta = \frac{x S \cos\phi}{x S \cos\phi + P_i + x^2 P_{cu,\text{fl}}}$, maximized when $P_i = x^2 P_{cu,\text{fl}}$.</li><li><strong>Electrical Machines (<code>Lecture 12</code>):</strong></li><li><strong>DC Motor:</strong> Back EMF $E_b = k\omega = V_t - I_a R_a$; electromagnetic torque $\tau = k I_a$; input power $P_{in} = V_t I_a$; developed mechanical power $P_d = E_b I_a = \tau \omega$. <strong>Universal motor</strong> (series DC motor) runs on both AC and DC.</li><li><strong>3-Phase Induction Motor:</strong> Stator produces rotating magnetic field at $n_s = \frac{120 f_e}{P}$. Slip $s = \frac{n_s - n_m}{n_s}$ ($0 &lt; s &lt; 1$ motoring). Rotor electrical frequency $f_r = s f_e$. Rotor types: Squirrel cage (rugged, shorted copper/Al bars) vs Wound-rotor/Slip-ring (external resistance for high starting torque).</li><li><strong>Semiconductor Diodes (<code>Lecture 13</code>):</strong></li><li><strong>Cut-in (Knee) Voltage $V_\gamma$:</strong> Si $= 0.7\text{ V}$, Ge $= 0.3\text{ V}$, GaAs $= 1.2\text{ V}$, Schottky $= 0.25\text{ V}$.</li><li><strong>Rectifiers:</strong></li><li><em>Half-Wave:</em> $V_{dc} = \frac{V_m}{\pi}$ (ideal) or $\frac{V_m - 0.7}{\pi}$; PIV $= V_m$; $f_{\text{out}} = f_{\text{in}}$.</li><li><em>Full-Wave Bridge (4 diodes):</em> $V_{dc} = \frac{2V_m}{\pi}$ (ideal) or $\frac{2(V_m - 1.4)}{\pi}$; PIV $= V_m$; $f_{\text{out}} = 2f_{\text{in}}$.</li><li><em>Center-Tap FWR (2 diodes):</em> $V_{dc} = \frac{2V_m}{\pi}$, PIV $= 2V_m$ (where $V_m$ is peak per half secondary).</li></ul>
+<hr />
+<h2>3. Worked Exam &amp; Assignment Solutions (Verified)</h2>
+<h3>Paper A: <code>Quiz 1 – September 2023 (EC1000)</code> — Complete Solutions</h3>
+<p><strong>Q1 (<code>Quiz 1</code> 2023):</strong>  <br>(a) A $600\text{ W}$ TV runs for $4\text{ h}$. If electricity costs Rs $10$/unit ($1\text{ kWh}$), find cost wasted.  <br>(b) A $6\text{ V}$ flashlight battery rated $0.8\text{ Ah}$ lasts $10\text{ h}$. Find: (i) current, (ii) power, (iii) energy in Wh.  <br><strong>Solution:</strong></p>
+<ul><li><strong>(a):</strong> $E = 0.6\text{ kW} \times 4\text{ h} = 2.4\text{ kWh} \implies \text{Cost} = 2.4 \times 10 = \mathbf{\text{Rs } 24}$.</li><li><strong>(b):</strong> (i) $I = \frac{0.8\text{ Ah}}{10\text{ h}} = 0.08\text{ A} = \mathbf{80\text{ mA}}$; (ii) $P = VI = 6 \times 0.08 = \mathbf{0.48\text{ W}}$; (iii) $E = 6\text{ V} \times 0.8\text{ Ah} = \mathbf{4.8\text{ Wh}}$.</li></ul>
+<hr />
+<p><strong>Q2 (<code>Quiz 1</code> 2023):</strong> Bridge circuit fed by $24\text{ V}$ source: top $\Delta$ has $20\,\Omega$ (left), $60\,\Omega$ (right), $40\,\Omega$ (bridge); bottom has $10\,\Omega$ (left) and $50\,\Omega + 20\,\Omega$ in series ($70\,\Omega$, right). Find $R_{eq}$ and $I_o$.  <br><strong>Solution:</strong><br>Convert the top $\Delta$ ($R_a = 40\,\Omega, R_b = 60\,\Omega, R_c = 20\,\Omega$; sum $= 120\,\Omega$) to a Y:</p>
+<div class="math-block">$$R_{\text{top}} = \frac{20 \times 60}{120} = 10\,\Omega, \qquad R_{\text{left}} = \frac{20 \times 40}{120} = \frac{20}{3}\,\Omega, \qquad R_{\text{right}} = \frac{60 \times 40}{120} = 20\,\Omega.$$</div>
+<p>Now combine left and right arms in parallel:</p>
+<div class="math-block">$$R_{\text{arm,L}} = \frac{20}{3} + 10 = \frac{50}{3}\,\Omega, \qquad R_{\text{arm,R}} = 20 + (50 + 20) = 90\,\Omega.$$</div>
+<div class="math-block">$$R_{\text{par}} = \frac{(50/3)(90)}{50/3 + 90} = \frac{1500}{320/3} = \frac{225}{16} = 14.0625\,\Omega.$$</div>
+<div class="math-block">$$R_{eq} = 10 + 14.0625 = \mathbf{24.0625\,\Omega} \left(\frac{385}{16}\,\Omega\right), \qquad I_o = \frac{24}{24.0625} = \mathbf{0.9974\text{ A}}.$$</div>
+<hr />
+<p><strong>Q3 (<code>Quiz 1</code> 2023):</strong> Mesh analysis for $i_1$ (left, with $8\text{ V}$ rise), $i_2$ (bottom right, with $8\,\Omega$), $i_3$ (top right, with $2\,\Omega$ top-right, $2\,\Omega$ shared $i_1/i_3$, $4\,\Omega$ shared $i_2/i_3$), and a $4\text{ A}$ downward source in series with $1\,\Omega$ shared between $i_1$ and $i_2$.  <br><strong>Solution:</strong></p>
+<ol><li>Current source constraint (downward $4\text{ A}$ between CW $i_1$ and CW $i_2$):<br>$$i_1 - i_2 = 4 \quad (1)$$</li><li>Mesh $3$ KVL: $2(i_3 - i_1) + 2 i_3 + 4(i_3 - i_2) = 0 \implies -2i_1 - 4i_2 + 8i_3 = 0 \quad (2)$.</li><li>Supermesh ($i_1 + i_2$ outer loop avoiding $4\text{ A}$ branch):<br>$$-8 + 2(i_1 - i_3) + 4(i_2 - i_3) + 8i_2 = 0 \implies 2i_1 + 12i_2 - 6i_3 = 8 \quad (3).$$</li></ol>
+<p>Solving (1), (2), (3) (note $i_1 = i_2 + 4$):  <br>From (2): $-2(i_2+4) - 4i_2 + 8i_3 = 0 \implies -6i_2 + 8i_3 = 8 \implies i_3 = \frac{3i_2 + 4}{4}$.  <br>From (3): $2(i_2+4) + 12i_2 - 6\frac{3i_2+4}{4} = 8 \implies 14i_2 - 4.5i_2 = 6 \implies 9.5i_2 = 6 \implies$</p>
+<div class="math-block">$$i_2 = \frac{12}{19} \approx \mathbf{0.6316\text{ A}}, \qquad i_1 = 4 + \frac{12}{19} = \frac{88}{19} \approx \mathbf{4.6316\text{ A}}, \qquad i_3 = \frac{28}{19} \approx \mathbf{1.4737\text{ A}}.$$</div>
+<hr />
+<p><strong>Q4 (<code>Quiz 1</code> 2023):</strong> Nodal analysis to find $i_o$ leaving top of $4\,\Omega$ (above $60\text{ V}$ source), with $10\,\Omega$ from $60\text{ V}$ node to middle node $v_M$, $2\,\Omega$ from $v_T$ to $v_M$, dependent current source $3i_o$ entering $v_M$ from reference, and $8\,\Omega$ from $v_T$ to reference.  <br><strong>Solution:</strong></p>
+<ul><li>Left node $v_A = 60\text{ V}$, and $i_o = \frac{60 - v_T}{4}$.</li><li>KCL at $v_T$: $\frac{v_T - 60}{4} + \frac{v_T - v_M}{2} + \frac{v_T}{8} = 0 \implies 7v_T - 4v_M = 120$.</li><li>KCL at $v_M$: $\frac{v_M - 60}{10} + \frac{v_M - v_T}{2} = 3i_o = \frac{3(60 - v_T)}{4} \implies 5v_T + 12v_M = 1020$.</li><li>Solving gives $v_T = 53.0769\text{ V},\ v_M = 62.8846\text{ V} \implies i_o = \frac{60 - 53.0769}{4} = \mathbf{1.7308\text{ A}}$.</li></ul>
+<hr />
+<p><strong>Q5 (<code>Quiz 1</code> 2023):</strong> Superposition to find $i$ flowing down the central $3\,\Omega$ resistor. Left $12\text{ V}$ source $\to 4\,\Omega \to v_2$ ($3\,\Omega$ to ref) $\to 4\,\Omega \to v_3$ (with $3\text{ A}$ up); top branch connects $24\text{ V}$ (<code>+</code> left, <code>-</code> right) in series with $8\,\Omega$ between $12\text{ V}$ node and $v_3$.  <br><strong>Solution:</strong><br>Let $i = i_1 + i_2 + i_3$:</p>
+<ol><li><strong>$12\text{ V}$ only ($24\text{ V}$ short, $3\text{ A}$ open):</strong> Notice $8\,\Omega$ in parallel with $4\,\Omega+4\,\Omega$? Wait: $12\text{ V}$ node directly feeds left $4\,\Omega$ AND top $8\,\Omega$. By nodal at $v_2, v_3$: $v_2 = 6\text{ V} \implies i_1 = \frac{6}{3} = \mathbf{2\text{ A}}$.</li><li><strong>$24\text{ V}$ only ($12\text{ V}$ short, $3\text{ A}$ open):</strong> Left node is grounded, top $24\text{ V}$ (<code>+</code> left $\to$ <code>-</code> right) pushes current leftward, driving $v_3$ negative: $v_2 = -3\text{ V} \implies i_2 = \mathbf{-1\text{ A}}$.</li><li><strong>$3\text{ A}$ only ($12\text{ V}, 24\text{ V}$ shorted):</strong> $v_2 = +3\text{ V} \implies i_3 = \mathbf{+1\text{ A}}$.</li></ol>
+<ul><li><strong>Total:</strong> $i = 2 - 1 + 1 = \mathbf{2\text{ A}}$.</li></ul>
+<hr />
+<p><strong>Q6 (<code>Quiz 1</code> 2023 &amp; <code>Network Theorems</code> Source Trans Q3):</strong> Obtain $v_o$ across bottom $2\,\Omega$ (<code>+</code> left, <code>-</code> right) using Source Transformation.  <br><strong>Solution:</strong></p>
+<ol><li>Top $2\text{ A}\parallel 9\,\Omega \to 18\text{ V}$ (<code>-</code> left, <code>+</code> right) in series with $9\,\Omega$.</li><li>Left $3\text{ A}\parallel 4\,\Omega$ (downward $3\text{ A}$) $\to 12\text{ V}$ (<code>-</code> top, <code>+</code> bottom) in series with $4\,\Omega$.</li><li>Right $6\text{ A}\parallel 5\,\Omega$ (downward $6\text{ A}$) $\to 30\text{ V}$ (<code>-</code> top, <code>+</code> bottom) in series with $5\,\Omega$.</li><li>Now it is a single clockwise loop! Moving CW through $12\text{ V}$ (up: $+12\text{ V}$? Wait: <code>+</code> is bottom, so going up is $-12\text{ V}$ drop or $+12\text{ V}$ drop!), $18\text{ V}$ (left to right: $+18\text{ V}$ rise), $30\text{ V}$ right (top to bottom: $+30\text{ V}$ drop), bottom $30\text{ V}$ (<code>+</code> left, going right to left is $+30\text{ V}$ rise!):<br>Wait: sum around loop CW gives net $V_{\text{CW}} = 12 - 18 - 30 - 30 = -66\text{ V}$? Let&#x27;s trace carefully:<br>- Total loop $R = 4 + 9 + 5 + 2 = 20\,\Omega$.<br>- Going CCW from bottom-left: across $2\,\Omega$ (from <code>+</code> to <code>-</code> gives $v_o$ drop), across bottom $30\text{ V}$ (<code>+</code> to <code>-</code> gives drop $30$), up $5\,\Omega + 30\text{ V}$ (<code>+</code> to <code>-</code> gives drop $30$), across $9\,\Omega + 18\text{ V}$ (<code>+</code> to <code>-</code> gives drop $18$? Wait: $2\text{ A}$ points right, so <code>+</code> is on right -&gt; going right-to-left gives $-18\text{ V}$? Actually drop of $18$!), down $4\,\Omega + 12\text{ V}$ (<code>-</code> to <code>+</code> gives rise of $12$): wait $-30 - 30 - (-18)?$ Wait let&#x27;s use exact KVL!<br>- Top arrow $2\text{ A}$ points RIGHT $\implies$ transformed $18\text{ V}$ has <strong><code>+</code> on RIGHT, <code>-</code> on LEFT</strong>.<br>- Left arrow $3\text{ A}$ points DOWN $\implies$ transformed $12\text{ V}$ has <strong><code>+</code> at BOTTOM, <code>-</code> at TOP</strong>.<br>- Right arrow $6\text{ A}$ points DOWN $\implies$ transformed $30\text{ V}$ has <strong><code>+</code> at BOTTOM, <code>-</code> at TOP</strong>.<br>- Going <strong>CCW</strong> current $i$: rises $= +12 + 30 - 18 - 30$? Wait: up right branch (<code>+</code> bottom to <code>-</code> top) = <strong>drop</strong> $30\text{ V}$; right-to-left on top (<code>+</code> right to <code>-</code> left) = <strong>drop</strong> $18\text{ V}$; down left branch (<code>-</code> top to <code>+</code> bottom) = <strong>rise</strong> $12\text{ V}$; left-to-right on bottom (<code>+</code> left to <code>-</code> right of $30\text{ V}$) = <strong>drop</strong> $30\text{ V}$!<br>- Net rise in CCW direction $= 12 - 30 - 18 - 30 = -66\text{ V}$! Wait: so $i_{\text{CCW}} = -66 / 20 = -3.3\text{ A}$, which enters the <code>+</code> terminal of $v_o$ ($2\,\Omega$), so<br>$$v_o = 2 \times i_{\text{CCW}} = 2(-3.3) = \mathbf{-6.6\text{ V}}.$$</li></ol>
+<hr />
+<h3>Paper B: High-Yield <code>ECE-Midsem</code>, <code>ELE103T</code> &amp; <code>Assignment 2 &amp; 3</code> Problems</h3>
+<p><strong>Q7 (<code>ELE103T</code> Quiz 1 — Bulbs):</strong> Three bulbs rated $30\text{ W}, 40\text{ W}, 50\text{ W}$ at $120\text{ V}$ are connected across $120\text{ V}$: (a) in parallel; (b) in series. Which dissipates more power in each case?  <br><strong>Solution:</strong></p>
+<div class="math-block">$$R_{30} = \frac{120^2}{30} = 480\,\Omega, \qquad R_{40} = \frac{120^2}{40} = 360\,\Omega, \qquad R_{50} = \frac{120^2}{50} = 288\,\Omega.$$</div>
+<ul><li><strong>(a) Parallel:</strong> All see $120\text{ V} \implies P_{30}=30\text{ W},\ P_{40}=40\text{ W},\ P_{50}=\mathbf{50\text{ W}}$ (<strong>50 W bulb</strong> dissipates the most).</li><li><strong>(b) Series:</strong> $R_{\text{tot}} = 480+360+288 = 1128\,\Omega \implies I = \frac{120}{1128} = 0.1064\text{ A}$. Since $P = I^2 R$, <strong>$P_{30} = I^2(480) \approx 5.43\text{ W}$</strong> is the largest (<strong>30 W bulb</strong> dissipates the most)!</li></ul>
+<hr />
+<p><strong>Q8 (<code>First-Order Circuits</code> Ch-7 &amp; <code>ECE-Midsem</code>):</strong>  <br>(a) In an $RL$ circuit, inductor $L = 50\text{ mH}$ carries $i(t) = 50e^{-100t}\text{ mA}$. Find $v(t)$ and stored energy $W(0)$.  <br>(b) A switch moves from $A$ (connected to $40\text{ V}$ in series with $5\,\text{k}\Omega$) to $B$ (connected to $2\,\text{k}\Omega$ to ground) on a $10\,\mu\text{F}$ capacitor at $t=0$. Find $v(t)$ for $t&gt;0$.  <br><strong>Solution:</strong></p>
+<ul><li><strong>(a):</strong> $v(t) = L\frac{di}{dt} = (50\times 10^{-3})(-5000 e^{-100t}\times 10^{-3}) = \mathbf{-0.25 e^{-100t}\text{ V}}$. Energy $W(0) = \frac{1}{2}(50\times 10^{-3})(0.05)^2 = \mathbf{62.5\,\mu\text{J}}$.</li><li><strong>(b):</strong> Before $t=0$, cap is open at steady state, no current in $5\,\text{k}\Omega \implies v(0^-) = 40\text{ V} \implies v(0^+) = 40\text{ V}$. For $t&gt;0$, cap discharges through $R = 2\,\text{k}\Omega$:<br>$$\tau = RC = (2\times 10^3)(10\times 10^{-6}) = 0.02\text{ s} \implies v(t) = \mathbf{40 e^{-50t}\text{ V}}\quad (t \ge 0).$$</li></ul>
+<hr />
+<p><strong>Q9 (<code>Assignment_3</code> Q4 — Mixed-Frequency AC + DC Superposition):</strong>  <br>When a linear $RLC$ network contains a DC source ($V_{\text{DC}}$), a cosine source $V_m\cos(\omega t)$, and a sine/cosine current source $I_m\sin(\omega t)$ at frequency $\omega$, how do you find the output $v_o(t)$?  <br><strong>Method Recipe (Mandatory on Exam!):</strong></p>
+<ol><li><strong>DC Subcircuit ($\omega = 0$):</strong> Short every inductor ($Z_L = 0$) and open every capacitor ($Z_C = \infty$). Turn off all AC sources ($V_{\text{AC}}\to\text{short}$, $I_{\text{AC}}\to\text{open}$). Solve the resistive DC circuit for $v_{o,\text{DC}}$.</li><li><strong>AC Subcircuit ($\omega$ rad/s):</strong> Turn off the DC source ($V_{\text{DC}}\to\text{short}$). Convert AC sources to phasors: $V_m\cos(\omega t) \to V_m\angle 0^\circ$, $I_m\sin(\omega t) = I_m\cos(\omega t - 90^\circ) \to I_m\angle -90^\circ = -j I_m$. Compute $Z_L = j\omega L$, $Z_C = \frac{-j}{\omega C}$. Solve in phasors for $\mathbf{V}_o = A\angle\phi$, then convert back to time domain: $v_{o,\text{AC}}(t) = A\cos(\omega t + \phi)$.</li><li><strong>Final Answer:</strong> $v_o(t) = v_{o,\text{DC}} + v_{o,\text{AC}}(t)$. <em>(Never add DC voltage directly to AC phasors!)</em></li></ol>
+<hr />
+<p><strong>Q10 (<code>Lecture 11</code> Transformers):</strong>  <br>A $10\text{ kVA}$, $2000/400\text{ V}$, $50\text{ Hz}$ single-phase transformer has core loss $P_i = 150\text{ W}$ and full-load copper loss $P_{cu,\text{fl}} = 250\text{ W}$. Calculate: (a) efficiency at full load and $0.8$ pf lagging; (b) load kVA for maximum efficiency.  <br><strong>Solution:</strong></p>
+<ul><li><strong>(a):</strong> At $x = 1$, $\text{pf} = 0.8$:<br>$$P_{\text{out}} = 1 \times 10{,}000 \times 0.8 = 8000\text{ W}, \qquad P_{\text{loss}} = 150 + 1^2(250) = 400\text{ W}.$$<br>$$\eta = \frac{8000}{8000 + 400} \times 100\% = \frac{8000}{8400} \times 100\% = \mathbf{95.24\%}.$$</li><li><strong>(b):</strong> Max efficiency occurs at $P_i = x^2 P_{cu,\text{fl}}$:<br>$$x = \sqrt{\frac{P_i}{P_{cu,\text{fl}}}} = \sqrt{\frac{150}{250}} = \sqrt{0.6} \approx 0.7746 \implies S_{\max\eta} = 0.7746 \times 10 = \mathbf{7.746\text{ kVA}}.$$</li></ul>
+<hr />
+<p><strong>Q11 (<code>Lecture 12</code> Induction Motor):</strong>  <br>A 6-pole, $50\text{ Hz}$, 3-phase induction motor delivers $25\text{ hp}$ at $950\text{ rpm}$. Find: (a) synchronous speed; (b) slip; (c) rotor frequency; (d) shaft torque.  <br><strong>Solution:</strong></p>
+<ul><li><strong>(a)</strong> $n_s = \frac{120 f_e}{P} = \frac{120 \times 50}{6} = \mathbf{1000\text{ rpm}}$.</li><li><strong>(b)</strong> $s = \frac{1000 - 950}{1000} = 0.05 = \mathbf{5\%}$.</li><li><strong>(c)</strong> $f_r = s f_e = 0.05 \times 50 = \mathbf{2.5\text{ Hz}}$.</li><li><strong>(d)</strong> $P_{\text{out}} = 25 \times 746 = 18{,}650\text{ W}$, $\omega_m = \frac{2\pi(950)}{60} \approx 99.48\text{ rad/s} \implies \tau = \frac{18{,}650}{99.48} \approx \mathbf{187.47\text{ N}\cdot\text{m}}$.</li></ul>
+<hr />
+<p><strong>Q12 (<code>Lecture 13</code> Diodes &amp; Zener):</strong>  <br>(a) A half-wave rectifier uses a Si diode ($0.7\text{ V}$) with secondary RMS voltage $12\text{ V}$ across a $1\text{ k}\Omega$ load. Find peak output voltage, DC average output voltage, and required PIV rating.  <br>(b) Explain what changes if replaced by a Bridge Full-Wave Rectifier.  <br><strong>Solution:</strong></p>
+<ul><li><strong>(a) HWR:</strong> $V_m = 12\sqrt{2} \approx 16.97\text{ V}$. Peak $V_{o,\max} = 16.97 - 0.7 = \mathbf{16.27\text{ V}}$. Average $V_{dc} = \frac{16.27}{\pi} = \mathbf{5.18\text{ V}}$. Required $\text{PIV} \ge V_m = \mathbf{16.97\text{ V}}$.</li><li><strong>(b) Bridge FWR:</strong> Two diodes conduct per half-cycle $\Rightarrow V_{o,\max} = 16.97 - 2(0.7) = \mathbf{15.57\text{ V}}$, $V_{dc} = \frac{2 \times 15.57}{\pi} = \mathbf{9.91\text{ V}}$, output ripple frequency doubles ($100\text{ Hz}$), $\text{PIV} \ge V_m = \mathbf{16.97\text{ V}}$.</li></ul>
+<hr />
+<h2>4. High-Yield Practice Drill (From Assignments)</h2>
+<ol><li><strong><code>Practice Problems Ch-6</code> Q3 (DC Capacitor Voltages):</strong> Given a DC ladder with $60\text{ V}$ source, $40\,\Omega, 10\,\Omega, 20\,\Omega, 50\,\Omega$, and open capacitors $C_1$ (across $40\,\Omega$) and $C_2$ (right end): verify $v_1 = \mathbf{42\text{ V}},\ v_2 = \mathbf{48\text{ V}}$.</li><li><strong><code>Network Theorems</code> Thevenin Q3:</strong> Find $V_{Th}$ and $R_{Th}$ at $a\text{-}b$ when a circuit has $18\text{ V}, 4\,\Omega, 6\,\Omega, 5\,\Omega, 10\text{ V}$ and two current sources ($2\text{ A}, 3\text{ A}$). <em>(Ans: $R_{Th} = 3.333\,\Omega,\ V_{Th} = 10\text{ V},\ I_N = 3\text{ A}$).</em></li><li><strong><code>Practice Problems Ch-4</code> Max Power Transfer Q2:</strong> A bridge/diamond network feeds variable load $R$: left $80\,\Omega$ (top-left) and $10\,\Omega$ (bottom-left) meet at <code>+</code> / <code>-</code> of a $40\text{ V}$ vertical source; right arms are $20\,\Omega$ (top-right) and $90\,\Omega$ (bottom-right) feeding $R$. Find $R$ for max power and $P_{\max}$. <em>(Ans: $R_{Th} = (80\parallel 20) + (10\parallel 90) = 16 + 9 = \mathbf{25\,\Omega}$, $V_{Th} = 40(\frac{90}{100} - \frac{20}{100}) = 28\text{ V}$, $P_{\max} = \mathbf{7.84\text{ W}}$).</em></li><li><strong><code>Practice Problems Ch-6</code> Capacitors Q2:</strong> Voltage $v(t) = 30 e^{-2000t}\text{ V}$ appears across a parallel $100\text{ mF}$ capacitor and $12\,\Omega$ resistor. Find total power absorbed by the parallel combination. <em>(Ans: $-179.925 e^{-4000t}\text{ W}$ — notice capacitor supplies instantaneous power as it discharges!).</em></li></ol>
+<hr />
+<h2>5. Common Mistakes Checklist</h2>
+<ul><li><label class="chk-line"><input type="checkbox" /> <span><strong>Turning off dependent sources in Thevenin:</strong> <strong>NEVER!</strong> Only turn off independent sources; apply a $1\text{ V}$ or $1\text{ A}$ test source to find $R_{Th}$.</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Adding power by superposition:</strong> Always compute total current/voltage first, <em>then</em> square for power ($P = I^2 R$).</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Half-wave vs Full-wave RMS:</strong> Half-wave rectified sine has $V_{\text{rms}} = V_m/2$, NOT $V_m/\sqrt{2}$!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>AC Max Power Conjugate Sign:</strong> $Z_L = Z_{Th}^*$ (flip the sign of the imaginary part!). If $Z_L$ is constrained to be purely real ($R_L$), use $R_L = |Z_{Th}|$, NOT $\text{Re}(Z_{Th})$!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Peak vs RMS in AC Power Formulas:</strong> $P = \frac{1}{2} V_m I_m \cos\theta$ has the $\mathbf{1/2}$; $P = V_{\text{rms}} I_{\text{rms}} \cos\theta$ does <strong>NOT</strong>! Mixing peak and RMS causes a factor-of-2 error!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Mixed-Frequency Circuits:</strong> Always split into DC ($\omega=0$) and each distinct $\omega$ before using phasors.</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Transformer Core vs Copper Loss:</strong> Core loss $P_i$ stays constant at all loads; copper loss scales with $x^2$ (square of current/load fraction).</span></label></li></ul>
+    </article>
+  </main>
+  <script>
+    const tbtn = document.getElementById("theme-btn");
+    function syncTheme() { tbtn.textContent = document.documentElement.classList.contains("dark") ? "Light" : "Dark"; }
+    tbtn.onclick = () => {
+      const d = document.documentElement.classList.toggle("dark");
+      try { localStorage.setItem("iiitdm_sem1_theme", d ? "dark" : "light"); } catch (_) {}
+      syncTheme();
+    };
+    syncTheme();
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ],
+          throwOnError: false
+        });
+      }
+    });
+  </script>
+</body>
+</html>
