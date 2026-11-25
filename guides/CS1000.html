@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CS1000 Study Guide &bull; IIITDM Sem 1</title>
+  <title>CS1000 Complete Guide &bull; IIITDM Sem 1</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
-  
   <script>
     (function () {
       try {
@@ -17,203 +17,243 @@
       } catch (_) {}
     })();
   </script>
-
   <style>
-
     :root {
       color-scheme: light;
-      --background: #f8fafc;
-      --card: #ffffff;
-      --content: #f1f5f9;
-      --foreground: #0f172a;
-      --muted-foreground: #475569;
-      --primary: #2563eb;
-      --primary-foreground: #ffffff;
-      --border: #cbd5e1;
-      --card-border: #e2e8f0;
-      --success: #15803d;
-      --warning: #b45309;
+      --bg: #f5f6fa;
+      --surface: #ffffff;
+      --surface-2: #eef1f7;
+      --surface-3: #e3e8f2;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-soft: #64748b;
+      --border: #dfe4ef;
+      --border-strong: #c5cedf;
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --primary-fg: #ffffff;
+      --primary-soft: rgba(79, 70, 229, 0.08);
+      --success: #059669;
+      --success-soft: rgba(5, 150, 105, 0.10);
+      --warning: #d97706;
+      --warning-soft: rgba(217, 119, 6, 0.11);
       --error: #dc2626;
-      --chart-1: #2563eb;
-      --chart-2: #0f766e;
-      --chart-3: #6d28d9;
-      --chart-4: #c2410c;
-      --shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+      --error-soft: rgba(220, 38, 38, 0.09);
+      --chart-1: #4f46e5;
+      --chart-2: #0d9488;
+      --chart-3: #7c3aed;
+      --chart-4: #ea580c;
+      --code-bg: #11161f;
+      --code-head: #192130;
+      --code-fg: #e6edf3;
+      --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+      --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 14px 36px -14px rgba(15, 23, 42, 0.12), 0 3px 10px -4px rgba(15, 23, 42, 0.05);
+      --background: var(--bg);
+      --card: var(--surface);
+      --content: var(--surface-2);
+      --foreground: var(--text);
+      --muted-foreground: var(--text-muted);
     }
     html.dark {
       color-scheme: dark;
-      --background: #0b1120;
-      --card: #111827;
-      --content: #1e293b;
-      --foreground: #f1f5f9;
-      --muted-foreground: #94a3b8;
-      --primary: #2563eb;
-      --primary-foreground: #ffffff;
-      --link: #60a5fa;
-      --border: #334155;
-      --card-border: #1e293b;
-      --success: #4ade80;
+      --bg: #090d16;
+      --surface: #111726;
+      --surface-2: #182133;
+      --surface-3: #222e46;
+      --text: #f1f5f9;
+      --text-muted: #9aa7bd;
+      --text-soft: #75839d;
+      --border: #202a3f;
+      --border-strong: #32415e;
+      --primary: #6366f1;
+      --primary-hover: #818cf8;
+      --primary-fg: #ffffff;
+      --primary-soft: rgba(99, 102, 241, 0.15);
+      --success: #34d399;
+      --success-soft: rgba(52, 211, 153, 0.14);
       --warning: #fbbf24;
+      --warning-soft: rgba(251, 191, 36, 0.14);
       --error: #f87171;
-      --chart-1: #60a5fa;
+      --error-soft: rgba(248, 113, 113, 0.14);
+      --chart-1: #818cf8;
       --chart-2: #2dd4bf;
       --chart-3: #a78bfa;
       --chart-4: #fb923c;
-      --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      --code-bg: #0b0f17;
+      --code-head: #131a26;
+      --code-fg: #e6edf3;
+      --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.25);
+      --shadow-sm: 0 3px 10px rgba(0, 0, 0, 0.35);
+      --shadow-md: 0 18px 40px -12px rgba(0, 0, 0, 0.6);
     }
     *, *::before, *::after { box-sizing: border-box; }
     html, body {
-      margin: 0;
-      padding: 0;
-      background: var(--background);
-      color: var(--foreground);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       -webkit-font-smoothing: antialiased;
       -webkit-tap-highlight-color: transparent;
       overflow-x: hidden;
       overflow-x: clip;
     }
-    a { color: var(--link, var(--primary)); text-decoration: none; }
+    a { color: var(--primary); text-decoration: none; }
+    html.dark a { color: #818cf8; }
     a:hover { text-decoration: underline; }
-    button { font-family: inherit; color: inherit; cursor: pointer; background: none; border: none; }
-    button:disabled { opacity: 0.4; cursor: not-allowed; }
-    .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 14px; display: flex; flex-direction: column; gap: 16px; }
-    .container > * { min-width: 0; max-width: 100%; }
-    @media (min-width: 768px) { .container { padding: 24px; gap: 20px; } }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); min-width: 0; max-width: 100%; }
-    .muted { color: var(--muted-foreground); }
-    .primary-text { color: var(--link, var(--primary)); }
-    .success-text { color: var(--success); }
-    .warning-text { color: var(--warning); }
-    .error-text { color: var(--error); }
-    .tabular { font-variant-numeric: tabular-nums; }
+    button { font-family: inherit; color: inherit; cursor: pointer; background: none; border: none; padding: 0; }
+    button:disabled { opacity: 0.38; cursor: not-allowed; }
     .hidden { display: none !important; }
-    .w-full { width: 100%; }
-    .max-w-md { max-width: 448px; }
-    .mx-auto { margin-left: auto; margin-right: auto; display: block; }
-    .frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 3px; font-size: 0.9em; line-height: 1.1; }
-    .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 3px 1px; }
-    .frac > span:last-child { padding: 1px 3px 0; }
-    .math { font-family: Georgia, Cambria, "Times New Roman", serif; }
-    pre.codebox {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      white-space: pre-wrap;
-      word-break: break-word;
-      overflow-x: auto;
-      margin: 0;
-    }
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      background: var(--content);
-      border: 1px solid var(--card-border);
-      border-radius: 5px;
-      padding: 1px 5px;
-      font-size: 0.9em;
-    }
-    kbd {
-      padding: 2px 6px;
-      font-size: 0.75rem;
+    .tabular { font-variant-numeric: tabular-nums; }
+
+    .inline-code {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.85em;
+      background: var(--surface-2);
       border: 1px solid var(--border);
       border-radius: 5px;
-      background: var(--content);
+      padding: 1px 5px;
+      color: var(--text);
+      word-break: break-word;
     }
 
+    /* Syntax-highlighted Code Frame with Header + Line Numbers + Copy */
+    .code-frame {
+      margin: 8px 0;
+      border-radius: 12px;
+      background: var(--code-bg);
+      border: 1px solid var(--border-strong);
+      overflow: hidden;
+      max-width: 100%;
+    }
+    .code-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 6px 12px;
+      background: var(--code-head);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem; font-weight: 600; color: #94a3b8;
+    }
+    .copy-code-btn {
+      padding: 3px 9px; border-radius: 6px; font-size: 0.7rem; font-weight: 700;
+      background: rgba(255,255,255,0.08); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.12);
+      transition: background 0.14s, color 0.14s;
+    }
+    .copy-code-btn:hover { background: rgba(255,255,255,0.16); color: #fff; }
+    .copy-code-btn.copied { background: rgba(16, 185, 129, 0.25); color: #6ee7b7; border-color: rgba(16, 185, 129, 0.45); }
+    pre.code-hl {
+      margin: 0; padding: 12px 14px;
+      color: var(--code-fg);
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.8rem; line-height: 1.56;
+      overflow-x: auto; white-space: pre; max-width: 100%;
+    }
+    .code-ln { display: inline-block; width: 2.1em; user-select: none; color: #475569; text-align: right; margin-right: 12px; }
+    .tok-kw { color: #ff7b72; font-weight: 600; }
+    .tok-ty { color: #79c0ff; }
+    .tok-fn { color: #d2a8ff; }
+    .tok-str { color: #a5d6ff; }
+    .tok-num { color: #f2cc60; }
+    .tok-com { color: #8b949e; font-style: italic; }
+    .tok-pp { color: #ffa657; }
+
+    /* KaTeX responsiveness & mobile 0-overflow safety */
+    .katex { position: relative; }
+    .katex-mathml { left: 0; }
+    .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: 6px 2px; margin: 4px 0 !important; }
+    @media (max-width: 640px) {
+      .katex { font-size: 0.99em; }
+      p .katex, li .katex, .bullet-body .katex, .step-body .katex, .q-prompt .katex, .sol-panel .katex, .hint-panel .katex, .formula-body .katex, .trap-body .katex {
+        display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: bottom;
+      }
+    }
     .topbar {
-      position: sticky; top: 0; z-index: 20;
-      background: color-mix(in srgb, var(--card) 92%, transparent);
-      backdrop-filter: blur(8px);
+      position: sticky; top: 0; z-index: 25;
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
       padding: 10px 16px;
     }
-    .topbar-inner { max-width: 960px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
-    .article-wrap { width: 100%; max-width: 960px; margin: 12px auto 40px; padding: 18px 16px; min-width: 0; overflow-wrap: anywhere; overflow-x: clip; }
-    @media (min-width: 768px) { .article-wrap { padding: 28px 34px; } }
-    article h1 { font-size: 1.4rem; border-bottom: 1px solid var(--card-border); padding-bottom: 8px; margin-top: 0; }
-    article h2 { font-size: 1.18rem; margin-top: 26px; color: var(--link, var(--primary)); border-bottom: 1px solid var(--card-border); padding-bottom: 4px; }
+    .topbar-inner { max-width: 940px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+    .article-shell { max-width: 940px; margin: 16px auto 48px; padding: 0 14px; }
+    .article-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px 18px; box-shadow: var(--shadow-md); overflow-x: clip; overflow-wrap: anywhere; }
+    @media (min-width: 768px) { .article-card { padding: 30px 36px; } }
+    article h1 { font-size: 1.45rem; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-top: 0; }
+    article h2 { font-size: 1.18rem; margin-top: 28px; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 5px; }
+    html.dark article h2 { color: #818cf8; }
     article h3 { font-size: 1.02rem; margin-top: 18px; }
-    article p, article li { font-size: 0.92rem; line-height: 1.6; max-width: 100%; overflow-wrap: anywhere; }
+    article p, article li { font-size: 0.92rem; line-height: 1.62; color: var(--text); }
     article ul, article ol { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
-    article hr { border: none; border-top: 1px solid var(--card-border); margin: 22px 0; }
-    .table-wrap { width: 100%; max-width: 100%; overflow-x: auto; margin: 12px 0; border: 1px solid var(--border); border-radius: 10px; }
+    article hr { border: none; border-top: 1px solid var(--border); margin: 22px 0; }
+    .table-wrap { position: relative; width: 100%; max-width: 100%; overflow-x: auto; margin: 12px 0; border: 1px solid var(--border); border-radius: 12px; }
     table { width: 100%; border-collapse: collapse; font-size: 0.84rem; min-width: 540px; }
-    th, td { text-align: left; padding: 9px 11px; border-bottom: 1px solid var(--card-border); vertical-align: top; }
-    th { background: var(--content); font-weight: 800; }
-    pre.codeblock { max-width: 100%; background: var(--content); border: 1px solid var(--border); border-radius: 10px; padding: 12px; font-size: 0.82rem; margin: 10px 0; overflow-x: auto; }
-    pre.codeblock code { border: none; background: transparent; padding: 0; }
-    .math-block, .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: 6px 2px; text-align: center; }
-    .table-wrap { position: relative; }
-    article .katex { position: relative; }
-    article .katex-mathml { left: 0; }
-    @media (max-width: 640px) {
-      article .katex { font-size: 1.04em; }
-      article p .katex, article li .katex { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: bottom; }
-    }
-    .alert { border-left: 4px solid var(--primary); background: var(--content); border-radius: 8px; padding: 12px 14px; margin: 12px 0; font-size: 0.88rem; }
+    th, td { text-align: left; padding: 9px 11px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { background: var(--surface-2); font-weight: 800; }
+    .math-block { max-width: 100%; overflow-x: auto; padding: 6px 2px; text-align: center; }
+    .alert { border-left: 4px solid var(--primary); background: var(--surface-2); border-radius: 10px; padding: 12px 14px; margin: 12px 0; font-size: 0.88rem; }
     .alert.warning { border-color: var(--warning); }
-    .alert.important { border-color: var(--chart-3); }
-    .alert.caution { border-color: var(--error); }
     .alert.tip { border-color: var(--success); }
     .chk-line { display: flex; align-items: flex-start; gap: 8px; cursor: pointer; }
-    .chk-line input { margin-top: 4px; width: 16px; height: 16px; accent-color: var(--primary); }
+    .chk-line input { margin-top: 4px; width: 16px; height: 16px; accent-color: var(--success); }
   </style>
 </head>
 <body>
   <div class="topbar">
     <div class="topbar-inner">
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-        <a href="../index.html" style="font-weight:800;font-size:0.86rem;">&larr; Study Hub</a>
+        <a href="../index.html" style="font-weight:800;font-size:0.86rem;">&larr; Study Studio</a>
         <span style="font-weight:800;font-size:0.9rem;">CS1000: C Programming</span>
       </div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        <a href="../decks/CS1000_C_Programming_Exam_Deck.pptx" download style="padding:7px 11px;border-radius:8px;background:var(--primary);color:var(--primary-foreground);font-size:0.78rem;font-weight:700;text-decoration:none;">Download .pptx (11 slides)</a>
-        <button id="theme-btn" type="button" style="padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:var(--card);font-size:0.76rem;font-weight:600;">Theme</button>
+        <a href="../decks/CS1000_C_Programming_Exam_Deck.pptx" download style="padding:7px 12px;border-radius:9px;background:var(--primary);color:#fff;font-size:0.78rem;font-weight:700;text-decoration:none;">Download .pptx</a>
+        <button id="theme-btn" type="button" style="padding:7px 10px;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);font-size:0.76rem;font-weight:700;">Theme</button>
       </div>
     </div>
   </div>
-  <main class="container">
-    <article class="card article-wrap">
-      <h1>End-Semester Exam Study Guide — Problem Solving &amp; Programming (<code>CS1000</code>)</h1>
-<p><strong>Course:</strong> Problem Solving and Programming (<code>CS1000</code>) — C Programming (IIITDM Kancheepuram)  <br><strong>Time Horizon:</strong> Built for <strong>&lt; 4-day</strong> exam readiness  <br><strong>Synthesized from:</strong> Lecture decks (<code>BASICS-1</code>, <code>operators</code>, <code>conditional statements</code>, <code>functions</code>, <code>scope</code>, <code>arrays</code>, <code>strings</code>, <code>STRUCTURES</code>, <code>FILES</code>), <code>Practice - 1/2/3</code>, <code>C questions</code>, <code>C questions on NS</code>, <code>Assignment 1</code> (all 12 code images + sets 1–4), <code>Questions for Lab</code>, <code>Switch&amp;If_else</code>, <code>COM105T Quiz 1</code>, <code>PSP Quiz 2 (Oct 2023)</code>, <code>CS1000 Midsem Dec 2022</code>, and <code>CS1000 Endsem Feb 2023</code> (60 marks).</p>
+  <main class="article-shell">
+    <article class="article-card">
+<h1>End-Semester Exam Study Guide — Problem Solving &amp; Programming (<code class="inline-code">CS1000</code>)</h1>
+<p><strong>Course:</strong> Problem Solving and Programming (<code class="inline-code">CS1000</code>) — C Programming (IIITDM Kancheepuram)  <br><strong>Time Horizon:</strong> Built for <strong>&lt; 4-day</strong> exam readiness  <br><strong>Synthesized from:</strong> Lecture decks (<code class="inline-code">BASICS-1</code>, <code class="inline-code">operators</code>, <code class="inline-code">conditional statements</code>, <code class="inline-code">functions</code>, <code class="inline-code">scope</code>, <code class="inline-code">arrays</code>, <code class="inline-code">strings</code>, <code class="inline-code">STRUCTURES</code>, <code class="inline-code">FILES</code>), <code class="inline-code">Practice - 1/2/3</code>, <code class="inline-code">C questions</code>, <code class="inline-code">C questions on NS</code>, <code class="inline-code">Assignment 1</code> (all 12 code images + sets 1–4), <code class="inline-code">Questions for Lab</code>, <code class="inline-code">Switch&amp;If_else</code>, <code class="inline-code">COM105T Quiz 1</code>, <code class="inline-code">PSP Quiz 2 (Oct 2023)</code>, <code class="inline-code">CS1000 Midsem Dec 2022</code>, and <code class="inline-code">CS1000 Endsem Feb 2023</code> (60 marks).</p>
 <hr />
 <h2>1. Exam Pattern &amp; Priority Breakdown</h2>
-<p>In <code>CS1000</code> exams (<code>Midsem</code> 30 marks, <code>Endsem</code> 60 marks), roughly <strong>50% of marks</strong> come from short-answer code-tracing / output / compile-error traps (MCQs &amp; 2-mark questions), and <strong>50% of marks</strong> come from writing clean, bug-free C programs (<strong>Section C</strong>, often banning <code>&lt;string.h&gt;</code> functions!).</p>
-<div class="table-wrap"><table><thead><tr><th>Topic</th><th>Favorite IIITDM Exam Questions</th><th>Priority</th></tr></thead><tbody><tr><td><strong>Number Systems &amp; Bits</strong></td><td>Radix puzzles <code>(123)_5 = (X8)_Y</code>, Octal$\leftrightarrow$Hex via 3/4-bit binary, $n$-bit 2&#x27;s complement ranges/overflow, bit shifting ($8\times P$, <code>a ^ 32</code>, <code>~0 == -1</code>), signed <code>char</code> wraparound</td><td>High</td></tr><tr><td><strong>Compilation &amp; Tokens</strong></td><td>4 stages (Edit/Preprocess $\to$ Compile $\to$ Assemble $\to$ Link $\to$ Execute), <code>Main()</code> linker error, valid C identifiers, <code>#define</code> macro &amp; <code>#undef</code> traps</td><td>High</td></tr><tr><td><strong>Operators &amp; Evaluation</strong></td><td>Precedence (<code>+</code> before <code>&lt;&lt;</code> before <code>&lt;</code> before <code>&amp;</code> before <code>&amp;&amp;</code>), <code>&amp;&amp;</code>/`\</td><td>\</td><td><code> short-circuiting, </code>sizeof(expr)<code> NOT evaluating side-effects, </code>printf<code>/</code>scanf<code> return values, </code>(1,2,3)` comma operator</td><td>Very High</td></tr><tr><td><strong>Control Flow &amp; <code>switch</code></strong></td><td><strong>Semicolon trap (<code>if(a==5);</code>)</strong>, <code>if(a=0)</code> assignment trap, missing <code>break</code> fallthrough, non-constant <code>case a:</code>, duplicate case value (<code>case 3:</code> + <code>case 7-4:</code>), <code>while(c--)</code> vs <code>for</code> trace</td><td>Very High</td></tr><tr><td><strong>Functions, Recursion &amp; Scope</strong></td><td>Pass-by-value vs Pass-by-reference (<code>swap</code>), LIFO recursive stack order, <strong>printing before vs after recursive call</strong>, <code>static</code> local persistence, global vs local shadowing, <code>register</code>/<code>extern</code></td><td>Very High</td></tr><tr><td><strong>Arrays, Pointers &amp; Strings</strong></td><td><code>arr[i]</code> $\equiv$ <code>*(arr+i)</code>, <code>*z++</code> vs <code>(*z)++</code>, <code>q - p</code> vs invalid <code>r/2</code>, 2D char array missing <code>&#x27;\0&#x27;</code> (<code>char arr[4][3]</code>), manual string partition/reverse without <code>&lt;string.h&gt;</code></td><td>Very High</td></tr><tr><td><strong>Structures, Unions &amp; Files</strong></td><td><code>struct</code> pass-by-value vs <code>struct *</code> with <code>-&gt;</code>, struct assignment <code>p3 = p2</code>, <code>union</code> max member size, <code>fopen</code> modes (<code>r,w,a,r+,w+,a+</code>), <code>fprintf/fscanf/fgetc/fgets</code>, <code>fseek/ftell/rewind</code></td><td>Very High</td></tr></tbody></table></div>
+<p>In <code class="inline-code">CS1000</code> exams (<code class="inline-code">Midsem</code> 30 marks, <code class="inline-code">Endsem</code> 60 marks), roughly <strong>50% of marks</strong> come from short-answer code-tracing / output / compile-error traps (MCQs &amp; 2-mark questions), and <strong>50% of marks</strong> come from writing clean, bug-free C programs (<strong>Section C</strong>, often banning <code class="inline-code">&lt;string.h&gt;</code> functions!).</p>
+<div class="table-wrap"><table><thead><tr><th>Topic</th><th>Favorite IIITDM Exam Questions</th><th>Priority</th></tr></thead><tbody><tr><td><strong>Number Systems &amp; Bits</strong></td><td>Radix puzzles <code class="inline-code">(123)_5 = (X8)_Y</code>, Octal$\leftrightarrow$Hex via 3/4-bit binary, $n$-bit 2&#x27;s complement ranges/overflow, bit shifting ($8\times P$, <code class="inline-code">a ^ 32</code>, <code class="inline-code">~0 == -1</code>), signed <code class="inline-code">char</code> wraparound</td><td>High</td></tr><tr><td><strong>Compilation &amp; Tokens</strong></td><td>4 stages (Edit/Preprocess $\to$ Compile $\to$ Assemble $\to$ Link $\to$ Execute), <code class="inline-code">Main()</code> linker error, valid C identifiers, <code class="inline-code">#define</code> macro &amp; <code class="inline-code">#undef</code> traps</td><td>High</td></tr><tr><td><strong>Operators &amp; Evaluation</strong></td><td>Precedence (<code class="inline-code">+</code> before <code class="inline-code">&lt;&lt;</code> before <code class="inline-code">&lt;</code> before <code class="inline-code">&amp;</code> before <code class="inline-code">&amp;&amp;</code>), <code class="inline-code">&amp;&amp;</code>/`\</td><td>\</td><td><code class="inline-code"> short-circuiting, </code>sizeof(expr)<code class="inline-code"> NOT evaluating side-effects, </code>printf<code class="inline-code">/</code>scanf<code class="inline-code"> return values, </code>(1,2,3)` comma operator</td><td>Very High</td></tr><tr><td><strong>Control Flow &amp; <code class="inline-code">switch</code></strong></td><td><strong>Semicolon trap (<code class="inline-code">if(a==5);</code>)</strong>, <code class="inline-code">if(a=0)</code> assignment trap, missing <code class="inline-code">break</code> fallthrough, non-constant <code class="inline-code">case a:</code>, duplicate case value (<code class="inline-code">case 3:</code> + <code class="inline-code">case 7-4:</code>), <code class="inline-code">while(c--)</code> vs <code class="inline-code">for</code> trace</td><td>Very High</td></tr><tr><td><strong>Functions, Recursion &amp; Scope</strong></td><td>Pass-by-value vs Pass-by-reference (<code class="inline-code">swap</code>), LIFO recursive stack order, <strong>printing before vs after recursive call</strong>, <code class="inline-code">static</code> local persistence, global vs local shadowing, <code class="inline-code">register</code>/<code class="inline-code">extern</code></td><td>Very High</td></tr><tr><td><strong>Arrays, Pointers &amp; Strings</strong></td><td><code class="inline-code">arr[i]</code> $\equiv$ <code class="inline-code">*(arr+i)</code>, <code class="inline-code">*z++</code> vs <code class="inline-code">(*z)++</code>, <code class="inline-code">q - p</code> vs invalid <code class="inline-code">r/2</code>, 2D char array missing <code class="inline-code">&#x27;\0&#x27;</code> (<code class="inline-code">char arr[4][3]</code>), manual string partition/reverse without <code class="inline-code">&lt;string.h&gt;</code></td><td>Very High</td></tr><tr><td><strong>Structures, Unions &amp; Files</strong></td><td><code class="inline-code">struct</code> pass-by-value vs <code class="inline-code">struct *</code> with <code class="inline-code">-&gt;</code>, struct assignment <code class="inline-code">p3 = p2</code>, <code class="inline-code">union</code> max member size, <code class="inline-code">fopen</code> modes (<code class="inline-code">r,w,a,r+,w+,a+</code>), <code class="inline-code">fprintf/fscanf/fgetc/fgets</code>, <code class="inline-code">fseek/ftell/rewind</code></td><td>Very High</td></tr></tbody></table></div>
 <hr />
 <h2>2. Rapid Revision Core Notes</h2>
 <h3>2.1 Number Systems &amp; Signed Representation</h3>
-<ul><li><strong>Radix Equation Technique:</strong> Convert both sides to base 10! Enforce <strong>digit $&lt;$ base</strong> constraint (e.g., if <code>8</code> appears in <code>(X8)_Y</code>, then $Y \ge 9$ and $1 \le X &lt; Y$).</li><li><strong>2&#x27;s Complement (Width $n$ bits):</strong></li><li>Range: $\mathbf{-2^{n-1}}$ to $\mathbf{+(2^{n-1} - 1)}$. (8-bit: $-128$ to $+127$; 16-bit: $-32768$ to $+32767$).</li><li>Sign-magnitude 8-bit <code>-9</code>: MSB <code>1</code>, magnitude <code>0001001</code> $\to$ <code>10001001</code>.</li><li>2&#x27;s complement of $-N$: invert all bits of $+N$ (1&#x27;s comp) and add $1$. (Shortcut: copy bits from right up to first <code>1</code>, flip all bits to the left!).</li><li><strong>Signed <code>char</code> wraparound (<code>COM105T</code>, <code>C questions</code>):</strong> <code>char val = 125; val = val + 3;</code> $\to 128$ overflows $+127$ into <strong>$-128$</strong>! <code>~0</code> is <code>-1</code> (all <code>1</code> bits!).</li><li><strong>Bitwise Arithmetic Shortcuts:</strong> Left shift $k$ bits (<code>x &lt;&lt; k</code>) $\approx \times 2^k$ (so <code>8 * P</code> = arithmetic/logical left shift by 3 bits, keeping 16-bit width!). Right shift by 1 (<code>&gt;&gt; 1</code>) divides by 2 (signed negative right shift <code>(-2)&gt;&gt;1</code> = <code>-1</code> on arithmetic-shift compilers).</li></ul>
-<h3>2.2 C Compilation Pipeline &amp; Preprocessor (<code>BASICS-1</code>, <code>FILES.ppt</code>)</h3>
-<ol><li><strong>Preprocessing:</strong> Expands <code>#include</code>, <code>#define</code> macros (pure text substitution — watch missing parentheses in <code>#define SQ(x) x*x</code> $\to$ pass <code>1+2</code> gives <code>1+2*1+2 = 5</code>!), handles <code>#ifdef</code>/<code>#else</code>/<code>#endif</code>, <code>#undef</code>. Directives end with newline, NEVER <code>;</code>.</li><li><strong>Compilation:</strong> Syntax/semantic checks $\to$ generates assembly / <code>.obj</code> object code. <em>(Catches syntax errors, undeclared variables, non-constant <code>case</code> labels, duplicate <code>case</code>, dividing pointer by <code>2</code>.)</em></li><li><strong>Linking:</strong> Combines <code>.obj</code> files with library code (<code>stdio.h</code>, <code>math.h</code>). <em>(Catches missing <code>main()</code> — e.g., <code>Main()</code> case sensitivity error!)</em></li><li><strong>Execution:</strong> OS loads <code>.exe</code> into memory; runtime/logical errors appear here.</li></ol>
+<ul><li><strong>Radix Equation Technique:</strong> Convert both sides to base 10! Enforce <strong>digit $&lt;$ base</strong> constraint (e.g., if <code class="inline-code">8</code> appears in <code class="inline-code">(X8)_Y</code>, then $Y \ge 9$ and $1 \le X &lt; Y$).</li><li><strong>2&#x27;s Complement (Width $n$ bits):</strong></li><li>Range: $\mathbf{-2^{n-1}}$ to $\mathbf{+(2^{n-1} - 1)}$. (8-bit: $-128$ to $+127$; 16-bit: $-32768$ to $+32767$).</li><li>Sign-magnitude 8-bit <code class="inline-code">-9</code>: MSB <code class="inline-code">1</code>, magnitude <code class="inline-code">0001001</code> $\to$ <code class="inline-code">10001001</code>.</li><li>2&#x27;s complement of $-N$: invert all bits of $+N$ (1&#x27;s comp) and add $1$. (Shortcut: copy bits from right up to first <code class="inline-code">1</code>, flip all bits to the left!).</li><li><strong>Signed <code class="inline-code">char</code> wraparound (<code class="inline-code">COM105T</code>, <code class="inline-code">C questions</code>):</strong> <code class="inline-code">char val = 125; val = val + 3;</code> $\to 128$ overflows $+127$ into <strong>$-128$</strong>! <code class="inline-code">~0</code> is <code class="inline-code">-1</code> (all <code class="inline-code">1</code> bits!).</li><li><strong>Bitwise Arithmetic Shortcuts:</strong> Left shift $k$ bits (<code class="inline-code">x &lt;&lt; k</code>) $\approx \times 2^k$ (so <code class="inline-code">8 * P</code> = arithmetic/logical left shift by 3 bits, keeping 16-bit width!). Right shift by 1 (<code class="inline-code">&gt;&gt; 1</code>) divides by 2 (signed negative right shift <code class="inline-code">(-2)&gt;&gt;1</code> = <code class="inline-code">-1</code> on arithmetic-shift compilers).</li></ul>
+<h3>2.2 C Compilation Pipeline &amp; Preprocessor (<code class="inline-code">BASICS-1</code>, <code class="inline-code">FILES.ppt</code>)</h3>
+<ol><li><strong>Preprocessing:</strong> Expands <code class="inline-code">#include</code>, <code class="inline-code">#define</code> macros (pure text substitution — watch missing parentheses in <code class="inline-code">#define SQ(x) x*x</code> $\to$ pass <code class="inline-code">1+2</code> gives <code class="inline-code">1+2*1+2 = 5</code>!), handles <code class="inline-code">#ifdef</code>/<code class="inline-code">#else</code>/<code class="inline-code">#endif</code>, <code class="inline-code">#undef</code>. Directives end with newline, NEVER <code class="inline-code">;</code>.</li><li><strong>Compilation:</strong> Syntax/semantic checks $\to$ generates assembly / <code class="inline-code">.obj</code> object code. <em>(Catches syntax errors, undeclared variables, non-constant <code class="inline-code">case</code> labels, duplicate <code class="inline-code">case</code>, dividing pointer by <code class="inline-code">2</code>.)</em></li><li><strong>Linking:</strong> Combines <code class="inline-code">.obj</code> files with library code (<code class="inline-code">stdio.h</code>, <code class="inline-code">math.h</code>). <em>(Catches missing <code class="inline-code">main()</code> — e.g., <code class="inline-code">Main()</code> case sensitivity error!)</em></li><li><strong>Execution:</strong> OS loads <code class="inline-code">.exe</code> into memory; runtime/logical errors appear here.</li></ol>
 <h3>2.3 Operator Precedence &amp; Tricky Side Effects (Top 6 Traps)</h3>
-<ol><li><strong>Precedence Ladder (High $\to$ Low):</strong><br><code>()</code> <code>[]</code> <code>-&gt;</code> <code>.</code> <strong>&gt;</strong> Unary <code>++</code> <code>--</code> <code>!</code> <code>~</code> <code>sizeof</code> <code>(type)</code> <code>&amp;</code> <code>*</code> <strong>&gt;</strong> <code>* / %</code> <strong>&gt;</strong> <code>+ -</code> <strong>&gt;</strong> <code>&lt;&lt; &gt;&gt;</code> <strong>&gt;</strong> <code>&lt; &lt;= &gt; &gt;=</code> <strong>&gt;</strong> <code>== !=</code> <strong>&gt;</strong> <code>&amp;</code> <strong>&gt;</strong> <code>^</code> <strong>&gt;</strong> <code>|</code> <strong>&gt;</strong> <code>&amp;&amp;</code> <strong>&gt;</strong> <code>||</code> <strong>&gt;</strong> <code>?:</code> <strong>&gt;</strong> <code>=</code> <code>+=</code> <strong>&gt;</strong> <code>,</code><br>- Example: <code>1 &lt;&lt; 2 + 3 &lt;&lt; 4</code> evaluates <code>+</code> FIRST: <code>(1 &lt;&lt; 5) &lt;&lt; 4</code> $= 32 \times 16 = \mathbf{512}$!</li><li><strong>Short-Circuiting (<code>&amp;&amp;</code>, <code>||</code>):</strong><br>- <code>A || B</code>: if <code>A</code> is non-zero (true), <code>B</code> is <strong>NEVER evaluated</strong>!<br>- <code>A &amp;&amp; B</code>: if <code>A</code> is <code>0</code> (false), <code>B</code> is <strong>NEVER evaluated</strong>!</li><li><strong><code>sizeof()</code> is Compile-Time:</strong> <code>int j = sizeof(i++);</code> does <strong>NOT</strong> increment <code>i</code>! (<code>printf</code> inside <code>sizeof(printf(&quot;hi&quot;))</code> prints NOTHING and returns <code>4</code>, size of <code>int</code> return type!). Also <code>sizeof(&#x27;a&#x27;)</code> in C is <strong><code>4</code></strong> (character constant has type <code>int</code>), whereas <code>sizeof(2.5)</code> is <strong><code>8</code></strong> (<code>double</code>)!</li><li><strong>R-value Increment Error:</strong> <code>(10++)</code> or <code>(++i)++</code> or <code>#define c 7; (++c)</code> $\implies$ <strong>Compilation Error</strong> (cannot modify a constant/r-value).</li><li><strong>Return values of <code>printf()</code> &amp; <code>scanf()</code>:</strong><br>- <code>printf(&quot;hello&quot;)</code> returns number of <strong>characters printed</strong> ($5$).<br>- <code>scanf(&quot;%d %d&quot;, &amp;a, &amp;b)</code> returns number of <strong>items successfully read</strong> ($2$).</li><li><strong>Comma Operator vs Declaration:</strong> <code>int i = 1, 2, 3;</code> is a <strong>compile error</strong> (comma is separator in declaration); <code>int i = (1, 2, 3);</code> evaluates left-to-right and assigns <strong><code>3</code></strong>!</li></ol>
-<h3>2.4 Control Flow, Loops &amp; <code>switch</code> Rules</h3>
-<ul><li><strong>Dangling <code>if</code> Semicolon (<code>if(a==5);</code>):</strong> Ends the <code>if</code> immediately with an empty statement! Any <code>else</code> immediately afterward causes <strong>Compile Error: <code>&#x27;else&#x27; without a previous &#x27;if&#x27;</code></strong> (<code>Midsem 2022</code> Q4). No <code>else</code> afterward means the next <code>{...}</code> block executes unconditionally!</li><li><strong><code>switch(expr)</code> Mandatory Rules (<code>Quiz 2</code>, <code>Midsem 2022</code>):</strong><br>1. <code>expr</code> MUST be <strong>integer/character</strong> (never <code>float</code>/<code>double</code>/<code>string</code>).<br>2. Every <code>case</code> label MUST be a <strong>constant integer expression</strong> (<code>case 1+2:</code> ok; <code>case a:</code> or <code>case c=1:</code> or <code>case N*4:</code> with float <code>N</code> $\to$ <strong>Compile Error</strong>).<br>3. All <code>case</code> values MUST be <strong>unique</strong> (<code>case 3:</code> and <code>case (7-4):</code> together $\to$ <strong>Compile Error: duplicate case</strong>!).<br>4. Without <code>break;</code>, execution <strong>falls through</strong> all subsequent cases (including <code>default:</code> if <code>default</code> sits before cases!).</li><li><strong><code>for(init; cond; update)</code> Order:</strong> <code>init</code> runs <strong>once</strong> $\to$ <code>cond</code> checked (if 0, exit; note <code>init</code> ALREADY changed the variable!) $\to$ body $\to$ <code>update</code> (<code>continue;</code> jumps straight to <code>update</code>, NOT skipping it!).</li><li><strong><code>do { ... } while(cond);</code>:</strong> Body always executes <strong>at least once</strong>, even if <code>cond</code> starts false!</li></ul>
+<ol><li><strong>Precedence Ladder (High $\to$ Low):</strong><br><code class="inline-code">()</code> <code class="inline-code">[]</code> <code class="inline-code">-&gt;</code> <code class="inline-code">.</code> <strong>&gt;</strong> Unary <code class="inline-code">++</code> <code class="inline-code">--</code> <code class="inline-code">!</code> <code class="inline-code">~</code> <code class="inline-code">sizeof</code> <code class="inline-code">(type)</code> <code class="inline-code">&amp;</code> <code class="inline-code">*</code> <strong>&gt;</strong> <code class="inline-code">* / %</code> <strong>&gt;</strong> <code class="inline-code">+ -</code> <strong>&gt;</strong> <code class="inline-code">&lt;&lt; &gt;&gt;</code> <strong>&gt;</strong> <code class="inline-code">&lt; &lt;= &gt; &gt;=</code> <strong>&gt;</strong> <code class="inline-code">== !=</code> <strong>&gt;</strong> <code class="inline-code">&amp;</code> <strong>&gt;</strong> <code class="inline-code">^</code> <strong>&gt;</strong> <code class="inline-code">|</code> <strong>&gt;</strong> <code class="inline-code">&amp;&amp;</code> <strong>&gt;</strong> <code class="inline-code">||</code> <strong>&gt;</strong> <code class="inline-code">?:</code> <strong>&gt;</strong> <code class="inline-code">=</code> <code class="inline-code">+=</code> <strong>&gt;</strong> <code class="inline-code">,</code><br>- Example: <code class="inline-code">1 &lt;&lt; 2 + 3 &lt;&lt; 4</code> evaluates <code class="inline-code">+</code> FIRST: <code class="inline-code">(1 &lt;&lt; 5) &lt;&lt; 4</code> $= 32 \times 16 = \mathbf{512}$!</li><li><strong>Short-Circuiting (<code class="inline-code">&amp;&amp;</code>, <code class="inline-code">||</code>):</strong><br>- <code class="inline-code">A || B</code>: if <code class="inline-code">A</code> is non-zero (true), <code class="inline-code">B</code> is <strong>NEVER evaluated</strong>!<br>- <code class="inline-code">A &amp;&amp; B</code>: if <code class="inline-code">A</code> is <code class="inline-code">0</code> (false), <code class="inline-code">B</code> is <strong>NEVER evaluated</strong>!</li><li><strong><code class="inline-code">sizeof()</code> is Compile-Time:</strong> <code class="inline-code">int j = sizeof(i++);</code> does <strong>NOT</strong> increment <code class="inline-code">i</code>! (<code class="inline-code">printf</code> inside <code class="inline-code">sizeof(printf(&quot;hi&quot;))</code> prints NOTHING and returns <code class="inline-code">4</code>, size of <code class="inline-code">int</code> return type!). Also <code class="inline-code">sizeof(&#x27;a&#x27;)</code> in C is <strong><code class="inline-code">4</code></strong> (character constant has type <code class="inline-code">int</code>), whereas <code class="inline-code">sizeof(2.5)</code> is <strong><code class="inline-code">8</code></strong> (<code class="inline-code">double</code>)!</li><li><strong>R-value Increment Error:</strong> <code class="inline-code">(10++)</code> or <code class="inline-code">(++i)++</code> or <code class="inline-code">#define c 7; (++c)</code> $\implies$ <strong>Compilation Error</strong> (cannot modify a constant/r-value).</li><li><strong>Return values of <code class="inline-code">printf()</code> &amp; <code class="inline-code">scanf()</code>:</strong><br>- <code class="inline-code">printf(&quot;hello&quot;)</code> returns number of <strong>characters printed</strong> ($5$).<br>- <code class="inline-code">scanf(&quot;%d %d&quot;, &amp;a, &amp;b)</code> returns number of <strong>items successfully read</strong> ($2$).</li><li><strong>Comma Operator vs Declaration:</strong> <code class="inline-code">int i = 1, 2, 3;</code> is a <strong>compile error</strong> (comma is separator in declaration); <code class="inline-code">int i = (1, 2, 3);</code> evaluates left-to-right and assigns <strong><code class="inline-code">3</code></strong>!</li></ol>
+<h3>2.4 Control Flow, Loops &amp; <code class="inline-code">switch</code> Rules</h3>
+<ul><li><strong>Dangling <code class="inline-code">if</code> Semicolon (<code class="inline-code">if(a==5);</code>):</strong> Ends the <code class="inline-code">if</code> immediately with an empty statement! Any <code class="inline-code">else</code> immediately afterward causes <strong>Compile Error: <code class="inline-code">&#x27;else&#x27; without a previous &#x27;if&#x27;</code></strong> (<code class="inline-code">Midsem 2022</code> Q4). No <code class="inline-code">else</code> afterward means the next <code class="inline-code">{...}</code> block executes unconditionally!</li><li><strong><code class="inline-code">switch(expr)</code> Mandatory Rules (<code class="inline-code">Quiz 2</code>, <code class="inline-code">Midsem 2022</code>):</strong><br>1. <code class="inline-code">expr</code> MUST be <strong>integer/character</strong> (never <code class="inline-code">float</code>/<code class="inline-code">double</code>/<code class="inline-code">string</code>).<br>2. Every <code class="inline-code">case</code> label MUST be a <strong>constant integer expression</strong> (<code class="inline-code">case 1+2:</code> ok; <code class="inline-code">case a:</code> or <code class="inline-code">case c=1:</code> or <code class="inline-code">case N*4:</code> with float <code class="inline-code">N</code> $\to$ <strong>Compile Error</strong>).<br>3. All <code class="inline-code">case</code> values MUST be <strong>unique</strong> (<code class="inline-code">case 3:</code> and <code class="inline-code">case (7-4):</code> together $\to$ <strong>Compile Error: duplicate case</strong>!).<br>4. Without <code class="inline-code">break;</code>, execution <strong>falls through</strong> all subsequent cases (including <code class="inline-code">default:</code> if <code class="inline-code">default</code> sits before cases!).</li><li><strong><code class="inline-code">for(init; cond; update)</code> Order:</strong> <code class="inline-code">init</code> runs <strong>once</strong> $\to$ <code class="inline-code">cond</code> checked (if 0, exit; note <code class="inline-code">init</code> ALREADY changed the variable!) $\to$ body $\to$ <code class="inline-code">update</code> (<code class="inline-code">continue;</code> jumps straight to <code class="inline-code">update</code>, NOT skipping it!).</li><li><strong><code class="inline-code">do { ... } while(cond);</code>:</strong> Body always executes <strong>at least once</strong>, even if <code class="inline-code">cond</code> starts false!</li></ul>
 <h3>2.5 Functions, Recursion &amp; Storage Classes</h3>
-<ul><li><strong>Call by Value vs Call by Reference:</strong> Passing <code>x</code> sends a copy (caller unchanged); passing <code>&amp;x</code> allows modifying caller&#x27;s variable via <code>*px</code>. Arrays decay to pointers (<code>sum(a)</code> passes <code>&amp;a[0]</code>, modifying original array!).</li><li><strong>Recursion:</strong> Needs Base Case + Recursive Case; uses <strong>LIFO</strong> call stack. Pay close attention to whether <code>printf()</code> is <strong>before</strong> (prints top-down) or <strong>after</strong> (prints bottom-up during unwinding) the recursive call (<code>Endsem 2023</code> Sec B Q3!).</li><li><strong>4 Storage Classes (<code>scope.pptx</code>, <code>functions.ppt</code>):</strong></li></ul>
-<div class="table-wrap"><table><thead><tr><th>Class</th><th>Keyword</th><th>Storage</th><th>Default Initial Value</th><th>Scope</th><th>Lifetime</th></tr></thead><tbody><tr><td><strong>Automatic</strong></td><td><code>auto</code> (default)</td><td>RAM (Stack)</td><td>Garbage</td><td>Block / Local</td><td>Till block ends</td></tr><tr><td><strong>External</strong></td><td><code>extern</code></td><td>RAM (Data)</td><td><code>0</code></td><td>Global (whole program)</td><td>Entire program</td></tr><tr><td><strong>Static</strong></td><td><code>static</code></td><td>RAM (Data)</td><td><strong><code>0</code></strong></td><td>Block / File</td><td><strong>Entire program</strong> (retains value across calls!)</td></tr><tr><td><strong>Register</strong></td><td><code>register</code></td><td>CPU Register</td><td>Garbage</td><td>Block / Local</td><td>Till block ends (cannot use <code>&amp;</code>!)</td></tr></tbody></table></div>
+<ul><li><strong>Call by Value vs Call by Reference:</strong> Passing <code class="inline-code">x</code> sends a copy (caller unchanged); passing <code class="inline-code">&amp;x</code> allows modifying caller&#x27;s variable via <code class="inline-code">*px</code>. Arrays decay to pointers (<code class="inline-code">sum(a)</code> passes <code class="inline-code">&amp;a[0]</code>, modifying original array!).</li><li><strong>Recursion:</strong> Needs Base Case + Recursive Case; uses <strong>LIFO</strong> call stack. Pay close attention to whether <code class="inline-code">printf()</code> is <strong>before</strong> (prints top-down) or <strong>after</strong> (prints bottom-up during unwinding) the recursive call (<code class="inline-code">Endsem 2023</code> Sec B Q3!).</li><li><strong>4 Storage Classes (<code class="inline-code">scope.pptx</code>, <code class="inline-code">functions.ppt</code>):</strong></li></ul>
+<div class="table-wrap"><table><thead><tr><th>Class</th><th>Keyword</th><th>Storage</th><th>Default Initial Value</th><th>Scope</th><th>Lifetime</th></tr></thead><tbody><tr><td><strong>Automatic</strong></td><td><code class="inline-code">auto</code> (default)</td><td>RAM (Stack)</td><td>Garbage</td><td>Block / Local</td><td>Till block ends</td></tr><tr><td><strong>External</strong></td><td><code class="inline-code">extern</code></td><td>RAM (Data)</td><td><code class="inline-code">0</code></td><td>Global (whole program)</td><td>Entire program</td></tr><tr><td><strong>Static</strong></td><td><code class="inline-code">static</code></td><td>RAM (Data)</td><td><strong><code class="inline-code">0</code></strong></td><td>Block / File</td><td><strong>Entire program</strong> (retains value across calls!)</td></tr><tr><td><strong>Register</strong></td><td><code class="inline-code">register</code></td><td>CPU Register</td><td>Garbage</td><td>Block / Local</td><td>Till block ends (cannot use <code class="inline-code">&amp;</code>!)</td></tr></tbody></table></div>
 <h3>2.6 Pointers, Strings, Structures &amp; Files</h3>
-<ul><li><strong>Pointer Arithmetic (assume <code>sizeof(int) = 4</code>):</strong></li><li><code>p + 1</code> adds <code>1 * sizeof(*p)</code> bytes.</li><li><code>*p++</code> $\equiv$ <code>*(p++)</code>: dereferences current address, then advances pointer <code>p</code>!</li><li><code>(*p)++</code> or <code>++(*p)</code>: increments the <strong>value</strong> pointed to!</li><li><code>q - p</code> gives number of elements between two pointers of the same type; <code>p + q</code> or <code>p / 2</code> is <strong>ILLEGAL</strong>!</li><li><strong>Strings (<code>strings.ppt</code>):</strong></li><li>Terminated by <code>&#x27;\0&#x27;</code> (ASCII <code>0</code>). <code>&#x27;0&#x27;</code> is ASCII <code>48</code>, <code>&#x27;A&#x27;</code> is <code>65</code>, <code>&#x27;a&#x27;</code> is <code>97</code>.</li><li><code>scanf(&quot;%s&quot;, s)</code> stops at whitespace! Never write <code>&amp;s</code> for a char array name.</li><li><code>strlen(s)</code> returns length excluding <code>&#x27;\0&#x27;</code>; <code>sizeof(s)</code> returns total allocated array bytes!</li><li><code>strcmp(s1, s2)</code> returns <code>0</code> if equal, <code>&lt; 0</code> if <code>s1 &lt; s2</code>, <code>&gt; 0</code> if <code>s1 &gt; s2</code> (case-sensitive: <code>&#x27;G&#x27; (71) &lt; &#x27;g&#x27; (103)</code>!).</li><li><strong>Structures vs Unions (<code>STRUCTURES.ppt</code>):</strong></li><li><strong>Cannot initialize members inside <code>struct</code> definition</strong> (no memory yet!). Don&#x27;t forget final <code>;</code> after <code>}</code>.</li><li>Dot <code>s.member</code> for struct variable; Arrow <code>ptr-&gt;member</code> (same as <code>(*ptr).member</code>) for struct pointer. <code>p3 = p2;</code> performs member-wise copy!</li><li><code>union</code> shares one memory block across all members: <code>sizeof(union)</code> = size of <strong>largest member</strong> (20 bytes in <code>union { int i; float f; char str[20]; }</code>).</li><li><strong>Files (<code>FILES.ppt</code>):</strong></li><li>Pointer: <code>FILE *fp;</code> $\to$ <code>fp = fopen(&quot;name.txt&quot;, &quot;mode&quot;);</code> (check <code>fp == NULL</code>!). Always <code>fclose(fp);</code>.</li><li><strong>Modes:</strong> <code>&quot;r&quot;</code> (read existing; <code>NULL</code> if missing), <code>&quot;w&quot;</code> (create/overwrite; <strong>destroys</strong> existing contents), <code>&quot;a&quot;</code> (append at end; creates if missing), <code>&quot;r+&quot;</code> (read+write existing), <code>&quot;w+&quot;</code> (create/truncate + read/write), <code>&quot;a+&quot;</code> (read + append).</li><li>Text I/O: <code>fprintf(fp, &quot;%d&quot;, x)</code>, <code>fscanf(fp, &quot;%d&quot;, &amp;x)</code>, <code>fgetc(fp)</code> (returns <code>EOF</code> at end), <code>fputc(ch, fp)</code>, <code>fgets(buf, n, fp)</code>, <code>fputs(str, fp)</code>.</li><li>Random access: <code>fseek(fp, offset, origin)</code> (<code>0</code>=<code>SEEK_SET</code>, <code>1</code>=<code>SEEK_CUR</code>, <code>2</code>=<code>SEEK_END</code>), <code>ftell(fp)</code>, <code>rewind(fp)</code>.</li></ul>
+<ul><li><strong>Pointer Arithmetic (assume <code class="inline-code">sizeof(int) = 4</code>):</strong></li><li><code class="inline-code">p + 1</code> adds <code class="inline-code">1 * sizeof(*p)</code> bytes.</li><li><code class="inline-code">*p++</code> $\equiv$ <code class="inline-code">*(p++)</code>: dereferences current address, then advances pointer <code class="inline-code">p</code>!</li><li><code class="inline-code">(*p)++</code> or <code class="inline-code">++(*p)</code>: increments the <strong>value</strong> pointed to!</li><li><code class="inline-code">q - p</code> gives number of elements between two pointers of the same type; <code class="inline-code">p + q</code> or <code class="inline-code">p / 2</code> is <strong>ILLEGAL</strong>!</li><li><strong>Strings (<code class="inline-code">strings.ppt</code>):</strong></li><li>Terminated by <code class="inline-code">&#x27;\0&#x27;</code> (ASCII <code class="inline-code">0</code>). <code class="inline-code">&#x27;0&#x27;</code> is ASCII <code class="inline-code">48</code>, <code class="inline-code">&#x27;A&#x27;</code> is <code class="inline-code">65</code>, <code class="inline-code">&#x27;a&#x27;</code> is <code class="inline-code">97</code>.</li><li><code class="inline-code">scanf(&quot;%s&quot;, s)</code> stops at whitespace! Never write <code class="inline-code">&amp;s</code> for a char array name.</li><li><code class="inline-code">strlen(s)</code> returns length excluding <code class="inline-code">&#x27;\0&#x27;</code>; <code class="inline-code">sizeof(s)</code> returns total allocated array bytes!</li><li><code class="inline-code">strcmp(s1, s2)</code> returns <code class="inline-code">0</code> if equal, <code class="inline-code">&lt; 0</code> if <code class="inline-code">s1 &lt; s2</code>, <code class="inline-code">&gt; 0</code> if <code class="inline-code">s1 &gt; s2</code> (case-sensitive: <code class="inline-code">&#x27;G&#x27; (71) &lt; &#x27;g&#x27; (103)</code>!).</li><li><strong>Structures vs Unions (<code class="inline-code">STRUCTURES.ppt</code>):</strong></li><li><strong>Cannot initialize members inside <code class="inline-code">struct</code> definition</strong> (no memory yet!). Don&#x27;t forget final <code class="inline-code">;</code> after <code class="inline-code">}</code>.</li><li>Dot <code class="inline-code">s.member</code> for struct variable; Arrow <code class="inline-code">ptr-&gt;member</code> (same as <code class="inline-code">(*ptr).member</code>) for struct pointer. <code class="inline-code">p3 = p2;</code> performs member-wise copy!</li><li><code class="inline-code">union</code> shares one memory block across all members: <code class="inline-code">sizeof(union)</code> = size of <strong>largest member</strong> (20 bytes in <code class="inline-code">union { int i; float f; char str[20]; }</code>).</li><li><strong>Files (<code class="inline-code">FILES.ppt</code>):</strong></li><li>Pointer: <code class="inline-code">FILE *fp;</code> $\to$ <code class="inline-code">fp = fopen(&quot;name.txt&quot;, &quot;mode&quot;);</code> (check <code class="inline-code">fp == NULL</code>!). Always <code class="inline-code">fclose(fp);</code>.</li><li><strong>Modes:</strong> <code class="inline-code">&quot;r&quot;</code> (read existing; <code class="inline-code">NULL</code> if missing), <code class="inline-code">&quot;w&quot;</code> (create/overwrite; <strong>destroys</strong> existing contents), <code class="inline-code">&quot;a&quot;</code> (append at end; creates if missing), <code class="inline-code">&quot;r+&quot;</code> (read+write existing), <code class="inline-code">&quot;w+&quot;</code> (create/truncate + read/write), <code class="inline-code">&quot;a+&quot;</code> (read + append).</li><li>Text I/O: <code class="inline-code">fprintf(fp, &quot;%d&quot;, x)</code>, <code class="inline-code">fscanf(fp, &quot;%d&quot;, &amp;x)</code>, <code class="inline-code">fgetc(fp)</code> (returns <code class="inline-code">EOF</code> at end), <code class="inline-code">fputc(ch, fp)</code>, <code class="inline-code">fgets(buf, n, fp)</code>, <code class="inline-code">fputs(str, fp)</code>.</li><li>Random access: <code class="inline-code">fseek(fp, offset, origin)</code> (<code class="inline-code">0</code>=<code class="inline-code">SEEK_SET</code>, <code class="inline-code">1</code>=<code class="inline-code">SEEK_CUR</code>, <code class="inline-code">2</code>=<code class="inline-code">SEEK_END</code>), <code class="inline-code">ftell(fp)</code>, <code class="inline-code">rewind(fp)</code>.</li></ul>
 <hr />
 <h2>3. Traced Previous-Year Exam Questions (Complete Set)</h2>
-<h3>3.1 <code>CS1000</code> Endsem Feb 2023 + Midsem Dec 2022 + Quiz 2 Tricky Traces</h3>
-<ol><li><strong><code>Endsem 2023</code> Sec A Q2 (Double Trap in <code>switch</code>):</strong><br>```c<br>int a = 3, b = 4, c, d; c = b - a; d = a || b;<br>switch(c) {<br>case 1 || 2 &amp;&amp; 15%5: printf(&quot;Grade S\n&quot;); break;<br>case !(10%3*5%5) &amp;&amp; -10: printf(&quot;Grade A\n&quot;); break;<br>}<br>```<br>- <code>c = 1</code>. Case 1: <code>15%5=0</code>, <code>2&amp;&amp;0=0</code>, <code>1||0 = 1</code>. Case 2: <code>10%3=1</code>, <code>1*5=5</code>, <code>5%5=0</code>, <code>!0=1</code>, <code>1&amp;&amp;-10 = 1</code>.<br>- <strong>Result:</strong> <strong>Compilation Error — Duplicate case value <code>1</code></strong>! <em>(Similarly <code>Quiz 2</code> Q2 had <code>case 3:</code> and <code>case (7-4):</code> $\to$ duplicate case error!)</em></li></ol>
-<ol><li><strong><code>Endsem 2023</code> Sec A Q4 (<code>static</code> inside Recursion):</strong><br>```c<br>int f(int n) { static int i = 1; if(n&gt;=5) return n; n=n+i; i++; return f(n); }<br>```<br>- Trace <code>f(1)</code>: Call 1 (<code>n=1, i=1</code> $\to n=2, i=2$) $\to$ Call 2 (<code>n=2, i=2</code> $\to n=4, i=3$) $\to$ Call 3 (<code>n=4, i=3</code> $\to n=7, i=4$) $\to$ Call 4 (<code>n=7 \ge 5</code> returns <strong><code>7</code></strong>).</li></ol>
-<ol><li><strong><code>Endsem 2023</code> Sec A Q8 (Global vs Local Shadowing):</strong><br><code>global i=10;</code> in <code>main</code>: local <code>int i=20; printf(&quot;%d&quot;, i); check(); printf(&quot;%d&quot;, ++i);</code> where <code>check()</code> prints <code>i++</code> (global).<br>- Output: <strong><code>20 10 21</code></strong> (<code>check()</code> sees global <code>10</code> because local <code>i</code> in <code>main</code> is out of scope!).</li></ol>
-<ol><li><strong><code>Endsem 2023</code> Sec A Q10 (Pointer Increment Precedence):</strong><br><code>int x=20, y=21, *z;</code> (contiguous addresses <code>5000, 5004, 5008</code>): <code>z = &amp;x; *z++; x++;</code><br>- Precedence: <code>++</code> binds to <code>z</code> BEFORE <code>*</code>! So <code>*z++</code> evaluates <code>*(z++)</code>: advances <strong><code>z</code></strong> from <code>5000</code> to <code>5004</code> (<code>&amp;y</code>), leaving <code>x</code> at <code>20</code>! Then <code>x++</code> makes <code>x = 21</code>.<br>- Prints addresses <code>5000, 5004, 5008</code>, then values <code>x=21, y=21, *z=21</code> (<code>(c)</code>).</li></ol>
-<ol><li><strong><code>Endsem 2023</code> Sec B Q3 (Recursion Order + Pass-by-Value Trap):</strong><br>```c<br>void func(int n, int sum) { if(n==0) return; k=n%10; j=n/10; sum=sum+k; func(j, sum); printf(&quot;%d,&quot;, k); }<br>```<br>- Called with <code>func(2048, 0)</code>: pushes <code>k=8</code>, <code>k=4</code>, <code>k=0</code>, <code>k=2</code>, then pops &amp; prints <strong><code>2,0,4,8,</code></strong>. In <code>main()</code>, <code>sum</code> was passed by value so remains <code>0</code> $\implies$ <strong><code>2,0,4,8,0</code> (<code>(c)</code>)</strong>.</li></ol>
-<ol><li><strong><code>Endsem 2023</code> Sec B Q4 (Pointer Parameter + Same-Name Shadow):</strong><br>```c<br>int cal(int <em>i, int j) { </em>i = <em>i </em> <em>i; j = j </em> j; return (2*j); }<br>// main: int i=5, j=2, t=5; t = cal(&amp;i, j); j = j + t*3; i = i - t + 7;<br>```<br>- <code>cal(&amp;i, 2)</code>: <code>*i = 25</code> (<code>main</code>&#x27;s <code>i=25</code>), local <code>j = 4</code> (doesn&#x27;t change <code>main</code>&#x27;s <code>j=2</code>!), returns <code>t = 8</code>.<br>- Back in <code>main</code>: <code>j = 2 + 8*3 = 26</code>; <code>i = 25 - 8 + 7 = 24</code>. Output: <strong><code>24,26</code></strong>.</li></ol>
-<ol><li><strong><code>Endsem 2023</code> Sec B Q6 (<code>struct</code> Copy vs Separate Char Array):</strong><br><code>p3 = p2;</code> copies <code>{&quot;paper&quot;, 120.0}</code> into <code>p3</code>. Changing <code>p3.productName[0] = &#x27;P&#x27;</code> makes <code>p3.productName</code> <code>&quot;Paper&quot;</code> (independent copy, <code>p2</code> stays <code>&quot;paper&quot;</code>!). <code>p2.price = 120.0 / 4 = 30.0</code>. Both <code>p1, p2, p3</code> have <code>p3.price &gt; p2.price</code> true! Prints: <code>Pen, 30.000000</code>, <code>paper, 30.000000</code>, <code>Paper, 120.000000</code>.</li></ol>
-<ol><li><strong><code>Endsem 2023</code> Sec B Q7 (<code>f1</code> vs <code>f2</code> Swap):</strong><br><code>f1(a,b)</code> is pass-by-value (no effect on <code>a=4, b=5</code>). <code>f2(&amp;b, &amp;c)</code> passes pointers: <code>*a</code> (<code>b=5</code>) and <code>*b</code> (<code>c=6</code>) are swapped so <code>b=6, c=5</code>. <code>printf(&quot;%d&quot;, c-a-b)</code> $= 5 - 4 - 6 = \mathbf{-5}$!</li></ol>
-<ol><li><strong><code>Endsem 2023</code> Sec B Q9 (<code>*arr2++</code> Pointer Increment Trap):</strong><br>- Look at printed line <code>*arr2++ = ++(*(arr1 + i));</code> vs <code>arr2[i]</code>: With <code>arr2</code> as a pointer parameter, <code>*arr2++</code> stores into <code>arr2[i]</code> AND increments <code>arr2</code> by 1 element each iteration, while <code>++(*(arr1+i))</code> increments <code>arr1[i]</code> in place (<code>{2,2,3,3,3,4,4,4,4,5}</code> $\to$ <code>{3,3,4,4,4,5,5,5,5,6}</code>). <code>main</code> prints <strong><code>3 3 4 4 4 5 5 5 5 6</code></strong> (one per line).</li></ol>
-<ol><li><strong><code>Endsem 2023</code> Sec B Q10 (Struct Pointer Traversal):</strong><br><code>List[] = {{1,37}, {2,16}, {3,84}, {4,71}, {5,48}};</code> Even <code>val</code> prints <code>val</code>, odd <code>val</code> prints <code>val*2</code>:<br>Output: <code>1 74</code>, <code>2 16</code>, <code>3 84</code>, <code>4 142</code>, <code>5 48</code>.</li></ol>
-<ol><li><strong><code>Quiz 2</code> Oct 2023 Traps:</strong><br>- <code>c = 6; while(c--) printf(&quot;%d\t&quot;, c);</code> $\to$ Prints <strong><code>5 4 3 2 1 0</code></strong> (<code>c--</code> tests 6,5,4,3,2,1 as true, printing decremented value!).<br>- <code>for(x=0; 0;) printf(&quot;success&quot;);</code> $\to$ <code>x=0</code> runs ONCE, then condition <code>0</code> is false $\to$ Loop does NOT run, <strong><code>x</code> becomes <code>0</code></strong>.<br>- <code>char arr[4][3] = {&quot;hi&quot;, &quot;how&quot;, &quot;are&quot;, &quot;u&quot;}; printf(&quot;%s&quot;, arr[2]);</code> $\to$ <code>&quot;how&quot;</code> and <code>&quot;are&quot;</code> fill all 3 chars with <strong>NO room for <code>&#x27;\0&#x27;</code></strong>, so <code>arr[2]</code> runs directly into <code>arr[3]</code> (<code>&quot;u\0&quot;</code>) and prints <strong><code>areu</code></strong> (adjacent row overrun)!<br>- <code>int x[5]={6,2,12,18,20}; p = --x[1]; r = x[p++]; printf(&quot;%d,%d&quot;,p,r);</code> $\to$ <code>--x[1]</code> sets <code>x[1]=1, p=1</code>. Then <code>x[p++]</code> reads <code>x[1]</code> (<code>1</code>) and increments <code>p</code> to <code>2</code> $\to$ Prints <strong><code>2,1</code></strong>.</li></ol>
-<ol><li><strong><code>COM105T</code> Quiz 1 &amp; <code>Assignment 1</code> Code Image Traps:</strong><br>- <strong><code>char c = 125; c = c + 3;</code></strong> $\to$ Overflows signed 8-bit char ($127$) $\to$ <strong><code>-128</code></strong>!<br>- <strong><code>if (~(x ^ y))</code></strong> (<code>x=10, y=11</code>) $\to$ <code>10^11 = 1</code>, <code>~1 = -2</code> (bitwise NOT, NOT logical <code>!</code>!). Since <code>-2 != 0</code>, <code>if</code> is <strong>TRUE</strong> and prints <code>&quot; x is equal to y &quot;</code>!<br>- <strong><code>int i=1024; for(; i; i&gt;&gt;=1) printf(&quot;program&quot;);</code></strong> $\to$ $1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1$ $\to$ prints <strong><code>11</code> times</strong>!<br>- <strong><code>printf(&quot;%d&quot;, printf(&quot;AA&quot;) || printf(&quot;BB&quot;));</code></strong> $\to$ Prints <code>AA</code> (returns <code>2</code>), short-circuits <code>||</code> (never prints <code>BB</code>), returns <code>1</code> $\to$ <strong><code>AA1</code></strong>!</li></ol>
-<h3>3.2 Base &amp; 2&#x27;s Complement Exam Problems Solved (<code>COM105T</code>, <code>Assignment 1</code>, <code>Midsem</code>)</h3>
-<ol><li><strong><code>(123)_5 = (X8)_Y</code>:</strong> $(123)_5 = 1(25)+2(5)+3 = 38$. Since digit <code>8</code> is in base $Y$, $Y \ge 9$, and $X \cdot Y + 8 = 38 \implies X \cdot Y = 30$. Possible pairs $(X, Y)$ with $1 \le X &lt; Y$ and $Y \ge 9$: <strong><code>(3, 10)</code></strong>, <strong><code>(2, 15)</code></strong>, <strong><code>(1, 30)</code></strong>!</li><li><strong><code>2B5.EF</code>$_{16}$ $\to$ Octal (<code>COM105T</code>):</strong> Hex $\to$ 4-bit binary: <code>0010 1011 0101 . 1110 1111</code>. Regroup in 3-bit groups from decimal point: <code>001 010 110 101 . 111 011 110</code> $\to$ <strong><code>(1265.736)_8</code></strong>!</li><li><strong><code>16</code>-bit signed $P = (\text{F87B})_{16}$, find $8 \times P$:</strong> Note MSB is <code>F</code> (<code>1111</code>), so $P$ is negative! Subtract from <code>10000_16</code> = <code>0785_16</code> $= -(7\times 256 + 8\times 16 + 5) = -1925_{10}$ (check via shift left 3 bits: <code>(F87B)_16 &lt;&lt; 3</code> = <code>(C3D8)_16</code>! Verify: <code>-1925 * 8 = -15400</code>; <code>65536 - 15400 = 50136 = C3D8_16</code>!). Wait: <code>0xF87B = 1111 1000 0111 1011</code>, shift left 3 dropping top 3 <code>1</code>s: <code>1100 0011 1101 1000</code> $= \mathbf{(C3D8)_{16}}$ (<code>-15400_10</code>)! No overflow because <code>-15400</code> fits in $[-32768, 32767]$!</li></ol>
+<h3>3.1 <code class="inline-code">CS1000</code> Endsem Feb 2023 + Midsem Dec 2022 + Quiz 2 Tricky Traces</h3>
+<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec A Q2 (Double Trap in <code class="inline-code">switch</code>):</strong><br>```c<br>int a = 3, b = 4, c, d; c = b - a; d = a || b;<br>switch(c) {<br>case 1 || 2 &amp;&amp; 15%5: printf(&quot;Grade S\n&quot;); break;<br>case !(10%3*5%5) &amp;&amp; -10: printf(&quot;Grade A\n&quot;); break;<br>}<br>```<br>- <code class="inline-code">c = 1</code>. Case 1: <code class="inline-code">15%5=0</code>, <code class="inline-code">2&amp;&amp;0=0</code>, <code class="inline-code">1||0 = 1</code>. Case 2: <code class="inline-code">10%3=1</code>, <code class="inline-code">1*5=5</code>, <code class="inline-code">5%5=0</code>, <code class="inline-code">!0=1</code>, <code class="inline-code">1&amp;&amp;-10 = 1</code>.<br>- <strong>Result:</strong> <strong>Compilation Error — Duplicate case value <code class="inline-code">1</code></strong>! <em>(Similarly <code class="inline-code">Quiz 2</code> Q2 had <code class="inline-code">case 3:</code> and <code class="inline-code">case (7-4):</code> $\to$ duplicate case error!)</em></li></ol>
+<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec A Q4 (<code class="inline-code">static</code> inside Recursion):</strong><br>```c<br>int f(int n) { static int i = 1; if(n&gt;=5) return n; n=n+i; i++; return f(n); }<br>```<br>- Trace <code class="inline-code">f(1)</code>: Call 1 (<code class="inline-code">n=1, i=1</code> $\to n=2, i=2$) $\to$ Call 2 (<code class="inline-code">n=2, i=2</code> $\to n=4, i=3$) $\to$ Call 3 (<code class="inline-code">n=4, i=3</code> $\to n=7, i=4$) $\to$ Call 4 (<code class="inline-code">n=7 \ge 5</code> returns <strong><code class="inline-code">7</code></strong>).</li></ol>
+<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec A Q8 (Global vs Local Shadowing):</strong><br><code class="inline-code">global i=10;</code> in <code class="inline-code">main</code>: local <code class="inline-code">int i=20; printf(&quot;%d&quot;, i); check(); printf(&quot;%d&quot;, ++i);</code> where <code class="inline-code">check()</code> prints <code class="inline-code">i++</code> (global).<br>- Output: <strong><code class="inline-code">20 10 21</code></strong> (<code class="inline-code">check()</code> sees global <code class="inline-code">10</code> because local <code class="inline-code">i</code> in <code class="inline-code">main</code> is out of scope!).</li></ol>
+<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec A Q10 (Pointer Increment Precedence):</strong><br><code class="inline-code">int x=20, y=21, *z;</code> (contiguous addresses <code class="inline-code">5000, 5004, 5008</code>): <code class="inline-code">z = &amp;x; *z++; x++;</code><br>- Precedence: <code class="inline-code">++</code> binds to <code class="inline-code">z</code> BEFORE <code class="inline-code">*</code>! So <code class="inline-code">*z++</code> evaluates <code class="inline-code">*(z++)</code>: advances <strong><code class="inline-code">z</code></strong> from <code class="inline-code">5000</code> to <code class="inline-code">5004</code> (<code class="inline-code">&amp;y</code>), leaving <code class="inline-code">x</code> at <code class="inline-code">20</code>! Then <code class="inline-code">x++</code> makes <code class="inline-code">x = 21</code>.<br>- Prints addresses <code class="inline-code">5000, 5004, 5008</code>, then values <code class="inline-code">x=21, y=21, *z=21</code> (<code class="inline-code">(c)</code>).</li></ol>
+<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec B Q3 (Recursion Order + Pass-by-Value Trap):</strong><br>```c<br>void func(int n, int sum) { if(n==0) return; k=n%10; j=n/10; sum=sum+k; func(j, sum); printf(&quot;%d,&quot;, k); }<br>```<br>- Called with <code class="inline-code">func(2048, 0)</code>: pushes <code class="inline-code">k=8</code>, <code class="inline-code">k=4</code>, <code class="inline-code">k=0</code>, <code class="inline-code">k=2</code>, then pops &amp; prints <strong><code class="inline-code">2,0,4,8,</code></strong>. In <code class="inline-code">main()</code>, <code class="inline-code">sum</code> was passed by value so remains <code class="inline-code">0</code> $\implies$ <strong><code class="inline-code">2,0,4,8,0</code> (<code class="inline-code">(c)</code>)</strong>.</li></ol>
+<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec B Q4 (Pointer Parameter + Same-Name Shadow):</strong><br>```c<br>int cal(int <em>i, int j) { </em>i = <em>i </em> <em>i; j = j </em> j; return (2*j); }<br>// main: int i=5, j=2, t=5; t = cal(&amp;i, j); j = j + t*3; i = i - t + 7;<br>```<br>- <code class="inline-code">cal(&amp;i, 2)</code>: <code class="inline-code">*i = 25</code> (<code class="inline-code">main</code>&#x27;s <code class="inline-code">i=25</code>), local <code class="inline-code">j = 4</code> (doesn&#x27;t change <code class="inline-code">main</code>&#x27;s <code class="inline-code">j=2</code>!), returns <code class="inline-code">t = 8</code>.<br>- Back in <code class="inline-code">main</code>: <code class="inline-code">j = 2 + 8*3 = 26</code>; <code class="inline-code">i = 25 - 8 + 7 = 24</code>. Output: <strong><code class="inline-code">24,26</code></strong>.</li></ol>
+<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec B Q6 (<code class="inline-code">struct</code> Copy vs Separate Char Array):</strong><br><code class="inline-code">p3 = p2;</code> copies <code class="inline-code">{&quot;paper&quot;, 120.0}</code> into <code class="inline-code">p3</code>. Changing <code class="inline-code">p3.productName[0] = &#x27;P&#x27;</code> makes <code class="inline-code">p3.productName</code> <code class="inline-code">&quot;Paper&quot;</code> (independent copy, <code class="inline-code">p2</code> stays <code class="inline-code">&quot;paper&quot;</code>!). <code class="inline-code">p2.price = 120.0 / 4 = 30.0</code>. Both <code class="inline-code">p1, p2, p3</code> have <code class="inline-code">p3.price &gt; p2.price</code> true! Prints: <code class="inline-code">Pen, 30.000000</code>, <code class="inline-code">paper, 30.000000</code>, <code class="inline-code">Paper, 120.000000</code>.</li></ol>
+<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec B Q7 (<code class="inline-code">f1</code> vs <code class="inline-code">f2</code> Swap):</strong><br><code class="inline-code">f1(a,b)</code> is pass-by-value (no effect on <code class="inline-code">a=4, b=5</code>). <code class="inline-code">f2(&amp;b, &amp;c)</code> passes pointers: <code class="inline-code">*a</code> (<code class="inline-code">b=5</code>) and <code class="inline-code">*b</code> (<code class="inline-code">c=6</code>) are swapped so <code class="inline-code">b=6, c=5</code>. <code class="inline-code">printf(&quot;%d&quot;, c-a-b)</code> $= 5 - 4 - 6 = \mathbf{-5}$!</li></ol>
+<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec B Q9 (<code class="inline-code">*arr2++</code> Pointer Increment Trap):</strong><br>- Look at printed line <code class="inline-code">*arr2++ = ++(*(arr1 + i));</code> vs <code class="inline-code">arr2[i]</code>: With <code class="inline-code">arr2</code> as a pointer parameter, <code class="inline-code">*arr2++</code> stores into <code class="inline-code">arr2[i]</code> AND increments <code class="inline-code">arr2</code> by 1 element each iteration, while <code class="inline-code">++(*(arr1+i))</code> increments <code class="inline-code">arr1[i]</code> in place (<code class="inline-code">{2,2,3,3,3,4,4,4,4,5}</code> $\to$ <code class="inline-code">{3,3,4,4,4,5,5,5,5,6}</code>). <code class="inline-code">main</code> prints <strong><code class="inline-code">3 3 4 4 4 5 5 5 5 6</code></strong> (one per line).</li></ol>
+<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec B Q10 (Struct Pointer Traversal):</strong><br><code class="inline-code">List[] = {{1,37}, {2,16}, {3,84}, {4,71}, {5,48}};</code> Even <code class="inline-code">val</code> prints <code class="inline-code">val</code>, odd <code class="inline-code">val</code> prints <code class="inline-code">val*2</code>:<br>Output: <code class="inline-code">1 74</code>, <code class="inline-code">2 16</code>, <code class="inline-code">3 84</code>, <code class="inline-code">4 142</code>, <code class="inline-code">5 48</code>.</li></ol>
+<ol><li><strong><code class="inline-code">Quiz 2</code> Oct 2023 Traps:</strong><br>- <code class="inline-code">c = 6; while(c--) printf(&quot;%d\t&quot;, c);</code> $\to$ Prints <strong><code class="inline-code">5 4 3 2 1 0</code></strong> (<code class="inline-code">c--</code> tests 6,5,4,3,2,1 as true, printing decremented value!).<br>- <code class="inline-code">for(x=0; 0;) printf(&quot;success&quot;);</code> $\to$ <code class="inline-code">x=0</code> runs ONCE, then condition <code class="inline-code">0</code> is false $\to$ Loop does NOT run, <strong><code class="inline-code">x</code> becomes <code class="inline-code">0</code></strong>.<br>- <code class="inline-code">char arr[4][3] = {&quot;hi&quot;, &quot;how&quot;, &quot;are&quot;, &quot;u&quot;}; printf(&quot;%s&quot;, arr[2]);</code> $\to$ <code class="inline-code">&quot;how&quot;</code> and <code class="inline-code">&quot;are&quot;</code> fill all 3 chars with <strong>NO room for <code class="inline-code">&#x27;\0&#x27;</code></strong>, so <code class="inline-code">arr[2]</code> runs directly into <code class="inline-code">arr[3]</code> (<code class="inline-code">&quot;u\0&quot;</code>) and prints <strong><code class="inline-code">areu</code></strong> (adjacent row overrun)!<br>- <code class="inline-code">int x[5]={6,2,12,18,20}; p = --x[1]; r = x[p++]; printf(&quot;%d,%d&quot;,p,r);</code> $\to$ <code class="inline-code">--x[1]</code> sets <code class="inline-code">x[1]=1, p=1</code>. Then <code class="inline-code">x[p++]</code> reads <code class="inline-code">x[1]</code> (<code class="inline-code">1</code>) and increments <code class="inline-code">p</code> to <code class="inline-code">2</code> $\to$ Prints <strong><code class="inline-code">2,1</code></strong>.</li></ol>
+<ol><li><strong><code class="inline-code">COM105T</code> Quiz 1 &amp; <code class="inline-code">Assignment 1</code> Code Image Traps:</strong><br>- <strong><code class="inline-code">char c = 125; c = c + 3;</code></strong> $\to$ Overflows signed 8-bit char ($127$) $\to$ <strong><code class="inline-code">-128</code></strong>!<br>- <strong><code class="inline-code">if (~(x ^ y))</code></strong> (<code class="inline-code">x=10, y=11</code>) $\to$ <code class="inline-code">10^11 = 1</code>, <code class="inline-code">~1 = -2</code> (bitwise NOT, NOT logical <code class="inline-code">!</code>!). Since <code class="inline-code">-2 != 0</code>, <code class="inline-code">if</code> is <strong>TRUE</strong> and prints <code class="inline-code">&quot; x is equal to y &quot;</code>!<br>- <strong><code class="inline-code">int i=1024; for(; i; i&gt;&gt;=1) printf(&quot;program&quot;);</code></strong> $\to$ $1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1$ $\to$ prints <strong><code class="inline-code">11</code> times</strong>!<br>- <strong><code class="inline-code">printf(&quot;%d&quot;, printf(&quot;AA&quot;) || printf(&quot;BB&quot;));</code></strong> $\to$ Prints <code class="inline-code">AA</code> (returns <code class="inline-code">2</code>), short-circuits <code class="inline-code">||</code> (never prints <code class="inline-code">BB</code>), returns <code class="inline-code">1</code> $\to$ <strong><code class="inline-code">AA1</code></strong>!</li></ol>
+<h3>3.2 Base &amp; 2&#x27;s Complement Exam Problems Solved (<code class="inline-code">COM105T</code>, <code class="inline-code">Assignment 1</code>, <code class="inline-code">Midsem</code>)</h3>
+<ol><li><strong><code class="inline-code">(123)_5 = (X8)_Y</code>:</strong> $(123)_5 = 1(25)+2(5)+3 = 38$. Since digit <code class="inline-code">8</code> is in base $Y$, $Y \ge 9$, and $X \cdot Y + 8 = 38 \implies X \cdot Y = 30$. Possible pairs $(X, Y)$ with $1 \le X &lt; Y$ and $Y \ge 9$: <strong><code class="inline-code">(3, 10)</code></strong>, <strong><code class="inline-code">(2, 15)</code></strong>, <strong><code class="inline-code">(1, 30)</code></strong>!</li><li><strong><code class="inline-code">2B5.EF</code>$_{16}$ $\to$ Octal (<code class="inline-code">COM105T</code>):</strong> Hex $\to$ 4-bit binary: <code class="inline-code">0010 1011 0101 . 1110 1111</code>. Regroup in 3-bit groups from decimal point: <code class="inline-code">001 010 110 101 . 111 011 110</code> $\to$ <strong><code class="inline-code">(1265.736)_8</code></strong>!</li><li><strong><code class="inline-code">16</code>-bit signed $P = (\text{F87B})_{16}$, find $8 \times P$:</strong> Note MSB is <code class="inline-code">F</code> (<code class="inline-code">1111</code>), so $P$ is negative! Subtract from <code class="inline-code">10000_16</code> = <code class="inline-code">0785_16</code> $= -(7\times 256 + 8\times 16 + 5) = -1925_{10}$ (check via shift left 3 bits: <code class="inline-code">(F87B)_16 &lt;&lt; 3</code> = <code class="inline-code">(C3D8)_16</code>! Verify: <code class="inline-code">-1925 * 8 = -15400</code>; <code class="inline-code">65536 - 15400 = 50136 = C3D8_16</code>!). Wait: <code class="inline-code">0xF87B = 1111 1000 0111 1011</code>, shift left 3 dropping top 3 <code class="inline-code">1</code>s: <code class="inline-code">1100 0011 1101 1000</code> $= \mathbf{(C3D8)_{16}}$ (<code class="inline-code">-15400_10</code>)! No overflow because <code class="inline-code">-15400</code> fits in $[-32768, 32767]$!</li></ol>
 <hr />
 <h2>4. Exam-Ready Full C Programs (Section C Coding Solutions)</h2>
-<h3>Program 1: Three-Digit Armstrong Number (<code>Midsem Dec 2022</code> Part C Q1)</h3>
-<pre class="codeblock"><code data-lang="c">#include &lt;stdio.h&gt;
+<h3>Program 1: Three-Digit Armstrong Number (<code class="inline-code">Midsem Dec 2022</code> Part C Q1)</h3>
+<pre class="code-hl"><code data-lang="c">#include &lt;stdio.h&gt;
 int main() {
     int n, orig, d, sum = 0;
     printf(&quot;Enter a 3-digit integer: &quot;);
@@ -230,9 +270,9 @@ int main() {
         printf(&quot;%d is not an Armstrong number\n&quot;, orig);
     return 0;
 }</code></pre>
-<h3>Program 2: Segregate Even-ASCII and Odd-ASCII Characters Without <code>&lt;string.h&gt;</code> (<code>Quiz 2</code> Part C Q1 &amp; <code>Endsem 2023</code> Sec C Q1)</h3>
-<p><em>(In <code>Quiz 2</code>: even ASCII first, odd ASCII second, using at most 1 extra 1D array.)</em></p>
-<pre class="codeblock"><code data-lang="c">#include &lt;stdio.h&gt;
+<h3>Program 2: Segregate Even-ASCII and Odd-ASCII Characters Without <code class="inline-code">&lt;string.h&gt;</code> (<code class="inline-code">Quiz 2</code> Part C Q1 &amp; <code class="inline-code">Endsem 2023</code> Sec C Q1)</h3>
+<p><em>(In <code class="inline-code">Quiz 2</code>: even ASCII first, odd ASCII second, using at most 1 extra 1D array.)</em></p>
+<pre class="code-hl"><code data-lang="c">#include &lt;stdio.h&gt;
 int main() {
     char s[200], out[200];
     int i = 0, k = 0;
@@ -250,9 +290,9 @@ int main() {
     printf(&quot;%s\n&quot;, out);
     return 0;
 }</code></pre>
-<p><em>(For <code>Endsem 2023</code> Sec C Q1: swap the condition to odd ASCII first, even ASCII second! And for partition relative to character <code>ch</code>: 3 passes — <code>base[i] &gt; ch</code>, then <code>base[i] == ch</code>, then <code>base[i] &lt; ch</code>.)</em></p>
-<h3>Program 3: Pointer-Based Odd-Making Array Update (<code>Endsem 2023</code> Sec C Q2)</h3>
-<pre class="codeblock"><code data-lang="c">#include &lt;stdio.h&gt;
+<p><em>(For <code class="inline-code">Endsem 2023</code> Sec C Q1: swap the condition to odd ASCII first, even ASCII second! And for partition relative to character <code class="inline-code">ch</code>: 3 passes — <code class="inline-code">base[i] &gt; ch</code>, then <code class="inline-code">base[i] == ch</code>, then <code class="inline-code">base[i] &lt; ch</code>.)</em></p>
+<h3>Program 3: Pointer-Based Odd-Making Array Update (<code class="inline-code">Endsem 2023</code> Sec C Q2)</h3>
+<pre class="code-hl"><code data-lang="c">#include &lt;stdio.h&gt;
 void Find(int *p, int n) {
     // Pass 1: traverse using pointer *(p+i); check preceding element parity
     for (int i = 1; i &lt; n; i++) {
@@ -270,9 +310,9 @@ int main() {
     Find(a, n);
     return 0;
 }</code></pre>
-<div class="alert tip"><strong>TIP</strong><div><strong>Exam Ambiguity Note (<code>Endsem 2023</code> Sec C Q2):</strong> Notice the paper&#x27;s sample <code>1 2 6 4 -&gt; 1 1 5 4</code> matches subtracting <code>1</code> from even elements followed by an even element (<code>*(p+i+1)%2 == 0</code>), whereas strict left-to-right checking <code>*(p+i-1)%2 == 0</code> gives <code>1 2 5 4</code>. Use single-pointer indexing (<code>*(p+i)</code>) cleanly and state your neighbor check in a 1-line comment for full credit.</div></div>
-<h3>Program 4: Binary String Addition &amp; Hex/Dec Struct Conversion (<code>Endsem 2023</code> Sec C Q3)</h3>
-<pre class="codeblock"><code data-lang="c">#include &lt;stdio.h&gt;
+<div class="alert tip"><strong>TIP</strong><div><strong>Exam Ambiguity Note (<code class="inline-code">Endsem 2023</code> Sec C Q2):</strong> Notice the paper&#x27;s sample <code class="inline-code">1 2 6 4 -&gt; 1 1 5 4</code> matches subtracting <code class="inline-code">1</code> from even elements followed by an even element (<code class="inline-code">*(p+i+1)%2 == 0</code>), whereas strict left-to-right checking <code class="inline-code">*(p+i-1)%2 == 0</code> gives <code class="inline-code">1 2 5 4</code>. Use single-pointer indexing (<code class="inline-code">*(p+i)</code>) cleanly and state your neighbor check in a 1-line comment for full credit.</div></div>
+<h3>Program 4: Binary String Addition &amp; Hex/Dec Struct Conversion (<code class="inline-code">Endsem 2023</code> Sec C Q3)</h3>
+<pre class="code-hl"><code data-lang="c">#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
 struct BinCalc {
     char str1[65], str2[65], str3[65];
@@ -308,8 +348,8 @@ int main() {
     printf(&quot;%s\n%d (deci)\n%s (hexadecimal)\n&quot;, x.str3, x.dec, x.hexd);
     return 0;
 }</code></pre>
-<h3>Program 5: Factors of a Number (<code>Endsem 2023</code> Sec C Q4) &amp; Prime Function (<code>Lab</code>)</h3>
-<pre class="codeblock"><code data-lang="c">#include &lt;stdio.h&gt;
+<h3>Program 5: Factors of a Number (<code class="inline-code">Endsem 2023</code> Sec C Q4) &amp; Prime Function (<code class="inline-code">Lab</code>)</h3>
+<pre class="code-hl"><code data-lang="c">#include &lt;stdio.h&gt;
 int main() {
     int n;
     scanf(&quot;%d&quot;, &amp;n);
@@ -317,8 +357,8 @@ int main() {
         if (n % i == 0) printf(&quot;%d &quot;, i);
     return 0;
 }</code></pre>
-<h3>Program 6: Copy Text File &amp; Count Characters (<code>FILES.ppt</code> Template)</h3>
-<pre class="codeblock"><code data-lang="c">#include &lt;stdio.h&gt;
+<h3>Program 6: Copy Text File &amp; Count Characters (<code class="inline-code">FILES.ppt</code> Template)</h3>
+<pre class="code-hl"><code data-lang="c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 int main() {
     FILE *fp1 = fopen(&quot;in.txt&quot;, &quot;r&quot;), *fp2 = fopen(&quot;out.txt&quot;, &quot;w&quot;);
@@ -330,7 +370,7 @@ int main() {
 }</code></pre>
 <hr />
 <h2>5. Common Exam Mistakes Checklist</h2>
-<ul><li><label class="chk-line"><input type="checkbox" /> <span><strong>Using <code>=</code> instead of <code>==</code> inside <code>if</code> / <code>while</code>:</strong> <code>if(a=0)</code> assigns <code>0</code> and ALWAYS evaluates false!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Trailing <code>;</code> on <code>if</code> or <code>for</code>:</strong> <code>if(a==5);</code> or <code>for(i=0;i&lt;5;i++);</code> detaches the body!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Forgetting <code>&#x27;\0&#x27;</code> when building strings manually:</strong> Always set <code>out[k] = &#x27;\0&#x27;;</code> after character loops!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Using <code>str1 == str2</code> to compare strings:</strong> That compares memory addresses! Always use <code>strcmp(str1, str2) == 0</code> or a manual char loop.</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Passing value instead of address to <code>scanf</code>:</strong> <code>scanf(&quot;%d&quot;, &amp;n);</code> needs <code>&amp;</code>, while <code>scanf(&quot;%s&quot;, str);</code> does NOT (<code>str</code> is already an address).</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Modifying pointers vs values:</strong> <code>*p++</code> moves the pointer; <code>(*p)++</code> increments the value!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Modifying <code>void</code> vs <code>int</code> / function prototypes:</strong> Returning a value from a <code>void</code> function or forgetting prototype before <code>main()</code> when return type isn&#x27;t <code>int</code>.</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong><code>fgetc</code> type:</strong> Store <code>fgetc(fp)</code> in an <code>int</code> (not <code>char</code>) when comparing <code>!= EOF</code>, and open <code>&quot;r&quot;</code> only on existing files (<code>fp == NULL</code> guard!).</span></label></li></ul>
+<ul><li><label class="chk-line"><input type="checkbox" /> <span><strong>Using <code class="inline-code">=</code> instead of <code class="inline-code">==</code> inside <code class="inline-code">if</code> / <code class="inline-code">while</code>:</strong> <code class="inline-code">if(a=0)</code> assigns <code class="inline-code">0</code> and ALWAYS evaluates false!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Trailing <code class="inline-code">;</code> on <code class="inline-code">if</code> or <code class="inline-code">for</code>:</strong> <code class="inline-code">if(a==5);</code> or <code class="inline-code">for(i=0;i&lt;5;i++);</code> detaches the body!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Forgetting <code class="inline-code">&#x27;\0&#x27;</code> when building strings manually:</strong> Always set <code class="inline-code">out[k] = &#x27;\0&#x27;;</code> after character loops!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Using <code class="inline-code">str1 == str2</code> to compare strings:</strong> That compares memory addresses! Always use <code class="inline-code">strcmp(str1, str2) == 0</code> or a manual char loop.</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Passing value instead of address to <code class="inline-code">scanf</code>:</strong> <code class="inline-code">scanf(&quot;%d&quot;, &amp;n);</code> needs <code class="inline-code">&amp;</code>, while <code class="inline-code">scanf(&quot;%s&quot;, str);</code> does NOT (<code class="inline-code">str</code> is already an address).</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Modifying pointers vs values:</strong> <code class="inline-code">*p++</code> moves the pointer; <code class="inline-code">(*p)++</code> increments the value!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Modifying <code class="inline-code">void</code> vs <code class="inline-code">int</code> / function prototypes:</strong> Returning a value from a <code class="inline-code">void</code> function or forgetting prototype before <code class="inline-code">main()</code> when return type isn&#x27;t <code class="inline-code">int</code>.</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong><code class="inline-code">fgetc</code> type:</strong> Store <code class="inline-code">fgetc(fp)</code> in an <code class="inline-code">int</code> (not <code class="inline-code">char</code>) when comparing <code class="inline-code">!= EOF</code>, and open <code class="inline-code">&quot;r&quot;</code> only on existing files (<code class="inline-code">fp == NULL</code> guard!).</span></label></li></ul>
     </article>
   </main>
   <script>
@@ -345,10 +385,7 @@ int main() {
     document.addEventListener("DOMContentLoaded", function () {
       if (window.renderMathInElement) {
         renderMathInElement(document.body, {
-          delimiters: [
-            { left: "$$", right: "$$", display: true },
-            { left: "$", right: "$", display: false }
-          ],
+          delimiters: [{ left: "$$", right: "$$", display: true }, { left: "$", right: "$", display: false }],
           throwOnError: false
         });
       }

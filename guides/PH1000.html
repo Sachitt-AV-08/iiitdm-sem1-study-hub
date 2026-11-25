@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PH1000 Study Guide &bull; IIITDM Sem 1</title>
+  <title>PH1000 Complete Guide &bull; IIITDM Sem 1</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
-  
   <script>
     (function () {
       try {
@@ -17,179 +17,219 @@
       } catch (_) {}
     })();
   </script>
-
   <style>
-
     :root {
       color-scheme: light;
-      --background: #f8fafc;
-      --card: #ffffff;
-      --content: #f1f5f9;
-      --foreground: #0f172a;
-      --muted-foreground: #475569;
-      --primary: #2563eb;
-      --primary-foreground: #ffffff;
-      --border: #cbd5e1;
-      --card-border: #e2e8f0;
-      --success: #15803d;
-      --warning: #b45309;
+      --bg: #f5f6fa;
+      --surface: #ffffff;
+      --surface-2: #eef1f7;
+      --surface-3: #e3e8f2;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-soft: #64748b;
+      --border: #dfe4ef;
+      --border-strong: #c5cedf;
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --primary-fg: #ffffff;
+      --primary-soft: rgba(79, 70, 229, 0.08);
+      --success: #059669;
+      --success-soft: rgba(5, 150, 105, 0.10);
+      --warning: #d97706;
+      --warning-soft: rgba(217, 119, 6, 0.11);
       --error: #dc2626;
-      --chart-1: #2563eb;
-      --chart-2: #0f766e;
-      --chart-3: #6d28d9;
-      --chart-4: #c2410c;
-      --shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+      --error-soft: rgba(220, 38, 38, 0.09);
+      --chart-1: #4f46e5;
+      --chart-2: #0d9488;
+      --chart-3: #7c3aed;
+      --chart-4: #ea580c;
+      --code-bg: #11161f;
+      --code-head: #192130;
+      --code-fg: #e6edf3;
+      --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+      --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 14px 36px -14px rgba(15, 23, 42, 0.12), 0 3px 10px -4px rgba(15, 23, 42, 0.05);
+      --background: var(--bg);
+      --card: var(--surface);
+      --content: var(--surface-2);
+      --foreground: var(--text);
+      --muted-foreground: var(--text-muted);
     }
     html.dark {
       color-scheme: dark;
-      --background: #0b1120;
-      --card: #111827;
-      --content: #1e293b;
-      --foreground: #f1f5f9;
-      --muted-foreground: #94a3b8;
-      --primary: #2563eb;
-      --primary-foreground: #ffffff;
-      --link: #60a5fa;
-      --border: #334155;
-      --card-border: #1e293b;
-      --success: #4ade80;
+      --bg: #090d16;
+      --surface: #111726;
+      --surface-2: #182133;
+      --surface-3: #222e46;
+      --text: #f1f5f9;
+      --text-muted: #9aa7bd;
+      --text-soft: #75839d;
+      --border: #202a3f;
+      --border-strong: #32415e;
+      --primary: #6366f1;
+      --primary-hover: #818cf8;
+      --primary-fg: #ffffff;
+      --primary-soft: rgba(99, 102, 241, 0.15);
+      --success: #34d399;
+      --success-soft: rgba(52, 211, 153, 0.14);
       --warning: #fbbf24;
+      --warning-soft: rgba(251, 191, 36, 0.14);
       --error: #f87171;
-      --chart-1: #60a5fa;
+      --error-soft: rgba(248, 113, 113, 0.14);
+      --chart-1: #818cf8;
       --chart-2: #2dd4bf;
       --chart-3: #a78bfa;
       --chart-4: #fb923c;
-      --shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      --code-bg: #0b0f17;
+      --code-head: #131a26;
+      --code-fg: #e6edf3;
+      --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.25);
+      --shadow-sm: 0 3px 10px rgba(0, 0, 0, 0.35);
+      --shadow-md: 0 18px 40px -12px rgba(0, 0, 0, 0.6);
     }
     *, *::before, *::after { box-sizing: border-box; }
     html, body {
-      margin: 0;
-      padding: 0;
-      background: var(--background);
-      color: var(--foreground);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       -webkit-font-smoothing: antialiased;
       -webkit-tap-highlight-color: transparent;
       overflow-x: hidden;
       overflow-x: clip;
     }
-    a { color: var(--link, var(--primary)); text-decoration: none; }
+    a { color: var(--primary); text-decoration: none; }
+    html.dark a { color: #818cf8; }
     a:hover { text-decoration: underline; }
-    button { font-family: inherit; color: inherit; cursor: pointer; background: none; border: none; }
-    button:disabled { opacity: 0.4; cursor: not-allowed; }
-    .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 14px; display: flex; flex-direction: column; gap: 16px; }
-    .container > * { min-width: 0; max-width: 100%; }
-    @media (min-width: 768px) { .container { padding: 24px; gap: 20px; } }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); min-width: 0; max-width: 100%; }
-    .muted { color: var(--muted-foreground); }
-    .primary-text { color: var(--link, var(--primary)); }
-    .success-text { color: var(--success); }
-    .warning-text { color: var(--warning); }
-    .error-text { color: var(--error); }
-    .tabular { font-variant-numeric: tabular-nums; }
+    button { font-family: inherit; color: inherit; cursor: pointer; background: none; border: none; padding: 0; }
+    button:disabled { opacity: 0.38; cursor: not-allowed; }
     .hidden { display: none !important; }
-    .w-full { width: 100%; }
-    .max-w-md { max-width: 448px; }
-    .mx-auto { margin-left: auto; margin-right: auto; display: block; }
-    .frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 3px; font-size: 0.9em; line-height: 1.1; }
-    .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 3px 1px; }
-    .frac > span:last-child { padding: 1px 3px 0; }
-    .math { font-family: Georgia, Cambria, "Times New Roman", serif; }
-    pre.codebox {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      white-space: pre-wrap;
-      word-break: break-word;
-      overflow-x: auto;
-      margin: 0;
-    }
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      background: var(--content);
-      border: 1px solid var(--card-border);
-      border-radius: 5px;
-      padding: 1px 5px;
-      font-size: 0.9em;
-    }
-    kbd {
-      padding: 2px 6px;
-      font-size: 0.75rem;
+    .tabular { font-variant-numeric: tabular-nums; }
+
+    .inline-code {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.85em;
+      background: var(--surface-2);
       border: 1px solid var(--border);
       border-radius: 5px;
-      background: var(--content);
+      padding: 1px 5px;
+      color: var(--text);
+      word-break: break-word;
     }
 
+    /* Syntax-highlighted Code Frame with Header + Line Numbers + Copy */
+    .code-frame {
+      margin: 8px 0;
+      border-radius: 12px;
+      background: var(--code-bg);
+      border: 1px solid var(--border-strong);
+      overflow: hidden;
+      max-width: 100%;
+    }
+    .code-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 6px 12px;
+      background: var(--code-head);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem; font-weight: 600; color: #94a3b8;
+    }
+    .copy-code-btn {
+      padding: 3px 9px; border-radius: 6px; font-size: 0.7rem; font-weight: 700;
+      background: rgba(255,255,255,0.08); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.12);
+      transition: background 0.14s, color 0.14s;
+    }
+    .copy-code-btn:hover { background: rgba(255,255,255,0.16); color: #fff; }
+    .copy-code-btn.copied { background: rgba(16, 185, 129, 0.25); color: #6ee7b7; border-color: rgba(16, 185, 129, 0.45); }
+    pre.code-hl {
+      margin: 0; padding: 12px 14px;
+      color: var(--code-fg);
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.8rem; line-height: 1.56;
+      overflow-x: auto; white-space: pre; max-width: 100%;
+    }
+    .code-ln { display: inline-block; width: 2.1em; user-select: none; color: #475569; text-align: right; margin-right: 12px; }
+    .tok-kw { color: #ff7b72; font-weight: 600; }
+    .tok-ty { color: #79c0ff; }
+    .tok-fn { color: #d2a8ff; }
+    .tok-str { color: #a5d6ff; }
+    .tok-num { color: #f2cc60; }
+    .tok-com { color: #8b949e; font-style: italic; }
+    .tok-pp { color: #ffa657; }
+
+    /* KaTeX responsiveness & mobile 0-overflow safety */
+    .katex { position: relative; }
+    .katex-mathml { left: 0; }
+    .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: 6px 2px; margin: 4px 0 !important; }
+    @media (max-width: 640px) {
+      .katex { font-size: 0.99em; }
+      p .katex, li .katex, .bullet-body .katex, .step-body .katex, .q-prompt .katex, .sol-panel .katex, .hint-panel .katex, .formula-body .katex, .trap-body .katex {
+        display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: bottom;
+      }
+    }
     .topbar {
-      position: sticky; top: 0; z-index: 20;
-      background: color-mix(in srgb, var(--card) 92%, transparent);
-      backdrop-filter: blur(8px);
+      position: sticky; top: 0; z-index: 25;
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
       padding: 10px 16px;
     }
-    .topbar-inner { max-width: 960px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
-    .article-wrap { width: 100%; max-width: 960px; margin: 12px auto 40px; padding: 18px 16px; min-width: 0; overflow-wrap: anywhere; overflow-x: clip; }
-    @media (min-width: 768px) { .article-wrap { padding: 28px 34px; } }
-    article h1 { font-size: 1.4rem; border-bottom: 1px solid var(--card-border); padding-bottom: 8px; margin-top: 0; }
-    article h2 { font-size: 1.18rem; margin-top: 26px; color: var(--link, var(--primary)); border-bottom: 1px solid var(--card-border); padding-bottom: 4px; }
+    .topbar-inner { max-width: 940px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+    .article-shell { max-width: 940px; margin: 16px auto 48px; padding: 0 14px; }
+    .article-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px 18px; box-shadow: var(--shadow-md); overflow-x: clip; overflow-wrap: anywhere; }
+    @media (min-width: 768px) { .article-card { padding: 30px 36px; } }
+    article h1 { font-size: 1.45rem; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-top: 0; }
+    article h2 { font-size: 1.18rem; margin-top: 28px; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 5px; }
+    html.dark article h2 { color: #818cf8; }
     article h3 { font-size: 1.02rem; margin-top: 18px; }
-    article p, article li { font-size: 0.92rem; line-height: 1.6; max-width: 100%; overflow-wrap: anywhere; }
+    article p, article li { font-size: 0.92rem; line-height: 1.62; color: var(--text); }
     article ul, article ol { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
-    article hr { border: none; border-top: 1px solid var(--card-border); margin: 22px 0; }
-    .table-wrap { width: 100%; max-width: 100%; overflow-x: auto; margin: 12px 0; border: 1px solid var(--border); border-radius: 10px; }
+    article hr { border: none; border-top: 1px solid var(--border); margin: 22px 0; }
+    .table-wrap { position: relative; width: 100%; max-width: 100%; overflow-x: auto; margin: 12px 0; border: 1px solid var(--border); border-radius: 12px; }
     table { width: 100%; border-collapse: collapse; font-size: 0.84rem; min-width: 540px; }
-    th, td { text-align: left; padding: 9px 11px; border-bottom: 1px solid var(--card-border); vertical-align: top; }
-    th { background: var(--content); font-weight: 800; }
-    pre.codeblock { max-width: 100%; background: var(--content); border: 1px solid var(--border); border-radius: 10px; padding: 12px; font-size: 0.82rem; margin: 10px 0; overflow-x: auto; }
-    pre.codeblock code { border: none; background: transparent; padding: 0; }
-    .math-block, .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: 6px 2px; text-align: center; }
-    .table-wrap { position: relative; }
-    article .katex { position: relative; }
-    article .katex-mathml { left: 0; }
-    @media (max-width: 640px) {
-      article .katex { font-size: 1.04em; }
-      article p .katex, article li .katex { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: bottom; }
-    }
-    .alert { border-left: 4px solid var(--primary); background: var(--content); border-radius: 8px; padding: 12px 14px; margin: 12px 0; font-size: 0.88rem; }
+    th, td { text-align: left; padding: 9px 11px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { background: var(--surface-2); font-weight: 800; }
+    .math-block { max-width: 100%; overflow-x: auto; padding: 6px 2px; text-align: center; }
+    .alert { border-left: 4px solid var(--primary); background: var(--surface-2); border-radius: 10px; padding: 12px 14px; margin: 12px 0; font-size: 0.88rem; }
     .alert.warning { border-color: var(--warning); }
-    .alert.important { border-color: var(--chart-3); }
-    .alert.caution { border-color: var(--error); }
     .alert.tip { border-color: var(--success); }
     .chk-line { display: flex; align-items: flex-start; gap: 8px; cursor: pointer; }
-    .chk-line input { margin-top: 4px; width: 16px; height: 16px; accent-color: var(--primary); }
+    .chk-line input { margin-top: 4px; width: 16px; height: 16px; accent-color: var(--success); }
   </style>
 </head>
 <body>
   <div class="topbar">
     <div class="topbar-inner">
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-        <a href="../index.html" style="font-weight:800;font-size:0.86rem;">&larr; Study Hub</a>
+        <a href="../index.html" style="font-weight:800;font-size:0.86rem;">&larr; Study Studio</a>
         <span style="font-weight:800;font-size:0.9rem;">PH1000: Electromagnetics</span>
       </div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        <a href="../decks/PH1000_Electromagnetics_Exam_Deck.pptx" download style="padding:7px 11px;border-radius:8px;background:var(--primary);color:var(--primary-foreground);font-size:0.78rem;font-weight:700;text-decoration:none;">Download .pptx (13 slides)</a>
-        <button id="theme-btn" type="button" style="padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:var(--card);font-size:0.76rem;font-weight:600;">Theme</button>
+        <a href="../decks/PH1000_Electromagnetics_Exam_Deck.pptx" download style="padding:7px 12px;border-radius:9px;background:var(--primary);color:#fff;font-size:0.78rem;font-weight:700;text-decoration:none;">Download .pptx</a>
+        <button id="theme-btn" type="button" style="padding:7px 10px;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);font-size:0.76rem;font-weight:700;">Theme</button>
       </div>
     </div>
   </div>
-  <main class="container">
-    <article class="card article-wrap">
-      <h1>End-Semester Exam Study Guide — Engineering Electromagnetics (<code>PH1000</code>)</h1>
-<p><strong>Course:</strong> Engineering Electromagnetics (<code>PH1000</code>) — IIITDM Kancheepuram (Dr. Debolina Misra)  <br><strong>Textbooks Used in Slides:</strong> David J. Griffiths (<em>Introduction to Electrodynamics</em>) &amp; Bhag Singh Guru (<em>Electromagnetic Field Theory Fundamentals</em>)  <br><strong>Time Horizon:</strong> Built for <strong>&lt; 4-day</strong> exam readiness</p>
-<div class="alert warning"><strong>WARNING</strong><div><strong>Misfiled Assignments Alert:</strong> <code>EM_Assignment 1</code> and <code>EM_Assignment 3</code> in your folder belong to <em>PHY108T — Engineering Mechanics</em> (statics/trusses/centroids/MOI), <strong>NOT</strong> Engineering Electromagnetics (<code>PH1000</code>). Only <code>Assignment-1.pdf</code> (Electrostatics) and <code>Assignment-2</code> (Magnetostatics &amp; Displacement Current) are for <code>PH1000</code>!</div></div>
+  <main class="article-shell">
+    <article class="article-card">
+<h1>End-Semester Exam Study Guide — Engineering Electromagnetics (<code class="inline-code">PH1000</code>)</h1>
+<p><strong>Course:</strong> Engineering Electromagnetics (<code class="inline-code">PH1000</code>) — IIITDM Kancheepuram (Dr. Debolina Misra)  <br><strong>Textbooks Used in Slides:</strong> David J. Griffiths (<em>Introduction to Electrodynamics</em>) &amp; Bhag Singh Guru (<em>Electromagnetic Field Theory Fundamentals</em>)  <br><strong>Time Horizon:</strong> Built for <strong>&lt; 4-day</strong> exam readiness</p>
+<div class="alert warning"><strong>WARNING</strong><div><strong>Misfiled Assignments Alert:</strong> <code class="inline-code">EM_Assignment 1</code> and <code class="inline-code">EM_Assignment 3</code> in your folder belong to <em>PHY108T — Engineering Mechanics</em> (statics/trusses/centroids/MOI), <strong>NOT</strong> Engineering Electromagnetics (<code class="inline-code">PH1000</code>). Only <code class="inline-code">Assignment-1.pdf</code> (Electrostatics) and <code class="inline-code">Assignment-2</code> (Magnetostatics &amp; Displacement Current) are for <code class="inline-code">PH1000</code>!</div></div>
 <hr />
 <h2>1. Formula &amp; Vector Calculus Cheat Sheet</h2>
-<h3>1.1 Coordinate Systems &amp; Differential Elements (<code>lect_6</code>, <code>lect_7</code>)</h3>
+<h3>1.1 Coordinate Systems &amp; Differential Elements (<code class="inline-code">lect_6</code>, <code class="inline-code">lect_7</code>)</h3>
 <div class="table-wrap"><table><thead><tr><th>System</th><th>Variables</th><th>Point Conversion to Cartesian</th><th>Differential Length $d\mathbf{l}$</th><th>Differential Volume $d\tau$</th></tr></thead><tbody><tr><td><strong>Cartesian</strong></td><td>$(x, y, z)$</td><td>$(x, y, z)$</td><td>$dx\,\hat{\mathbf{x}} + dy\,\hat{\mathbf{y}} + dz\,\hat{\mathbf{z}}$</td><td>$dx\,dy\,dz$</td></tr><tr><td><strong>Cylindrical</strong></td><td>$(\rho, \phi, z)$</td><td>$x = \rho\cos\phi,\ y = \rho\sin\phi,\ z = z$</td><td>$d\rho\,\hat{\boldsymbol{\rho}} + \rho\,d\phi\,\hat{\boldsymbol{\phi}} + dz\,\hat{\mathbf{z}}$</td><td>$\rho\,d\rho\,d\phi\,dz$</td></tr><tr><td><strong>Spherical</strong></td><td>$(r, \theta, \phi)$</td><td>$x = r\sin\theta\cos\phi,\ y = r\sin\theta\sin\phi,\ z = r\cos\theta$</td><td>$dr\,\hat{\mathbf{r}} + r\,d\theta\,\hat{\boldsymbol{\theta}} + r\sin\theta\,d\phi\,\hat{\boldsymbol{\phi}}$</td><td>$r^2\sin\theta\,dr\,d\theta\,d\phi$</td></tr></tbody></table></div>
 <ul><li><strong>Surface Elements $d\mathbf{S}$:</strong></li><li>Cylindrical curved wall ($\rho = R$): $R\,d\phi\,dz\,\hat{\boldsymbol{\rho}}$; flat caps ($z = \text{const}$): $\pm \rho\,d\rho\,d\phi\,\hat{\mathbf{z}}$.</li><li>Spherical shell ($r = R$): $R^2\sin\theta\,d\theta\,d\phi\,\hat{\mathbf{r}}$.</li><li><strong>Cylindrical $\leftrightarrow$ Spherical Point Conversion:</strong><br>$$\rho = r\sin\theta, \quad z = r\cos\theta, \quad \phi = \phi; \qquad r = \sqrt{\rho^2+z^2},\quad \theta = \tan^{-1}(\rho/z).$$</li><li><strong>Vector Transformation Exam Trap:</strong> Basis vectors $(\hat{\mathbf{r}},\hat{\boldsymbol{\theta}},\hat{\boldsymbol{\phi}})$ depend on position! <strong>Never</strong> add two vectors defined at different points directly in spherical/cylindrical form — convert both to Cartesian first!</li><li>Spherical $(A_r, A_\theta, A_\phi) \to$ Cylindrical $(A_\rho, A_\phi, A_z)$:<br>$$A_\rho = A_r\sin\theta + A_\theta\cos\theta, \qquad A_\phi = A_\phi, \qquad A_z = A_r\cos\theta - A_\theta\sin\theta.$$</li></ul>
-<h3>1.2 Del Operator &amp; Fundamental Theorems (<code>lect_8</code>–<code>lect_13</code>)</h3>
+<h3>1.2 Del Operator &amp; Fundamental Theorems (<code class="inline-code">lect_8</code>–<code class="inline-code">lect_13</code>)</h3>
 <ul><li><strong>Gradient:</strong> $\nabla T = \frac{\partial T}{\partial x}\hat{\mathbf{x}} + \frac{\partial T}{\partial y}\hat{\mathbf{y}} + \frac{\partial T}{\partial z}\hat{\mathbf{z}}$. Points in the direction of <strong>maximum increase</strong>; unit normal to surface $f(x,y,z)=c$ is $\hat{\mathbf{n}} = \frac{\nabla f}{|\nabla f|}$.</li><li><strong>Divergence &amp; Curl (Cartesian &amp; Curvilinear):</strong></li><li>Cylindrical Div: $\nabla\cdot\mathbf{F} = \frac{1}{\rho}\frac{\partial(\rho F_\rho)}{\partial\rho} + \frac{1}{\rho}\frac{\partial F_\phi}{\partial\phi} + \frac{\partial F_z}{\partial z}$.</li><li>Spherical Div: $\nabla\cdot\mathbf{F} = \frac{1}{r^2}\frac{\partial(r^2 F_r)}{\partial r} + \frac{1}{r\sin\theta}\frac{\partial(\sin\theta F_\theta)}{\partial\theta} + \frac{1}{r\sin\theta}\frac{\partial F_\phi}{\partial\phi}$.</li><li>$\nabla\cdot\mathbf{F} &gt; 0$ (source), $&lt; 0$ (sink), $= 0$ (<strong>solenoidal</strong>). $\nabla\times\mathbf{F} = \mathbf{0}$ (<strong>irrotational / conservative</strong>).</li><li>Vector identities: $\nabla\times(\nabla T) = \mathbf{0}$, $\nabla\cdot(\nabla\times\mathbf{v}) = 0$.</li><li><strong>Three Fundamental Theorems:</strong><br>1. <strong>Gradient Theorem:</strong> $\int_{\mathbf{a}}^{\mathbf{b}} (\nabla T)\cdot d\mathbf{l} = T(\mathbf{b}) - T(\mathbf{a})$ <em>(path independent)</em>.<br>2. <strong>Divergence (Gauss&#x27;s) Theorem:</strong> $\int_{\mathcal{V}} (\nabla\cdot\mathbf{v})\,d\tau = \oint_{\mathcal{S}} \mathbf{v}\cdot d\mathbf{a}$.<br>3. <strong>Stokes&#x27; Theorem:</strong> $\int_{\mathcal{S}} (\nabla\times\mathbf{v})\cdot d\mathbf{a} = \oint_{\mathcal{P}} \mathbf{v}\cdot d\mathbf{l}$.</li></ul>
 <hr />
-<h2>2. Electrostatics &amp; Dielectrics (<code>lect_14</code>–<code>lect_23</code>)</h2>
+<h2>2. Electrostatics &amp; Dielectrics (<code class="inline-code">lect_14</code>–<code class="inline-code">lect_23</code>)</h2>
 <h3>2.1 Core Laws &amp; Potentials</h3>
 <ul><li><strong>Coulomb &amp; Electric Field ($\epsilon_0 = 8.854\times 10^{-12}\text{ C}^2/(\text{N}\cdot\text{m}^2)$, $\frac{1}{4\pi\epsilon_0} \approx 9\times 10^9$):</strong><br>$$\mathbf{E}(\mathbf{r}) = \frac{1}{4\pi\epsilon_0}\int \frac{dq}{\mathfrak{r}^2}\hat{\boldsymbol{\mathfrak{r}}}, \qquad \boldsymbol{\mathfrak{r}} = \mathbf{r} - \mathbf{r}&#x27; \quad (\text{separation vector from source } \mathbf{r}&#x27; \text{ to field } \mathbf{r})$$</li><li>Useful standard results: Infinite plane sheet $E = \frac{\sigma}{2\epsilon_0}$; Charged ring on axis $E_z = \frac{\lambda a z}{2\epsilon_0(a^2+z^2)^{3/2}}$; Disk of radius $R$: $E_z = \frac{\sigma}{2\epsilon_0}\left(1 - \frac{z}{\sqrt{z^2+R^2}}\right)$.</li><li><strong>Gauss&#x27;s Law:</strong> $\oint_{\mathcal{S}}\mathbf{E}\cdot d\mathbf{a} = \frac{Q_{\text{enc}}}{\epsilon_0}$ and $\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}$.</li><li><strong>Electrostatic Potential ($V$):</strong> $\nabla\times\mathbf{E}=\mathbf{0} \implies \mathbf{E} = -\nabla V$, $\ V(\mathbf{b}) - V(\mathbf{a}) = -\int_{\mathbf{a}}^{\mathbf{b}} \mathbf{E}\cdot d\mathbf{l}$.</li><li><strong>Poisson&#x27;s &amp; Laplace&#x27;s Equations:</strong> $\nabla^2 V = -\frac{\rho}{\epsilon}$; in charge-free regions ($\rho = 0$): <strong>$\nabla^2 V = 0$</strong> (parallel-plate $V(z) = \frac{z}{d}V_0$, coaxial $V(\rho) = V_0\frac{\ln(\rho/b)}{\ln(a/b)}$).</li><li><strong>Electrostatic Energy:</strong><br>$$W = \frac{1}{2}\sum_{i=1}^n q_i V(\mathbf{r}_i) = \frac{1}{2}\int \rho V\,d\tau = \frac{1}{2}\int \mathbf{D}\cdot\mathbf{E}\,d\tau = \frac{\epsilon}{2}\int E^2\,d\tau$$</li><li>Energy does <strong>NOT</strong> obey superposition ($W_{\text{tot}} = W_1 + W_2 + \epsilon_0\int\mathbf{E}_1\cdot\mathbf{E}_2\,d\tau$).</li><li><strong>Electric Dipole ($\mathbf{p} = q\mathbf{d}$, from $-q$ to $+q$):</strong><br>$$V(\mathbf{r}) = \frac{\mathbf{p}\cdot\hat{\mathbf{r}}}{4\pi\epsilon_0 r^2} = \frac{p\cos\theta}{4\pi\epsilon_0 r^2}, \qquad \mathbf{E}(\mathbf{r}) = \frac{p}{4\pi\epsilon_0 r^3}(2\cos\theta\,\hat{\mathbf{r}} + \sin\theta\,\hat{\boldsymbol{\theta}}) = \frac{3(\mathbf{p}\cdot\mathbf{r})\mathbf{r} - r^2\mathbf{p}}{4\pi\epsilon_0 r^5}$$</li><li>Torque on dipole in uniform $\mathbf{E}$: $\mathbf{N} = \mathbf{p}\times\mathbf{E}$.</li></ul>
 <h3>2.2 Conductors, Dielectrics &amp; Boundary Conditions</h3>
-<ul><li><strong>5 Golden Rules of Conductors in Electrostatic Equilibrium:</strong><br>1. $\mathbf{E} = \mathbf{0}$ inside conductor.<br>2. $\rho = 0$ inside conductor.<br>3. Any net charge resides strictly on the <strong>surface</strong>.<br>4. Entire conductor is an <strong>equipotential</strong>.<br>5. Just outside conductor, $\mathbf{E}$ is perpendicular to surface ($\mathbf{E} = \frac{\sigma}{\epsilon_0}\hat{\mathbf{n}}$).</li><li><em>Cavity rule:</em> Charge $q$ inside cavity induces $-q$ on inner cavity wall and leaves $+q$ on outer conductor surface.</li><li><strong>Polarization $\mathbf{P}$ (Dipole Moment per Unit Volume):</strong><br>$$\rho_b = -\nabla\cdot\mathbf{P}, \qquad \sigma_b = \mathbf{P}\cdot\hat{\mathbf{n}} \quad (\hat{\mathbf{n}} \text{ outward normal})$$</li><li><em>Sanity check:</em> Total bound charge of an isolated polarized object MUST be zero: $\int \rho_b\,d\tau + \oint \sigma_b\,da = 0$!</li><li><strong>Electric Displacement $\mathbf{D}$ &amp; Linear Dielectrics:</strong><br>$$\mathbf{D} \equiv \epsilon_0\mathbf{E} + \mathbf{P}, \qquad \nabla\cdot\mathbf{D} = \rho_f, \qquad \oint_{\mathcal{S}}\mathbf{D}\cdot d\mathbf{a} = Q_{f,\text{enc}}$$</li><li>Linear isotropic medium: $\mathbf{P} = \epsilon_0\chi_e\mathbf{E}$, $\mathbf{D} = \epsilon_0(1+\chi_e)\mathbf{E} = \epsilon_0\epsilon_r\mathbf{E} = \epsilon\mathbf{E}$.</li><li><strong>Electrostatic Boundary Conditions (1 above, 2 below, $\hat{\mathbf{a}}_n$ points $2 \to 1$):</strong><br>$$D_{1\perp} - D_{2\perp} = \rho_s \ (\sigma_f) \implies \epsilon_1 E_{1\perp} - \epsilon_2 E_{2\perp} = \rho_s, \qquad \mathbf{E}_{1\parallel} = \mathbf{E}_{2\parallel}$$<br><em>(Dielectric-dielectric with no free surface charge: $D_{1\perp} = D_{2\perp}$ and $E_{1\parallel} = E_{2\parallel}$!)</em></li><li><strong>Standard Capacitances ($C = Q/V$):</strong></li><li>Parallel plate: $C = \frac{\epsilon A}{d}$; Spherical concentric ($a &lt; b$): $C = \frac{4\pi\epsilon ab}{b-a}$ (isolated sphere $C = 4\pi\epsilon a$); Coaxial ($a &lt; b$): $\frac{C}{L} = \frac{2\pi\epsilon}{\ln(b/a)}$; Split-dielectric spherical shell (<code>lect_22</code> Prob 3): $C = C_1 + C_2 = 2\pi(\epsilon_1+\epsilon_2)\frac{ab}{b-a}$ (parallel combination!).</li></ul>
+<ul><li><strong>5 Golden Rules of Conductors in Electrostatic Equilibrium:</strong><br>1. $\mathbf{E} = \mathbf{0}$ inside conductor.<br>2. $\rho = 0$ inside conductor.<br>3. Any net charge resides strictly on the <strong>surface</strong>.<br>4. Entire conductor is an <strong>equipotential</strong>.<br>5. Just outside conductor, $\mathbf{E}$ is perpendicular to surface ($\mathbf{E} = \frac{\sigma}{\epsilon_0}\hat{\mathbf{n}}$).</li><li><em>Cavity rule:</em> Charge $q$ inside cavity induces $-q$ on inner cavity wall and leaves $+q$ on outer conductor surface.</li><li><strong>Polarization $\mathbf{P}$ (Dipole Moment per Unit Volume):</strong><br>$$\rho_b = -\nabla\cdot\mathbf{P}, \qquad \sigma_b = \mathbf{P}\cdot\hat{\mathbf{n}} \quad (\hat{\mathbf{n}} \text{ outward normal})$$</li><li><em>Sanity check:</em> Total bound charge of an isolated polarized object MUST be zero: $\int \rho_b\,d\tau + \oint \sigma_b\,da = 0$!</li><li><strong>Electric Displacement $\mathbf{D}$ &amp; Linear Dielectrics:</strong><br>$$\mathbf{D} \equiv \epsilon_0\mathbf{E} + \mathbf{P}, \qquad \nabla\cdot\mathbf{D} = \rho_f, \qquad \oint_{\mathcal{S}}\mathbf{D}\cdot d\mathbf{a} = Q_{f,\text{enc}}$$</li><li>Linear isotropic medium: $\mathbf{P} = \epsilon_0\chi_e\mathbf{E}$, $\mathbf{D} = \epsilon_0(1+\chi_e)\mathbf{E} = \epsilon_0\epsilon_r\mathbf{E} = \epsilon\mathbf{E}$.</li><li><strong>Electrostatic Boundary Conditions (1 above, 2 below, $\hat{\mathbf{a}}_n$ points $2 \to 1$):</strong><br>$$D_{1\perp} - D_{2\perp} = \rho_s \ (\sigma_f) \implies \epsilon_1 E_{1\perp} - \epsilon_2 E_{2\perp} = \rho_s, \qquad \mathbf{E}_{1\parallel} = \mathbf{E}_{2\parallel}$$<br><em>(Dielectric-dielectric with no free surface charge: $D_{1\perp} = D_{2\perp}$ and $E_{1\parallel} = E_{2\parallel}$!)</em></li><li><strong>Standard Capacitances ($C = Q/V$):</strong></li><li>Parallel plate: $C = \frac{\epsilon A}{d}$; Spherical concentric ($a &lt; b$): $C = \frac{4\pi\epsilon ab}{b-a}$ (isolated sphere $C = 4\pi\epsilon a$); Coaxial ($a &lt; b$): $\frac{C}{L} = \frac{2\pi\epsilon}{\ln(b/a)}$; Split-dielectric spherical shell (<code class="inline-code">lect_22</code> Prob 3): $C = C_1 + C_2 = 2\pi(\epsilon_1+\epsilon_2)\frac{ab}{b-a}$ (parallel combination!).</li></ul>
 <hr />
-<h2>3. Magnetostatics &amp; Magnetic Materials (<code>lect_24</code>–<code>lect_31</code>)</h2>
+<h2>3. Magnetostatics &amp; Magnetic Materials (<code class="inline-code">lect_24</code>–<code class="inline-code">lect_31</code>)</h2>
 <h3>3.1 Lorentz Force, Currents &amp; Continuity</h3>
 <ul><li><strong>Lorentz Force Law:</strong> $\mathbf{F} = q(\mathbf{E} + \mathbf{v}\times\mathbf{B})$. Magnetic work $dW_{\text{mag}} = q(\mathbf{v}\times\mathbf{B})\cdot\mathbf{v}\,dt = 0$ (<strong>magnetic fields do NO work</strong>!).</li><li><strong>Circular motion ($v\perp B$):</strong> $qvB = \frac{mv^2}{R} \implies R = \frac{mv}{qB}$. <strong>Crossed $\mathbf{E}\perp\mathbf{B}$:</strong> $\mathbf{F}=0 \implies v = E/B$.</li><li><strong>Currents:</strong> $I = \lambda v$ (line), $\mathbf{K} = \sigma\mathbf{v}$ (surface current density), $\mathbf{J} = \rho\mathbf{v}$ (volume current density); $\mathbf{F}_{\text{mag}} = I\int d\mathbf{l}\times\mathbf{B}$.</li><li><strong>Continuity Equation:</strong> $\nabla\cdot\mathbf{J} = -\frac{\partial\rho}{\partial t}$. In magnetostatics (steady currents): $\nabla\cdot\mathbf{J} = 0$.</li></ul>
 <h3>3.2 Biot-Savart, Ampere&#x27;s Law &amp; Vector Potential $\mathbf{A}$</h3>
@@ -197,53 +237,53 @@
 <h3>3.3 Magnetization $\mathbf{M}$, Auxiliary Field $\mathbf{H}$ &amp; Bound Currents</h3>
 <ul><li><strong>Bound Currents:</strong><br>$$\mathbf{J}_b = \nabla\times\mathbf{M}, \qquad \mathbf{K}_b = \mathbf{M}\times\hat{\mathbf{n}}$$</li><li><strong>Total Current &amp; $\mathbf{H}$:</strong> $\mathbf{J} = \mathbf{J}_f + \mathbf{J}_b$, $\mathbf{H} \equiv \frac{1}{\mu_0}\mathbf{B} - \mathbf{M}$ (so $\mathbf{B} = \mu_0(\mathbf{H} + \mathbf{M})$):<br>$$\nabla\times\mathbf{H} = \mathbf{J}_f \iff \oint \mathbf{H}\cdot d\mathbf{l} = I_{f,\text{enc}}$$</li><li><strong>Linear Magnetic Media:</strong> $\mathbf{M} = \chi_m\mathbf{H}$, $\mu = \mu_0(1+\chi_m) = \mu_0\mu_r$, $\mathbf{B} = \mu\mathbf{H}$ ($\chi_m &lt; 0$ diamagnet, $\chi_m &gt; 0$ mild paramagnet, $\mu_r \gg 1$ ferromagnet).</li><li><strong>Magnetic Boundary Conditions:</strong><br>$$B_{1\perp} = B_{2\perp}, \qquad \mathbf{H}_{1\parallel} - \mathbf{H}_{2\parallel} = \mathbf{K}_f \times \hat{\mathbf{n}} \quad (\text{or } B_{1\parallel} - B_{2\parallel} = \mu_0 K \text{ in vacuum})$$</li></ul>
 <hr />
-<h2>4. Electrodynamics, Maxwell&#x27;s Equations &amp; EM Waves (<code>lect_32</code>–<code>lect_37</code>)</h2>
-<ul><li><strong>Faraday&#x27;s Law &amp; Lenz&#x27;s Law:</strong><br>$$\mathcal{E} = \oint \mathbf{E}\cdot d\mathbf{l} = -\frac{d\Phi}{dt}, \qquad \nabla\times\mathbf{E} = -\frac{\partial\mathbf{B}}{\partial t}$$</li><li><em>Motional EMF:</em> $\mathcal{E} = \int (\mathbf{u}\times\mathbf{B})\cdot d\mathbf{l}$ (straight rod $e = BLu$, pivoted rod $e = \frac{1}{2}B\omega L^2$).</li><li><em>Lenz Polarity Rule (<code>lect_36</code>):</em> Find $\mathbf{B}_{\text{in}}$ opposing the <strong>change</strong> in external flux $\Phi_{\text{ext}}$; use right-hand thumb along $\mathbf{B}_{\text{in}}$ to get induced current direction (which goes from <code>-</code> to <code>+</code> <em>inside</em> the source/loop to establish terminal polarity!).</li><li><strong>Maxwell&#x27;s Displacement Current &amp; General Ampère&#x27;s Law:</strong></li><li>Why $\nabla\times\mathbf{H} = \mathbf{J}$ fails when $\partial\rho/\partial t \ne 0$: $\nabla\cdot(\nabla\times\mathbf{H}) = 0$, whereas $\nabla\cdot\mathbf{J} = -\partial\rho/\partial t \ne 0$!</li><li>Fix: $\mathbf{J}_d = \frac{\partial\mathbf{D}}{\partial t} = \epsilon\frac{\partial\mathbf{E}}{\partial t}$ ($\mathbf{J}_c = \sigma\mathbf{E}$ is conduction current).</li><li><strong>Complete Maxwell&#x27;s Equations:</strong></li><li><strong>Free Space ($\epsilon_0, \mu_0$):</strong><br>1. $\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}$<br>2. $\nabla\cdot\mathbf{B} = 0$<br>3. $\nabla\times\mathbf{E} = -\frac{\partial\mathbf{B}}{\partial t}$<br>4. $\nabla\times\mathbf{B} = \mu_0\mathbf{J} + \mu_0\epsilon_0\frac{\partial\mathbf{E}}{\partial t}$</li><li><strong>In Matter (Macroscopic):</strong><br>1. $\nabla\cdot\mathbf{D} = \rho_f$<br>2. $\nabla\cdot\mathbf{B} = 0$<br>3. $\nabla\times\mathbf{E} = -\frac{\partial\mathbf{B}}{\partial t}$<br>4. $\nabla\times\mathbf{H} = \mathbf{J}_f + \frac{\partial\mathbf{D}}{\partial t}$</li><li><strong>Inductance &amp; Magnetic Energy:</strong> $N\Phi = L i$, $\mathcal{E} = -L\frac{di}{dt}$, Solenoid $L = \frac{\mu_0 N^2 \pi r^2}{l}$, $W_m = \frac{1}{2}LI^2 = \frac{1}{2\mu_0}\int B^2\,d\tau$.</li><li><strong>Poynting Vector &amp; Theorem (<code>lect_36</code>, <code>lect_37</code>):</strong><br>$$\mathbf{S} = \mathbf{E}\times\mathbf{H} = \frac{1}{\mu_0}(\mathbf{E}\times\mathbf{B})\ [\text{W/m}^2], \qquad u = \frac{1}{2}\left(\epsilon_0 E^2 + \frac{1}{\mu_0}B^2\right)$$<br>$$\frac{dW_{\text{mech}}}{dt} = -\frac{d}{dt}\int_{\mathcal{V}} u\,d\tau - \oint_{\mathcal{S}} \mathbf{S}\cdot d\mathbf{a} \quad \left(\text{or } \oint\mathbf{S}\cdot d\mathbf{a} + \int \mathbf{J}\cdot\mathbf{E}\,d\tau = -\frac{d}{dt}\int (w_m+w_e)\,d\tau\right)$$</li><li><strong>EM Waves (<code>lect_37</code>):</strong></li><li>1D Wave Equation: $\frac{\partial^2\psi}{\partial z^2} = \frac{1}{v^2}\frac{\partial^2\psi}{\partial t^2}$, $\psi(z,t) = f(z - vt)$ moves in $+z$.</li><li>Vacuum speed $c = \frac{1}{\sqrt{\mu_0\epsilon_0}} = 3\times 10^8\text{ m/s}$; in linear matter $v = \frac{1}{\sqrt{\mu\epsilon}} = \frac{c}{n}$, $n = \sqrt{\frac{\mu\epsilon}{\mu_0\epsilon_0}} \approx \sqrt{\epsilon_r}$.</li><li>Plane wave relations ($\hat{\mathbf{k}}$ propagation, $\hat{\mathbf{n}}$ polarization, $\hat{\mathbf{n}}\cdot\hat{\mathbf{k}}=0$):<br>$$\mathbf{B}(\mathbf{r},t) = \frac{1}{v}E_0\cos(\mathbf{k}\cdot\mathbf{r} - \omega t + \delta)(\hat{\mathbf{k}}\times\hat{\mathbf{n}}), \qquad \frac{E}{H} = \sqrt{\frac{\mu_0}{\epsilon_0}} \approx 377\,\Omega, \qquad B_0 = \frac{E_0}{c}$$</li><li>Average intensity (Irradiance): $I = \langle S \rangle = \frac{1}{2}\epsilon_0 c E_0^2 = \frac{E_0 B_0}{2\mu_0}$.</li></ul>
+<h2>4. Electrodynamics, Maxwell&#x27;s Equations &amp; EM Waves (<code class="inline-code">lect_32</code>–<code class="inline-code">lect_37</code>)</h2>
+<ul><li><strong>Faraday&#x27;s Law &amp; Lenz&#x27;s Law:</strong><br>$$\mathcal{E} = \oint \mathbf{E}\cdot d\mathbf{l} = -\frac{d\Phi}{dt}, \qquad \nabla\times\mathbf{E} = -\frac{\partial\mathbf{B}}{\partial t}$$</li><li><em>Motional EMF:</em> $\mathcal{E} = \int (\mathbf{u}\times\mathbf{B})\cdot d\mathbf{l}$ (straight rod $e = BLu$, pivoted rod $e = \frac{1}{2}B\omega L^2$).</li><li><em>Lenz Polarity Rule (<code class="inline-code">lect_36</code>):</em> Find $\mathbf{B}_{\text{in}}$ opposing the <strong>change</strong> in external flux $\Phi_{\text{ext}}$; use right-hand thumb along $\mathbf{B}_{\text{in}}$ to get induced current direction (which goes from <code class="inline-code">-</code> to <code class="inline-code">+</code> <em>inside</em> the source/loop to establish terminal polarity!).</li><li><strong>Maxwell&#x27;s Displacement Current &amp; General Ampère&#x27;s Law:</strong></li><li>Why $\nabla\times\mathbf{H} = \mathbf{J}$ fails when $\partial\rho/\partial t \ne 0$: $\nabla\cdot(\nabla\times\mathbf{H}) = 0$, whereas $\nabla\cdot\mathbf{J} = -\partial\rho/\partial t \ne 0$!</li><li>Fix: $\mathbf{J}_d = \frac{\partial\mathbf{D}}{\partial t} = \epsilon\frac{\partial\mathbf{E}}{\partial t}$ ($\mathbf{J}_c = \sigma\mathbf{E}$ is conduction current).</li><li><strong>Complete Maxwell&#x27;s Equations:</strong></li><li><strong>Free Space ($\epsilon_0, \mu_0$):</strong><br>1. $\nabla\cdot\mathbf{E} = \frac{\rho}{\epsilon_0}$<br>2. $\nabla\cdot\mathbf{B} = 0$<br>3. $\nabla\times\mathbf{E} = -\frac{\partial\mathbf{B}}{\partial t}$<br>4. $\nabla\times\mathbf{B} = \mu_0\mathbf{J} + \mu_0\epsilon_0\frac{\partial\mathbf{E}}{\partial t}$</li><li><strong>In Matter (Macroscopic):</strong><br>1. $\nabla\cdot\mathbf{D} = \rho_f$<br>2. $\nabla\cdot\mathbf{B} = 0$<br>3. $\nabla\times\mathbf{E} = -\frac{\partial\mathbf{B}}{\partial t}$<br>4. $\nabla\times\mathbf{H} = \mathbf{J}_f + \frac{\partial\mathbf{D}}{\partial t}$</li><li><strong>Inductance &amp; Magnetic Energy:</strong> $N\Phi = L i$, $\mathcal{E} = -L\frac{di}{dt}$, Solenoid $L = \frac{\mu_0 N^2 \pi r^2}{l}$, $W_m = \frac{1}{2}LI^2 = \frac{1}{2\mu_0}\int B^2\,d\tau$.</li><li><strong>Poynting Vector &amp; Theorem (<code class="inline-code">lect_36</code>, <code class="inline-code">lect_37</code>):</strong><br>$$\mathbf{S} = \mathbf{E}\times\mathbf{H} = \frac{1}{\mu_0}(\mathbf{E}\times\mathbf{B})\ [\text{W/m}^2], \qquad u = \frac{1}{2}\left(\epsilon_0 E^2 + \frac{1}{\mu_0}B^2\right)$$<br>$$\frac{dW_{\text{mech}}}{dt} = -\frac{d}{dt}\int_{\mathcal{V}} u\,d\tau - \oint_{\mathcal{S}} \mathbf{S}\cdot d\mathbf{a} \quad \left(\text{or } \oint\mathbf{S}\cdot d\mathbf{a} + \int \mathbf{J}\cdot\mathbf{E}\,d\tau = -\frac{d}{dt}\int (w_m+w_e)\,d\tau\right)$$</li><li><strong>EM Waves (<code class="inline-code">lect_37</code>):</strong></li><li>1D Wave Equation: $\frac{\partial^2\psi}{\partial z^2} = \frac{1}{v^2}\frac{\partial^2\psi}{\partial t^2}$, $\psi(z,t) = f(z - vt)$ moves in $+z$.</li><li>Vacuum speed $c = \frac{1}{\sqrt{\mu_0\epsilon_0}} = 3\times 10^8\text{ m/s}$; in linear matter $v = \frac{1}{\sqrt{\mu\epsilon}} = \frac{c}{n}$, $n = \sqrt{\frac{\mu\epsilon}{\mu_0\epsilon_0}} \approx \sqrt{\epsilon_r}$.</li><li>Plane wave relations ($\hat{\mathbf{k}}$ propagation, $\hat{\mathbf{n}}$ polarization, $\hat{\mathbf{n}}\cdot\hat{\mathbf{k}}=0$):<br>$$\mathbf{B}(\mathbf{r},t) = \frac{1}{v}E_0\cos(\mathbf{k}\cdot\mathbf{r} - \omega t + \delta)(\hat{\mathbf{k}}\times\hat{\mathbf{n}}), \qquad \frac{E}{H} = \sqrt{\frac{\mu_0}{\epsilon_0}} \approx 377\,\Omega, \qquad B_0 = \frac{E_0}{c}$$</li><li>Average intensity (Irradiance): $I = \langle S \rangle = \frac{1}{2}\epsilon_0 c E_0^2 = \frac{E_0 B_0}{2\mu_0}$.</li></ul>
 <hr />
 <h2>5. Worked Past Exam &amp; Assignment Solutions</h2>
-<h3>Part A: <code>PH1000</code> Midsem Exam (Dec 19, 2022) — All 8 Questions</h3>
-<p><strong>Q1 (<code>Midsem 2022</code>, 2m):</strong> Given $\vec{u} = 10\hat{r} + 30\hat{\theta} - 10\hat{\phi}$ and $\vec{v} = -3\hat{r} - 10\hat{\theta} + 20\hat{\phi}$ at the same point $P$, find vector projection of $\vec{u}$ onto $\vec{v}$.  <br><strong>Solution:</strong></p>
+<h3>Part A: <code class="inline-code">PH1000</code> Midsem Exam (Dec 19, 2022) — All 8 Questions</h3>
+<p><strong>Q1 (<code class="inline-code">Midsem 2022</code>, 2m):</strong> Given $\vec{u} = 10\hat{r} + 30\hat{\theta} - 10\hat{\phi}$ and $\vec{v} = -3\hat{r} - 10\hat{\theta} + 20\hat{\phi}$ at the same point $P$, find vector projection of $\vec{u}$ onto $\vec{v}$.  <br><strong>Solution:</strong></p>
 <div class="math-block">$$\vec{u}\cdot\vec{v} = 10(-3) + 30(-10) + (-10)(20) = -30 - 300 - 200 = -530$$</div>
 <div class="math-block">$$\|\vec{v}\|^2 = (-3)^2 + (-10)^2 + 20^2 = 9 + 100 + 400 = 509$$</div>
 <div class="math-block">$$\text{proj}_{\vec{v}}\vec{u} = \frac{\vec{u}\cdot\vec{v}}{\|\vec{v}\|^2}\vec{v} = -\frac{530}{509}(-3\hat{r} - 10\hat{\theta} + 20\hat{\phi}) \approx \mathbf{3.124\hat{r} + 10.413\hat{\theta} - 20.825\hat{\phi}}.$$</div>
 <hr />
-<p><strong>Q2 (<code>Midsem 2022</code>, 4m — Vector Addition Trap):</strong> $\vec{A} = 12\hat{r} + 5\hat{\theta} + \pi\hat{\phi}$ at $P(2,\pi,\pi/2)$, $\vec{B} = 2\hat{r} + 0.5\pi\hat{\theta}$ at $Q(5,\pi/2,\pi/2)$. Find $\vec{C} = \vec{A} + \vec{B}$.  <br><strong>Solution:</strong><br>Recall Cartesian transformation from spherical:</p>
+<p><strong>Q2 (<code class="inline-code">Midsem 2022</code>, 4m — Vector Addition Trap):</strong> $\vec{A} = 12\hat{r} + 5\hat{\theta} + \pi\hat{\phi}$ at $P(2,\pi,\pi/2)$, $\vec{B} = 2\hat{r} + 0.5\pi\hat{\theta}$ at $Q(5,\pi/2,\pi/2)$. Find $\vec{C} = \vec{A} + \vec{B}$.  <br><strong>Solution:</strong><br>Recall Cartesian transformation from spherical:</p>
 <div class="math-block">$$F_x = F_r\sin\theta\cos\phi + F_\theta\cos\theta\cos\phi - F_\phi\sin\phi$$</div>
 <div class="math-block">$$F_y = F_r\sin\theta\sin\phi + F_\theta\cos\theta\sin\phi + F_\phi\cos\phi, \qquad F_z = F_r\cos\theta - F_\theta\sin\theta$$</div>
 <ul><li><strong>At $P(\theta=\pi, \phi=\pi/2)$:</strong> $\sin\pi=0, \cos\pi=-1, \sin(\pi/2)=1, \cos(\pi/2)=0$:</li><li>$A_x = 0 + 0 - \pi(1) = -\pi$</li><li>$A_y = 0 + 5(-1)(1) + 0 = -5$</li><li>$A_z = 12(-1) - 0 = -12 \implies \vec{A} = -\pi\hat{x} - 5\hat{y} - 12\hat{z}$.</li><li><strong>At $Q(\theta=\pi/2, \phi=\pi/2)$:</strong> $\sin(\pi/2)=1, \cos(\pi/2)=0$:</li><li>$B_x = 0$, $B_y = 2(1)(1) = 2$, $B_z = -0.5\pi(1) = -0.5\pi \implies \vec{B} = 2\hat{y} - 0.5\pi\hat{z}$.</li><li><strong>Sum:</strong> $\vec{C} = \vec{A} + \vec{B} = \mathbf{-\pi\hat{x} - 3\hat{y} - (12 + 0.5\pi)\hat{z}}$.</li></ul>
 <hr />
-<p><strong>Q4 (<code>Midsem 2022</code>, 4m):</strong> Express $P(r=8,\theta=\pi/6,\phi=\pi/3)$ and $\mathbf{A} = 2\hat{r} + \sqrt{3}\hat{\theta} - 2\hat{\phi}$ in cylindrical coordinates.  <br><strong>Solution:</strong></p>
+<p><strong>Q4 (<code class="inline-code">Midsem 2022</code>, 4m):</strong> Express $P(r=8,\theta=\pi/6,\phi=\pi/3)$ and $\mathbf{A} = 2\hat{r} + \sqrt{3}\hat{\theta} - 2\hat{\phi}$ in cylindrical coordinates.  <br><strong>Solution:</strong></p>
 <ul><li>Coordinates: $\rho = 8\sin(\pi/6) = \mathbf{4},\ \phi = \mathbf{\pi/3},\ z = 8\cos(\pi/6) = \mathbf{4\sqrt{3}}$.</li><li>Vector components: $A_\rho = 2(\frac{1}{2}) + \sqrt{3}(\frac{\sqrt{3}}{2}) = 2.5$, $A_\phi = -2$, $A_z = 2(\frac{\sqrt{3}}{2}) - \sqrt{3}(\frac{1}{2}) = \frac{\sqrt{3}}{2}$.<br>$$\mathbf{A} = \mathbf{2.5\hat{\rho} - 2\hat{\phi} + \frac{\sqrt{3}}{2}\hat{z}}.$$</li></ul>
 <hr />
-<p><strong>Q5 (<code>Midsem 2022</code>, 4m):</strong> $T(x,y,z) = \frac{x^3}{4\sqrt{3}} + e^{-z} y^2$. Find rate of change at cylindrical $P(8, \pi/6, 6)$ toward origin.  <br><strong>Solution:</strong></p>
+<p><strong>Q5 (<code class="inline-code">Midsem 2022</code>, 4m):</strong> $T(x,y,z) = \frac{x^3}{4\sqrt{3}} + e^{-z} y^2$. Find rate of change at cylindrical $P(8, \pi/6, 6)$ toward origin.  <br><strong>Solution:</strong></p>
 <ul><li>At $P$: $x = 8\cos(\pi/6) = 4\sqrt{3}$, $y = 8\sin(\pi/6) = 4$, $z = 6$.</li><li>$\nabla T = \frac{3x^2}{4\sqrt{3}}\hat{x} + 2y e^{-z}\hat{y} - e^{-z}y^2\hat{z}$.</li><li>At $P$: $x^2 = 48 \implies \frac{\partial T}{\partial x} = \frac{3(48)}{4\sqrt{3}} = \frac{36}{\sqrt{3}} = 12\sqrt{3}$; $\frac{\partial T}{\partial y} = 8 e^{-6}$; $\frac{\partial T}{\partial z} = -16 e^{-6}$.</li><li>Direction from $P$ to origin: $\mathbf{d} = -P = \langle -4\sqrt{3}, -4, -6 \rangle$, $\|\mathbf{d}\| = \sqrt{48+16+36} = 10 \implies \hat{\mathbf{u}} = \langle -0.4\sqrt{3}, -0.4, -0.6 \rangle$.</li><li>Directional derivative $= \nabla T\cdot\hat{\mathbf{u}} = (12\sqrt{3})(-0.4\sqrt{3}) + (8e^{-6})(-0.4) + (-16e^{-6})(-0.6) = -14.4 + 6.4 e^{-6} \approx \mathbf{-14.384}$.</li></ul>
 <hr />
-<p><strong>Q7 &amp; Q8 (<code>Midsem 2022</code>, 6m + 6m):</strong>  </p>
+<p><strong>Q7 &amp; Q8 (<code class="inline-code">Midsem 2022</code>, 6m + 6m):</strong>  </p>
 <ul><li><strong>Q7 (Divergence Theorem):</strong> $\mathbf{v} = xy\hat{x} + 2yz\hat{y} + 3zx\hat{z}$ on box $[0,2]\times[0,2]\times[0,1]$:</li><li>Volume: $\nabla\cdot\mathbf{v} = y + 2z + 3x \implies \int_0^2\int_0^2\int_0^1 (3x+y+2z)\,dz\,dy\,dx = \mathbf{20}$.</li><li>Surface: $x=2$ gives $\int_0^2\int_0^1 2y\,dz\,dy = 4$; $y=2$ gives $\int_0^2\int_0^1 4z\,dz\,dx = 4$; $z=1$ gives $\int_0^2\int_0^2 3x\,dy\,dx = 12$; faces $x=0,y=0,z=0$ give $0 \implies 4+4+12 = \mathbf{20}$!</li><li><strong>Q8 (Stokes&#x27; Theorem):</strong> $\mathbf{F} = x^2 y\hat{x} + 2xy^2\hat{y}$ around unit square $[0,1]\times[0,1]$:</li><li>Curl: $\nabla\times\mathbf{F} = (2y^2 - x^2)\hat{z} \implies \int_0^1\int_0^1 (2y^2-x^2)\,dx\,dy = \frac{2}{3} - \frac{1}{3} = \mathbf{\frac{1}{3}}$.</li><li>Circulation: $0$ (bottom $y=0$) $+ \int_0^1 2y^2\,dy$ (right $x=1$) $+ \int_1^0 x^2\,dx$ (top $y=1$) $+ 0$ (left $x=0$) $= \frac{2}{3} - \frac{1}{3} = \mathbf{\frac{1}{3}}$!</li></ul>
 <hr />
 <h3>Part B: Key Assignment &amp; Lecture Exam Problems</h3>
-<p><strong>P1 (<code>Assignment-1</code> Q4 — Polarized Sphere Bound Charges &amp; Field):</strong>  <br>A sphere of radius $R$ has $\mathbf{P}(\mathbf{r}) = k\mathbf{r}$. Find $\rho_b, \sigma_b$, and $\mathbf{E}$ inside and outside.  <br><strong>Solution:</strong></p>
+<p><strong>P1 (<code class="inline-code">Assignment-1</code> Q4 — Polarized Sphere Bound Charges &amp; Field):</strong>  <br>A sphere of radius $R$ has $\mathbf{P}(\mathbf{r}) = k\mathbf{r}$. Find $\rho_b, \sigma_b$, and $\mathbf{E}$ inside and outside.  <br><strong>Solution:</strong></p>
 <ul><li>$\rho_b = -\nabla\cdot(k\mathbf{r}) = -k\left(\frac{\partial x}{\partial x}+\frac{\partial y}{\partial y}+\frac{\partial z}{\partial z}\right) = \mathbf{-3k}$.</li><li>$\sigma_b = \mathbf{P}(R)\cdot\hat{\mathbf{r}} = k R\,\hat{\mathbf{r}}\cdot\hat{\mathbf{r}} = \mathbf{kR}$.</li><li>Notice total bound charge $= (-3k)\left(\frac{4}{3}\pi R^3\right) + (kR)(4\pi R^2) = 0$. Since $\rho_f = 0$, $\mathbf{D} = \mathbf{0}$ everywhere (symmetric)!</li><li>Inside ($r &lt; R$): $0 = \epsilon_0\mathbf{E} + \mathbf{P} \implies \mathbf{E}_{\text{in}} = -\frac{\mathbf{P}}{\epsilon_0} = \mathbf{-\frac{k\mathbf{r}}{\epsilon_0}}$. Outside ($r &gt; R$): $\mathbf{P}=\mathbf{0} \implies \mathbf{E}_{\text{out}} = \mathbf{0}$.</li></ul>
 <hr />
-<p><strong>P2 (<code>Assignment-1</code> Q6 — Permittivity from Capacitor Data):</strong>  <br>Find $\epsilon_r$ if: (a) $A=0.12\text{ m}^2, d=80\,\mu\text{m}, V_0=12\text{ V}, W=1\,\mu\text{J}$; (b) $u=100\text{ J/m}^3, V_0=200\text{ V}, d=45\,\mu\text{m}$; (c) $E=200\text{ kV/m}, \sigma=20\,\mu\text{C/m}^2$.  <br><strong>Solution:</strong></p>
+<p><strong>P2 (<code class="inline-code">Assignment-1</code> Q6 — Permittivity from Capacitor Data):</strong>  <br>Find $\epsilon_r$ if: (a) $A=0.12\text{ m}^2, d=80\,\mu\text{m}, V_0=12\text{ V}, W=1\,\mu\text{J}$; (b) $u=100\text{ J/m}^3, V_0=200\text{ V}, d=45\,\mu\text{m}$; (c) $E=200\text{ kV/m}, \sigma=20\,\mu\text{C/m}^2$.  <br><strong>Solution:</strong></p>
 <ul><li><strong>(a):</strong> $W = \frac{1}{2}\frac{\epsilon_0\epsilon_r A}{d}V_0^2 \implies 10^{-6} = \frac{1}{2}\frac{8.854\times 10^{-12}\epsilon_r(0.12)}{80\times 10^{-6}}(144) \implies \epsilon_r \approx \mathbf{1.046}$.</li><li><strong>(b):</strong> $E = \frac{V_0}{d} = \frac{200}{45\times 10^{-6}} = 4.444\times 10^6\text{ V/m}$; $u = \frac{1}{2}\epsilon_0\epsilon_r E^2 \implies 100 = \frac{1}{2}(8.854\times 10^{-12})\epsilon_r(1.975\times 10^{13}) \implies \epsilon_r \approx \mathbf{1.143}$.</li><li><strong>(c):</strong> On conductor plate $D = \sigma = \epsilon_0\epsilon_r E \implies \epsilon_r = \frac{20\times 10^{-6}}{8.854\times 10^{-12} \times 2\times 10^5} \approx \mathbf{11.29}$.</li></ul>
 <hr />
-<p><strong>P3 (<code>Assignment-2</code> Q4 &amp; <code>lect_31</code> — Magnetized Cylinder $\mathbf{M} = b r \hat{\mathbf{z}}$ &amp; Coax with $\chi_m$):</strong>  <br>An infinite cylinder of radius $R$ carries $\mathbf{M} = b s\,\hat{\mathbf{z}}$ ($s$ cylindrical radius) with no free current. Find $\mathbf{H}, \mathbf{J}_b, \mathbf{K}_b, \mathbf{B}_{\text{in}}, \mathbf{B}_{\text{out}}$.  <br><strong>Solution:</strong></p>
+<p><strong>P3 (<code class="inline-code">Assignment-2</code> Q4 &amp; <code class="inline-code">lect_31</code> — Magnetized Cylinder $\mathbf{M} = b r \hat{\mathbf{z}}$ &amp; Coax with $\chi_m$):</strong>  <br>An infinite cylinder of radius $R$ carries $\mathbf{M} = b s\,\hat{\mathbf{z}}$ ($s$ cylindrical radius) with no free current. Find $\mathbf{H}, \mathbf{J}_b, \mathbf{K}_b, \mathbf{B}_{\text{in}}, \mathbf{B}_{\text{out}}$.  <br><strong>Solution:</strong></p>
 <ul><li>Cylindrical Curl: $\mathbf{J}_b = \nabla\times\mathbf{M} = -\frac{\partial M_z}{\partial s}\hat{\boldsymbol{\phi}} = \mathbf{-b\hat{\boldsymbol{\phi}}}$.</li><li>Surface current: $\mathbf{K}_b = \mathbf{M}\times\hat{\mathbf{s}} = (b R\hat{\mathbf{z}})\times\hat{\mathbf{s}} = \mathbf{+b R\hat{\boldsymbol{\phi}}}$.</li><li>No free current ($I_{f,\text{enc}}=0$): $\oint\mathbf{H}\cdot d\mathbf{l} = 0 \implies \mathbf{H} = \mathbf{0}$ everywhere!</li><li>Inside ($s &lt; R$): $\mathbf{B}_{\text{in}} = \mu_0(\mathbf{H}+\mathbf{M}) = \mathbf{\mu_0 b s\,\hat{\mathbf{z}}}$. Outside ($s &gt; R$): $\mathbf{M}=\mathbf{0} \implies \mathbf{B}_{\text{out}} = \mathbf{0}$.</li></ul>
 <hr />
-<p><strong>P4 (<code>Assignment-2</code> Q5 &amp; <code>lect_31</code> Prob 1 — Fat Wire Capacitor Gap):</strong>  <br>A wire of radius $R = 2\text{ cm}$ carries steady current $I = 10\text{ A}$ uniformly across its cross-section. A narrow gap forms a parallel-plate capacitor. Find $B$ in the gap at $r = 1\text{ cm}$ from the axis.  <br><strong>Solution:</strong><br>Inside the gap, conduction current $I_{\text{enc}} = 0$, while changing $\mathbf{E}$ produces displacement current $\mathbf{J}_d = \epsilon_0 \frac{\partial\mathbf{E}}{\partial t}$ uniformly over radius $R$, whose total displacement current equals $I = 10\text{ A}$!  <br>Through a circular Amperian loop of radius $r = 1\text{ cm} &lt; R$:</p>
+<p><strong>P4 (<code class="inline-code">Assignment-2</code> Q5 &amp; <code class="inline-code">lect_31</code> Prob 1 — Fat Wire Capacitor Gap):</strong>  <br>A wire of radius $R = 2\text{ cm}$ carries steady current $I = 10\text{ A}$ uniformly across its cross-section. A narrow gap forms a parallel-plate capacitor. Find $B$ in the gap at $r = 1\text{ cm}$ from the axis.  <br><strong>Solution:</strong><br>Inside the gap, conduction current $I_{\text{enc}} = 0$, while changing $\mathbf{E}$ produces displacement current $\mathbf{J}_d = \epsilon_0 \frac{\partial\mathbf{E}}{\partial t}$ uniformly over radius $R$, whose total displacement current equals $I = 10\text{ A}$!  <br>Through a circular Amperian loop of radius $r = 1\text{ cm} &lt; R$:</p>
 <div class="math-block">$$I_{d,\text{enc}} = I\frac{\pi r^2}{\pi R^2} = I\frac{r^2}{R^2}$$</div>
 <p>By Ampère-Maxwell Law:</p>
 <div class="math-block">$$B(2\pi r) = \mu_0 I_{d,\text{enc}} = \mu_0 I\frac{r^2}{R^2} \implies B = \frac{\mu_0 I r}{2\pi R^2} = \frac{4\pi\times 10^{-7}\times 10 \times 0.01}{2\pi (0.02)^2} = \mathbf{5\times 10^{-5}\text{ T}\ (50\,\mu\text{T})}.$$</div>
 <hr />
-<p><strong>P5 (<code>lect_34</code> Prob 1 &amp; <code>lect_36</code> Prob 3 — Displacement Current &amp; Poynting Vector):</strong>  <br>(a) Material has $\sigma = 0.11\text{ S/m}, \epsilon_r = 1.2$, $\mathbf{E} = \cos(0.1t)\,\text{V/m}$. At $t = 5\text{ s}$, find $J_c$ and $J_d$.  <br>(b) In a lossless dielectric, $\mathbf{E} = E\cos(\omega t - kz)\hat{\mathbf{a}}_x$. Find $\mathbf{H}$, Poynting vector $\mathbf{S}$, and average power density $\langle S_z \rangle$.  <br><strong>Solution:</strong></p>
+<p><strong>P5 (<code class="inline-code">lect_34</code> Prob 1 &amp; <code class="inline-code">lect_36</code> Prob 3 — Displacement Current &amp; Poynting Vector):</strong>  <br>(a) Material has $\sigma = 0.11\text{ S/m}, \epsilon_r = 1.2$, $\mathbf{E} = \cos(0.1t)\,\text{V/m}$. At $t = 5\text{ s}$, find $J_c$ and $J_d$.  <br>(b) In a lossless dielectric, $\mathbf{E} = E\cos(\omega t - kz)\hat{\mathbf{a}}_x$. Find $\mathbf{H}$, Poynting vector $\mathbf{S}$, and average power density $\langle S_z \rangle$.  <br><strong>Solution:</strong></p>
 <ul><li><strong>(a):</strong> At $t = 5\text{ s}$, $0.1t = 0.5\text{ rad}$:<br>$$J_c = \sigma E = 0.11\cos(0.5) \approx \mathbf{0.0965\text{ A/m}^2}$$<br>$$J_d = \epsilon_0\epsilon_r \frac{\partial E}{\partial t} = (8.854\times 10^{-12})(1.2)(-0.1\sin(0.5)) \approx \mathbf{-5.09\times 10^{-13}\text{ A/m}^2}$$</li><li><strong>(b):</strong> From $\frac{\partial\mathbf{B}}{\partial t} = -\nabla\times\mathbf{E} = -\frac{\partial E_x}{\partial z}\hat{\mathbf{a}}_y = -Ek\sin(\omega t - kz)\hat{\mathbf{a}}_y$:<br>Integrating in $t$ and dividing by $\mu$: $\mathbf{H} = \frac{Ek}{\omega\mu}\cos(\omega t - kz)\hat{\mathbf{a}}_y$.<br>Poynting vector: $\mathbf{S} = \mathbf{E}\times\mathbf{H} = \frac{k E^2}{\omega\mu}\cos^2(\omega t - kz)\hat{\mathbf{a}}_z\text{ W/m}^2$ ($+\hat{\mathbf{a}}_z$ direction).<br>Time average ($\langle \cos^2\rangle = 1/2$): $\langle S_z \rangle = \mathbf{\frac{k E^2}{2\omega\mu}\text{ W/m}^2}$.</li></ul>
 <hr />
-<p><strong>P6 (<code>lect_37</code> Slide 22 — Solar Irradiance &amp; EM Wave Fields):</strong>  <br>Planet receives $10\text{ cal}/(\text{m}^2\cdot\text{s})$ from the Sun ($1\text{ cal} = 4.184\text{ J}$). Find amplitudes $E_0$ and $B_0$.  <br><strong>Solution:</strong><br>Intensity $\langle S \rangle = 10 \times 4.184 = 41.84\text{ W/m}^2 = \frac{1}{2}\epsilon_0 c E_0^2$:</p>
+<p><strong>P6 (<code class="inline-code">lect_37</code> Slide 22 — Solar Irradiance &amp; EM Wave Fields):</strong>  <br>Planet receives $10\text{ cal}/(\text{m}^2\cdot\text{s})$ from the Sun ($1\text{ cal} = 4.184\text{ J}$). Find amplitudes $E_0$ and $B_0$.  <br><strong>Solution:</strong><br>Intensity $\langle S \rangle = 10 \times 4.184 = 41.84\text{ W/m}^2 = \frac{1}{2}\epsilon_0 c E_0^2$:</p>
 <div class="math-block">$$E_0 = \sqrt{\frac{2 \times 41.84}{(8.854\times 10^{-12})(3\times 10^8)}} = \sqrt{3.150\times 10^4} \approx \mathbf{177.5\text{ V/m}}, \qquad B_0 = \frac{E_0}{c} \approx \mathbf{5.92\times 10^{-7}\text{ T}}.$$</div>
 <hr />
 <h2>6. Common Mistakes Checklist</h2>
-<ul><li><label class="chk-line"><input type="checkbox" /> <span><strong>Adding vectors at DIFFERENT points in curvilinear coordinates:</strong> Always convert to Cartesian $(\hat{\mathbf{x}},\hat{\mathbf{y}},\hat{\mathbf{z}})$ before adding (<code>Midsem 2022</code> Q2!).</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Wrong $\hat{\mathbf{r}}$ vs $\boldsymbol{\mathfrak{r}}$ direction:</strong> Separation vector ALWAYS points <strong>from source charge/current ($\mathbf{r}&#x27;$) TO field point ($\mathbf{r}$)</strong>: $\boldsymbol{\mathfrak{r}} = \mathbf{r} - \mathbf{r}&#x27;$.</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Confusing $\sigma_b$ &amp; $\rho_b$ signs:</strong> $\rho_b = -\nabla\cdot\mathbf{P}$ (has a minus sign!), $\sigma_b = +\mathbf{P}\cdot\hat{\mathbf{n}}$ (no minus sign!). In magnetostatics, $\mathbf{J}_b = +\nabla\times\mathbf{M}$ and $\mathbf{K}_b = +\mathbf{M}\times\hat{\mathbf{n}}$ (note order!).</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Electric vs Magnetic Boundary Conditions:</strong> For electrostatics, <strong>$E_\parallel$ is continuous</strong> and <strong>$D_\perp$ jumps by $\rho_f$</strong>. For magnetostatics, <strong>$B_\perp$ is continuous</strong> and <strong>$H_\parallel$ jumps by $\mathbf{K}_f\times\hat{\mathbf{n}}$</strong>.</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Factor of $1/2$ in Average Power Density:</strong> $\langle S \rangle = \frac{1}{2}\text{Re}(\mathbf{E}\times\mathbf{H}^*) = \frac{1}{2}\epsilon_0 c E_0^2$, NOT $\epsilon_0 c E_0^2$!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Crossed $\sin$ vs $\cos$ Phase in EM Waves:</strong> Make sure $\frac{\partial\mathbf{B}}{\partial t} = -\nabla\times\mathbf{E}$ matches the wave direction ($+\hat{\mathbf{k}}$ vs $-\hat{\mathbf{k}}$): $\hat{\mathbf{E}} \times \hat{\mathbf{B}}$ ALWAYS points along <strong>direction of propagation</strong>.</span></label></li></ul>
+<ul><li><label class="chk-line"><input type="checkbox" /> <span><strong>Adding vectors at DIFFERENT points in curvilinear coordinates:</strong> Always convert to Cartesian $(\hat{\mathbf{x}},\hat{\mathbf{y}},\hat{\mathbf{z}})$ before adding (<code class="inline-code">Midsem 2022</code> Q2!).</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Wrong $\hat{\mathbf{r}}$ vs $\boldsymbol{\mathfrak{r}}$ direction:</strong> Separation vector ALWAYS points <strong>from source charge/current ($\mathbf{r}&#x27;$) TO field point ($\mathbf{r}$)</strong>: $\boldsymbol{\mathfrak{r}} = \mathbf{r} - \mathbf{r}&#x27;$.</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Confusing $\sigma_b$ &amp; $\rho_b$ signs:</strong> $\rho_b = -\nabla\cdot\mathbf{P}$ (has a minus sign!), $\sigma_b = +\mathbf{P}\cdot\hat{\mathbf{n}}$ (no minus sign!). In magnetostatics, $\mathbf{J}_b = +\nabla\times\mathbf{M}$ and $\mathbf{K}_b = +\mathbf{M}\times\hat{\mathbf{n}}$ (note order!).</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Electric vs Magnetic Boundary Conditions:</strong> For electrostatics, <strong>$E_\parallel$ is continuous</strong> and <strong>$D_\perp$ jumps by $\rho_f$</strong>. For magnetostatics, <strong>$B_\perp$ is continuous</strong> and <strong>$H_\parallel$ jumps by $\mathbf{K}_f\times\hat{\mathbf{n}}$</strong>.</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Factor of $1/2$ in Average Power Density:</strong> $\langle S \rangle = \frac{1}{2}\text{Re}(\mathbf{E}\times\mathbf{H}^*) = \frac{1}{2}\epsilon_0 c E_0^2$, NOT $\epsilon_0 c E_0^2$!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Crossed $\sin$ vs $\cos$ Phase in EM Waves:</strong> Make sure $\frac{\partial\mathbf{B}}{\partial t} = -\nabla\times\mathbf{E}$ matches the wave direction ($+\hat{\mathbf{k}}$ vs $-\hat{\mathbf{k}}$): $\hat{\mathbf{E}} \times \hat{\mathbf{B}}$ ALWAYS points along <strong>direction of propagation</strong>.</span></label></li></ul>
     </article>
   </main>
   <script>
@@ -258,10 +298,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       if (window.renderMathInElement) {
         renderMathInElement(document.body, {
-          delimiters: [
-            { left: "$$", right: "$$", display: true },
-            { left: "$", right: "$", display: false }
-          ],
+          delimiters: [{ left: "$$", right: "$$", display: true }, { left: "$", right: "$", display: false }],
           throwOnError: false
         });
       }
