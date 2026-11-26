@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CS1000 Complete Guide &bull; IIITDM Sem 1</title>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
@@ -30,30 +30,15 @@
       --border: #b2a787;
       --border-strong: #938768;
       --primary: #445940;
-      --primary-hover: #354732;
-      --primary-fg: #f2ece0;
-      --primary-soft: rgba(68, 89, 64, 0.12);
       --success: #2f693e;
-      --success-soft: rgba(47, 105, 62, 0.12);
       --warning: #926018;
-      --warning-soft: rgba(146, 96, 24, 0.12);
       --error: #993b33;
-      --error-soft: rgba(153, 59, 51, 0.11);
       --chart-1: #4a5c7a;
       --chart-2: #2f6f63;
       --chart-3: #645478;
       --chart-4: #945b2b;
       --code-bg: #1b1e19;
-      --code-head: #232720;
       --code-fg: #ded8c6;
-      --shadow-xs: 0 1px 2px rgba(34, 33, 24, 0.05);
-      --shadow-sm: 0 2px 6px rgba(34, 33, 24, 0.06);
-      --shadow-md: 0 14px 36px -14px rgba(34, 33, 24, 0.14), 0 3px 10px -4px rgba(34, 33, 24, 0.06);
-      --background: var(--bg);
-      --card: var(--surface);
-      --content: var(--surface-2);
-      --foreground: var(--text);
-      --muted-foreground: var(--text-muted);
     }
     html.dark {
       color-scheme: dark;
@@ -67,321 +52,477 @@
       --border: #32362b;
       --border-strong: #464b3c;
       --primary: #6c8760;
-      --primary-hover: #7e9b71;
-      --primary-fg: #f2ece0;
-      --primary-soft: rgba(108, 135, 96, 0.16);
       --success: #5c9967;
-      --success-soft: rgba(92, 153, 103, 0.14);
       --warning: #d19a45;
-      --warning-soft: rgba(209, 154, 69, 0.14);
       --error: #c95d56;
-      --error-soft: rgba(201, 93, 86, 0.14);
       --chart-1: #7b93b8;
       --chart-2: #5aa394;
       --chart-3: #9684ad;
       --chart-4: #c4844d;
-      --code-bg: #141612;
-      --code-head: #1c1f19;
-      --code-fg: #ded8c6;
-      --shadow-xs: 0 1px 2px rgba(0,0,0,0.4);
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.45);
-      --shadow-md: 0 16px 40px -12px rgba(0,0,0,0.65);
     }
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body {
-      margin: 0; padding: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -webkit-tap-highlight-color: transparent;
-      overflow-x: hidden;
-      overflow-x: clip;
-    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Inter", sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+    .topbar { position: sticky; top: 0; z-index: 20; background: var(--surface); border-bottom: 1px solid var(--border); padding: 10px 16px; }
+    .topbar-inner { max-width: 920px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
     a { color: var(--primary); text-decoration: none; }
-    html.dark a { color: #818cf8; }
-    a:hover { text-decoration: underline; }
-    button { font-family: inherit; color: inherit; cursor: pointer; background: none; border: none; padding: 0; }
-    button:disabled { opacity: 0.38; cursor: not-allowed; }
-    .hidden { display: none !important; }
-    .tabular { font-variant-numeric: tabular-nums; }
-
-    .inline-code {
-      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 0.85em;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      padding: 1px 5px;
-      color: var(--text);
-      word-break: break-word;
-    }
-
-    /* Syntax-highlighted Code Frame with Header + Line Numbers + Copy */
-    .code-frame {
-      margin: 8px 0;
-      border-radius: 12px;
-      background: var(--code-bg);
-      border: 1px solid var(--border-strong);
-      overflow: hidden;
-      max-width: 100%;
-    }
-    .code-head {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 6px 12px;
-      background: var(--code-head);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.72rem; font-weight: 600; color: #94a3b8;
-    }
-    .copy-code-btn {
-      padding: 3px 9px; border-radius: 6px; font-size: 0.7rem; font-weight: 700;
-      background: rgba(255,255,255,0.08); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.12);
-      transition: background 0.14s, color 0.14s;
-    }
-    .copy-code-btn:hover { background: rgba(255,255,255,0.16); color: #fff; }
-    .copy-code-btn.copied { background: rgba(16, 185, 129, 0.25); color: #6ee7b7; border-color: rgba(16, 185, 129, 0.45); }
-    pre.code-hl {
-      margin: 0; padding: 12px 14px;
-      color: var(--code-fg);
-      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 0.8rem; line-height: 1.56;
-      overflow-x: auto; white-space: pre; max-width: 100%;
-    }
-    .code-ln { display: inline-block; width: 2.1em; user-select: none; color: #475569; text-align: right; margin-right: 12px; }
-    .tok-kw { color: #ff7b72; font-weight: 600; }
-    .tok-ty { color: #79c0ff; }
-    .tok-fn { color: #d2a8ff; }
-    .tok-str { color: #a5d6ff; }
-    .tok-num { color: #f2cc60; }
-    .tok-com { color: #8b949e; font-style: italic; }
-    .tok-pp { color: #ffa657; }
-
-    /* KaTeX responsiveness & mobile 0-overflow safety */
-    .katex { position: relative; }
-    .katex-mathml { left: 0; }
-    .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: 6px 2px; margin: 4px 0 !important; }
-    @media (max-width: 640px) {
-      .katex { font-size: 0.99em; }
-      p .katex, li .katex, .bullet-body .katex, .step-body .katex, .q-prompt .katex, .sol-panel .katex, .hint-panel .katex, .formula-body .katex, .trap-body .katex {
-        display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: bottom;
-      }
-    }
-    .topbar {
-      position: sticky; top: 0; z-index: 25;
-      background: color-mix(in srgb, var(--surface) 88%, transparent);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      padding: 10px 16px;
-    }
-    .topbar-inner { max-width: 940px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
-    .article-shell { max-width: 940px; margin: 16px auto 48px; padding: 0 14px; }
-    .article-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px 18px; box-shadow: var(--shadow-md); overflow-x: clip; overflow-wrap: anywhere; }
-    @media (min-width: 768px) { .article-card { padding: 30px 36px; } }
-    article h1 { font-size: 1.45rem; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-top: 0; }
-    article h2 { font-size: 1.18rem; margin-top: 28px; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 5px; }
-    html.dark article h2 { color: #818cf8; }
-    article h3 { font-size: 1.02rem; margin-top: 18px; }
-    article p, article li { font-size: 0.92rem; line-height: 1.62; color: var(--text); }
-    article ul, article ol { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
-    article hr { border: none; border-top: 1px solid var(--border); margin: 22px 0; }
-    .table-wrap { position: relative; width: 100%; max-width: 100%; overflow-x: auto; margin: 12px 0; border: 1px solid var(--border); border-radius: 12px; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.84rem; min-width: 540px; }
-    th, td { text-align: left; padding: 9px 11px; border-bottom: 1px solid var(--border); vertical-align: top; }
-    th { background: var(--surface-2); font-weight: 800; }
-    .math-block { max-width: 100%; overflow-x: auto; padding: 6px 2px; text-align: center; }
-    .alert { border-left: 4px solid var(--primary); background: var(--surface-2); border-radius: 10px; padding: 12px 14px; margin: 12px 0; font-size: 0.88rem; }
-    .alert.warning { border-color: var(--warning); }
+    .article-shell { max-width: 920px; margin: 20px auto 52px; padding: 0 14px; }
+    .article-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px 28px; overflow-wrap: anywhere; }
+    h1, h2 { font-family: "Newsreader", Georgia, serif; }
+    h2 { border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-top: 28px; color: var(--primary); }
+    pre { background: var(--code-bg); color: var(--code-fg); padding: 12px 14px; border-radius: 10px; overflow-x: auto; font-family: "JetBrains Mono", monospace; font-size: 0.82rem; }
+    .inline-code { font-family: "JetBrains Mono", monospace; background: rgba(68,89,64,0.12); padding: 1px 5px; border-radius: 4px; font-size: 0.85em; }
+    .alert { border-left: 4px solid var(--primary); background: var(--surface-2); border-radius: 8px; padding: 10px 14px; margin: 10px 0; font-size: 0.9rem; }
+    .alert.warning { border-color: var(--error); }
     .alert.tip { border-color: var(--success); }
-    .chk-line { display: flex; align-items: flex-start; gap: 8px; cursor: pointer; }
-    .chk-line input { margin-top: 4px; width: 16px; height: 16px; accent-color: var(--success); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; margin: 12px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th, td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+    th { background: var(--surface-2); }
+    .math-block { overflow-x: auto; padding: 6px 2px; text-align: center; }
+    @media print { .topbar { display: none; } body { background: #fff; color: #111; } .article-card { border: none; } }
   </style>
 </head>
 <body>
   <div class="topbar">
     <div class="topbar-inner">
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-        <a href="../index.html" style="font-weight:800;font-size:0.86rem;">&larr; Study Studio</a>
-        <span style="font-weight:800;font-size:0.9rem;">CS1000: C Programming</span>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <a href="../index.html" style="font-weight:700;font-size:0.85rem;">&larr; Study OS</a>
+        <strong style="font-size:0.9rem;">CS1000: C Programming</strong>
       </div>
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        <a href="../decks/CS1000_C_Programming_Exam_Deck.pptx" download style="padding:7px 12px;border-radius:9px;background:var(--primary);color:#fff;font-size:0.78rem;font-weight:700;text-decoration:none;">Download .pptx</a>
-        <button id="theme-btn" type="button" style="padding:7px 10px;border-radius:9px;border:1px solid var(--border);background:var(--surface-2);font-size:0.76rem;font-weight:700;">Theme</button>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <a href="../decks/CS1000_C_Programming_Exam_Deck.pptx" download style="padding:6px 12px;border-radius:8px;background:var(--primary);color:#f2ece0;font-size:0.78rem;font-weight:600;">Download .pptx</a>
+        <button id="theme-btn" type="button" style="padding:6px 10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:0.76rem;font-weight:600;cursor:pointer;">Night Mode</button>
       </div>
     </div>
   </div>
-  <main class="article-shell">
-    <article class="article-card">
-<h1>End-Semester Exam Study Guide — Problem Solving &amp; Programming (<code class="inline-code">CS1000</code>)</h1>
-<p><strong>Course:</strong> Problem Solving and Programming (<code class="inline-code">CS1000</code>) — C Programming (IIITDM Kancheepuram)  <br><strong>Time Horizon:</strong> Built for <strong>&lt; 4-day</strong> exam readiness  <br><strong>Synthesized from:</strong> Lecture decks (<code class="inline-code">BASICS-1</code>, <code class="inline-code">operators</code>, <code class="inline-code">conditional statements</code>, <code class="inline-code">functions</code>, <code class="inline-code">scope</code>, <code class="inline-code">arrays</code>, <code class="inline-code">strings</code>, <code class="inline-code">STRUCTURES</code>, <code class="inline-code">FILES</code>), <code class="inline-code">Practice - 1/2/3</code>, <code class="inline-code">C questions</code>, <code class="inline-code">C questions on NS</code>, <code class="inline-code">Assignment 1</code> (all 12 code images + sets 1–4), <code class="inline-code">Questions for Lab</code>, <code class="inline-code">Switch&amp;If_else</code>, <code class="inline-code">COM105T Quiz 1</code>, <code class="inline-code">PSP Quiz 2 (Oct 2023)</code>, <code class="inline-code">CS1000 Midsem Dec 2022</code>, and <code class="inline-code">CS1000 Endsem Feb 2023</code> (60 marks).</p>
-<hr />
-<h2>1. Exam Pattern &amp; Priority Breakdown</h2>
-<p>In <code class="inline-code">CS1000</code> exams (<code class="inline-code">Midsem</code> 30 marks, <code class="inline-code">Endsem</code> 60 marks), roughly <strong>50% of marks</strong> come from short-answer code-tracing / output / compile-error traps (MCQs &amp; 2-mark questions), and <strong>50% of marks</strong> come from writing clean, bug-free C programs (<strong>Section C</strong>, often banning <code class="inline-code">&lt;string.h&gt;</code> functions!).</p>
-<div class="table-wrap"><table><thead><tr><th>Topic</th><th>Favorite IIITDM Exam Questions</th><th>Priority</th></tr></thead><tbody><tr><td><strong>Number Systems &amp; Bits</strong></td><td>Radix puzzles <code class="inline-code">(123)_5 = (X8)_Y</code>, Octal$\leftrightarrow$Hex via 3/4-bit binary, $n$-bit 2&#x27;s complement ranges/overflow, bit shifting ($8\times P$, <code class="inline-code">a ^ 32</code>, <code class="inline-code">~0 == -1</code>), signed <code class="inline-code">char</code> wraparound</td><td>High</td></tr><tr><td><strong>Compilation &amp; Tokens</strong></td><td>4 stages (Edit/Preprocess $\to$ Compile $\to$ Assemble $\to$ Link $\to$ Execute), <code class="inline-code">Main()</code> linker error, valid C identifiers, <code class="inline-code">#define</code> macro &amp; <code class="inline-code">#undef</code> traps</td><td>High</td></tr><tr><td><strong>Operators &amp; Evaluation</strong></td><td>Precedence (<code class="inline-code">+</code> before <code class="inline-code">&lt;&lt;</code> before <code class="inline-code">&lt;</code> before <code class="inline-code">&amp;</code> before <code class="inline-code">&amp;&amp;</code>), <code class="inline-code">&amp;&amp;</code>/`\</td><td>\</td><td><code class="inline-code"> short-circuiting, </code>sizeof(expr)<code class="inline-code"> NOT evaluating side-effects, </code>printf<code class="inline-code">/</code>scanf<code class="inline-code"> return values, </code>(1,2,3)` comma operator</td><td>Very High</td></tr><tr><td><strong>Control Flow &amp; <code class="inline-code">switch</code></strong></td><td><strong>Semicolon trap (<code class="inline-code">if(a==5);</code>)</strong>, <code class="inline-code">if(a=0)</code> assignment trap, missing <code class="inline-code">break</code> fallthrough, non-constant <code class="inline-code">case a:</code>, duplicate case value (<code class="inline-code">case 3:</code> + <code class="inline-code">case 7-4:</code>), <code class="inline-code">while(c--)</code> vs <code class="inline-code">for</code> trace</td><td>Very High</td></tr><tr><td><strong>Functions, Recursion &amp; Scope</strong></td><td>Pass-by-value vs Pass-by-reference (<code class="inline-code">swap</code>), LIFO recursive stack order, <strong>printing before vs after recursive call</strong>, <code class="inline-code">static</code> local persistence, global vs local shadowing, <code class="inline-code">register</code>/<code class="inline-code">extern</code></td><td>Very High</td></tr><tr><td><strong>Arrays, Pointers &amp; Strings</strong></td><td><code class="inline-code">arr[i]</code> $\equiv$ <code class="inline-code">*(arr+i)</code>, <code class="inline-code">*z++</code> vs <code class="inline-code">(*z)++</code>, <code class="inline-code">q - p</code> vs invalid <code class="inline-code">r/2</code>, 2D char array missing <code class="inline-code">&#x27;\0&#x27;</code> (<code class="inline-code">char arr[4][3]</code>), manual string partition/reverse without <code class="inline-code">&lt;string.h&gt;</code></td><td>Very High</td></tr><tr><td><strong>Structures, Unions &amp; Files</strong></td><td><code class="inline-code">struct</code> pass-by-value vs <code class="inline-code">struct *</code> with <code class="inline-code">-&gt;</code>, struct assignment <code class="inline-code">p3 = p2</code>, <code class="inline-code">union</code> max member size, <code class="inline-code">fopen</code> modes (<code class="inline-code">r,w,a,r+,w+,a+</code>), <code class="inline-code">fprintf/fscanf/fgetc/fgets</code>, <code class="inline-code">fseek/ftell/rewind</code></td><td>Very High</td></tr></tbody></table></div>
-<hr />
-<h2>2. Rapid Revision Core Notes</h2>
-<h3>2.1 Number Systems &amp; Signed Representation</h3>
-<ul><li><strong>Radix Equation Technique:</strong> Convert both sides to base 10! Enforce <strong>digit $&lt;$ base</strong> constraint (e.g., if <code class="inline-code">8</code> appears in <code class="inline-code">(X8)_Y</code>, then $Y \ge 9$ and $1 \le X &lt; Y$).</li><li><strong>2&#x27;s Complement (Width $n$ bits):</strong></li><li>Range: $\mathbf{-2^{n-1}}$ to $\mathbf{+(2^{n-1} - 1)}$. (8-bit: $-128$ to $+127$; 16-bit: $-32768$ to $+32767$).</li><li>Sign-magnitude 8-bit <code class="inline-code">-9</code>: MSB <code class="inline-code">1</code>, magnitude <code class="inline-code">0001001</code> $\to$ <code class="inline-code">10001001</code>.</li><li>2&#x27;s complement of $-N$: invert all bits of $+N$ (1&#x27;s comp) and add $1$. (Shortcut: copy bits from right up to first <code class="inline-code">1</code>, flip all bits to the left!).</li><li><strong>Signed <code class="inline-code">char</code> wraparound (<code class="inline-code">COM105T</code>, <code class="inline-code">C questions</code>):</strong> <code class="inline-code">char val = 125; val = val + 3;</code> $\to 128$ overflows $+127$ into <strong>$-128$</strong>! <code class="inline-code">~0</code> is <code class="inline-code">-1</code> (all <code class="inline-code">1</code> bits!).</li><li><strong>Bitwise Arithmetic Shortcuts:</strong> Left shift $k$ bits (<code class="inline-code">x &lt;&lt; k</code>) $\approx \times 2^k$ (so <code class="inline-code">8 * P</code> = arithmetic/logical left shift by 3 bits, keeping 16-bit width!). Right shift by 1 (<code class="inline-code">&gt;&gt; 1</code>) divides by 2 (signed negative right shift <code class="inline-code">(-2)&gt;&gt;1</code> = <code class="inline-code">-1</code> on arithmetic-shift compilers).</li></ul>
-<h3>2.2 C Compilation Pipeline &amp; Preprocessor (<code class="inline-code">BASICS-1</code>, <code class="inline-code">FILES.ppt</code>)</h3>
-<ol><li><strong>Preprocessing:</strong> Expands <code class="inline-code">#include</code>, <code class="inline-code">#define</code> macros (pure text substitution — watch missing parentheses in <code class="inline-code">#define SQ(x) x*x</code> $\to$ pass <code class="inline-code">1+2</code> gives <code class="inline-code">1+2*1+2 = 5</code>!), handles <code class="inline-code">#ifdef</code>/<code class="inline-code">#else</code>/<code class="inline-code">#endif</code>, <code class="inline-code">#undef</code>. Directives end with newline, NEVER <code class="inline-code">;</code>.</li><li><strong>Compilation:</strong> Syntax/semantic checks $\to$ generates assembly / <code class="inline-code">.obj</code> object code. <em>(Catches syntax errors, undeclared variables, non-constant <code class="inline-code">case</code> labels, duplicate <code class="inline-code">case</code>, dividing pointer by <code class="inline-code">2</code>.)</em></li><li><strong>Linking:</strong> Combines <code class="inline-code">.obj</code> files with library code (<code class="inline-code">stdio.h</code>, <code class="inline-code">math.h</code>). <em>(Catches missing <code class="inline-code">main()</code> — e.g., <code class="inline-code">Main()</code> case sensitivity error!)</em></li><li><strong>Execution:</strong> OS loads <code class="inline-code">.exe</code> into memory; runtime/logical errors appear here.</li></ol>
-<h3>2.3 Operator Precedence &amp; Tricky Side Effects (Top 6 Traps)</h3>
-<ol><li><strong>Precedence Ladder (High $\to$ Low):</strong><br><code class="inline-code">()</code> <code class="inline-code">[]</code> <code class="inline-code">-&gt;</code> <code class="inline-code">.</code> <strong>&gt;</strong> Unary <code class="inline-code">++</code> <code class="inline-code">--</code> <code class="inline-code">!</code> <code class="inline-code">~</code> <code class="inline-code">sizeof</code> <code class="inline-code">(type)</code> <code class="inline-code">&amp;</code> <code class="inline-code">*</code> <strong>&gt;</strong> <code class="inline-code">* / %</code> <strong>&gt;</strong> <code class="inline-code">+ -</code> <strong>&gt;</strong> <code class="inline-code">&lt;&lt; &gt;&gt;</code> <strong>&gt;</strong> <code class="inline-code">&lt; &lt;= &gt; &gt;=</code> <strong>&gt;</strong> <code class="inline-code">== !=</code> <strong>&gt;</strong> <code class="inline-code">&amp;</code> <strong>&gt;</strong> <code class="inline-code">^</code> <strong>&gt;</strong> <code class="inline-code">|</code> <strong>&gt;</strong> <code class="inline-code">&amp;&amp;</code> <strong>&gt;</strong> <code class="inline-code">||</code> <strong>&gt;</strong> <code class="inline-code">?:</code> <strong>&gt;</strong> <code class="inline-code">=</code> <code class="inline-code">+=</code> <strong>&gt;</strong> <code class="inline-code">,</code><br>- Example: <code class="inline-code">1 &lt;&lt; 2 + 3 &lt;&lt; 4</code> evaluates <code class="inline-code">+</code> FIRST: <code class="inline-code">(1 &lt;&lt; 5) &lt;&lt; 4</code> $= 32 \times 16 = \mathbf{512}$!</li><li><strong>Short-Circuiting (<code class="inline-code">&amp;&amp;</code>, <code class="inline-code">||</code>):</strong><br>- <code class="inline-code">A || B</code>: if <code class="inline-code">A</code> is non-zero (true), <code class="inline-code">B</code> is <strong>NEVER evaluated</strong>!<br>- <code class="inline-code">A &amp;&amp; B</code>: if <code class="inline-code">A</code> is <code class="inline-code">0</code> (false), <code class="inline-code">B</code> is <strong>NEVER evaluated</strong>!</li><li><strong><code class="inline-code">sizeof()</code> is Compile-Time:</strong> <code class="inline-code">int j = sizeof(i++);</code> does <strong>NOT</strong> increment <code class="inline-code">i</code>! (<code class="inline-code">printf</code> inside <code class="inline-code">sizeof(printf(&quot;hi&quot;))</code> prints NOTHING and returns <code class="inline-code">4</code>, size of <code class="inline-code">int</code> return type!). Also <code class="inline-code">sizeof(&#x27;a&#x27;)</code> in C is <strong><code class="inline-code">4</code></strong> (character constant has type <code class="inline-code">int</code>), whereas <code class="inline-code">sizeof(2.5)</code> is <strong><code class="inline-code">8</code></strong> (<code class="inline-code">double</code>)!</li><li><strong>R-value Increment Error:</strong> <code class="inline-code">(10++)</code> or <code class="inline-code">(++i)++</code> or <code class="inline-code">#define c 7; (++c)</code> $\implies$ <strong>Compilation Error</strong> (cannot modify a constant/r-value).</li><li><strong>Return values of <code class="inline-code">printf()</code> &amp; <code class="inline-code">scanf()</code>:</strong><br>- <code class="inline-code">printf(&quot;hello&quot;)</code> returns number of <strong>characters printed</strong> ($5$).<br>- <code class="inline-code">scanf(&quot;%d %d&quot;, &amp;a, &amp;b)</code> returns number of <strong>items successfully read</strong> ($2$).</li><li><strong>Comma Operator vs Declaration:</strong> <code class="inline-code">int i = 1, 2, 3;</code> is a <strong>compile error</strong> (comma is separator in declaration); <code class="inline-code">int i = (1, 2, 3);</code> evaluates left-to-right and assigns <strong><code class="inline-code">3</code></strong>!</li></ol>
-<h3>2.4 Control Flow, Loops &amp; <code class="inline-code">switch</code> Rules</h3>
-<ul><li><strong>Dangling <code class="inline-code">if</code> Semicolon (<code class="inline-code">if(a==5);</code>):</strong> Ends the <code class="inline-code">if</code> immediately with an empty statement! Any <code class="inline-code">else</code> immediately afterward causes <strong>Compile Error: <code class="inline-code">&#x27;else&#x27; without a previous &#x27;if&#x27;</code></strong> (<code class="inline-code">Midsem 2022</code> Q4). No <code class="inline-code">else</code> afterward means the next <code class="inline-code">{...}</code> block executes unconditionally!</li><li><strong><code class="inline-code">switch(expr)</code> Mandatory Rules (<code class="inline-code">Quiz 2</code>, <code class="inline-code">Midsem 2022</code>):</strong><br>1. <code class="inline-code">expr</code> MUST be <strong>integer/character</strong> (never <code class="inline-code">float</code>/<code class="inline-code">double</code>/<code class="inline-code">string</code>).<br>2. Every <code class="inline-code">case</code> label MUST be a <strong>constant integer expression</strong> (<code class="inline-code">case 1+2:</code> ok; <code class="inline-code">case a:</code> or <code class="inline-code">case c=1:</code> or <code class="inline-code">case N*4:</code> with float <code class="inline-code">N</code> $\to$ <strong>Compile Error</strong>).<br>3. All <code class="inline-code">case</code> values MUST be <strong>unique</strong> (<code class="inline-code">case 3:</code> and <code class="inline-code">case (7-4):</code> together $\to$ <strong>Compile Error: duplicate case</strong>!).<br>4. Without <code class="inline-code">break;</code>, execution <strong>falls through</strong> all subsequent cases (including <code class="inline-code">default:</code> if <code class="inline-code">default</code> sits before cases!).</li><li><strong><code class="inline-code">for(init; cond; update)</code> Order:</strong> <code class="inline-code">init</code> runs <strong>once</strong> $\to$ <code class="inline-code">cond</code> checked (if 0, exit; note <code class="inline-code">init</code> ALREADY changed the variable!) $\to$ body $\to$ <code class="inline-code">update</code> (<code class="inline-code">continue;</code> jumps straight to <code class="inline-code">update</code>, NOT skipping it!).</li><li><strong><code class="inline-code">do { ... } while(cond);</code>:</strong> Body always executes <strong>at least once</strong>, even if <code class="inline-code">cond</code> starts false!</li></ul>
-<h3>2.5 Functions, Recursion &amp; Storage Classes</h3>
-<ul><li><strong>Call by Value vs Call by Reference:</strong> Passing <code class="inline-code">x</code> sends a copy (caller unchanged); passing <code class="inline-code">&amp;x</code> allows modifying caller&#x27;s variable via <code class="inline-code">*px</code>. Arrays decay to pointers (<code class="inline-code">sum(a)</code> passes <code class="inline-code">&amp;a[0]</code>, modifying original array!).</li><li><strong>Recursion:</strong> Needs Base Case + Recursive Case; uses <strong>LIFO</strong> call stack. Pay close attention to whether <code class="inline-code">printf()</code> is <strong>before</strong> (prints top-down) or <strong>after</strong> (prints bottom-up during unwinding) the recursive call (<code class="inline-code">Endsem 2023</code> Sec B Q3!).</li><li><strong>4 Storage Classes (<code class="inline-code">scope.pptx</code>, <code class="inline-code">functions.ppt</code>):</strong></li></ul>
-<div class="table-wrap"><table><thead><tr><th>Class</th><th>Keyword</th><th>Storage</th><th>Default Initial Value</th><th>Scope</th><th>Lifetime</th></tr></thead><tbody><tr><td><strong>Automatic</strong></td><td><code class="inline-code">auto</code> (default)</td><td>RAM (Stack)</td><td>Garbage</td><td>Block / Local</td><td>Till block ends</td></tr><tr><td><strong>External</strong></td><td><code class="inline-code">extern</code></td><td>RAM (Data)</td><td><code class="inline-code">0</code></td><td>Global (whole program)</td><td>Entire program</td></tr><tr><td><strong>Static</strong></td><td><code class="inline-code">static</code></td><td>RAM (Data)</td><td><strong><code class="inline-code">0</code></strong></td><td>Block / File</td><td><strong>Entire program</strong> (retains value across calls!)</td></tr><tr><td><strong>Register</strong></td><td><code class="inline-code">register</code></td><td>CPU Register</td><td>Garbage</td><td>Block / Local</td><td>Till block ends (cannot use <code class="inline-code">&amp;</code>!)</td></tr></tbody></table></div>
-<h3>2.6 Pointers, Strings, Structures &amp; Files</h3>
-<ul><li><strong>Pointer Arithmetic (assume <code class="inline-code">sizeof(int) = 4</code>):</strong></li><li><code class="inline-code">p + 1</code> adds <code class="inline-code">1 * sizeof(*p)</code> bytes.</li><li><code class="inline-code">*p++</code> $\equiv$ <code class="inline-code">*(p++)</code>: dereferences current address, then advances pointer <code class="inline-code">p</code>!</li><li><code class="inline-code">(*p)++</code> or <code class="inline-code">++(*p)</code>: increments the <strong>value</strong> pointed to!</li><li><code class="inline-code">q - p</code> gives number of elements between two pointers of the same type; <code class="inline-code">p + q</code> or <code class="inline-code">p / 2</code> is <strong>ILLEGAL</strong>!</li><li><strong>Strings (<code class="inline-code">strings.ppt</code>):</strong></li><li>Terminated by <code class="inline-code">&#x27;\0&#x27;</code> (ASCII <code class="inline-code">0</code>). <code class="inline-code">&#x27;0&#x27;</code> is ASCII <code class="inline-code">48</code>, <code class="inline-code">&#x27;A&#x27;</code> is <code class="inline-code">65</code>, <code class="inline-code">&#x27;a&#x27;</code> is <code class="inline-code">97</code>.</li><li><code class="inline-code">scanf(&quot;%s&quot;, s)</code> stops at whitespace! Never write <code class="inline-code">&amp;s</code> for a char array name.</li><li><code class="inline-code">strlen(s)</code> returns length excluding <code class="inline-code">&#x27;\0&#x27;</code>; <code class="inline-code">sizeof(s)</code> returns total allocated array bytes!</li><li><code class="inline-code">strcmp(s1, s2)</code> returns <code class="inline-code">0</code> if equal, <code class="inline-code">&lt; 0</code> if <code class="inline-code">s1 &lt; s2</code>, <code class="inline-code">&gt; 0</code> if <code class="inline-code">s1 &gt; s2</code> (case-sensitive: <code class="inline-code">&#x27;G&#x27; (71) &lt; &#x27;g&#x27; (103)</code>!).</li><li><strong>Structures vs Unions (<code class="inline-code">STRUCTURES.ppt</code>):</strong></li><li><strong>Cannot initialize members inside <code class="inline-code">struct</code> definition</strong> (no memory yet!). Don&#x27;t forget final <code class="inline-code">;</code> after <code class="inline-code">}</code>.</li><li>Dot <code class="inline-code">s.member</code> for struct variable; Arrow <code class="inline-code">ptr-&gt;member</code> (same as <code class="inline-code">(*ptr).member</code>) for struct pointer. <code class="inline-code">p3 = p2;</code> performs member-wise copy!</li><li><code class="inline-code">union</code> shares one memory block across all members: <code class="inline-code">sizeof(union)</code> = size of <strong>largest member</strong> (20 bytes in <code class="inline-code">union { int i; float f; char str[20]; }</code>).</li><li><strong>Files (<code class="inline-code">FILES.ppt</code>):</strong></li><li>Pointer: <code class="inline-code">FILE *fp;</code> $\to$ <code class="inline-code">fp = fopen(&quot;name.txt&quot;, &quot;mode&quot;);</code> (check <code class="inline-code">fp == NULL</code>!). Always <code class="inline-code">fclose(fp);</code>.</li><li><strong>Modes:</strong> <code class="inline-code">&quot;r&quot;</code> (read existing; <code class="inline-code">NULL</code> if missing), <code class="inline-code">&quot;w&quot;</code> (create/overwrite; <strong>destroys</strong> existing contents), <code class="inline-code">&quot;a&quot;</code> (append at end; creates if missing), <code class="inline-code">&quot;r+&quot;</code> (read+write existing), <code class="inline-code">&quot;w+&quot;</code> (create/truncate + read/write), <code class="inline-code">&quot;a+&quot;</code> (read + append).</li><li>Text I/O: <code class="inline-code">fprintf(fp, &quot;%d&quot;, x)</code>, <code class="inline-code">fscanf(fp, &quot;%d&quot;, &amp;x)</code>, <code class="inline-code">fgetc(fp)</code> (returns <code class="inline-code">EOF</code> at end), <code class="inline-code">fputc(ch, fp)</code>, <code class="inline-code">fgets(buf, n, fp)</code>, <code class="inline-code">fputs(str, fp)</code>.</li><li>Random access: <code class="inline-code">fseek(fp, offset, origin)</code> (<code class="inline-code">0</code>=<code class="inline-code">SEEK_SET</code>, <code class="inline-code">1</code>=<code class="inline-code">SEEK_CUR</code>, <code class="inline-code">2</code>=<code class="inline-code">SEEK_END</code>), <code class="inline-code">ftell(fp)</code>, <code class="inline-code">rewind(fp)</code>.</li></ul>
-<hr />
-<h2>3. Traced Previous-Year Exam Questions (Complete Set)</h2>
-<h3>3.1 <code class="inline-code">CS1000</code> Endsem Feb 2023 + Midsem Dec 2022 + Quiz 2 Tricky Traces</h3>
-<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec A Q2 (Double Trap in <code class="inline-code">switch</code>):</strong><br>```c<br>int a = 3, b = 4, c, d; c = b - a; d = a || b;<br>switch(c) {<br>case 1 || 2 &amp;&amp; 15%5: printf(&quot;Grade S\n&quot;); break;<br>case !(10%3*5%5) &amp;&amp; -10: printf(&quot;Grade A\n&quot;); break;<br>}<br>```<br>- <code class="inline-code">c = 1</code>. Case 1: <code class="inline-code">15%5=0</code>, <code class="inline-code">2&amp;&amp;0=0</code>, <code class="inline-code">1||0 = 1</code>. Case 2: <code class="inline-code">10%3=1</code>, <code class="inline-code">1*5=5</code>, <code class="inline-code">5%5=0</code>, <code class="inline-code">!0=1</code>, <code class="inline-code">1&amp;&amp;-10 = 1</code>.<br>- <strong>Result:</strong> <strong>Compilation Error — Duplicate case value <code class="inline-code">1</code></strong>! <em>(Similarly <code class="inline-code">Quiz 2</code> Q2 had <code class="inline-code">case 3:</code> and <code class="inline-code">case (7-4):</code> $\to$ duplicate case error!)</em></li></ol>
-<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec A Q4 (<code class="inline-code">static</code> inside Recursion):</strong><br>```c<br>int f(int n) { static int i = 1; if(n&gt;=5) return n; n=n+i; i++; return f(n); }<br>```<br>- Trace <code class="inline-code">f(1)</code>: Call 1 (<code class="inline-code">n=1, i=1</code> $\to n=2, i=2$) $\to$ Call 2 (<code class="inline-code">n=2, i=2</code> $\to n=4, i=3$) $\to$ Call 3 (<code class="inline-code">n=4, i=3</code> $\to n=7, i=4$) $\to$ Call 4 (<code class="inline-code">n=7 \ge 5</code> returns <strong><code class="inline-code">7</code></strong>).</li></ol>
-<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec A Q8 (Global vs Local Shadowing):</strong><br><code class="inline-code">global i=10;</code> in <code class="inline-code">main</code>: local <code class="inline-code">int i=20; printf(&quot;%d&quot;, i); check(); printf(&quot;%d&quot;, ++i);</code> where <code class="inline-code">check()</code> prints <code class="inline-code">i++</code> (global).<br>- Output: <strong><code class="inline-code">20 10 21</code></strong> (<code class="inline-code">check()</code> sees global <code class="inline-code">10</code> because local <code class="inline-code">i</code> in <code class="inline-code">main</code> is out of scope!).</li></ol>
-<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec A Q10 (Pointer Increment Precedence):</strong><br><code class="inline-code">int x=20, y=21, *z;</code> (contiguous addresses <code class="inline-code">5000, 5004, 5008</code>): <code class="inline-code">z = &amp;x; *z++; x++;</code><br>- Precedence: <code class="inline-code">++</code> binds to <code class="inline-code">z</code> BEFORE <code class="inline-code">*</code>! So <code class="inline-code">*z++</code> evaluates <code class="inline-code">*(z++)</code>: advances <strong><code class="inline-code">z</code></strong> from <code class="inline-code">5000</code> to <code class="inline-code">5004</code> (<code class="inline-code">&amp;y</code>), leaving <code class="inline-code">x</code> at <code class="inline-code">20</code>! Then <code class="inline-code">x++</code> makes <code class="inline-code">x = 21</code>.<br>- Prints addresses <code class="inline-code">5000, 5004, 5008</code>, then values <code class="inline-code">x=21, y=21, *z=21</code> (<code class="inline-code">(c)</code>).</li></ol>
-<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec B Q3 (Recursion Order + Pass-by-Value Trap):</strong><br>```c<br>void func(int n, int sum) { if(n==0) return; k=n%10; j=n/10; sum=sum+k; func(j, sum); printf(&quot;%d,&quot;, k); }<br>```<br>- Called with <code class="inline-code">func(2048, 0)</code>: pushes <code class="inline-code">k=8</code>, <code class="inline-code">k=4</code>, <code class="inline-code">k=0</code>, <code class="inline-code">k=2</code>, then pops &amp; prints <strong><code class="inline-code">2,0,4,8,</code></strong>. In <code class="inline-code">main()</code>, <code class="inline-code">sum</code> was passed by value so remains <code class="inline-code">0</code> $\implies$ <strong><code class="inline-code">2,0,4,8,0</code> (<code class="inline-code">(c)</code>)</strong>.</li></ol>
-<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec B Q4 (Pointer Parameter + Same-Name Shadow):</strong><br>```c<br>int cal(int <em>i, int j) { </em>i = <em>i </em> <em>i; j = j </em> j; return (2*j); }<br>// main: int i=5, j=2, t=5; t = cal(&amp;i, j); j = j + t*3; i = i - t + 7;<br>```<br>- <code class="inline-code">cal(&amp;i, 2)</code>: <code class="inline-code">*i = 25</code> (<code class="inline-code">main</code>&#x27;s <code class="inline-code">i=25</code>), local <code class="inline-code">j = 4</code> (doesn&#x27;t change <code class="inline-code">main</code>&#x27;s <code class="inline-code">j=2</code>!), returns <code class="inline-code">t = 8</code>.<br>- Back in <code class="inline-code">main</code>: <code class="inline-code">j = 2 + 8*3 = 26</code>; <code class="inline-code">i = 25 - 8 + 7 = 24</code>. Output: <strong><code class="inline-code">24,26</code></strong>.</li></ol>
-<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec B Q6 (<code class="inline-code">struct</code> Copy vs Separate Char Array):</strong><br><code class="inline-code">p3 = p2;</code> copies <code class="inline-code">{&quot;paper&quot;, 120.0}</code> into <code class="inline-code">p3</code>. Changing <code class="inline-code">p3.productName[0] = &#x27;P&#x27;</code> makes <code class="inline-code">p3.productName</code> <code class="inline-code">&quot;Paper&quot;</code> (independent copy, <code class="inline-code">p2</code> stays <code class="inline-code">&quot;paper&quot;</code>!). <code class="inline-code">p2.price = 120.0 / 4 = 30.0</code>. Both <code class="inline-code">p1, p2, p3</code> have <code class="inline-code">p3.price &gt; p2.price</code> true! Prints: <code class="inline-code">Pen, 30.000000</code>, <code class="inline-code">paper, 30.000000</code>, <code class="inline-code">Paper, 120.000000</code>.</li></ol>
-<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec B Q7 (<code class="inline-code">f1</code> vs <code class="inline-code">f2</code> Swap):</strong><br><code class="inline-code">f1(a,b)</code> is pass-by-value (no effect on <code class="inline-code">a=4, b=5</code>). <code class="inline-code">f2(&amp;b, &amp;c)</code> passes pointers: <code class="inline-code">*a</code> (<code class="inline-code">b=5</code>) and <code class="inline-code">*b</code> (<code class="inline-code">c=6</code>) are swapped so <code class="inline-code">b=6, c=5</code>. <code class="inline-code">printf(&quot;%d&quot;, c-a-b)</code> $= 5 - 4 - 6 = \mathbf{-5}$!</li></ol>
-<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec B Q9 (<code class="inline-code">*arr2++</code> Pointer Increment Trap):</strong><br>- Look at printed line <code class="inline-code">*arr2++ = ++(*(arr1 + i));</code> vs <code class="inline-code">arr2[i]</code>: With <code class="inline-code">arr2</code> as a pointer parameter, <code class="inline-code">*arr2++</code> stores into <code class="inline-code">arr2[i]</code> AND increments <code class="inline-code">arr2</code> by 1 element each iteration, while <code class="inline-code">++(*(arr1+i))</code> increments <code class="inline-code">arr1[i]</code> in place (<code class="inline-code">{2,2,3,3,3,4,4,4,4,5}</code> $\to$ <code class="inline-code">{3,3,4,4,4,5,5,5,5,6}</code>). <code class="inline-code">main</code> prints <strong><code class="inline-code">3 3 4 4 4 5 5 5 5 6</code></strong> (one per line).</li></ol>
-<ol><li><strong><code class="inline-code">Endsem 2023</code> Sec B Q10 (Struct Pointer Traversal):</strong><br><code class="inline-code">List[] = {{1,37}, {2,16}, {3,84}, {4,71}, {5,48}};</code> Even <code class="inline-code">val</code> prints <code class="inline-code">val</code>, odd <code class="inline-code">val</code> prints <code class="inline-code">val*2</code>:<br>Output: <code class="inline-code">1 74</code>, <code class="inline-code">2 16</code>, <code class="inline-code">3 84</code>, <code class="inline-code">4 142</code>, <code class="inline-code">5 48</code>.</li></ol>
-<ol><li><strong><code class="inline-code">Quiz 2</code> Oct 2023 Traps:</strong><br>- <code class="inline-code">c = 6; while(c--) printf(&quot;%d\t&quot;, c);</code> $\to$ Prints <strong><code class="inline-code">5 4 3 2 1 0</code></strong> (<code class="inline-code">c--</code> tests 6,5,4,3,2,1 as true, printing decremented value!).<br>- <code class="inline-code">for(x=0; 0;) printf(&quot;success&quot;);</code> $\to$ <code class="inline-code">x=0</code> runs ONCE, then condition <code class="inline-code">0</code> is false $\to$ Loop does NOT run, <strong><code class="inline-code">x</code> becomes <code class="inline-code">0</code></strong>.<br>- <code class="inline-code">char arr[4][3] = {&quot;hi&quot;, &quot;how&quot;, &quot;are&quot;, &quot;u&quot;}; printf(&quot;%s&quot;, arr[2]);</code> $\to$ <code class="inline-code">&quot;how&quot;</code> and <code class="inline-code">&quot;are&quot;</code> fill all 3 chars with <strong>NO room for <code class="inline-code">&#x27;\0&#x27;</code></strong>, so <code class="inline-code">arr[2]</code> runs directly into <code class="inline-code">arr[3]</code> (<code class="inline-code">&quot;u\0&quot;</code>) and prints <strong><code class="inline-code">areu</code></strong> (adjacent row overrun)!<br>- <code class="inline-code">int x[5]={6,2,12,18,20}; p = --x[1]; r = x[p++]; printf(&quot;%d,%d&quot;,p,r);</code> $\to$ <code class="inline-code">--x[1]</code> sets <code class="inline-code">x[1]=1, p=1</code>. Then <code class="inline-code">x[p++]</code> reads <code class="inline-code">x[1]</code> (<code class="inline-code">1</code>) and increments <code class="inline-code">p</code> to <code class="inline-code">2</code> $\to$ Prints <strong><code class="inline-code">2,1</code></strong>.</li></ol>
-<ol><li><strong><code class="inline-code">COM105T</code> Quiz 1 &amp; <code class="inline-code">Assignment 1</code> Code Image Traps:</strong><br>- <strong><code class="inline-code">char c = 125; c = c + 3;</code></strong> $\to$ Overflows signed 8-bit char ($127$) $\to$ <strong><code class="inline-code">-128</code></strong>!<br>- <strong><code class="inline-code">if (~(x ^ y))</code></strong> (<code class="inline-code">x=10, y=11</code>) $\to$ <code class="inline-code">10^11 = 1</code>, <code class="inline-code">~1 = -2</code> (bitwise NOT, NOT logical <code class="inline-code">!</code>!). Since <code class="inline-code">-2 != 0</code>, <code class="inline-code">if</code> is <strong>TRUE</strong> and prints <code class="inline-code">&quot; x is equal to y &quot;</code>!<br>- <strong><code class="inline-code">int i=1024; for(; i; i&gt;&gt;=1) printf(&quot;program&quot;);</code></strong> $\to$ $1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1$ $\to$ prints <strong><code class="inline-code">11</code> times</strong>!<br>- <strong><code class="inline-code">printf(&quot;%d&quot;, printf(&quot;AA&quot;) || printf(&quot;BB&quot;));</code></strong> $\to$ Prints <code class="inline-code">AA</code> (returns <code class="inline-code">2</code>), short-circuits <code class="inline-code">||</code> (never prints <code class="inline-code">BB</code>), returns <code class="inline-code">1</code> $\to$ <strong><code class="inline-code">AA1</code></strong>!</li></ol>
-<h3>3.2 Base &amp; 2&#x27;s Complement Exam Problems Solved (<code class="inline-code">COM105T</code>, <code class="inline-code">Assignment 1</code>, <code class="inline-code">Midsem</code>)</h3>
-<ol><li><strong><code class="inline-code">(123)_5 = (X8)_Y</code>:</strong> $(123)_5 = 1(25)+2(5)+3 = 38$. Since digit <code class="inline-code">8</code> is in base $Y$, $Y \ge 9$, and $X \cdot Y + 8 = 38 \implies X \cdot Y = 30$. Possible pairs $(X, Y)$ with $1 \le X &lt; Y$ and $Y \ge 9$: <strong><code class="inline-code">(3, 10)</code></strong>, <strong><code class="inline-code">(2, 15)</code></strong>, <strong><code class="inline-code">(1, 30)</code></strong>!</li><li><strong><code class="inline-code">2B5.EF</code>$_{16}$ $\to$ Octal (<code class="inline-code">COM105T</code>):</strong> Hex $\to$ 4-bit binary: <code class="inline-code">0010 1011 0101 . 1110 1111</code>. Regroup in 3-bit groups from decimal point: <code class="inline-code">001 010 110 101 . 111 011 110</code> $\to$ <strong><code class="inline-code">(1265.736)_8</code></strong>!</li><li><strong><code class="inline-code">16</code>-bit signed $P = (\text{F87B})_{16}$, find $8 \times P$:</strong> Note MSB is <code class="inline-code">F</code> (<code class="inline-code">1111</code>), so $P$ is negative! Subtract from <code class="inline-code">10000_16</code> = <code class="inline-code">0785_16</code> $= -(7\times 256 + 8\times 16 + 5) = -1925_{10}$ (check via shift left 3 bits: <code class="inline-code">(F87B)_16 &lt;&lt; 3</code> = <code class="inline-code">(C3D8)_16</code>! Verify: <code class="inline-code">-1925 * 8 = -15400</code>; <code class="inline-code">65536 - 15400 = 50136 = C3D8_16</code>!). Wait: <code class="inline-code">0xF87B = 1111 1000 0111 1011</code>, shift left 3 dropping top 3 <code class="inline-code">1</code>s: <code class="inline-code">1100 0011 1101 1000</code> $= \mathbf{(C3D8)_{16}}$ (<code class="inline-code">-15400_10</code>)! No overflow because <code class="inline-code">-15400</code> fits in $[-32768, 32767]$!</li></ol>
-<hr />
-<h2>4. Exam-Ready Full C Programs (Section C Coding Solutions)</h2>
-<h3>Program 1: Three-Digit Armstrong Number (<code class="inline-code">Midsem Dec 2022</code> Part C Q1)</h3>
-<pre class="code-hl"><code data-lang="c">#include &lt;stdio.h&gt;
-int main() {
-    int n, orig, d, sum = 0;
-    printf(&quot;Enter a 3-digit integer: &quot;);
-    scanf(&quot;%d&quot;, &amp;n);
-    orig = n;
-    while (n &gt; 0) {
-        d = n % 10;
-        sum += d * d * d;
-        n /= 10;
-    }
-    if (sum == orig)
-        printf(&quot;%d is an Armstrong number\n&quot;, orig);
-    else
-        printf(&quot;%d is not an Armstrong number\n&quot;, orig);
+  <main class="article-shell"><article class="article-card"><h1>CS1000: C Programming</h1>
+<div class="alert"><strong>Course Overview:</strong> In CS1000 (Problem Solving and Programming), questions focus on tracing short C programs step by step, spotting compile-time errors (invalid identifiers, non-constant <code class="inline-code">switch</code> labels, missing <code class="inline-code">;</code> or <code class="inline-code">{}</code>), and writing clean logic without forbidden library functions when specified (<code class="inline-code">PSP Quiz 2.pdf</code>, <code class="inline-code">QP.pdf</code>).</div>
+<h2>1. C Basics, Compilation Phases &amp; Number Systems</h2>
+<p style="color:var(--text-soft);font-size:0.82rem;">BASICS-1.pptx, Quiz _19.jpg &amp; Practice - 2.pptx</p>
+<div class="alert"><strong>Plain Summary:</strong> A C program turns human-readable source text into machine instructions in four steps: edit, compile, link, and execute. Every variable has a fixed byte size and type, and negative integers are stored in 2's complement form.</div>
+<div class="table-wrap"><table><thead><tr><th>Concept</th><th>Details from CS1000 Slides</th><th>Example / Specifier</th></tr></thead><tbody><tr><td>Program Phases</td><td>Edit (<code class="inline-code">.c</code>) -> Compile (<code class="inline-code">.obj</code>/<code class="inline-code">.o</code>) -> Link libraries -> Execute (<code class="inline-code">.exe</code>)</td><td><code class="inline-code">stdio.h</code>, <code class="inline-code">math.h</code></td></tr><tr><td>Identifier Rules</td><td>Start with letter or <code class="inline-code">_</code>; only letters, digits, <code class="inline-code">_</code>; no spaces or keywords; case-sensitive</td><td>Valid: <code class="inline-code">int_t</code>; Invalid: <code class="inline-code">group one</code>, <code class="inline-code">Price$</code></td></tr><tr><td><code class="inline-code">char</code> (1 byte)</td><td>Signed: <code class="inline-code">-128</code> to <code class="inline-code">127</code>; Unsigned: <code class="inline-code">0</code> to <code class="inline-code">255</code></td><td><code class="inline-code">%c</code>, <code class="inline-code">char gender = &#x27;F&#x27;;</code></td></tr><tr><td><code class="inline-code">int</code> (2 or 4 bytes)</td><td>Signed integer (2B: <code class="inline-code">-32,768..32,767</code>; 4B: <code class="inline-code">-2,147,483,648..2,147,483,647</code>)</td><td><code class="inline-code">%d</code> or <code class="inline-code">%i</code></td></tr><tr><td><code class="inline-code">float</code> / <code class="inline-code">double</code></td><td><code class="inline-code">float</code> 4 bytes (6 dec places); <code class="inline-code">double</code> 8 bytes (14 dec places)</td><td><code class="inline-code">%f</code> / <code class="inline-code">%lf</code></td></tr></tbody></table></div>
+<ul><li><strong>Computer & Algorithms (<code class="inline-code">BASICS-1.pptx</code>):</strong> CPU contains Memory, Control Unit, and ALU; RAM is volatile while ROM is non-volatile. Algorithms use Sequence, Selection, and Iteration and must be finite and definite.</li><li><strong>6 C Tokens (<code class="inline-code">BASICS-1.pptx</code>):</strong> Keywords (32 lowercase reserved words like <code class="inline-code">int</code>, <code class="inline-code">static</code>, <code class="inline-code">return</code>), Identifiers, Constants (decimal, octal leading <code class="inline-code">0</code>, hex leading <code class="inline-code">0x</code>, <code class="inline-code">&#x27;a&#x27;</code>, <code class="inline-code">&quot;str&quot;</code>), Strings, Special Symbols (<code class="inline-code">{}</code>, <code class="inline-code">()</code>, <code class="inline-code">[]</code>, <code class="inline-code">;</code>, <code class="inline-code">,</code>, <code class="inline-code">.</code>), and Operators.</li><li><strong>I/O Statements (<code class="inline-code">BASICS-1.pptx</code>):</strong> <code class="inline-code">#include &lt;stdio.h&gt;</code> provides <code class="inline-code">printf()</code> and <code class="inline-code">scanf()</code>. <code class="inline-code">scanf(&quot;%d&quot;, &amp;a)</code> requires the address operator <code class="inline-code">&amp;</code> so input is stored at <code class="inline-code">a</code>'s memory location.</li><li><strong>2's Complement (<code class="inline-code">Practice - 2.pptx</code>, <code class="inline-code">Quiz _19.jpg</code>):</strong> Invert all bits and add <code class="inline-code">1</code> to negate a number. With <code class="inline-code">n</code> bits in 2's complement, the range is <code class="inline-code">-2^(n-1)</code> to <code class="inline-code">2^(n-1) - 1</code> (for 8 bits: <code class="inline-code">-128</code> to <code class="inline-code">+127</code>).</li></ul>
+<div class="alert tip"><strong>Worked Example (Previous Years Quiz _19.jpg Q7(c) &amp; IMG-20190828-WA0002.jpg Q8):</strong> Trace signed 8-bit <code class="inline-code">char</code> overflow in C and explain why <code class="inline-code">Main()</code> fails to link.<pre><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    char c = 125;
+    c = c + 3;
+    printf(&quot;%d&quot;, c);
     return 0;
-}</code></pre>
-<h3>Program 2: Segregate Even-ASCII and Odd-ASCII Characters Without <code class="inline-code">&lt;string.h&gt;</code> (<code class="inline-code">Quiz 2</code> Part C Q1 &amp; <code class="inline-code">Endsem 2023</code> Sec C Q1)</h3>
-<p><em>(In <code class="inline-code">Quiz 2</code>: even ASCII first, odd ASCII second, using at most 1 extra 1D array.)</em></p>
-<pre class="code-hl"><code data-lang="c">#include &lt;stdio.h&gt;
-int main() {
-    char s[200], out[200];
-    int i = 0, k = 0;
-    printf(&quot;Enter the string\n&quot;);
-    scanf(&quot;%s&quot;, s);
-    // First pass: even ASCII characters
-    for (i = 0; s[i] != &#x27;\0&#x27;; i++) {
-        if (s[i] % 2 == 0) out[k++] = s[i];
-    }
-    // Second pass: odd ASCII characters
-    for (i = 0; s[i] != &#x27;\0&#x27;; i++) {
-        if (s[i] % 2 != 0) out[k++] = s[i];
-    }
-    out[k] = &#x27;\0&#x27;;
-    printf(&quot;%s\n&quot;, out);
+}</code></pre><ol><li><code class="inline-code">char</code> is 1 byte (8 bits), signed range <code class="inline-code">-128</code> to <code class="inline-code">127</code> (<code class="inline-code">BASICS-1.pptx</code> Slide 47).</li><li>In binary, <code class="inline-code">125</code> is <code class="inline-code">0111 1101</code>. Adding <code class="inline-code">3</code> gives <code class="inline-code">1000 0000</code> (<code class="inline-code">128</code> unsigned).</li><li>With a leading sign bit <code class="inline-code">1</code> in 8-bit 2's complement, <code class="inline-code">1000 0000</code> represents <code class="inline-code">-128</code>.</li><li>In <code class="inline-code">Quiz _19</code> / <code class="inline-code">WA0002</code> Q8 (<code class="inline-code">int Main()</code>), C is case-sensitive: the linker looks for <code class="inline-code">main</code> and reports an undefined reference to <code class="inline-code">main</code>.</li></ol><p><strong>Answer:</strong> Output: <code class="inline-code">-128</code> (for <code class="inline-code">c = 125 + 3</code> in signed 8-bit <code class="inline-code">char</code>); <code class="inline-code">Main()</code> causes a linker error because <code class="inline-code">main</code> is missing.</p></div>
+<div class="alert"><strong>Key Formula:</strong> <code class="inline-code">scanf(&quot;%d&quot;, &amp;var);</code> | <code class="inline-code">n</code>-bit 2's complement range: <code class="inline-code">-2^(n-1)</code> to <code class="inline-code">2^(n-1) - 1</code> | <code class="inline-code">printf()</code> returns number of characters printed</div>
+<div class="alert warning"><strong>Common Mistake:</strong> Forgetting <code class="inline-code">&amp;</code> in <code class="inline-code">scanf(&quot;%d&quot;, a)</code> passes a garbage value instead of <code class="inline-code">a</code>'s address, and writing <code class="inline-code">Main()</code> instead of <code class="inline-code">main()</code> fails linking because C is case-sensitive.</div>
+<h2>2. Operators, Precedence &amp; Short-Circuiting</h2>
+<p style="color:var(--text-soft);font-size:0.82rem;">operators.pptx, Practice - 1.pptx &amp; Midsem Dec 2022</p>
+<div class="alert"><strong>Plain Summary:</strong> C evaluates expressions by operator precedence first and associativity second, not blindly left to right. Logical <code class="inline-code">&amp;&amp;</code> and <code class="inline-code">||</code> stop early (short-circuit) as soon as the left side already decides the truth value.</div>
+<div class="table-wrap"><table><thead><tr><th>Category</th><th>Operators (High to Low)</th><th>Associativity</th></tr></thead><tbody><tr><td>Postfix & Unary</td><td><code class="inline-code">() [] -&gt; . ++ --</code>  then  <code class="inline-code">+ - ! ~ ++ -- (type) * &amp; sizeof</code></td><td>Postfix L->R; Unary R->L</td></tr><tr><td>Arithmetic & Shift</td><td><code class="inline-code">* / %</code>  then  <code class="inline-code">+ -</code>  then  <code class="inline-code">&lt;&lt; &gt;&gt;</code></td><td>Left to right</td></tr><tr><td>Relational & Equality</td><td><code class="inline-code">&lt; &lt;= &gt; &gt;=</code>  then  <code class="inline-code">== !=</code> (return <code class="inline-code">1</code> or <code class="inline-code">0</code>)</td><td>Left to right</td></tr><tr><td>Bitwise</td><td><code class="inline-code">&amp;</code> (AND)  then  <code class="inline-code">^</code> (XOR)  then  <code class="inline-code">|</code> (OR)</td><td>Left to right</td></tr><tr><td>Logical & Ternary</td><td><code class="inline-code">&amp;&amp;</code>  then  <code class="inline-code">||</code>  then  <code class="inline-code">?:</code></td><td><code class="inline-code">&amp;&amp;</code>, <code class="inline-code">||</code> L->R; <code class="inline-code">?:</code> R->L</td></tr><tr><td>Assignment & Comma</td><td><code class="inline-code">= += -= *= /= %= &gt;&gt;= &lt;&lt;= &amp;= ^= |=</code>  then  <code class="inline-code">,</code></td><td>Assign R->L; Comma L->R</td></tr></tbody></table></div>
+<ul><li><strong>Integer Division & Modulo (<code class="inline-code">BASICS-1.pptx</code>):</strong> Dividing two <code class="inline-code">int</code> values truncates the fraction (<code class="inline-code">9 / 4 == 2</code>, <code class="inline-code">2 / 3 == 0</code>), while <code class="inline-code">%</code> gives the remainder (<code class="inline-code">9 % 4 == 1</code>).</li><li><strong>Pre vs Post <code class="inline-code">++</code>/<code class="inline-code">--</code> (<code class="inline-code">BASICS-1.pptx</code>, <code class="inline-code">operators.pptx</code>):</strong> <code class="inline-code">++a</code> increments first then uses the new value; <code class="inline-code">a++</code> uses the old value first then increments.</li><li><strong>Short-Circuit <code class="inline-code">&amp;&amp;</code> and <code class="inline-code">||</code> (<code class="inline-code">Practice - 1.pptx</code>):</strong> In <code class="inline-code">A || B</code>, if <code class="inline-code">A</code> is non-zero (true), <code class="inline-code">B</code> is NOT evaluated. In <code class="inline-code">A &amp;&amp; B</code>, if <code class="inline-code">A</code> is <code class="inline-code">0</code> (false), <code class="inline-code">B</code> is NOT evaluated.</li><li><strong>Bitwise vs Logical (<code class="inline-code">operators.pptx</code>, <code class="inline-code">Assignment 1</code>):</strong> Logical <code class="inline-code">!x</code> turns non-zero to <code class="inline-code">0</code> and <code class="inline-code">0</code> to <code class="inline-code">1</code>. Bitwise <code class="inline-code">~x</code> flips every bit (<code class="inline-code">~0 == -1</code>, <code class="inline-code">~1 == -2</code>, both non-zero/true in <code class="inline-code">if</code>).</li><li><strong><code class="inline-code">sizeof</code> Is Compile-Time (<code class="inline-code">Practice - 1.pptx</code> Slide 11):</strong> <code class="inline-code">sizeof(i++)</code> returns the byte size of <code class="inline-code">i</code>'s type without evaluating <code class="inline-code">i++</code>, so <code class="inline-code">i</code> does not change.</li></ul>
+<div class="alert tip"><strong>Worked Example (Practice - 1.pptx Slide 5 &amp; Slide 23):</strong> Find the exact output of this short-circuit and precedence program.<pre><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    int a = 1, b = 1;
+    int c = a || --b;
+    int d = a-- &amp;&amp; --b;
+    printf(&quot;a = %d, b = %d, c = %d, d = %d&quot;, a, b, c, d);
     return 0;
-}</code></pre>
-<p><em>(For <code class="inline-code">Endsem 2023</code> Sec C Q1: swap the condition to odd ASCII first, even ASCII second! And for partition relative to character <code class="inline-code">ch</code>: 3 passes — <code class="inline-code">base[i] &gt; ch</code>, then <code class="inline-code">base[i] == ch</code>, then <code class="inline-code">base[i] &lt; ch</code>.)</em></p>
-<h3>Program 3: Pointer-Based Odd-Making Array Update (<code class="inline-code">Endsem 2023</code> Sec C Q2)</h3>
-<pre class="code-hl"><code data-lang="c">#include &lt;stdio.h&gt;
-void Find(int *p, int n) {
-    // Pass 1: traverse using pointer *(p+i); check preceding element parity
-    for (int i = 1; i &lt; n; i++) {
-        if (*(p + i) % 2 == 0 &amp;&amp; *(p + i - 1) % 2 == 0)
-            *(p + i) = *(p + i) - 1;
+}</code></pre><ol><li>Line 5 (<code class="inline-code">a || --b</code>): <code class="inline-code">a</code> is <code class="inline-code">1</code> (true), so <code class="inline-code">||</code> short-circuits; <code class="inline-code">--b</code> is skipped (<code class="inline-code">b</code> stays <code class="inline-code">1</code>), and <code class="inline-code">c = 1</code>.</li><li>Line 6 (<code class="inline-code">a-- &amp;&amp; --b</code>): <code class="inline-code">a--</code> uses <code class="inline-code">1</code> (true) and sets <code class="inline-code">a = 0</code>. Since the left side was true, <code class="inline-code">--b</code> MUST run: <code class="inline-code">b</code> becomes <code class="inline-code">0</code>.</li><li><code class="inline-code">1 &amp;&amp; 0</code> evaluates to <code class="inline-code">0</code>, so <code class="inline-code">d = 0</code>.</li></ol><p><strong>Answer:</strong> Output: <code class="inline-code">a = 0, b = 0, c = 1, d = 0</code>.</p></div>
+<div class="alert"><strong>Key Formula:</strong> <code class="inline-code">cond ? expr1 : expr2</code> | <code class="inline-code">&amp;&amp;</code> has higher precedence than <code class="inline-code">||</code> | <code class="inline-code">+ -</code> have higher precedence than <code class="inline-code">&lt;&lt; &gt;&gt;</code></div>
+<div class="alert warning"><strong>Common Mistake:</strong> Never modify the same variable twice without a sequence point (e.g. <code class="inline-code">b = a++ + a++;</code>), and watch chained comparisons like <code class="inline-code">a == b == 0</code>: <code class="inline-code">==</code> goes left-to-right, so <code class="inline-code">(3 == 2) == 0</code> evaluates to <code class="inline-code">0 == 0</code>, which is <code class="inline-code">1</code>!</div>
+<h2>3. Conditionals: if-else &amp; switch-case</h2>
+<p style="color:var(--text-soft);font-size:0.82rem;">conditional statements.ppt, PSP Quiz 2.pdf &amp; Midsem Dec 2022</p>
+<div class="alert"><strong>Plain Summary:</strong> An <code class="inline-code">if</code> treats <code class="inline-code">0</code> as false and ANY non-zero value (even <code class="inline-code">-1</code> or <code class="inline-code">printf()</code>'s character count) as true. A <code class="inline-code">switch</code> jumps directly to the matching integer constant <code class="inline-code">case</code> label and keeps falling down until it hits <code class="inline-code">break;</code>.</div>
+<ul><li><strong><code class="inline-code">if</code> / <code class="inline-code">else if</code> Ladder (<code class="inline-code">conditional statements.ppt</code>):</strong> Conditions are tested top to bottom; only the first true branch executes. Without <code class="inline-code">{ }</code>, <code class="inline-code">if</code> controls only the single next statement.</li><li><strong>Non-Zero Means True (<code class="inline-code">Practice - 2.pptx</code>, <code class="inline-code">Assignment 1</code>):</strong> <code class="inline-code">if (-1)</code> and <code class="inline-code">if (printf(&quot;hello&quot;))</code> (returns <code class="inline-code">5</code>) are both TRUE; <code class="inline-code">if (0)</code> is FALSE.</li><li><strong><code class="inline-code">switch</code> Expression & Labels (<code class="inline-code">conditional statements.ppt</code> S13):</strong> <code class="inline-code">switch(expr)</code> requires an integer or <code class="inline-code">char</code> expression. Every <code class="inline-code">case</code> label MUST be a unique integer constant expression (e.g. <code class="inline-code">case &#x27;a&#x27;:</code> or <code class="inline-code">case 1+2:</code>).</li><li><strong>Fall-Through & <code class="inline-code">default</code> Placement (<code class="inline-code">conditional statements.ppt</code> S13-14):</strong> Omitting <code class="inline-code">break;</code> lets execution fall into the next <code class="inline-code">case</code> (or <code class="inline-code">default</code>). <code class="inline-code">default</code> can appear anywhere inside <code class="inline-code">switch</code> and runs only if no <code class="inline-code">case</code> matches (or via fall-through).</li></ul>
+<div class="alert tip"><strong>Worked Example (Midsem Dec 2022 Part B Q1 (QP.pdf p. 2)):</strong> Find the output of this <code class="inline-code">switch</code> program with character constant arithmetic.<pre><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    int ch = (&#x27;a&#x27; + &#x27;b&#x27; * &#x27;c&#x27;) % 2;
+    switch (ch)
+    {
+        case &#x27;a&#x27;:
+        case &#x27;b&#x27;:
+            printf(&quot;\nYou entered b&quot;);
+        case &#x27;A&#x27;:
+            printf(&quot;\nYou entered in A&quot;);
+        case (&#x27;b&#x27; * &#x27;c&#x27; + &#x27;a&#x27;) % 2:
+            printf(&quot;\nYou are performing arithmetic operation.&quot;);
     }
-    // Pass 2: traverse updated array with same pointer
-    for (int i = 0; i &lt; n; i++)
-        printf(&quot;%d &quot;, *(p + i));
+    printf(&quot;\nYou are outside the switch&quot;);
+    return 0;
+}</code></pre><ol><li><code class="inline-code">&#x27;a&#x27;</code> is <code class="inline-code">97</code>, <code class="inline-code">&#x27;b&#x27;</code> is <code class="inline-code">98</code>, <code class="inline-code">&#x27;c&#x27;</code> is <code class="inline-code">99</code>. Since <code class="inline-code">97 + 98*99 = 9799</code> is odd, <code class="inline-code">ch = 9799 % 2 = 1</code>.</li><li><code class="inline-code">(&#x27;b&#x27; * &#x27;c&#x27; + &#x27;a&#x27;) % 2</code> is a valid integer constant expression equal to <code class="inline-code">1</code> (<code class="inline-code">case 1:</code>), so there is NO compile error.</li><li><code class="inline-code">switch(ch)</code> jumps to that last <code class="inline-code">case</code>, prints the arithmetic message, exits <code class="inline-code">switch</code>, and prints the outside line.</li></ol><p><strong>Answer:</strong> Output:<br /><code class="inline-code">You are performing arithmetic operation.</code><br /><code class="inline-code">You are outside the switch</code></p></div>
+<div class="alert"><strong>Key Formula:</strong> <code class="inline-code">switch(int_or_char) { case CONST: ... break; default: ... }</code> | Any non-zero value is true in <code class="inline-code">if</code></div>
+<div class="alert warning"><strong>Common Mistake:</strong> A stray semicolon <code class="inline-code">if (a == 5);</code> ends the <code class="inline-code">if</code> immediately! If an <code class="inline-code">else</code> follows <code class="inline-code">{ ... }</code>, the compiler rejects it (<code class="inline-code">&#x27;else&#x27; without a previous &#x27;if&#x27;</code>), as tested in <code class="inline-code">Midsem Dec 2022 Part A Q4</code>. Also <code class="inline-code">case i:</code> (variable), <code class="inline-code">case 1.5:</code> (float), and duplicate <code class="inline-code">case 3:</code> + <code class="inline-code">case 7-4:</code> (<code class="inline-code">PSP Quiz 2.pdf</code> A-Q2) are compile errors.</div>
+<h2>4. Loops &amp; Jump Statements</h2>
+<p style="color:var(--text-soft);font-size:0.82rem;">conditional statements.ppt, Practice - 3.pptx &amp; PSP Quiz 2.pdf</p>
+<div class="alert"><strong>Plain Summary:</strong> <code class="inline-code">while</code> and <code class="inline-code">for</code> test the condition before running the body (entry-controlled), so they may run zero times. <code class="inline-code">do-while</code> runs the body first and checks the condition at the bottom (exit-controlled), so it always runs at least once.</div>
+<div class="table-wrap"><table><thead><tr><th>Construct</th><th>Type</th><th>When Condition Runs</th><th>Jump Behavior</th></tr></thead><tbody><tr><td><code class="inline-code">while (cond)</code></td><td>Entry-controlled</td><td>Before every iteration</td><td><code class="inline-code">break</code> exits loop; <code class="inline-code">continue</code> re-checks <code class="inline-code">cond</code></td></tr><tr><td><code class="inline-code">do { ... } while (cond);</code></td><td>Exit-controlled</td><td>After every iteration (runs <code class="inline-code">&gt;= 1</code> time)</td><td>Ends with <code class="inline-code">;</code>; <code class="inline-code">continue</code> jumps to <code class="inline-code">while (cond)</code></td></tr><tr><td><code class="inline-code">for (init; cond; upd)</code></td><td>Entry-controlled</td><td><code class="inline-code">init</code> once -> <code class="inline-code">cond</code> -> body -> <code class="inline-code">upd</code></td><td><code class="inline-code">continue</code> runs <code class="inline-code">upd</code> then re-checks <code class="inline-code">cond</code></td></tr><tr><td><code class="inline-code">break;</code> / <code class="inline-code">continue;</code></td><td>Jump</td><td>Inside loop or <code class="inline-code">switch</code></td><td><code class="inline-code">break</code> exits innermost loop/<code class="inline-code">switch</code> only</td></tr></tbody></table></div>
+<ul><li><strong><code class="inline-code">for</code> Loop Mechanics (<code class="inline-code">conditional statements.ppt</code> S21):</strong> Must have exactly two semicolons. Multiple <code class="inline-code">init</code> or <code class="inline-code">update</code> expressions can be comma-separated, and any of the three parts may be omitted (<code class="inline-code">for (; i; i &gt;&gt;= 1)</code>).</li><li><strong><code class="inline-code">break</code> in Nested Loops (<code class="inline-code">conditional statements.ppt</code> S24, <code class="inline-code">Assignment 1</code>):</strong> <code class="inline-code">break;</code> terminates only the innermost enclosing loop or <code class="inline-code">switch</code>, NOT outer loops.</li><li><strong><code class="inline-code">continue</code> (<code class="inline-code">conditional statements.ppt</code> S27-29):</strong> Skips remaining statements in the current iteration and moves to the next iteration (in <code class="inline-code">for</code>, it still runs the <code class="inline-code">update</code> step).</li><li><strong><code class="inline-code">goto label;</code> (<code class="inline-code">conditional statements.ppt</code> S30):</strong> Jumps to <code class="inline-code">label:</code> inside the same function.</li></ul>
+<div class="alert tip"><strong>Worked Example (Endsem Feb 2023 Section B Q1 (QP.pdf p. 6)):</strong> Trace this nested <code class="inline-code">while</code> loop with <code class="inline-code">break</code>.<pre><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    int x = 4, y = 4;
+    while (y)
+    {
+        y--;
+        while (x) {
+            if (x != y) {
+                printf(&quot;\n%d %d&quot;, x, y);
+                x--;
+            } else
+                break;
+        }
+        x++;
+    }
+    return 0;
+}</code></pre><ol><li><code class="inline-code">y=4</code>: <code class="inline-code">y--</code> makes <code class="inline-code">y=3</code>. Inner <code class="inline-code">while(x)</code>: <code class="inline-code">x=4 != 3</code> prints <code class="inline-code">4 3</code> (<code class="inline-code">x=3</code>), then <code class="inline-code">3 == 3</code> hits <code class="inline-code">break;</code>. Outer <code class="inline-code">x++</code> sets <code class="inline-code">x=4</code>.</li><li><code class="inline-code">y=3</code>: <code class="inline-code">y--</code> makes <code class="inline-code">y=2</code>. Inner prints <code class="inline-code">4 2</code>, <code class="inline-code">3 2</code>, then breaks at <code class="inline-code">x=2</code>; <code class="inline-code">x++</code> sets <code class="inline-code">x=3</code>.</li><li><code class="inline-code">y=2</code>: <code class="inline-code">y--</code> makes <code class="inline-code">y=1</code>. Inner prints <code class="inline-code">3 1</code>, <code class="inline-code">2 1</code>, then breaks at <code class="inline-code">x=1</code>; <code class="inline-code">x++</code> sets <code class="inline-code">x=2</code>.</li><li><code class="inline-code">y=1</code>: <code class="inline-code">y--</code> makes <code class="inline-code">y=0</code>. Inner prints <code class="inline-code">2 0</code>, <code class="inline-code">1 0</code>, reaches <code class="inline-code">x=0</code> (exits inner loop); <code class="inline-code">x++</code> sets <code class="inline-code">x=1</code>. Outer <code class="inline-code">while(0)</code> stops.</li></ol><p><strong>Answer:</strong> Output lines: <code class="inline-code">4 3</code>, <code class="inline-code">4 2</code>, <code class="inline-code">3 2</code>, <code class="inline-code">3 1</code>, <code class="inline-code">2 1</code>, <code class="inline-code">2 0</code>, <code class="inline-code">1 0</code>.</p></div>
+<div class="alert"><strong>Key Formula:</strong> <code class="inline-code">for (init; cond; update)</code> | <code class="inline-code">do { ... } while (cond);</code> (semicolon required) | <code class="inline-code">while (c--)</code> tests <code class="inline-code">c</code> BEFORE decrementing</div>
+<div class="alert warning"><strong>Common Mistake:</strong> Writing <code class="inline-code">for (i = 0; i &lt; 10; i + 3)</code> (<code class="inline-code">Practice - 3.pptx</code> S14) does NOT update <code class="inline-code">i</code> (<code class="inline-code">i + 3</code> discards the result; you need <code class="inline-code">i += 3</code>), causing an infinite loop! Also <code class="inline-code">for (x = 0; 0;)</code> (<code class="inline-code">PSP Quiz 2.pdf</code> A-Q5) still executes <code class="inline-code">x = 0</code> before seeing condition <code class="inline-code">0</code> is false.</div>
+<h2>5. Functions, Parameter Passing &amp; Recursion</h2>
+<p style="color:var(--text-soft);font-size:0.82rem;">functions.ppt &amp; Endsem Feb 2023</p>
+<div class="alert"><strong>Plain Summary:</strong> Functions split code into reusable blocks using three steps: declare (prototype), call, and define. Passing normal variables copies values (call by value), while passing <code class="inline-code">&amp;var</code> addresses to pointers <code class="inline-code">*p</code> lets the function modify the caller's variables (call by reference).</div>
+<div class="table-wrap"><table><thead><tr><th>Method</th><th>What Is Passed</th><th>Formal Parameter</th><th>Effect on Caller Variables</th></tr></thead><tbody><tr><td>Call by Value</td><td>Copy of value: <code class="inline-code">swap(a, b)</code></td><td><code class="inline-code">void swap(int x, int y)</code></td><td>Caller variables stay unchanged</td></tr><tr><td>Call by Reference</td><td>Memory address: <code class="inline-code">swap(&amp;a, &amp;b)</code></td><td><code class="inline-code">void swap(int *x, int *y)</code></td><td>Changes through <code class="inline-code">*x</code>, <code class="inline-code">*y</code> modify caller variables</td></tr></tbody></table></div>
+<ul><li><strong>Function Anatomy (<code class="inline-code">functions.ppt</code> S5-15):</strong> Prototype (<code class="inline-code">int max(int, int);</code>) tells the compiler return type and parameter types before <code class="inline-code">main()</code>. Actual parameters are passed in the call; formal parameters receive them in the definition.</li><li><strong>4 Forms (<code class="inline-code">functions.ppt</code> S13-15):</strong> Functions can have any combination of return value (<code class="inline-code">void</code> vs type) and parameters (none vs list). <code class="inline-code">return expr;</code> exits the function immediately.</li><li><strong>Recursion Rules (<code class="inline-code">functions.ppt</code> S23-27, <code class="inline-code">Endsem</code> A-Q6):</strong> A recursive function calls itself and needs a <strong>base case</strong> (to stop) and a <strong>recursive case</strong> (reducing the problem). Recursive calls unwind in <strong>Last-In, First-Out (LIFO)</strong> order.</li><li><strong>Passing 1D Arrays (<code class="inline-code">functions.ppt</code> S28):</strong> Pass the array name <code class="inline-code">sum(a)</code> with parameter <code class="inline-code">int a[10]</code>, <code class="inline-code">int a[]</code>, or <code class="inline-code">int *b</code>.</li></ul>
+<div class="alert tip"><strong>Worked Example (Endsem Feb 2023 Section B Q4 (QP.pdf p. 7)):</strong> Trace call-by-reference (<code class="inline-code">*i</code>) mixed with call-by-value (<code class="inline-code">j</code>).<pre><code>#include &lt;stdio.h&gt;
+int cal(int *i, int j)
+{
+    *i = (*i) * (*i);
+    j = j * j;
+    return (2 * j);
 }
-int main() {
-    int n, a[100];
-    scanf(&quot;%d&quot;, &amp;n);
-    for (int i = 0; i &lt; n; i++) scanf(&quot;%d&quot;, &amp;a[i]);
-    Find(a, n);
+int main(void)
+{
+    int i = 5, j = 2, t = 5;
+    t = cal(&amp;i, j);
+    j = j + t * 3;
+    i = i - t + 7;
+    printf(&quot;\n%d,%d&quot;, i, j);
     return 0;
-}</code></pre>
-<div class="alert tip"><strong>TIP</strong><div><strong>Exam Ambiguity Note (<code class="inline-code">Endsem 2023</code> Sec C Q2):</strong> Notice the paper&#x27;s sample <code class="inline-code">1 2 6 4 -&gt; 1 1 5 4</code> matches subtracting <code class="inline-code">1</code> from even elements followed by an even element (<code class="inline-code">*(p+i+1)%2 == 0</code>), whereas strict left-to-right checking <code class="inline-code">*(p+i-1)%2 == 0</code> gives <code class="inline-code">1 2 5 4</code>. Use single-pointer indexing (<code class="inline-code">*(p+i)</code>) cleanly and state your neighbor check in a 1-line comment for full credit.</div></div>
-<h3>Program 4: Binary String Addition &amp; Hex/Dec Struct Conversion (<code class="inline-code">Endsem 2023</code> Sec C Q3)</h3>
-<pre class="code-hl"><code data-lang="c">#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-struct BinCalc {
-    char str1[65], str2[65], str3[65];
-    int dec;
-    char hexd[20];
+}</code></pre><ol><li><code class="inline-code">cal(&amp;i, j)</code> receives the address of <code class="inline-code">main</code>'s <code class="inline-code">i</code> (<code class="inline-code">*i</code> is <code class="inline-code">5</code>) and a copy of <code class="inline-code">j</code> (<code class="inline-code">2</code>).</li><li><code class="inline-code">*i = 5 * 5 = 25</code> modifies <code class="inline-code">main</code>'s <code class="inline-code">i</code> directly to <code class="inline-code">25</code>. Local <code class="inline-code">j</code> becomes <code class="inline-code">4</code>, and <code class="inline-code">cal</code> returns <code class="inline-code">2 * 4 = 8</code> into <code class="inline-code">t</code>.</li><li><code class="inline-code">main</code>'s <code class="inline-code">j</code> was NOT modified by <code class="inline-code">cal</code>, so <code class="inline-code">j</code> is still <code class="inline-code">2</code>: <code class="inline-code">j = 2 + 8 * 3 = 26</code>.</li><li><code class="inline-code">i = 25 - 8 + 7 = 24</code>.</li></ol><p><strong>Answer:</strong> Output: <code class="inline-code">24,26</code>.</p></div>
+<div class="alert"><strong>Key Formula:</strong> <code class="inline-code">return_type fn(param_types);</code> | Base case + Recursive case (LIFO stack) | <code class="inline-code">sqrt()</code> needs <code class="inline-code">&lt;math.h&gt;</code></div>
+<div class="alert warning"><strong>Common Mistake:</strong> In recursive factorial (<code class="inline-code">functions.ppt</code> S26-27), writing <code class="inline-code">if (n == 0 || n == 1) return n;</code> returns <code class="inline-code">0</code> for <code class="inline-code">0!</code>! Always make the base case <code class="inline-code">if (n == 0) return 1;</code>.</div>
+<h2>6. Scope Rules &amp; Storage Classes</h2>
+<p style="color:var(--text-soft);font-size:0.82rem;">scope.pptx, functions.ppt &amp; Endsem Feb 2023</p>
+<div class="alert"><strong>Plain Summary:</strong> Scope decides where a variable name can be seen, while lifetime decides how long its memory stays alive. A <code class="inline-code">static</code> local variable is hidden inside its function/block, yet keeps its value across every call for the entire program.</div>
+<div class="table-wrap"><table><thead><tr><th>Storage Class</th><th>Default Value</th><th>Scope</th><th>Lifetime</th><th>Storage Location</th></tr></thead><tbody><tr><td><code class="inline-code">auto</code> (default local)</td><td>Garbage</td><td>Local to block <code class="inline-code">{ }</code></td><td>Until block exits</td><td>RAM (stack)</td></tr><tr><td><code class="inline-code">extern</code> (global)</td><td><code class="inline-code">0</code></td><td>Global (file scope)</td><td>Entire program</td><td>RAM (global/data)</td></tr><tr><td><code class="inline-code">static</code> (local)</td><td><code class="inline-code">0</code></td><td>Local to block <code class="inline-code">{ }</code></td><td>Entire program (init once)</td><td>RAM (data segment)</td></tr><tr><td><code class="inline-code">register</code></td><td>Garbage</td><td>Local to block <code class="inline-code">{ }</code></td><td>Until block exits</td><td>CPU register (hint)</td></tr></tbody></table></div>
+<ul><li><strong>Global vs Local Scope (<code class="inline-code">scope.pptx</code> S4-7):</strong> Variables declared outside all functions have global (file) scope and are visible everywhere below. Variables inside <code class="inline-code">{ }</code> have block scope; an inner <code class="inline-code">{ int y = 40; }</code> shadows an outer <code class="inline-code">y</code> without changing it.</li><li><strong><code class="inline-code">static</code> Persistence (<code class="inline-code">scope.pptx</code> S8-9, <code class="inline-code">functions.ppt</code> S40-42):</strong> Initialized only ONCE (<code class="inline-code">static int i = 1;</code>). When the function returns, <code class="inline-code">static</code> keeps its updated value for the next call, and cannot be accessed by name from <code class="inline-code">main()</code> (<code class="inline-code">Endsem</code> A-Q5).</li><li><strong><code class="inline-code">extern</code> Keyword (<code class="inline-code">functions.ppt</code> S36-39):</strong> Tells the compiler a global variable is defined elsewhere (outside the function/file).</li></ul>
+<div class="alert tip"><strong>Worked Example (Endsem Feb 2023 Section A Q4 &amp; Q8 (QP.pdf p. 5-6)):</strong> Trace <code class="inline-code">static</code> inside recursion (<code class="inline-code">f(1)</code>) and global vs local shadowing.<pre><code>#include &lt;stdio.h&gt;
+int f(int n)
+{
+    static int i = 1;
+    if (n &gt;= 5)
+        return n;
+    n = n + i;
+    i++;
+    return f(n);
+}
+int main(void) { printf(&quot;%d&quot;, f(1)); return 0; }</code></pre><ol><li>Call <code class="inline-code">f(1)</code>: <code class="inline-code">i</code> is initialized once to <code class="inline-code">1</code>. <code class="inline-code">1 &gt;= 5</code> is false, so <code class="inline-code">n = 1 + 1 = 2</code>, <code class="inline-code">i</code> becomes <code class="inline-code">2</code>, calls <code class="inline-code">f(2)</code>.</li><li>Call <code class="inline-code">f(2)</code>: <code class="inline-code">i</code> is NOT re-initialized (still <code class="inline-code">2</code>). <code class="inline-code">n = 2 + 2 = 4</code>, <code class="inline-code">i</code> becomes <code class="inline-code">3</code>, calls <code class="inline-code">f(4)</code>.</li><li>Call <code class="inline-code">f(4)</code>: <code class="inline-code">i</code> is <code class="inline-code">3</code>. <code class="inline-code">n = 4 + 3 = 7</code>, <code class="inline-code">i</code> becomes <code class="inline-code">4</code>, calls <code class="inline-code">f(7)</code>.</li><li>Call <code class="inline-code">f(7)</code>: <code class="inline-code">7 &gt;= 5</code> is true, returns <code class="inline-code">7</code> all the way back.</li></ol><p><strong>Answer:</strong> Output: <code class="inline-code">7</code> (and <code class="inline-code">i</code> persists as <code class="inline-code">4</code> in memory after <code class="inline-code">f</code> finishes, though <code class="inline-code">main</code> cannot access <code class="inline-code">i</code>).</p></div>
+<div class="alert"><strong>Key Formula:</strong> <code class="inline-code">static type var = val;</code> (init once, default <code class="inline-code">0</code>, program lifetime) | Inner <code class="inline-code">{ int x; }</code> shadows outer <code class="inline-code">x</code></div>
+<div class="alert warning"><strong>Common Mistake:</strong> Re-declaring <code class="inline-code">int i = 100;</code> inside a <code class="inline-code">while (i--)</code> block (<code class="inline-code">Practice - 3.pptx</code> S21) creates a brand-new <code class="inline-code">auto</code> variable that shadows the loop's <code class="inline-code">i</code>, so <code class="inline-code">i--</code> inside the block never changes the loop counter!</div>
+<h2>7. 1D &amp; 2D Arrays and Pointers</h2>
+<p style="color:var(--text-soft);font-size:0.82rem;">arrays.ppt, PSP Quiz 2.pdf &amp; Endsem Feb 2023</p>
+<div class="alert"><strong>Plain Summary:</strong> An array stores elements of the same type side by side in contiguous memory, indexed from <code class="inline-code">0</code> to <code class="inline-code">size - 1</code>. A pointer holds a variable's memory address (<code class="inline-code">&amp;x</code>), and incrementing an <code class="inline-code">int *</code> pointer jumps by one <code class="inline-code">int</code> element (<code class="inline-code">sizeof(int)</code> bytes).</div>
+<ul><li><strong>1D Array Declaration & Init (<code class="inline-code">arrays.ppt</code> S4-10):</strong> <code class="inline-code">int a[4] = {10, 20, 30, 40};</code> or <code class="inline-code">int a[] = {1, 2, 4, 8, 16};</code>. Dynamic input uses a <code class="inline-code">for</code> loop with <code class="inline-code">scanf(&quot;%d&quot;, &amp;a[i]);</code>.</li><li><strong>2D Arrays & Matrices (<code class="inline-code">arrays.ppt</code> S12-21):</strong> <code class="inline-code">int a[3][4];</code> stores 3 rows x 4 columns (<code class="inline-code">a[i][j]</code>). Matrix multiplication of <code class="inline-code">r1 x c1</code> and <code class="inline-code">r2 x c2</code> requires <code class="inline-code">c1 == r2</code>, and <code class="inline-code">c[i][j] = 0;</code> must be reset before the inner <code class="inline-code">k</code> loop.</li><li><strong>Pointers & Dereferencing (<code class="inline-code">BASICS-1.pptx</code> S71, <code class="inline-code">Endsem</code> A-Q9/Q10):</strong> <code class="inline-code">&amp;x</code> gives address of <code class="inline-code">x</code>; <code class="inline-code">*p</code> accesses the value at address <code class="inline-code">p</code>. Arithmetic like <code class="inline-code">p + 1</code> or <code class="inline-code">q - p</code> works on pointers, but dividing a pointer (<code class="inline-code">r++ / 2</code>) is invalid.</li><li><strong>Array-Pointer Link (<code class="inline-code">Endsem</code> B-Q9):</strong> <code class="inline-code">arr</code> decays to <code class="inline-code">&amp;arr[0]</code>, so <code class="inline-code">*(arr + i)</code> accesses <code class="inline-code">arr[i]</code>.</li></ul>
+<div class="alert tip"><strong>Worked Example (PSP Quiz 2.pdf Part B Q4 &amp; Endsem Feb 2023 Sec A Q10):</strong> Trace array pre/post indexing and pointer post-increment.<pre><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    int x[5] = {6, 2, 12, 18, 20};
+    int p, r;
+    p = --x[1];
+    r = x[p++];
+    printf(&quot;%d, %d&quot;, p, r);
+    return 0;
+}</code></pre><ol><li><code class="inline-code">x</code> starts as <code class="inline-code">{6, 2, 12, 18, 20}</code> (<code class="inline-code">x[1]</code> is <code class="inline-code">2</code>).</li><li><code class="inline-code">p = --x[1];</code> decrements <code class="inline-code">x[1]</code> first (<code class="inline-code">2</code> -> <code class="inline-code">1</code>), then assigns <code class="inline-code">p = 1</code>.</li><li><code class="inline-code">r = x[p++];</code> uses current <code class="inline-code">p</code> (<code class="inline-code">1</code>) to read <code class="inline-code">x[1]</code> (which is now <code class="inline-code">1</code>!) into <code class="inline-code">r = 1</code>, then increments <code class="inline-code">p</code> to <code class="inline-code">2</code>.</li></ol><p><strong>Answer:</strong> Output: <code class="inline-code">2, 1</code>.</p></div>
+<div class="alert"><strong>Key Formula:</strong> <code class="inline-code">type arr[N];</code> (indices <code class="inline-code">0</code> to <code class="inline-code">N-1</code>) | <code class="inline-code">*(arr + i) == arr[i]</code> | <code class="inline-code">*z++</code> means <code class="inline-code">*(z++)</code> (advances pointer <code class="inline-code">z</code>, NOT <code class="inline-code">*z</code>)</div>
+<div class="alert warning"><strong>Common Mistake:</strong> In <code class="inline-code">*z++;</code> (<code class="inline-code">Endsem</code> A-Q10), postfix <code class="inline-code">++</code> has higher precedence than unary <code class="inline-code">*</code>, so it increments the <strong>pointer</strong> <code class="inline-code">z</code>, NOT the value <code class="inline-code">*z</code>! Use <code class="inline-code">(*z)++;</code> to increment the pointed value.</div>
+<h2>8. Strings &amp; Character Arrays</h2>
+<p style="color:var(--text-soft);font-size:0.82rem;">strings.ppt, PSP Quiz 2.pdf &amp; Endsem Feb 2023</p>
+<div class="alert"><strong>Plain Summary:</strong> In C, a string is simply a 1D <code class="inline-code">char</code> array ending with the null character <code class="inline-code">&#x27;\0&#x27;</code>. Every <code class="inline-code">%s</code> print and <code class="inline-code">&lt;string.h&gt;</code> function stops only when it hits <code class="inline-code">&#x27;\0&#x27;</code> — if <code class="inline-code">&#x27;\0&#x27;</code> is missing, it keeps reading into adjacent memory.</div>
+<div class="table-wrap"><table><thead><tr><th><code class="inline-code">&lt;string.h&gt;</code> Function</th><th>Purpose</th><th>Key Detail / Return Value</th></tr></thead><tbody><tr><td><code class="inline-code">strlen(s)</code></td><td>Length of string</td><td>Counts chars before <code class="inline-code">&#x27;\0&#x27;</code> (unlike <code class="inline-code">sizeof(s)</code> which gives total array bytes)</td></tr><tr><td><code class="inline-code">strcpy(dest, src)</code></td><td>Copy string</td><td>Copies <code class="inline-code">src</code> including <code class="inline-code">&#x27;\0&#x27;</code> into <code class="inline-code">dest</code></td></tr><tr><td><code class="inline-code">strcat(s1, s2)</code> / <code class="inline-code">strncat(s1, s2, n)</code></td><td>Concatenate strings</td><td>Appends <code class="inline-code">s2</code> (or first <code class="inline-code">n</code> chars) onto end of <code class="inline-code">s1</code> + <code class="inline-code">&#x27;\0&#x27;</code></td></tr><tr><td><code class="inline-code">strcmp(s1, s2)</code></td><td>Compare strings (case-sensitive)</td><td>Returns <code class="inline-code">0</code> if equal, <code class="inline-code">&lt; 0</code> if <code class="inline-code">s1 &lt; s2</code>, <code class="inline-code">&gt; 0</code> if <code class="inline-code">s1 &gt; s2</code></td></tr><tr><td><code class="inline-code">strlwr</code> / <code class="inline-code">strupr</code> / <code class="inline-code">strrev</code></td><td>Lower / Upper / Reverse</td><td>Shown in <code class="inline-code">strings.ppt</code> (compiler-specific extensions)</td></tr></tbody></table></div>
+<ul><li><strong>Declaration & Null Terminator (<code class="inline-code">strings.ppt</code> S2-3, <code class="inline-code">Quiz 2</code> A-Q4):</strong> <code class="inline-code">char a[] = &quot;Hello&quot;;</code> automatically inserts <code class="inline-code">&#x27;\0&#x27;</code> (size 6 bytes). <code class="inline-code">char a[] = {&#x27;H&#x27;,&#x27;e&#x27;,&#x27;l&#x27;,&#x27;l&#x27;,&#x27;o&#x27;,&#x27;\0&#x27;};</code> needs <code class="inline-code">&#x27;\0&#x27;</code> explicitly.</li><li><strong>String I/O (<code class="inline-code">strings.ppt</code> S4-5):</strong> <code class="inline-code">scanf(&quot;%s&quot;, a)</code> needs no <code class="inline-code">&amp;</code> (array name is an address) and stops at whitespace; <code class="inline-code">puts(a)</code> and <code class="inline-code">fgets(a, n, stdin)</code> handle full lines.</li><li><strong><code class="inline-code">strlen</code> vs <code class="inline-code">sizeof</code> (<code class="inline-code">strings.ppt</code> S7):</strong> For <code class="inline-code">char str[20] = &quot;vaishnavtej&quot;;</code>, <code class="inline-code">strlen(str)</code> is <code class="inline-code">11</code>, whereas <code class="inline-code">sizeof(str)</code> is <code class="inline-code">20</code>.</li><li><strong>Case-Sensitive ASCII (<code class="inline-code">strings.ppt</code> S16, <code class="inline-code">Endsem</code>):</strong> <code class="inline-code">&#x27;A&#x27;</code> is <code class="inline-code">65</code>, <code class="inline-code">&#x27;a&#x27;</code> is <code class="inline-code">97</code>, <code class="inline-code">&#x27;0&#x27;</code> is <code class="inline-code">48</code>. So <code class="inline-code">strcmp(&quot;Geetham&quot;, &quot;geetham&quot;)</code> returns negative (not <code class="inline-code">0</code>).</li></ul>
+<div class="alert tip"><strong>Worked Example (PSP Quiz 2.pdf Part B Q3 &amp; Endsem Feb 2023 Sec B Q8):</strong> Explain what happens when a 2D <code class="inline-code">char</code> array leaves no room for <code class="inline-code">&#x27;\0&#x27;</code>.<pre><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    char arr[4][3] = {&quot;hi&quot;, &quot;how&quot;, &quot;are&quot;, &quot;u&quot;};
+    printf(&quot;%s&quot;, arr[2]);
+    return 0;
+}</code></pre><ol><li>Each row of <code class="inline-code">arr[4][3]</code> holds only <code class="inline-code">3</code> characters.</li><li><code class="inline-code">arr[0]</code> is <code class="inline-code">{&#x27;h&#x27;,&#x27;i&#x27;,&#x27;\0&#x27;}</code> and <code class="inline-code">arr[3]</code> is <code class="inline-code">{&#x27;u&#x27;,&#x27;\0&#x27;,&#x27;\0&#x27;}</code> (valid strings).</li><li><code class="inline-code">arr[1]</code> (<code class="inline-code">&quot;how&quot;</code>) and <code class="inline-code">arr[2]</code> (<code class="inline-code">&quot;are&quot;</code>) use all 3 slots (<code class="inline-code">{&#x27;a&#x27;,&#x27;r&#x27;,&#x27;e&#x27;}</code>), leaving NO room for <code class="inline-code">&#x27;\0&#x27;</code>.</li><li><code class="inline-code">printf(&quot;%s&quot;, arr[2])</code> prints <code class="inline-code">are</code> and keeps reading right into <code class="inline-code">arr[3]</code> until <code class="inline-code">&#x27;\0&#x27;</code>, printing <code class="inline-code">areu</code>.</li></ol><p><strong>Answer:</strong> Output: <code class="inline-code">areu</code> (because <code class="inline-code">arr[2]</code> has size <code class="inline-code">3</code> and lacks a <code class="inline-code">&#x27;\0&#x27;</code> terminator, so <code class="inline-code">%s</code> overflows into <code class="inline-code">arr[3]</code>).</p></div>
+<div class="alert"><strong>Key Formula:</strong> <code class="inline-code">char s[N]</code> holds at most <code class="inline-code">N - 1</code> chars + <code class="inline-code">&#x27;\0&#x27;</code> | <code class="inline-code">strcmp(a, b) == 0</code> for equality</div>
+<div class="alert warning"><strong>Common Mistake:</strong> Never compare strings with <code class="inline-code">s1 == s2</code> (that compares memory addresses, not text — use <code class="inline-code">strcmp(s1, s2) == 0</code>), and always allocate <code class="inline-code">+1</code> byte for <code class="inline-code">&#x27;\0&#x27;</code>.</div>
+<h2>9. Structures &amp; Unions</h2>
+<p style="color:var(--text-soft);font-size:0.82rem;">STRUCTURES.ppt &amp; Endsem Feb 2023</p>
+<div class="alert"><strong>Plain Summary:</strong> A <code class="inline-code">struct</code> packs variables of different types together into one record, giving every member its own memory. A <code class="inline-code">union</code> overlays all its members in the exact same memory space, so only one member can hold a value at a time.</div>
+<div class="table-wrap"><table><thead><tr><th>Feature</th><th><code class="inline-code">struct</code></th><th><code class="inline-code">union</code></th></tr></thead><tbody><tr><td>Memory Layout</td><td>Each member gets separate memory</td><td>All members share the same memory location</td></tr><tr><td>Size (<code class="inline-code">sizeof</code>)</td><td>Sum of members (plus compiler padding)</td><td>Size of largest member (<code class="inline-code">20</code> for <code class="inline-code">int</code>, <code class="inline-code">float</code>, <code class="inline-code">char[20]</code>)</td></tr><tr><td>Active Members</td><td>All members can store values simultaneously</td><td>Only one member holds a valid value at a time</td></tr><tr><td>Member Access</td><td><code class="inline-code">var.member</code> (dot) or <code class="inline-code">ptr-&gt;member</code> (arrow)</td><td><code class="inline-code">var.member</code> or <code class="inline-code">ptr-&gt;member</code></td></tr></tbody></table></div>
+<ul><li><strong>Declaration Syntax (<code class="inline-code">STRUCTURES.ppt</code> S4-8):</strong> Always end <code class="inline-code">struct student { int rno; char name[20]; float cgpa; };</code> with <code class="inline-code">;</code>. You cannot initialize members inside the <code class="inline-code">struct</code> definition because no memory is allocated until variables are created.</li><li><strong>Init, Copy & Access (<code class="inline-code">STRUCTURES.ppt</code> S9-11, <code class="inline-code">Endsem</code> B-Q6):</strong> Initialize with <code class="inline-code">{56, &quot;Sohel&quot;, 8.2}</code>. Struct assignment (<code class="inline-code">p3 = p2;</code>) copies all members into a separate struct. Access via <code class="inline-code">.</code> on variables or <code class="inline-code">-&gt;</code> on pointers (<code class="inline-code">p2-&gt;x</code>).</li><li><strong>Arrays, Nesting & Functions (<code class="inline-code">STRUCTURES.ppt</code> S14-24):</strong> Arrays of structs (<code class="inline-code">emp[3]</code>) store multiple records; nested structs access inner members with <code class="inline-code">st.add.city</code>; pass <code class="inline-code">&amp;s</code> to a function (<code class="inline-code">struct books *p</code>) to modify or avoid copying.</li><li><strong>Unions (<code class="inline-code">STRUCTURES.ppt</code> S26-29):</strong> Useful for saving memory when fields are mutually exclusive (<code class="inline-code">sizeof(union Data)</code> equals <code class="inline-code">20</code> when <code class="inline-code">char str[20]</code> is the largest member).</li></ul>
+<div class="alert tip"><strong>Worked Example (Endsem Feb 2023 Section B Q6 &amp; Q10 (QP.pdf p. 7-8)):</strong> Trace struct copying (<code class="inline-code">p3 = p2</code>) and verify each member's independent values.<pre><code>#include &lt;stdio.h&gt;
+struct product_details {
+    char productName[10];
+    float price;
 };
-struct BinCalc add(struct BinCalc b) {
-    int i = strlen(b.str1) - 1, j = strlen(b.str2) - 1;
-    int maxl = (i &gt; j ? i : j) + 1, carry = 0, k = maxl - 1;
-    char tmp[66];
-    tmp[maxl] = &#x27;\0&#x27;;
-    while (k &gt;= 0) {
-        int s = carry + (i &gt;= 0 ? b.str1[i--] - &#x27;0&#x27; : 0) + (j &gt;= 0 ? b.str2[j--] - &#x27;0&#x27; : 0);
-        tmp[k--] = (s % 2) + &#x27;0&#x27;;
-        carry = s / 2;
-    }
-    if (carry) { b.str3[0] = &#x27;1&#x27;; strcpy(b.str3 + 1, tmp); }
-    else strcpy(b.str3, tmp);
-    return b;
-}
-void convert(struct BinCalc *b) {
-    int dec = 0;
-    for (int i = 0; b-&gt;str3[i] != &#x27;\0&#x27;; i++)
-        dec = dec * 2 + (b-&gt;str3[i] - &#x27;0&#x27;);
-    b-&gt;dec = dec;
-    sprintf(b-&gt;hexd, &quot;%X&quot;, dec); // or manual %16 loop with &quot;0123456789ABCDEF&quot;
-}
-int main() {
-    struct BinCalc x;
-    scanf(&quot;%s %s&quot;, x.str1, x.str2);
-    x = add(x);
-    convert(&amp;x);
-    printf(&quot;%s\n%d (deci)\n%s (hexadecimal)\n&quot;, x.str3, x.dec, x.hexd);
+int main(void)
+{
+    struct product_details p1 = {&quot;Pen&quot;, 30.0};
+    struct product_details p2 = {&quot;paper&quot;, 120.0};
+    struct product_details p3 = p2;
+    p3.productName[0] = &#x27;P&#x27;;
+    p2.price = p3.price / 4;
+    printf(&quot;%s, %f\n&quot;, p1.productName, p1.price);
+    printf(&quot;%s, %f\n&quot;, p2.productName, p2.price);
+    if (p3.price &gt; p2.price)
+        printf(&quot;%s, %f\n&quot;, p3.productName, p3.price);
     return 0;
-}</code></pre>
-<h3>Program 5: Factors of a Number (<code class="inline-code">Endsem 2023</code> Sec C Q4) &amp; Prime Function (<code class="inline-code">Lab</code>)</h3>
-<pre class="code-hl"><code data-lang="c">#include &lt;stdio.h&gt;
-int main() {
-    int n;
-    scanf(&quot;%d&quot;, &amp;n);
-    for (int i = 1; i &lt;= n; i++)
-        if (n % i == 0) printf(&quot;%d &quot;, i);
-    return 0;
-}</code></pre>
-<h3>Program 6: Copy Text File &amp; Count Characters (<code class="inline-code">FILES.ppt</code> Template)</h3>
-<pre class="code-hl"><code data-lang="c">#include &lt;stdio.h&gt;
+}</code></pre><ol><li><code class="inline-code">p3 = p2;</code> makes an independent copy of <code class="inline-code">p2</code> (<code class="inline-code">&quot;paper&quot;</code>, <code class="inline-code">120.0</code>).</li><li><code class="inline-code">p3.productName[0] = &#x27;P&#x27;;</code> changes <code class="inline-code">p3</code> to <code class="inline-code">&quot;Paper&quot;</code>; <code class="inline-code">p2.productName</code> remains <code class="inline-code">&quot;paper&quot;</code>.</li><li><code class="inline-code">p2.price = 120.0 / 4 = 30.0;</code> updates <code class="inline-code">p2</code> only; <code class="inline-code">p3.price</code> stays <code class="inline-code">120.0</code>.</li><li><code class="inline-code">p3.price &gt; p2.price</code> (<code class="inline-code">120.0 &gt; 30.0</code>) is true, so all three <code class="inline-code">printf</code> lines run.</li></ol><p><strong>Answer:</strong> Output:<br /><code class="inline-code">Pen, 30.000000</code><br /><code class="inline-code">paper, 30.000000</code><br /><code class="inline-code">Paper, 120.000000</code></p></div>
+<div class="alert"><strong>Key Formula:</strong> <code class="inline-code">struct tag { ... };</code> (needs <code class="inline-code">;</code>) | <code class="inline-code">ptr-&gt;field</code> is <code class="inline-code">(*ptr).field</code> | <code class="inline-code">sizeof(union)</code> <code class="inline-code">&gt;=</code> largest member</div>
+<div class="alert warning"><strong>Common Mistake:</strong> Forgetting the semicolon <code class="inline-code">;</code> after the closing brace of a <code class="inline-code">struct</code>/<code class="inline-code">union</code>, or trying to initialize a field inside the type template (<code class="inline-code">struct s { int x = 0; };</code> causes a compile error).</div>
+<h2>10. File I/O &amp; Preprocessor Directives</h2>
+<p style="color:var(--text-soft);font-size:0.82rem;">FILES.ppt (Unit 6)</p>
+<div class="alert"><strong>Plain Summary:</strong> Variables in RAM vanish when a program exits; files save data permanently on disk via a <code class="inline-code">FILE *</code> pointer opened by <code class="inline-code">fopen()</code> and closed by <code class="inline-code">fclose()</code>. Before compilation even begins, <code class="inline-code">#</code> preprocessor directives paste headers and expand <code class="inline-code">#define</code> macros.</div>
+<div class="table-wrap"><table><thead><tr><th><code class="inline-code">fopen</code> Mode</th><th>Purpose</th><th>If File Exists</th><th>If File Missing</th></tr></thead><tbody><tr><td><code class="inline-code">&quot;r&quot;</code></td><td>Read text</td><td>Opens from start</td><td>Returns <code class="inline-code">NULL</code></td></tr><tr><td><code class="inline-code">&quot;w&quot;</code></td><td>Write text</td><td>Erases (overwrites) contents</td><td>Creates new file</td></tr><tr><td><code class="inline-code">&quot;a&quot;</code></td><td>Append text</td><td>Writes at end of file</td><td>Creates new file</td></tr><tr><td><code class="inline-code">&quot;r+&quot;</code></td><td>Read & write</td><td>Opens without erasing</td><td>Returns <code class="inline-code">NULL</code></td></tr><tr><td><code class="inline-code">&quot;w+&quot;</code></td><td>Read & write</td><td>Erases contents</td><td>Creates new file</td></tr><tr><td><code class="inline-code">&quot;a+&quot;</code></td><td>Read & append</td><td>Reads anywhere, appends at end</td><td>Creates new file</td></tr></tbody></table></div>
+<ul><li><strong>4 File Steps (<code class="inline-code">FILES.ppt</code> S6-20):</strong> Declare <code class="inline-code">FILE *fp;</code>, open with <code class="inline-code">fopen(&quot;name.txt&quot;, &quot;mode&quot;)</code> and check <code class="inline-code">if (fp == NULL)</code>, read/write, then call <code class="inline-code">fclose(fp);</code>.</li><li><strong>Text I/O Functions (<code class="inline-code">FILES.ppt</code> S12-19, S26-29):</strong> Formatted: <code class="inline-code">fprintf(fp, ...)</code> / <code class="inline-code">fscanf(fp, ...)</code>; Character: <code class="inline-code">fgetc(fp)</code> (returns <code class="inline-code">EOF</code> at end) / <code class="inline-code">fputc(ch, fp)</code>; String: <code class="inline-code">fgets(buf, n, fp)</code> / <code class="inline-code">fputs(str, fp)</code>.</li><li><strong>Random Access (<code class="inline-code">FILES.ppt</code> S21-25):</strong> <code class="inline-code">fseek(fp, offset, origin)</code> moves the file cursor (<code class="inline-code">0</code>=<code class="inline-code">SEEK_SET</code> start, <code class="inline-code">1</code>=<code class="inline-code">SEEK_CUR</code> current, <code class="inline-code">2</code>=<code class="inline-code">SEEK_END</code> end). <code class="inline-code">ftell(fp)</code> returns current byte position; <code class="inline-code">rewind(fp)</code> resets to start.</li><li><strong>Preprocessor Directives (<code class="inline-code">FILES.ppt</code> S30-42):</strong> Start with <code class="inline-code">#</code> and NEVER end with <code class="inline-code">;</code>. Includes <code class="inline-code">#include</code>, <code class="inline-code">#define PI 3.1415</code>, <code class="inline-code">#define AREA(l,b) ((l)*(b))</code>, <code class="inline-code">#ifdef</code>/<code class="inline-code">#else</code>/<code class="inline-code">#endif</code>, and <code class="inline-code">#undef</code>.</li></ul>
+<div class="alert tip"><strong>Worked Example (FILES.ppt Slide 26 &amp; Slide 28):</strong> Read and copy every character from <code class="inline-code">in.txt</code> to <code class="inline-code">out.txt</code> using <code class="inline-code">fgetc</code> and <code class="inline-code">fputc</code>.<pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
-int main() {
-    FILE *fp1 = fopen(&quot;in.txt&quot;, &quot;r&quot;), *fp2 = fopen(&quot;out.txt&quot;, &quot;w&quot;);
-    if (fp1 == NULL || fp2 == NULL) { printf(&quot;Error!\n&quot;); exit(1); }
+int main(void)
+{
+    FILE *fp1, *fp2;
     int ch;
-    while ((ch = fgetc(fp1)) != EOF) fputc(ch, fp2);
-    fclose(fp1); fclose(fp2);
+    fp1 = fopen(&quot;in.txt&quot;, &quot;r&quot;);
+    fp2 = fopen(&quot;out.txt&quot;, &quot;w&quot;);
+    if (fp1 == NULL || fp2 == NULL) {
+        printf(&quot;Error opening file\n&quot;);
+        exit(1);
+    }
+    while ((ch = fgetc(fp1)) != EOF) {
+        fputc(ch, fp2);
+    }
+    fclose(fp1);
+    fclose(fp2);
     return 0;
-}</code></pre>
-<hr />
-<h2>5. Common Exam Mistakes Checklist</h2>
-<ul><li><label class="chk-line"><input type="checkbox" /> <span><strong>Using <code class="inline-code">=</code> instead of <code class="inline-code">==</code> inside <code class="inline-code">if</code> / <code class="inline-code">while</code>:</strong> <code class="inline-code">if(a=0)</code> assigns <code class="inline-code">0</code> and ALWAYS evaluates false!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Trailing <code class="inline-code">;</code> on <code class="inline-code">if</code> or <code class="inline-code">for</code>:</strong> <code class="inline-code">if(a==5);</code> or <code class="inline-code">for(i=0;i&lt;5;i++);</code> detaches the body!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Forgetting <code class="inline-code">&#x27;\0&#x27;</code> when building strings manually:</strong> Always set <code class="inline-code">out[k] = &#x27;\0&#x27;;</code> after character loops!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Using <code class="inline-code">str1 == str2</code> to compare strings:</strong> That compares memory addresses! Always use <code class="inline-code">strcmp(str1, str2) == 0</code> or a manual char loop.</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Passing value instead of address to <code class="inline-code">scanf</code>:</strong> <code class="inline-code">scanf(&quot;%d&quot;, &amp;n);</code> needs <code class="inline-code">&amp;</code>, while <code class="inline-code">scanf(&quot;%s&quot;, str);</code> does NOT (<code class="inline-code">str</code> is already an address).</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Modifying pointers vs values:</strong> <code class="inline-code">*p++</code> moves the pointer; <code class="inline-code">(*p)++</code> increments the value!</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong>Modifying <code class="inline-code">void</code> vs <code class="inline-code">int</code> / function prototypes:</strong> Returning a value from a <code class="inline-code">void</code> function or forgetting prototype before <code class="inline-code">main()</code> when return type isn&#x27;t <code class="inline-code">int</code>.</span></label></li><li><label class="chk-line"><input type="checkbox" /> <span><strong><code class="inline-code">fgetc</code> type:</strong> Store <code class="inline-code">fgetc(fp)</code> in an <code class="inline-code">int</code> (not <code class="inline-code">char</code>) when comparing <code class="inline-code">!= EOF</code>, and open <code class="inline-code">&quot;r&quot;</code> only on existing files (<code class="inline-code">fp == NULL</code> guard!).</span></label></li></ul>
-    </article>
-  </main>
+}</code></pre><ol><li>Open source with <code class="inline-code">&quot;r&quot;</code> and destination with <code class="inline-code">&quot;w&quot;</code>, checking for <code class="inline-code">NULL</code> before reading or writing.</li><li><code class="inline-code">fgetc(fp1)</code> reads one character at a time (stored in <code class="inline-code">int</code> so <code class="inline-code">EOF</code> <code class="inline-code">-1</code> is distinct from valid bytes) until <code class="inline-code">EOF</code>.</li><li><code class="inline-code">fputc(ch, fp2)</code> writes each character to <code class="inline-code">out.txt</code>.</li><li><code class="inline-code">fclose(fp1); fclose(fp2);</code> flushes buffered output to disk and releases file handles.</li></ol><p><strong>Answer:</strong> Safely copies <code class="inline-code">in.txt</code> into <code class="inline-code">out.txt</code> character by character and closes both files.</p></div>
+<div class="alert"><strong>Key Formula:</strong> <code class="inline-code">FILE *fp = fopen(name, mode);</code> | <code class="inline-code">fseek(fp, offset, SEEK_SET|SEEK_CUR|SEEK_END);</code> | No <code class="inline-code">;</code> after <code class="inline-code">#define</code></div>
+<div class="alert warning"><strong>Common Mistake:</strong> Always check <code class="inline-code">if (fp == NULL)</code> after <code class="inline-code">fopen(..., &quot;r&quot;)</code>, never put <code class="inline-code">;</code> after <code class="inline-code">#define PI 3.14</code>, and wrap macro arguments in parentheses (<code class="inline-code">#define AREA(l,b) ((l)*(b))</code> so <code class="inline-code">AREA(1+2, 3)</code> doesn't turn into <code class="inline-code">1+2*3</code>!).</div>
+<h2>Practice Questions (25)</h2>
+<h3>Q1. Easy (Quiz / Lab)</h3><p>[Source: <code class="inline-code">Quiz _19.jpg</code> Q5 & <code class="inline-code">BASICS-1.pptx</code> S25-29]<br />Discuss the phases of building and running a C source file named <code class="inline-code">p1.c</code>, and name the file extensions generated at each phase.</p><div class="alert"><strong>Hint:</strong> Recall the 4 phases from <code class="inline-code">BASICS-1.pptx</code>: Editing, Compilation, Linking, Execution.</div><div class="alert tip"><strong>Solution:</strong> 1. <strong>Editing (<code class="inline-code">.c</code>):</strong> Source code is written in high-level C and saved as <code class="inline-code">p1.c</code>.<br />2. <strong>Compilation (<code class="inline-code">.obj</code> / <code class="inline-code">.o</code>):</strong> Compiler checks syntax and translates error-free source into low-level object code (<code class="inline-code">p1.obj</code> / <code class="inline-code">p1.o</code>).<br />3. <strong>Linking:</strong> Linker attaches object code with required system/library functions (e.g., <code class="inline-code">printf</code> from <code class="inline-code">&lt;stdio.h&gt;</code>, <code class="inline-code">sqrt</code> from <code class="inline-code">&lt;math.h&gt;</code>).<br />4. <strong>Execution (<code class="inline-code">.exe</code>):</strong> Produces the executable <code class="inline-code">p1.exe</code> and loads it into memory to run.</div>
+<h3>Q2. Easy (Midsem / Endsem)</h3><p>[Source: <code class="inline-code">IMG-20190828-WA0002.jpg</code> Q6 & <code class="inline-code">QP.pdf</code> Midsem Dec 2022 A-Q3]<br />Classify each C identifier/declaration as <strong>valid</strong> or <strong>invalid</strong>, and give the reason:<br />(a) <code class="inline-code">int_t</code>  (b) <code class="inline-code">group one</code>  (c) <code class="inline-code">Price$</code>  (d) <code class="inline-code">(area)</code>  (e) <code class="inline-code">int 1_35;</code>  (f) <code class="inline-code">float _income;</code>  (g) <code class="inline-code">int a!;</code>  (h) <code class="inline-code">char name123;</code>  (i) <code class="inline-code">int num-data;</code></p><div class="alert"><strong>Hint:</strong> Identifiers may only contain letters, digits, and <code class="inline-code">_</code>, cannot start with a digit, and cannot use spaces or special symbols.</div><div class="alert tip"><strong>Solution:</strong> <strong>Valid:</strong> (a) <code class="inline-code">int_t</code> (not a keyword, uses letters and <code class="inline-code">_</code>), (f) <code class="inline-code">_income</code> (may start with <code class="inline-code">_</code>), (h) <code class="inline-code">name123</code> (digits allowed after first char).<br /><strong>Invalid:</strong> (b) <code class="inline-code">group one</code> (space not allowed), (c) <code class="inline-code">Price@@HTOK0@@</code> invalid in standard identifiers), (d) <code class="inline-code">(area)</code> (parentheses not allowed), (e) <code class="inline-code">1_35</code> (starts with digit <code class="inline-code">1</code>), (g) <code class="inline-code">a!</code> (<code class="inline-code">!</code> not allowed), (i) <code class="inline-code">num-data</code> (hyphen <code class="inline-code">-</code> parsed as minus).</div>
+<h3>Q3. Medium (Assignment / Tutorial)</h3><p>[Source: <code class="inline-code">Practice - 2.pptx</code> S2, S8, S14]<br />1. Write <code class="inline-code">-28</code> in 16-bit 2's complement form.<br />2. Find the decimal value of the 6-bit 2's complement binary number <code class="inline-code">111010</code>.<br />3. What is the smallest integer representable in 8-bit 2's complement form?</p><div class="alert"><strong>Hint:</strong> To negate in 2's complement, invert all bits and add <code class="inline-code">1</code>. For <code class="inline-code">111010</code>, the MSB is <code class="inline-code">1</code> (negative).</div><div class="alert tip"><strong>Solution:</strong> 1. <code class="inline-code">+28</code> in 16-bit binary is <code class="inline-code">0000 0000 0001 1100</code>. Invert bits: <code class="inline-code">1111 1111 1110 0011</code>. Add <code class="inline-code">1</code>: <strong><code class="inline-code">1111 1111 1110 0100</code></strong> (<code class="inline-code">0xFFE4</code>).<br />2. MSB is <code class="inline-code">1</code> (negative). Invert <code class="inline-code">111010</code> -> <code class="inline-code">000101</code>, add <code class="inline-code">1</code> -> <code class="inline-code">000110</code> (<code class="inline-code">6</code>), so the value is <strong><code class="inline-code">-6</code></strong>.<br />3. In <code class="inline-code">n</code>-bit 2's complement, smallest integer is <code class="inline-code">-2^(n-1)</code>. For <code class="inline-code">n = 8</code>: <strong><code class="inline-code">-128</code></strong> (<code class="inline-code">1000 0000</code>).</div>
+<h3>Q4. Medium (Quiz / Lab)</h3><p>[Source: <code class="inline-code">Quiz _19.jpg</code> Q7(c)]<br />What is the output of the following C code (assuming 8-bit signed <code class="inline-code">char</code>)?<br /><pre><code>void main()
+{
+    char c = 125;
+    c = c + 3;
+    printf(&quot;%d&quot;, c);
+}
+</code></pre></p><div class="alert"><strong>Hint:</strong> Signed <code class="inline-code">char</code> ranges from <code class="inline-code">-128</code> to <code class="inline-code">+127</code> (<code class="inline-code">BASICS-1.pptx</code> Slide 47).</div><div class="alert tip"><strong>Solution:</strong> <code class="inline-code">125 + 3 = 128</code>, which in 8-bit binary is <code class="inline-code">1000 0000</code>. In 8-bit signed 2's complement, <code class="inline-code">1000 0000</code> wraps past <code class="inline-code">+127</code> to <strong><code class="inline-code">-128</code></strong>.</div>
+<h3>Q5. Medium (Midsem / Endsem)</h3><p>[Source: <code class="inline-code">QP.pdf</code> Midsem Dec 2022 Part A Q4]<br />What is the output/error of this program?<br /><pre><code>#include &lt;stdio.h&gt;
+void main() {
+    int a = 5;
+    if (a == 5);
+    {
+        printf(&quot;Value of a is %d.\n&quot;, 5);
+        printf(&quot;Successfully executed if statement.\n&quot;);
+    }
+    else;
+    printf(&quot;Successfully completed else statement.&quot;);
+}
+</code></pre></p><div class="alert"><strong>Hint:</strong> Look closely at the semicolon <code class="inline-code">;</code> right after <code class="inline-code">if (a == 5)</code>.</div><div class="alert tip"><strong>Solution:</strong> <strong>Compilation Error</strong> (<code class="inline-code">&#x27;else&#x27; without a previous &#x27;if&#x27;</code>). The <code class="inline-code">;</code> after <code class="inline-code">if (a == 5)</code> terminates the <code class="inline-code">if</code> statement immediately, making the <code class="inline-code">{ ... }</code> block a standalone compound statement, so <code class="inline-code">else;</code> has no matching <code class="inline-code">if</code>.</div>
+<h3>Q6. Medium (Midsem / Endsem)</h3><p>[Source: <code class="inline-code">QP.pdf</code> Midsem Dec 2022 Part B Q2]<br />Find the values of <code class="inline-code">w, x, y, z</code>:<br /><pre><code>void main()
+{
+    int i = 10, j = -4, k = 0, w, x, y, z;
+    w = i || j || k;
+    x = i &amp;&amp; j &amp;&amp; !k;
+    y = i || j &amp;&amp; k;
+    z = i + 2 * j - 2 &amp;&amp; j + 4 || k;
+    printf(&quot;\nw = %d x = %d y = %d z = %d&quot;, w, x, y, z);
+}
+</code></pre></p><div class="alert"><strong>Hint:</strong> Precedence: arithmetic (<code class="inline-code">*</code>, <code class="inline-code">+</code>, <code class="inline-code">-</code>) before <code class="inline-code">!</code>, before <code class="inline-code">&amp;&amp;</code>, before <code class="inline-code">||</code>.</div><div class="alert tip"><strong>Solution:</strong> - <code class="inline-code">w = 10 || -4 || 0</code> -> <strong><code class="inline-code">1</code></strong>.<br />- <code class="inline-code">x = 10 &amp;&amp; -4 &amp;&amp; !0</code> -> <code class="inline-code">10 &amp;&amp; -4 &amp;&amp; 1</code> -> <strong><code class="inline-code">1</code></strong>.<br />- <code class="inline-code">y = i || (j &amp;&amp; k)</code> (<code class="inline-code">&amp;&amp;</code> binds tighter than <code class="inline-code">||</code>) -> <code class="inline-code">10 || 0</code> -> <strong><code class="inline-code">1</code></strong>.<br />- <code class="inline-code">z</code>: <code class="inline-code">i + 2*j - 2 = 10 - 8 - 2 = 0</code>; <code class="inline-code">0 &amp;&amp; (j+4)</code> short-circuits to <code class="inline-code">0</code>; <code class="inline-code">0 || 0</code> -> <strong><code class="inline-code">0</code></strong>.<br />Output: <code class="inline-code">w = 1 x = 1 y = 1 z = 0</code>.</div>
+<h3>Q7. Hard (Midsem / Endsem)</h3><p>[Source: <code class="inline-code">QP.pdf</code> Midsem Dec 2022 Part B Q3]<br />Find <code class="inline-code">w, x, y, z</code> step by step:<br /><pre><code>void main()
+{
+    int m = 4, n = 2, p = 2, w, x, y, z;
+    w = m * n / 4 - 6 / 2 + 2 / 3 * 6 / p;
+    x = m &lt; n / p - 4 / 2 + 2 * 3 - 6 &gt; !p;
+    y = m * p % 2 + 4 - m * 2 / 2;
+    z = m++ + --p + ++n;
+    printf(&quot;\nw = %d x = %d y = %d z = %d&quot;, w, x, y, z);
+}
+</code></pre></p><div class="alert"><strong>Hint:</strong> <code class="inline-code">* / %</code> are left-to-right; <code class="inline-code">2 / 3 == 0</code> in integer division; <code class="inline-code">&lt;</code> and <code class="inline-code">&gt;</code> share precedence left-to-right.</div><div class="alert tip"><strong>Solution:</strong> - <code class="inline-code">w = (4*2)/4 - 3 + ((2/3)*6)/2 = 2 - 3 + 0 = -1</code>.<br />- <code class="inline-code">x</code>: <code class="inline-code">!p</code> is <code class="inline-code">0</code>; <code class="inline-code">n/p - 4/2 + 2*3 - 6 = 1 - 2 + 6 - 6 = -1</code>. Left-to-right <code class="inline-code">&lt;</code> and <code class="inline-code">&gt;</code>: <code class="inline-code">(4 &lt; -1) &gt; 0</code> -> <code class="inline-code">0 &gt; 0</code> -> <code class="inline-code">0</code>.<br />- <code class="inline-code">y = (4*2)%2 + 4 - (4*2)/2 = 0 + 4 - 4 = 0</code>.<br />- <code class="inline-code">z = 4 + 1 + 3 = 8</code> (distinct variables <code class="inline-code">m</code>, <code class="inline-code">p</code>, <code class="inline-code">n</code>).<br />Output: <code class="inline-code">w = -1 x = 0 y = 0 z = 8</code>.</div>
+<h3>Q8. Medium (Assignment / Tutorial)</h3><p>[Source: <code class="inline-code">Practice - 1.pptx</code> Slide 6, Slide 11 & Slide 14]<br />Predict the output of these three snippets:<br />(a) <code class="inline-code">printf(&quot;%d&quot;, 1 &lt;&lt; 2 + 3 &lt;&lt; 4);</code><br />(b) <code class="inline-code">int i = 12; int j = sizeof(i++); printf(&quot;%d %d&quot;, i, j);</code> (assume <code class="inline-code">sizeof(int) == 4</code>)<br />(c) <code class="inline-code">printf(&quot;%d&quot;, printf(&quot;jagadeesh&quot;));</code></p><div class="alert"><strong>Hint:</strong> <code class="inline-code">+</code> has higher precedence than <code class="inline-code">&lt;&lt;</code>; <code class="inline-code">sizeof</code> does not evaluate its operand; <code class="inline-code">printf</code> returns characters printed.</div><div class="alert tip"><strong>Solution:</strong> (a) <code class="inline-code">+</code> runs before <code class="inline-code">&lt;&lt;</code>: <code class="inline-code">(1 &lt;&lt; 5) &lt;&lt; 4 = 32 &lt;&lt; 4 =</code> <strong><code class="inline-code">512</code></strong>.<br />(b) <code class="inline-code">sizeof(i++)</code> only checks type size at compile time without running <code class="inline-code">i++</code>, so output is <strong><code class="inline-code">12 4</code></strong>.<br />(c) Inner <code class="inline-code">printf</code> prints <code class="inline-code">jagadeesh</code> (9 chars) and returns <code class="inline-code">9</code>, so outer <code class="inline-code">printf</code> prints <strong><code class="inline-code">jagadeesh9</code></strong>.</div>
+<h3>Q9. Hard (Assignment / Tutorial)</h3><p>[Source: <code class="inline-code">Practice - 1.pptx</code> Slide 23]<br />Predict the output:<br /><pre><code>#include &lt;stdio.h&gt;
+int main()
+{
+    int i = -1, j = -1, k = 0, l = 2, m;
+    m = i++ &amp;&amp; j++ &amp;&amp; k++ || l++;
+    printf(&quot;%d %d %d %d %d&quot;, i, j, k, l, m);
+    return 0;
+}
+</code></pre></p><div class="alert"><strong>Hint:</strong> <code class="inline-code">&amp;&amp;</code> binds tighter than <code class="inline-code">||</code>: parse as <code class="inline-code">(i++ &amp;&amp; j++ &amp;&amp; k++) || l++</code>.</div><div class="alert tip"><strong>Solution:</strong> - <code class="inline-code">i++</code> is <code class="inline-code">-1</code> (true), <code class="inline-code">i</code> becomes <code class="inline-code">0</code>.<br />- <code class="inline-code">j++</code> is <code class="inline-code">-1</code> (true), <code class="inline-code">j</code> becomes <code class="inline-code">0</code>.<br />- <code class="inline-code">k++</code> is <code class="inline-code">0</code> (false!), <code class="inline-code">k</code> becomes <code class="inline-code">1</code>. The left <code class="inline-code">&amp;&amp;</code> group is now <code class="inline-code">0</code>.<br />- Since <code class="inline-code">0 || l++</code> must evaluate the right side, <code class="inline-code">l++</code> gives <code class="inline-code">2</code> (true), <code class="inline-code">l</code> becomes <code class="inline-code">3</code>, and <code class="inline-code">m = 1</code>.<br />Output: <strong><code class="inline-code">0 0 1 3 1</code></strong>.</div>
+<h3>Q10. Easy (Midsem / Endsem)</h3><p>[Source: <code class="inline-code">QP.pdf</code> Endsem Feb 2023 Section A Q3]<br />Find the output:<br /><pre><code>void main()
+{
+    int a = 15, b = 27, k, m;
+    k = a ^ 32;
+    m = a &amp; b;
+    printf(&quot;\nk = %d, m = %d&quot;, k, m);
+}
+</code></pre></p><div class="alert"><strong>Hint:</strong> Write <code class="inline-code">15</code>, <code class="inline-code">27</code>, and <code class="inline-code">32</code> in 6-bit binary: <code class="inline-code">15 = 001111</code>, <code class="inline-code">27 = 011011</code>, <code class="inline-code">32 = 100000</code>.</div><div class="alert tip"><strong>Solution:</strong> - <code class="inline-code">k = 001111 ^ 100000 = 101111_2 = 32 + 15 =</code> <strong><code class="inline-code">47</code></strong>.<br />- <code class="inline-code">m = 001111 &amp; 011011 = 001011_2 = 8 + 2 + 1 =</code> <strong><code class="inline-code">11</code></strong>.<br />Output: <code class="inline-code">k = 47, m = 11</code>.</div>
+<h3>Q11. Medium (Assignment / Tutorial)</h3><p>[Source: <code class="inline-code">Assignment 1.docx</code> (<code class="inline-code">Assignment_1_1.png</code> & <code class="inline-code">Assignment_1_2.png</code>)]<br />What do these two bitwise-NOT programs print?<br />(a) <code class="inline-code">int x = 10, y = 11; if (~(x ^ y)) printf(&quot;equal&quot;); else printf(&quot;not equal&quot;);</code><br />(b) <code class="inline-code">int a = -1, b = ~0; if (b == a) printf(&quot;equal&quot;); else printf(&quot;unequal&quot;);</code></p><div class="alert"><strong>Hint:</strong> <code class="inline-code">~</code> flips every bit (bitwise complement), unlike <code class="inline-code">!</code> (logical NOT).</div><div class="alert tip"><strong>Solution:</strong> (a) <code class="inline-code">10 ^ 11 = 1</code>. Bitwise <code class="inline-code">~1</code> is <code class="inline-code">-2</code>, which is <strong>non-zero</strong> (true in <code class="inline-code">if</code>!), so it prints <strong><code class="inline-code">equal</code></strong> even though <code class="inline-code">10 != 11</code>! (To test equality with XOR, you need <code class="inline-code">!(x ^ y)</code>.)<br />(b) In 2's complement, flipping all <code class="inline-code">0</code> bits in <code class="inline-code">0</code> gives all <code class="inline-code">1</code> bits, which equals <code class="inline-code">-1</code>. Thus <code class="inline-code">b == a</code> is true and it prints <strong><code class="inline-code">equal</code></strong>.</div>
+<h3>Q12. Medium (Quiz / Lab)</h3><p>[Source: <code class="inline-code">PSP Quiz 2.pdf</code> Part A Q2 & <code class="inline-code">Practice - 3.pptx</code> Slides 7-8]<br />Find the output or error in each <code class="inline-code">switch</code> snippet:<br />(a) <code class="inline-code">int c = 3; switch(c) { case 3: case 5: case (7-4): printf(&quot;It is something&quot;); break; case c=1: printf(&quot;It is one&quot;); break; }</code><br />(b) <code class="inline-code">#define N 1.5</code> with <code class="inline-code">case N + 5:</code> and <code class="inline-code">case N * 4:</code></p><div class="alert"><strong>Hint:</strong> <code class="inline-code">case</code> labels in C must be unique integer constant expressions.</div><div class="alert tip"><strong>Solution:</strong> (a) <strong>Compile-time errors:</strong> (1) <code class="inline-code">case (7-4):</code> equals <code class="inline-code">case 3:</code>, creating a <strong>duplicate case value</strong>; (2) <code class="inline-code">case c=1:</code> is an assignment (not a constant expression).<br />(b) <strong>Compile-time error:</strong> <code class="inline-code">N</code> is <code class="inline-code">1.5</code> (<code class="inline-code">double</code>), so <code class="inline-code">N + 5</code> and <code class="inline-code">N * 4</code> do not reduce to integer constants (<code class="inline-code">Practice - 3.pptx</code> Slide 9).</div>
+<h3>Q13. Medium (Assignment / Tutorial)</h3><p>[Source: <code class="inline-code">Practice - 3.pptx</code> Slide 12]<br />Predict the output:<br /><pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int i = 0;
+    for (i = 0; i &lt; 20; i++) {
+        switch (i) {
+            case 0: i += 5;
+            case 1: i += 2;
+            case 5: i += 5;
+            default: i += 4; break;
+        }
+        printf(&quot;%d  &quot;, i);
+    }
+    return 0;
+}
+</code></pre></p><div class="alert"><strong>Hint:</strong> Notice <code class="inline-code">case 0</code>, <code class="inline-code">case 1</code>, and <code class="inline-code">case 5</code> have NO <code class="inline-code">break;</code> statements — they fall straight through into <code class="inline-code">default</code>!</div><div class="alert tip"><strong>Solution:</strong> - Start <code class="inline-code">i = 0</code>: enters <code class="inline-code">case 0</code> (<code class="inline-code">+5</code> -> <code class="inline-code">5</code>), falls through <code class="inline-code">case 1</code> (<code class="inline-code">+2</code> -> <code class="inline-code">7</code>), <code class="inline-code">case 5</code> (<code class="inline-code">+5</code> -> <code class="inline-code">12</code>), <code class="inline-code">default</code> (<code class="inline-code">+4</code> -> <code class="inline-code">16</code>), hits <code class="inline-code">break;</code>. Prints <strong><code class="inline-code">16  </code></strong>, then <code class="inline-code">i++</code> makes <code class="inline-code">i = 17</code>.<br />- <code class="inline-code">i = 17</code> (<code class="inline-code">&lt; 20</code>): enters <code class="inline-code">default</code> (<code class="inline-code">+4</code> -> <code class="inline-code">21</code>), hits <code class="inline-code">break;</code>. Prints <strong><code class="inline-code">21  </code></strong>, then <code class="inline-code">i++</code> makes <code class="inline-code">i = 22</code> and loop ends.<br />Output: <strong><code class="inline-code">16  21  </code></strong>.</div>
+<h3>Q14. Medium (Quiz / Lab)</h3><p>[Source: <code class="inline-code">PSP Quiz 2.pdf</code> Part A Q1 & Q3]<br />Find the output of both loops:<br />(a)<br /><pre><code>int c = 6;
+while (c--) {
+    printf(&quot;%d\t&quot;, c);
+}
+</code></pre><br />(b)<br /><pre><code>int k = 1;
+do {
+    printf(&quot;%d &quot;, k);
+    k = k + 1;
+} while (k % 2 == 0 &amp;&amp; k &lt;= 8);
+</code></pre></p><div class="alert"><strong>Hint:</strong> In (a), <code class="inline-code">c--</code> checks <code class="inline-code">c</code> before subtracting <code class="inline-code">1</code>. In (b), <code class="inline-code">do-while</code> runs the body once before checking the condition.</div><div class="alert tip"><strong>Solution:</strong> (a) <code class="inline-code">while(c--)</code> checks <code class="inline-code">6, 5, 4, 3, 2, 1</code> (all true) and decrements inside before <code class="inline-code">printf</code>, then stops when <code class="inline-code">c</code> is <code class="inline-code">0</code>: <strong><code class="inline-code">5  4  3  2  1  0</code></strong>.<br />(b) Iter 1: prints <code class="inline-code">1</code>, <code class="inline-code">k</code> becomes <code class="inline-code">2</code> (<code class="inline-code">2%2==0 &amp;&amp; 2&lt;=8</code> is true). Iter 2: prints <code class="inline-code">2</code>, <code class="inline-code">k</code> becomes <code class="inline-code">3</code> (<code class="inline-code">3%2==0</code> is false -> stops). Output: <strong><code class="inline-code">1 2</code></strong>.</div>
+<h3>Q15. Medium (Quiz / Lab)</h3><p>[Source: <code class="inline-code">PSP Quiz 2.pdf</code> Part B Q2]<br />Trace the output carefully:<br /><pre><code>#include &lt;stdio.h&gt;
+void main()
+{
+    int i = 6;
+    for (i = i / 3; i &lt; 3; i--)
+    {
+        if (i == 0)
+            break;
+        while (i &lt;= 4)
+        {
+            printf(&quot;%d&quot;, i);
+            i++;
+            break;
+        }
+        i++;
+    }
+}
+</code></pre></p><div class="alert"><strong>Hint:</strong> Follow <code class="inline-code">i</code> through <code class="inline-code">while</code>, <code class="inline-code">break</code>, the outer <code class="inline-code">i++</code>, and the <code class="inline-code">for</code> update <code class="inline-code">i--</code>.</div><div class="alert tip"><strong>Solution:</strong> 1. <code class="inline-code">i = 6 / 3 = 2</code>. <code class="inline-code">2 &lt; 3</code> is true, <code class="inline-code">i != 0</code>.<br />2. Enters <code class="inline-code">while (i &lt;= 4)</code>: prints <strong><code class="inline-code">2</code></strong>, <code class="inline-code">i++</code> makes <code class="inline-code">i = 3</code>, <code class="inline-code">break</code> exits <code class="inline-code">while</code>.<br />3. After <code class="inline-code">while</code>, <code class="inline-code">i++</code> makes <code class="inline-code">i = 4</code>.<br />4. <code class="inline-code">for</code> update <code class="inline-code">i--</code> makes <code class="inline-code">i = 3</code>.<br />5. Condition <code class="inline-code">i &lt; 3</code> (<code class="inline-code">3 &lt; 3</code>) is FALSE, so <code class="inline-code">for</code> exits.<br />Output: <strong><code class="inline-code">2</code></strong>.</div>
+<h3>Q16. Hard (Midsem / Endsem)</h3><p>[Source: <code class="inline-code">QP.pdf</code> Endsem Feb 2023 Section B Q3]<br />What does this recursive program print?<br /><pre><code>void func(int n, int sum)
+{
+    int k = 0, j = 0;
+    if (n == 0)
+        return;
+    k = n % 10;
+    j = n / 10;
+    sum = sum + k;
+    func(j, sum);
+    printf(&quot;%d,&quot;, k);
+}
+int main()
+{
+    int a = 2048, sum = 0;
+    func(a, sum);
+    printf(&quot;%d&quot;, sum);
+}
+</code></pre></p><div class="alert"><strong>Hint:</strong> <code class="inline-code">printf(&quot;%d,&quot;, k)</code> is AFTER the recursive call (LIFO unwind), and <code class="inline-code">sum</code> is passed by value.</div><div class="alert tip"><strong>Solution:</strong> Calls push digits <code class="inline-code">8</code>, <code class="inline-code">4</code>, <code class="inline-code">0</code>, <code class="inline-code">2</code> onto the stack until <code class="inline-code">n == 0</code>. Unwinding in LIFO order prints <code class="inline-code">2,0,4,8,</code>. Because <code class="inline-code">sum</code> in <code class="inline-code">main</code> was passed by value, it stays <code class="inline-code">0</code> and prints <code class="inline-code">0</code>.<br />Output: <strong><code class="inline-code">2,0,4,8,0</code></strong>.</div>
+<h3>Q17. Medium (Midsem / Endsem)</h3><p>[Source: <code class="inline-code">QP.pdf</code> Endsem Feb 2023 Section B Q7]<br />What is the output?<br /><pre><code>void f1(int a, int b) {
+    int c; c = a; a = b; b = c;
+}
+void f2(int *a, int *b) {
+    int c; c = *a; *a = *b; *b = c;
+}
+int main() {
+    int a = 4, b = 5, c = 6;
+    f1(a, b);
+    f2(&amp;b, &amp;c);
+    printf(&quot;%d&quot;, c - a - b);
+    return 0;
+}
+</code></pre></p><div class="alert"><strong>Hint:</strong> <code class="inline-code">f1</code> uses call by value (no effect on <code class="inline-code">main</code>); <code class="inline-code">f2</code> uses call by reference (swaps <code class="inline-code">b</code> and <code class="inline-code">c</code>).</div><div class="alert tip"><strong>Solution:</strong> <code class="inline-code">f1(a, b)</code> swaps local copies only (<code class="inline-code">a = 4, b = 5</code> unchanged). <code class="inline-code">f2(&amp;b, &amp;c)</code> swaps <code class="inline-code">b</code> and <code class="inline-code">c</code> via pointers, so <code class="inline-code">b = 6, c = 5</code>. Then <code class="inline-code">c - a - b = 5 - 4 - 6 =</code> <strong><code class="inline-code">-5</code></strong>.</div>
+<h3>Q18. Medium (Midsem / Endsem)</h3><p>[Source: <code class="inline-code">QP.pdf</code> Endsem Feb 2023 Section A Q8]<br />What is the output?<br /><pre><code>#include &lt;stdio.h&gt;
+int i = 10;
+void check() {
+    printf(&quot;%d &quot;, i++);
+}
+void main() {
+    int i = 20;
+    printf(&quot;%d &quot;, i);
+    check();
+    printf(&quot;%d&quot;, ++i);
+}
+</code></pre></p><div class="alert"><strong>Hint:</strong> <code class="inline-code">main</code> has its own local <code class="inline-code">i = 20</code> which shadows the global <code class="inline-code">i = 10</code>, while <code class="inline-code">check()</code> sees only global <code class="inline-code">i</code>.</div><div class="alert tip"><strong>Solution:</strong> 1. Inside <code class="inline-code">main</code>, local <code class="inline-code">i</code> (<code class="inline-code">20</code>) shadows global <code class="inline-code">i</code>, so first <code class="inline-code">printf</code> prints <code class="inline-code">20</code>.<br />2. <code class="inline-code">check()</code> cannot see <code class="inline-code">main</code>'s local <code class="inline-code">i</code>; it prints global <code class="inline-code">i</code> (<code class="inline-code">10</code>) and increments global <code class="inline-code">i</code> to <code class="inline-code">11</code>.<br />3. Back in <code class="inline-code">main</code>, <code class="inline-code">++i</code> increments local <code class="inline-code">i</code> from <code class="inline-code">20</code> to <code class="inline-code">21</code> and prints <code class="inline-code">21</code>.<br />Output: <strong><code class="inline-code">20 10 21</code></strong>.</div>
+<h3>Q19. Medium (Midsem / Endsem)</h3><p>[Source: <code class="inline-code">QP.pdf</code> Endsem Feb 2023 Section A Q9 & Q10]<br />1. Given <code class="inline-code">int *p, *q, *r, x=5, y=6, z, a[10]={1,2}; p=&amp;x; q=&amp;y; r=a;</code>, which expression is <strong>incorrect</strong>?<br />   (a) <code class="inline-code">(*p) * (*q)</code>  (b) <code class="inline-code">z = (r++ / 2)</code>  (c) <code class="inline-code">q - p</code>  (d) <code class="inline-code">*p + 5</code><br />2. If <code class="inline-code">int x = 20, y = 21, *z;</code> are at contiguous addresses <code class="inline-code">5000, 5004, 5008</code> (4-byte <code class="inline-code">int</code>), what does <code class="inline-code">z = &amp;x; *z++; x++;</code> print for <code class="inline-code">&amp;x, &amp;y, &amp;z</code> and <code class="inline-code">x, y, *z</code>?</p><div class="alert"><strong>Hint:</strong> You cannot divide a pointer by an integer. Also <code class="inline-code">*z++</code> parses as <code class="inline-code">*(z++)</code>.</div><div class="alert tip"><strong>Solution:</strong> 1. <strong><code class="inline-code">(b) z = (r++ / 2)</code></strong> is invalid: pointer division by <code class="inline-code">2</code> is illegal in C.<br />2. <code class="inline-code">*z++</code> advances pointer <code class="inline-code">z</code> from <code class="inline-code">5000</code> (<code class="inline-code">&amp;x</code>) to <code class="inline-code">5004</code> (<code class="inline-code">&amp;y</code>), while <code class="inline-code">x++</code> sets <code class="inline-code">x = 21</code>. Addresses stay <code class="inline-code">5000, 5004, 5008</code>, and values are <code class="inline-code">x = 21, y = 21, *z = 21</code> (<strong><code class="inline-code">5000, 5004, 5008, 21, 21, 21</code></strong>).</div>
+<h3>Q20. Medium (Midsem / Endsem)</h3><p>[Source: <code class="inline-code">QP.pdf</code> Endsem Feb 2023 Section B Q9]<br />What is the output?<br /><pre><code>void func(int *arr1, int *arr2, int size) {
+    int i;
+    for (i = 0; i &lt; size; i++) {
+        *(arr2 + i) = ++(*(arr1 + i));
+    }
+}
+void main() {
+    int arr1[10] = {2, 2, 3, 3, 3, 4, 4, 4, 4, 5};
+    int arr2[10];
+    func(arr1, arr2, 10);
+    for (int i = 0; i &lt; 10; i++)
+        printf(&quot;%d\n&quot;, *(arr2 + i));
+}
+</code></pre></p><div class="alert"><strong>Hint:</strong> <code class="inline-code">++(*(arr1 + i))</code> pre-increments each element of <code class="inline-code">arr1</code> and assigns the incremented value to <code class="inline-code">arr2[i]</code>.</div><div class="alert tip"><strong>Solution:</strong> Every element of <code class="inline-code">arr1</code> is incremented by <code class="inline-code">1</code> before being copied to <code class="inline-code">arr2</code>, so <code class="inline-code">arr2</code> contains <strong><code class="inline-code">3, 3, 4, 4, 4, 5, 5, 5, 5, 6</code></strong> (each printed on its own line).</div>
+<h3>Q21. Easy (Quiz / Lab)</h3><p>[Source: <code class="inline-code">PSP Quiz 2.pdf</code> Part A Q4]<br />Given <code class="inline-code">char str[] = {&#x27;g&#x27;, &#x27;l&#x27;, &#x27;o&#x27;, &#x27;b&#x27;, &#x27;e&#x27;};</code>, which option added after initialization converts it into a valid C string?<br />A. <code class="inline-code">str[5] = &#x27;0&#x27;;</code><br />B. <code class="inline-code">str[5] = &#x27;\0&#x27;;</code><br />C. <code class="inline-code">str[] = {&#x27;g&#x27;,&#x27;l&#x27;,&#x27;o&#x27;,&#x27;b&#x27;,&#x27;e&#x27;,&#x27;\0&#x27;};</code><br />D. All the above</p><div class="alert"><strong>Hint:</strong> A C string ends with the null character <code class="inline-code">&#x27;\0&#x27;</code> (ASCII 0, not <code class="inline-code">&#x27;0&#x27;</code>).</div><div class="alert tip"><strong>Solution:</strong> <strong>B (<code class="inline-code">str[5] = &#x27;\0&#x27;;</code>)</strong> is the intended quiz answer because <code class="inline-code">&#x27;\0&#x27;</code> (not <code class="inline-code">&#x27;0&#x27;</code>, which is ASCII 48) marks the end of a C string, and <code class="inline-code">str[] = {...}</code> is invalid syntax after initialization. (In practice, <code class="inline-code">str</code> should be declared with size at least <code class="inline-code">6</code>, e.g. <code class="inline-code">char str[6]</code>, before writing <code class="inline-code">str[5]</code>.)</div>
+<h3>Q22. Medium (Midsem / Endsem)</h3><p>[Source: <code class="inline-code">QP.pdf</code> Endsem Feb 2023 Section B Q8]<br />What is the output?<br /><pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+void main()
+{
+    char str1[20] = &quot;aabba&quot;, str2[10];
+    strcpy(str2, str1);
+    printf(&quot;%s\n&quot;, str2);
+    str1[3] = &#x27;d&#x27;;
+    if (strcmp(str1, str2) &gt; 0)
+        printf(&quot;Success %s\n&quot;, str1);
+    else
+        printf(&quot;Failure %s\n&quot;, str2);
+}
+</code></pre></p><div class="alert"><strong>Hint:</strong> <code class="inline-code">str1[3]</code> is the 4th character (<code class="inline-code">&#x27;b&#x27;</code>), replaced by <code class="inline-code">&#x27;d&#x27;</code>.</div><div class="alert tip"><strong>Solution:</strong> <code class="inline-code">strcpy(str2, str1)</code> copies <code class="inline-code">&quot;aabba&quot;</code> into <code class="inline-code">str2</code> and prints <code class="inline-code">aabba</code>. Setting <code class="inline-code">str1[3] = &#x27;d&#x27;</code> changes <code class="inline-code">str1</code> to <code class="inline-code">&quot;aabda&quot;</code>. Comparing <code class="inline-code">&quot;aabda&quot;</code> vs <code class="inline-code">&quot;aabba&quot;</code>: <code class="inline-code">&#x27;d&#x27;</code> (ASCII 100) <code class="inline-code">&gt;</code> <code class="inline-code">&#x27;b&#x27;</code> (ASCII 98), so <code class="inline-code">strcmp</code> returns a positive value.<br />Output:<br /><code class="inline-code">aabba</code><br /><code class="inline-code">Success aabda</code></div>
+<h3>Q23. Hard (Quiz / Lab)</h3><p>[Source: <code class="inline-code">PSP Quiz 2.pdf</code> Part C Q1]<br />Write a C program (without <code class="inline-code">&lt;string.h&gt;</code> functions and using at most one extra 1D array) to separate a string into even-ASCII characters first, followed by odd-ASCII characters.<br />Sample: <code class="inline-code">abcde</code> -> <code class="inline-code">bdace</code>, <code class="inline-code">klmn</code> -> <code class="inline-code">lnkm</code>.</p><div class="alert"><strong>Hint:</strong> Make two passes over the input string <code class="inline-code">s</code>: first copy characters with <code class="inline-code">s[i] % 2 == 0</code> into <code class="inline-code">res</code>, then copy <code class="inline-code">s[i] % 2 != 0</code>, and finish with <code class="inline-code">&#x27;\0&#x27;</code>.</div><div class="alert tip"><strong>Solution:</strong> <pre><code>#include &lt;stdio.h&gt;
+int main(void) {
+    char s[100], res[100];
+    int i, j = 0;
+    scanf(&quot;%s&quot;, s);
+    for (i = 0; s[i] != &#x27;\0&#x27;; i++)
+        if (s[i] % 2 == 0) res[j++] = s[i];
+    for (i = 0; s[i] != &#x27;\0&#x27;; i++)
+        if (s[i] % 2 != 0) res[j++] = s[i];
+    res[j] = &#x27;\0&#x27;;
+    printf(&quot;%s&quot;, res);
+    return 0;
+}
+</code></pre></div>
+<h3>Q24. Medium (Midsem / Endsem)</h3><p>[Source: <code class="inline-code">QP.pdf</code> Endsem Feb 2023 Section B Q10]<br />What is the output?<br /><pre><code>#include &lt;stdio.h&gt;
+struct node {
+    int id, val;
+} *nptr;
+void detail(struct node *nptr, int n) {
+    for (int i = 0; i &lt; n; i++) {
+        if (nptr-&gt;val % 2 == 0)
+            printf(&quot;%d %d\n&quot;, nptr-&gt;id, nptr-&gt;val);
+        else
+            printf(&quot;%d %d\n&quot;, nptr-&gt;id, nptr-&gt;val * 2);
+        nptr++;
+    }
+}
+int main() {
+    int n = 5;
+    struct node List[] = {{1, 37}, {2, 16}, {3, 84}, {4, 71}, {5, 48}};
+    nptr = &amp;List[0];
+    detail(nptr, n);
+    return 0;
+}
+</code></pre></p><div class="alert"><strong>Hint:</strong> Even <code class="inline-code">val</code> prints as-is; odd <code class="inline-code">val</code> prints <code class="inline-code">val * 2</code>. <code class="inline-code">nptr++</code> moves to the next <code class="inline-code">struct node</code>.</div><div class="alert tip"><strong>Solution:</strong> - <code class="inline-code">{1, 37}</code> (odd) -> <code class="inline-code">1 74</code><br />- <code class="inline-code">{2, 16}</code> (even) -> <code class="inline-code">2 16</code><br />- <code class="inline-code">{3, 84}</code> (even) -> <code class="inline-code">3 84</code><br />- <code class="inline-code">{4, 71}</code> (odd) -> <code class="inline-code">4 142</code><br />- <code class="inline-code">{5, 48}</code> (even) -> <code class="inline-code">5 48</code></div>
+<h3>Q25. Easy (Assignment / Tutorial)</h3><p>[Source: <code class="inline-code">STRUCTURES.ppt</code> Slide 29 & <code class="inline-code">FILES.ppt</code> Slides 8-11, 22-25]<br />1. Given <code class="inline-code">union Data { int i; float f; char str[20]; };</code>, what does <code class="inline-code">sizeof(union Data)</code> return and why does it differ from a <code class="inline-code">struct</code>?<br />2. What happens when you call <code class="inline-code">fopen(&quot;data.txt&quot;, &quot;r&quot;)</code> vs <code class="inline-code">fopen(&quot;data.txt&quot;, &quot;w&quot;)</code> on a missing file vs an existing file? What does <code class="inline-code">fseek(fp, -5, 2)</code> do?</p><div class="alert"><strong>Hint:</strong> A <code class="inline-code">union</code> shares one memory block sized to its largest member. <code class="inline-code">2</code> in <code class="inline-code">fseek</code> means <code class="inline-code">SEEK_END</code>.</div><div class="alert tip"><strong>Solution:</strong> 1. <code class="inline-code">sizeof(union Data)</code> is <strong><code class="inline-code">20</code></strong> bytes (the size of its largest member <code class="inline-code">char str[20]</code>), because all <code class="inline-code">union</code> members share the same memory location; a <code class="inline-code">struct</code> allocates separate space for every member.<br />2. <code class="inline-code">&quot;r&quot;</code> returns <strong><code class="inline-code">NULL</code></strong> if <code class="inline-code">data.txt</code> is missing and reads from the start if it exists; <code class="inline-code">&quot;w&quot;</code> creates a new file if missing and <strong>erases</strong> existing contents if it exists. <code class="inline-code">fseek(fp, -5, 2)</code> (<code class="inline-code">SEEK_END</code>) moves the file pointer 5 bytes backward from the end of the file.</div></article></main>
   <script>
-    const tbtn = document.getElementById("theme-btn");
-    function syncTheme() { tbtn.textContent = document.documentElement.classList.contains("dark") ? "Light" : "Dark"; }
-    tbtn.onclick = () => {
+    const btn = document.getElementById("theme-btn");
+    const sync = () => { btn.textContent = document.documentElement.classList.contains("dark") ? "Parchment" : "Night Ink"; };
+    btn.onclick = () => {
       const d = document.documentElement.classList.toggle("dark");
       try { localStorage.setItem("iiitdm_theme", d ? "dark" : "light"); } catch (_) {}
-      syncTheme();
+      sync();
     };
-    syncTheme();
+    sync();
     document.addEventListener("DOMContentLoaded", function () {
       if (window.renderMathInElement) {
         renderMathInElement(document.body, {
